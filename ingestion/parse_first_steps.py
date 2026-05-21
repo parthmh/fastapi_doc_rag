@@ -41,14 +41,15 @@ class CodeBlock(TypedDict):
     section_url: str
 
 
-class AdmonitionMeta(TypedDict):
-    type: str
-    kind: str
-    title: str | None
-    text: str
-    inline_code: list[str]
-    section_id: str
-    section_url: str
+class SectionTiming(TypedDict):
+    node_id: str
+    seconds: float
+    paragraphs: int
+    list_items: int
+    code_blocks: int
+    code_refs: int
+    links: int
+    admonitions: int
 
 
 @dataclass
@@ -118,6 +119,7 @@ class PageTree:
     nodes_by_id: dict[str, FlatNode]
     admonition_nodes: list[AdmonitionNode] = field(default_factory=list)
     admonition_nodes_by_id: dict[str, AdmonitionNode] = field(default_factory=dict)
+    section_timings: list[SectionTiming] = field(default_factory=list)
 
 
 def normalize_path(path: Path, corpus_root: Path) -> str:
@@ -269,30 +271,57 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
     link_url: str | None = None
     link_parts: list[str] = []
 
-    def sync_heading(node: Node) -> None:
-        node.section_text = SECTION_SEPARATOR.join(node.section_text_parts).strip()
-        node.section_inline_code = dedupe_stable(node.section_inline_code)
-        nodes_by_id[node.node_id] = FlatNode(
-            node_id=node.node_id,
-            parent_id=node.parent_id,
-            level=node.level,
-            node_kind=node.node_kind,
-            heading_text=node.heading_text,
-            anchor_id=node.anchor_id,
-            section_url=node.section_url,
-            section_text=node.section_text,
-            section_inline_code=node.section_inline_code.copy(),
-            section_links=[link.copy() for link in node.section_links],
-            code_refs=[ref.copy() for ref in node.code_refs],
-            code_blocks=[block.copy() for block in node.code_blocks],
+    current_section_id: str | None = None
+    current_section_start: float | None = None
+    current_section_events: dict[str, int] = {
+        "paragraphs": 0,
+        "list_items": 0,
+        "code_blocks": 0,
+        "code_refs": 0,
+        "links": 0,
+        "admonitions": 0,
+    }
+    section_timings: list[SectionTiming] = []
+
+    def close_current_section() -> None:
+        nonlocal current_section_id, current_section_start, current_section_events
+        if current_section_id is None or current_section_start is None:
+            return
+
+        section_timings.append(
+            {
+                "node_id": current_section_id,
+                "seconds": time.perf_counter() - current_section_start,
+                "paragraphs": current_section_events["paragraphs"],
+                "list_items": current_section_events["list_items"],
+                "code_blocks": current_section_events["code_blocks"],
+                "code_refs": current_section_events["code_refs"],
+                "links": current_section_events["links"],
+                "admonitions": current_section_events["admonitions"],
+            }
         )
-        for idx, flat in enumerate(flat_nodes):
-            if flat.node_id == node.node_id:
-                flat_nodes[idx] = nodes_by_id[node.node_id]
-                break
+
+        current_section_id = None
+        current_section_start = None
+        current_section_events = {
+            "paragraphs": 0,
+            "list_items": 0,
+            "code_blocks": 0,
+            "code_refs": 0,
+            "links": 0,
+            "admonitions": 0,
+        }
+
+    def sync_heading(node: Node) -> None:
+        node.section_inline_code = dedupe_stable(node.section_inline_code)
+        flat = nodes_by_id[node.node_id]
+        flat.section_text = node.section_text
+        flat.section_inline_code = node.section_inline_code
+        flat.section_links = node.section_links
+        flat.code_refs = node.code_refs
+        flat.code_blocks = node.code_blocks
 
     def sync_admonition(node: AdmonitionNode) -> None:
-        node.section_text = SECTION_SEPARATOR.join(node.section_text_parts).strip()
         node.section_inline_code = dedupe_stable(node.section_inline_code)
         admonition_nodes_by_id[node.node_id] = node
 
@@ -303,6 +332,10 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
         if not cleaned:
             return
         node.section_text_parts.append(cleaned)
+        if node.section_text:
+            node.section_text = f"{node.section_text}{SECTION_SEPARATOR}{cleaned}"
+        else:
+            node.section_text = cleaned
         node.section_inline_code.extend(inline_code)
         if isinstance(node, AdmonitionNode):
             sync_admonition(node)
@@ -330,8 +363,9 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
         item_parts = []
         item_inline_code = []
 
+
     def start_heading_section(heading_text: str, raw_heading: str, anchor_id: str | None, level: int, heading_code: list[str]) -> None:
-        nonlocal section_index, page_title_set
+        nonlocal section_index, page_title_set, current_section_id, current_section_start
 
         while heading_stack and heading_stack[-1].level >= level:
             heading_stack.pop()
@@ -371,13 +405,17 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
             anchor_id=node.anchor_id,
             section_url=node.section_url,
             section_text=node.section_text,
-            section_inline_code=node.section_inline_code.copy(),
-            section_links=[link.copy() for link in node.section_links],
-            code_refs=[ref.copy() for ref in node.code_refs],
-            code_blocks=[block.copy() for block in node.code_blocks],
+            section_inline_code=node.section_inline_code,
+            section_links=node.section_links,
+            code_refs=node.code_refs,
+            code_blocks=node.code_blocks,
         )
         flat_nodes.append(flat)
         nodes_by_id[node.node_id] = flat
+
+        close_current_section()
+        current_section_id = node_id
+        current_section_start = time.perf_counter()
 
     def start_admonition_section(kind: str, title: str | None) -> None:
         nonlocal admonition_index, current_admonition_node, in_admonition
@@ -476,6 +514,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                         "section_url": current_node.section_url,
                     }
                     current_node.section_links.append(link_ref)
+                    current_section_events["links"] += 1
                     if isinstance(current_node, AdmonitionNode):
                         sync_admonition(current_node)
                     else:
@@ -494,6 +533,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                         code_ref["section_id"] = current_node.node_id
                         code_ref["section_url"] = current_node.section_url
                         current_node.code_refs.append(code_ref)
+                        current_section_events["code_refs"] += 1
                         if isinstance(current_node, AdmonitionNode):
                             sync_admonition(current_node)
                         else:
@@ -506,10 +546,12 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                     elif in_admonition and paragraph_text == "///":
                         if current_admonition_node is not None:
                             sync_admonition(current_admonition_node)
+                        current_section_events["admonitions"] += 1
                         current_admonition_node = None
                         in_admonition = False
                     else:
                         append_text(current_node, paragraph_text, paragraph_inline_code)
+                        current_section_events["paragraphs"] += 1
 
                 in_paragraph = False
                 paragraph_parts = []
@@ -558,6 +600,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                         "section_url": current_node.section_url,
                     }
                     current_node.section_links.append(link_ref)
+                    current_section_events["links"] += 1
                     if isinstance(current_node, AdmonitionNode):
                         sync_admonition(current_node)
                     else:
@@ -571,6 +614,8 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                 current_node = current_target_node()
                 item_text = " ".join(part.strip() for part in item_parts if part.strip()).strip()
                 append_text(current_node, f"- {item_text}" if item_text else "", item_inline_code)
+                if item_text:
+                    current_section_events["list_items"] += 1
                 in_item = False
                 item_parts = []
                 item_inline_code = []
@@ -603,6 +648,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                 if current_node is not None and current_code_block is not None:
                     current_code_block["text"] = LINE_FEED.join(code_block_parts).rstrip(LINE_FEED)
                     current_node.code_blocks.append(current_code_block)
+                    current_section_events["code_blocks"] += 1
                     if isinstance(current_node, AdmonitionNode):
                         sync_admonition(current_node)
                     else:
@@ -633,6 +679,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
             case _:
                 continue
 
+    close_current_section()
     return PageTree(
         page=page,
         roots=roots,
@@ -640,6 +687,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
         nodes_by_id=nodes_by_id,
         admonition_nodes=admonition_nodes,
         admonition_nodes_by_id=admonition_nodes_by_id,
+        section_timings=section_timings,
     )
 
 
@@ -658,7 +706,23 @@ def main() -> None:
     print(f"ADMONITIONS: {len(tree.admonition_nodes)}")
     print(f"INDEXED HEADINGS: {len(tree.nodes_by_id)}")
     print(f"INDEXED ADMONITIONS: {len(tree.admonition_nodes_by_id)}")
+    print(f"SECTIONS TIMED: {len(tree.section_timings)}")
     print(f"BUILD TIME: {build_elapsed:.4f}s")
+
+    if tree.section_timings:
+        slowest = sorted(
+            tree.section_timings,
+            key=lambda item: item["seconds"],
+            reverse=True,
+        )[:5]
+
+        for item in slowest:
+            print(
+                f"SECTION {item['node_id']}: {item['seconds']:.6f}s | "
+                f"p={item['paragraphs']} li={item['list_items']} "
+                f"cb={item['code_blocks']} cr={item['code_refs']} "
+                f"ln={item['links']} ad={item['admonitions']}"
+            )
 
     write_start = time.perf_counter()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -673,8 +737,11 @@ def main() -> None:
 
     with (OUTPUT_DIR / "first_steps_admonitions_by_id.json").open("w", encoding="utf-8") as f:
         json.dump({node_id: asdict(node) for node_id, node in tree.admonition_nodes_by_id.items()}, f, indent=2, ensure_ascii=False)
-    write_elapsed = time.perf_counter() - write_start
 
+    with (OUTPUT_DIR / "first_steps_section_timings.json").open("w", encoding="utf-8") as f:
+        json.dump(tree.section_timings, f, indent=2, ensure_ascii=False)
+
+    write_elapsed = time.perf_counter() - write_start
     total_elapsed = time.perf_counter() - run_start
     print(f"WRITE TIME: {write_elapsed:.4f}s")
     print(f"TOTAL TIME: {total_elapsed:.4f}s")
