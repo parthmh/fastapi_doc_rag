@@ -1,0 +1,113 @@
+{
+  "tutorial/first-steps::section-0016::admonition-0001": {
+    "node_id": "tutorial/first-steps::section-0016::admonition-0001",
+    "parent_id": "tutorial/first-steps::section-0016",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+    "section_text_parts": [
+      "FastAPI is a class that inherits directly from Starlette .",
+      "You can use all the Starlette functionality with FastAPI too."
+    ],
+    "section_text": "FastAPI is a class that inherits directly from Starlette .\n\nYou can use all the Starlette functionality with FastAPI too.",
+    "section_inline_code": [
+      "FastAPI",
+      "Starlette"
+    ],
+    "section_links": [
+      {
+        "text": "Starlette",
+        "url": "https://www.starlette.dev/",
+        "section_id": "tutorial/first-steps::section-0016::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/first-steps::section-0019::admonition-0002": {
+    "node_id": "tutorial/first-steps::section-0019::admonition-0002",
+    "parent_id": "tutorial/first-steps::section-0019",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+    "section_text_parts": [
+      "A \"path\" is also commonly called an \"endpoint\" or a \"route\"."
+    ],
+    "section_text": "A \"path\" is also commonly called an \"endpoint\" or a \"route\".",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/first-steps::section-0021::admonition-0003": {
+    "node_id": "tutorial/first-steps::section-0021::admonition-0003",
+    "parent_id": "tutorial/first-steps::section-0021",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": "@decorator Info",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+    "section_text_parts": [
+      "That @something syntax in Python is called a \"decorator\".",
+      "You put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).",
+      "A \"decorator\" takes the function below and does something with it.",
+      "In our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .",
+      "It is the \" path operation decorator \"."
+    ],
+    "section_text": "That @something syntax in Python is called a \"decorator\".\n\nYou put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).\n\nA \"decorator\" takes the function below and does something with it.\n\nIn our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .\n\nIt is the \" path operation decorator \".",
+    "section_inline_code": [
+      "@something",
+      "/",
+      "get"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/first-steps::section-0021::admonition-0004": {
+    "node_id": "tutorial/first-steps::section-0021::admonition-0004",
+    "parent_id": "tutorial/first-steps::section-0021",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+    "section_text_parts": [
+      "You are free to use each operation (HTTP method) as you wish.",
+      "FastAPI doesn't enforce any specific meaning.",
+      "The information here is presented as a guideline, not a requirement.",
+      "For example, when using GraphQL you normally perform all the actions using only POST operations."
+    ],
+    "section_text": "You are free to use each operation (HTTP method) as you wish.\n\nFastAPI doesn't enforce any specific meaning.\n\nThe information here is presented as a guideline, not a requirement.\n\nFor example, when using GraphQL you normally perform all the actions using only POST operations.",
+    "section_inline_code": [
+      "POST"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/first-steps::section-0022::admonition-0005": {
+    "node_id": "tutorial/first-steps::section-0022::admonition-0005",
+    "parent_id": "tutorial/first-steps::section-0022",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+    "section_text_parts": [
+      "If you don't know the difference, check the Async: \"In a hurry?\" ."
+    ],
+    "section_text": "If you don't know the difference, check the Async: \"In a hurry?\" .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Async: \"In a hurry?\"",
+        "url": "../async.md#in-a-hurry",
+        "section_id": "tutorial/first-steps::section-0022::admonition-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}
