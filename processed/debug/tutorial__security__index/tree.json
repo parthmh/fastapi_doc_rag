@@ -522,7 +522,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/security/index::section-0001",
-      "seconds": 4.739499854622409e-05,
+      "seconds": 4.464899939193856e-05,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 0,
@@ -532,7 +532,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0002",
-      "seconds": 1.7611999282962643e-05,
+      "seconds": 1.6814999980852008e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -542,7 +542,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0003",
-      "seconds": 1.9795999833149835e-05,
+      "seconds": 1.8741000531008467e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -552,7 +552,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0004",
-      "seconds": 3.9659998947172426e-05,
+      "seconds": 3.7723999412264675e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -562,7 +562,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0005",
-      "seconds": 2.7809999664896168e-05,
+      "seconds": 2.6878999051405117e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -572,7 +572,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0006",
-      "seconds": 2.262499947391916e-05,
+      "seconds": 2.1989000742905773e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -582,7 +582,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0007",
-      "seconds": 0.00028956300047866534,
+      "seconds": 0.0002396829986537341,
       "paragraphs": 8,
       "list_items": 11,
       "code_blocks": 0,
@@ -592,7 +592,7 @@
     },
     {
       "node_id": "tutorial/security/index::section-0008",
-      "seconds": 3.185900095559191e-05,
+      "seconds": 2.83820008917246e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,

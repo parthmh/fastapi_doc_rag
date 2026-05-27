@@ -2531,7 +2531,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/first-steps::section-0001",
-      "seconds": 7.448699943779502e-05,
+      "seconds": 0.0001077840006473707,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 2,
@@ -2541,7 +2541,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0002",
-      "seconds": 2.7134999982081354e-05,
+      "seconds": 4.183300006843638e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 1,
@@ -2551,7 +2551,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0003",
-      "seconds": 3.21829993481515e-05,
+      "seconds": 4.7695999455754645e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -2561,7 +2561,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0004",
-      "seconds": 3.061500137846451e-05,
+      "seconds": 4.686600004788488e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -2571,7 +2571,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0005",
-      "seconds": 2.2436999643105082e-05,
+      "seconds": 4.568200165522285e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -2581,7 +2581,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0006",
-      "seconds": 8.074001016211696e-06,
+      "seconds": 1.1500000255182385e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -2591,7 +2591,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0007",
-      "seconds": 1.8488999558030628e-05,
+      "seconds": 2.6420999347465113e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -2601,7 +2601,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0008",
-      "seconds": 1.1669999366858974e-05,
+      "seconds": 1.8728000213741325e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -2611,7 +2611,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0009",
-      "seconds": 1.6014999346225522e-05,
+      "seconds": 2.7034999220632017e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -2621,7 +2621,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0010",
-      "seconds": 3.036499947484117e-05,
+      "seconds": 5.107300057716202e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 1,
@@ -2631,7 +2631,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0011",
-      "seconds": 2.4408000172115862e-05,
+      "seconds": 3.8618998587480746e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -2641,7 +2641,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0012",
-      "seconds": 7.222199928946793e-05,
+      "seconds": 0.00014888700025039725,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 5,
@@ -2651,7 +2651,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0013",
-      "seconds": 4.2706000385805964e-05,
+      "seconds": 7.064800047373865e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 1,
@@ -2661,7 +2661,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0014",
-      "seconds": 8.324499867740087e-05,
+      "seconds": 0.00015699799951107707,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 2,
@@ -2671,7 +2671,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0015",
-      "seconds": 5.370999133447185e-06,
+      "seconds": 8.304999937536195e-06,
       "paragraphs": 0,
       "list_items": 0,
       "code_blocks": 0,
@@ -2681,7 +2681,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0016",
-      "seconds": 4.7307999921031296e-05,
+      "seconds": 7.339900002989452e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -2691,7 +2691,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0017",
-      "seconds": 2.9086999347782694e-05,
+      "seconds": 4.991300011170097e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -2701,7 +2701,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0018",
-      "seconds": 4.9030004447558895e-06,
+      "seconds": 7.78600042394828e-06,
       "paragraphs": 0,
       "list_items": 0,
       "code_blocks": 0,
@@ -2711,7 +2711,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0019",
-      "seconds": 5.519599835679401e-05,
+      "seconds": 7.140199886634946e-05,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 2,
@@ -2721,7 +2721,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0020",
-      "seconds": 0.00015359000099124387,
+      "seconds": 0.0001467729998694267,
       "paragraphs": 8,
       "list_items": 12,
       "code_blocks": 0,
@@ -2731,7 +2731,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0021",
-      "seconds": 0.00021363200175983366,
+      "seconds": 0.0002222459988843184,
       "paragraphs": 12,
       "list_items": 9,
       "code_blocks": 0,
@@ -2741,7 +2741,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0022",
-      "seconds": 0.00013549499999498948,
+      "seconds": 0.00013549699906434398,
       "paragraphs": 6,
       "list_items": 3,
       "code_blocks": 0,
@@ -2751,7 +2751,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0023",
-      "seconds": 2.9348999305511825e-05,
+      "seconds": 3.0277999030658975e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -2761,7 +2761,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0024",
-      "seconds": 2.1946001652395353e-05,
+      "seconds": 2.106400097545702e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -2771,7 +2771,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0025",
-      "seconds": 7.658799950149842e-05,
+      "seconds": 7.774499863444362e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -2781,7 +2781,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0026",
-      "seconds": 1.245099883817602e-05,
+      "seconds": 1.354000050923787e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -2791,7 +2791,7 @@
     },
     {
       "node_id": "tutorial/first-steps::section-0027",
-      "seconds": 0.00010430899965285789,
+      "seconds": 0.00010719499914557673,
       "paragraphs": 0,
       "list_items": 6,
       "code_blocks": 0,

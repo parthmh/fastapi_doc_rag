@@ -221,7 +221,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/dependencies/global-dependencies::section-0001",
-      "seconds": 8.91069994395366e-05,
+      "seconds": 9.18120003916556e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -231,7 +231,7 @@
     },
     {
       "node_id": "tutorial/dependencies/global-dependencies::section-0002",
-      "seconds": 2.699799915717449e-05,
+      "seconds": 2.0531000700430013e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,

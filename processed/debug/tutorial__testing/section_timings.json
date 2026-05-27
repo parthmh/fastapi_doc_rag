@@ -1,7 +1,7 @@
 [
   {
     "node_id": "tutorial/testing::section-0001",
-    "seconds": 5.908899947826285e-05,
+    "seconds": 5.76089987589512e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -11,7 +11,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0002",
-    "seconds": 0.0002550859990151366,
+    "seconds": 0.00018521600031817798,
     "paragraphs": 13,
     "list_items": 0,
     "code_blocks": 1,
@@ -21,7 +21,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0003",
-    "seconds": 2.7072999728261493e-05,
+    "seconds": 2.5490000552963465e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -31,7 +31,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0004",
-    "seconds": 5.068700011179317e-05,
+    "seconds": 4.1543000406818464e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 1,
@@ -41,7 +41,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0005",
-    "seconds": 6.183200093801133e-05,
+    "seconds": 4.2126999687752686e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 1,
@@ -51,7 +51,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0006",
-    "seconds": 1.548300133435987e-05,
+    "seconds": 1.4391000149771571e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -61,7 +61,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0007",
-    "seconds": 6.916900019859895e-05,
+    "seconds": 6.537999979627784e-05,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 1,
@@ -71,7 +71,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0008",
-    "seconds": 0.00018297200040251482,
+    "seconds": 0.00017336400014755782,
     "paragraphs": 7,
     "list_items": 5,
     "code_blocks": 0,
@@ -81,7 +81,7 @@
   },
   {
     "node_id": "tutorial/testing::section-0009",
-    "seconds": 8.967399844550528e-05,
+    "seconds": 8.425699888903182e-05,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 2,

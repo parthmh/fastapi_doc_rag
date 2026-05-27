@@ -1415,7 +1415,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/request-files::section-0001",
-      "seconds": 0.00010008000026573427,
+      "seconds": 6.966800174268428e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 1,
@@ -1425,7 +1425,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0002",
-      "seconds": 2.6726998839876615e-05,
+      "seconds": 2.6284000341547653e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1435,7 +1435,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0003",
-      "seconds": 0.00010044100054074079,
+      "seconds": 0.00010264000047754962,
       "paragraphs": 8,
       "list_items": 0,
       "code_blocks": 0,
@@ -1445,7 +1445,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0004",
-      "seconds": 0.00017421799930161797,
+      "seconds": 0.00012918699940200895,
       "paragraphs": 2,
       "list_items": 2,
       "code_blocks": 0,
@@ -1455,7 +1455,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0005",
-      "seconds": 0.0002904009998019319,
+      "seconds": 0.00029737800105067436,
       "paragraphs": 7,
       "list_items": 7,
       "code_blocks": 2,
@@ -1465,7 +1465,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0006",
-      "seconds": 0.00011195300066901837,
+      "seconds": 0.00011929099855478853,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 0,
@@ -1475,7 +1475,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0007",
-      "seconds": 2.025800131377764e-05,
+      "seconds": 1.8709999494603835e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1485,7 +1485,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0008",
-      "seconds": 1.8422000721329823e-05,
+      "seconds": 1.7819998902268708e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1495,7 +1495,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0009",
-      "seconds": 6.475800000771414e-05,
+      "seconds": 6.326500079012476e-05,
       "paragraphs": 6,
       "list_items": 0,
       "code_blocks": 0,
@@ -1505,7 +1505,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0010",
-      "seconds": 2.034899989666883e-05,
+      "seconds": 2.0157000108156353e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1515,7 +1515,7 @@
     },
     {
       "node_id": "tutorial/request-files::section-0011",
-      "seconds": 3.0470000638160855e-05,
+      "seconds": 2.7131998649565503e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,

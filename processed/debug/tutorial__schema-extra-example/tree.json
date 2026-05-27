@@ -1614,7 +1614,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/schema-extra-example::section-0001",
-      "seconds": 2.1078998543089256e-05,
+      "seconds": 4.022599932795856e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1624,7 +1624,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0002",
-      "seconds": 0.00011746800009859726,
+      "seconds": 0.0001925289998325752,
       "paragraphs": 9,
       "list_items": 0,
       "code_blocks": 0,
@@ -1634,7 +1634,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0003",
-      "seconds": 2.198000038333703e-05,
+      "seconds": 2.4842000129865482e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1644,7 +1644,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0004",
-      "seconds": 8.204499863495585e-05,
+      "seconds": 8.322900066559669e-05,
       "paragraphs": 2,
       "list_items": 7,
       "code_blocks": 0,
@@ -1654,7 +1654,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0005",
-      "seconds": 2.004799898713827e-05,
+      "seconds": 2.0346000383142382e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1664,7 +1664,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0006",
-      "seconds": 2.0388999473652802e-05,
+      "seconds": 2.009000127145555e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1674,7 +1674,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0007",
-      "seconds": 4.7547000576741993e-05,
+      "seconds": 4.702300066128373e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -1684,7 +1684,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0008",
-      "seconds": 0.00010095099969475996,
+      "seconds": 9.98699997580843e-05,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 0,
@@ -1694,7 +1694,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0009",
-      "seconds": 0.00013563600077759475,
+      "seconds": 0.00013566500092565548,
       "paragraphs": 4,
       "list_items": 11,
       "code_blocks": 0,
@@ -1704,7 +1704,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0010",
-      "seconds": 2.279900036228355e-05,
+      "seconds": 2.2975998945184983e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1714,7 +1714,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0011",
-      "seconds": 0.00024450199998682365,
+      "seconds": 0.00023831199905544054,
       "paragraphs": 9,
       "list_items": 7,
       "code_blocks": 0,
@@ -1724,7 +1724,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0012",
-      "seconds": 5.836600030306727e-05,
+      "seconds": 5.9402998886071146e-05,
       "paragraphs": 6,
       "list_items": 0,
       "code_blocks": 0,
@@ -1734,7 +1734,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0013",
-      "seconds": 6.312500045169145e-05,
+      "seconds": 7.625500074937008e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -1744,7 +1744,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0014",
-      "seconds": 3.2813000871101394e-05,
+      "seconds": 3.34229989675805e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1754,7 +1754,7 @@
     },
     {
       "node_id": "tutorial/schema-extra-example::section-0015",
-      "seconds": 4.2507001126068644e-05,
+      "seconds": 4.1605000660638325e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,

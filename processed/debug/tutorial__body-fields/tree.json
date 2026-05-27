@@ -582,7 +582,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/body-fields::section-0001",
-      "seconds": 3.340900002513081e-05,
+      "seconds": 3.1800000215298496e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -592,7 +592,7 @@
     },
     {
       "node_id": "tutorial/body-fields::section-0002",
-      "seconds": 4.533199899015017e-05,
+      "seconds": 4.628700116882101e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -602,7 +602,7 @@
     },
     {
       "node_id": "tutorial/body-fields::section-0003",
-      "seconds": 0.00010982300045725424,
+      "seconds": 0.00010795300113386475,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 0,
@@ -612,7 +612,7 @@
     },
     {
       "node_id": "tutorial/body-fields::section-0004",
-      "seconds": 3.9452001146855764e-05,
+      "seconds": 4.105100015294738e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -622,7 +622,7 @@
     },
     {
       "node_id": "tutorial/body-fields::section-0005",
-      "seconds": 1.5023999367258511e-05,
+      "seconds": 1.541600067866966e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,

@@ -1415,7 +1415,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/extra-models::section-0001",
-      "seconds": 9.148500066658016e-05,
+      "seconds": 0.00015419500050484203,
       "paragraphs": 4,
       "list_items": 3,
       "code_blocks": 0,
@@ -1425,7 +1425,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0002",
-      "seconds": 1.999500091187656e-05,
+      "seconds": 3.6041001294506714e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1435,7 +1435,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0003",
-      "seconds": 5.7249999372288585e-06,
+      "seconds": 9.948000297299586e-06,
       "paragraphs": 0,
       "list_items": 0,
       "code_blocks": 0,
@@ -1445,7 +1445,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0004",
-      "seconds": 8.641499880468473e-05,
+      "seconds": 0.00017359499906888232,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 4,
@@ -1455,7 +1455,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0005",
-      "seconds": 5.555300049309153e-05,
+      "seconds": 0.0001188000005640788,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 3,
@@ -1465,7 +1465,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0006",
-      "seconds": 4.8116000471054576e-05,
+      "seconds": 9.656099973653909e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 2,
@@ -1475,7 +1475,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0007",
-      "seconds": 4.8579999202047475e-05,
+      "seconds": 9.778999992704485e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 2,
@@ -1485,7 +1485,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0008",
-      "seconds": 5.230200076766778e-05,
+      "seconds": 0.00010691399984352756,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 0,
@@ -1495,7 +1495,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0009",
-      "seconds": 5.469600000651553e-05,
+      "seconds": 0.00015310600065276958,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -1505,7 +1505,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0010",
-      "seconds": 6.050099909771234e-05,
+      "seconds": 0.00012712100033240858,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 1,
@@ -1515,7 +1515,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0011",
-      "seconds": 2.0493000192800537e-05,
+      "seconds": 3.939700036426075e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1525,7 +1525,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0012",
-      "seconds": 2.4274999304907396e-05,
+      "seconds": 4.78490001114551e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -1535,7 +1535,7 @@
     },
     {
       "node_id": "tutorial/extra-models::section-0013",
-      "seconds": 2.4095999833662063e-05,
+      "seconds": 4.271900070307311e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,

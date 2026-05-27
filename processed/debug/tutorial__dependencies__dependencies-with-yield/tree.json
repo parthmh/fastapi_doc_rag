@@ -1853,7 +1853,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0001",
-      "seconds": 0.00015057699965836946,
+      "seconds": 0.00020306700025685132,
       "paragraphs": 6,
       "list_items": 2,
       "code_blocks": 0,
@@ -1863,7 +1863,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0002",
-      "seconds": 8.068100032687653e-05,
+      "seconds": 0.00014862700118101202,
       "paragraphs": 6,
       "list_items": 0,
       "code_blocks": 0,
@@ -1873,7 +1873,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0003",
-      "seconds": 4.3772999561042525e-05,
+      "seconds": 6.333399869618006e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -1883,7 +1883,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0004",
-      "seconds": 0.0001360059995931806,
+      "seconds": 0.0002029150000453228,
       "paragraphs": 12,
       "list_items": 0,
       "code_blocks": 0,
@@ -1893,7 +1893,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0005",
-      "seconds": 7.229999937408138e-05,
+      "seconds": 0.00011032099973817822,
       "paragraphs": 6,
       "list_items": 0,
       "code_blocks": 0,
@@ -1903,7 +1903,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0006",
-      "seconds": 4.2117000703001395e-05,
+      "seconds": 7.108299905667081e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1913,7 +1913,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0007",
-      "seconds": 4.534999970928766e-05,
+      "seconds": 7.782699867675547e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -1923,7 +1923,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0008",
-      "seconds": 7.605700011481531e-05,
+      "seconds": 0.00014746700071555097,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 1,
@@ -1933,7 +1933,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0009",
-      "seconds": 0.00017576900063431822,
+      "seconds": 0.0003059049995499663,
       "paragraphs": 4,
       "list_items": 2,
       "code_blocks": 0,
@@ -1943,7 +1943,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0010",
-      "seconds": 4.401200021675322e-05,
+      "seconds": 8.129399975587148e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 1,
@@ -1953,7 +1953,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0011",
-      "seconds": 2.709299951675348e-05,
+      "seconds": 4.18740000895923e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1963,7 +1963,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0012",
-      "seconds": 4.9150003178510815e-06,
+      "seconds": 8.174998583854176e-06,
       "paragraphs": 0,
       "list_items": 0,
       "code_blocks": 0,
@@ -1973,7 +1973,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0013",
-      "seconds": 5.564400089497212e-05,
+      "seconds": 9.66099996730918e-05,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 1,
@@ -1983,7 +1983,7 @@
     },
     {
       "node_id": "tutorial/dependencies/dependencies-with-yield::section-0014",
-      "seconds": 0.00014506300067296252,
+      "seconds": 0.00026698200053942855,
       "paragraphs": 9,
       "list_items": 2,
       "code_blocks": 0,

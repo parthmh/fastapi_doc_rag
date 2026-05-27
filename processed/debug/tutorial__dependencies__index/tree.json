@@ -1262,7 +1262,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/dependencies/index::section-0001",
-      "seconds": 7.808800000930205e-05,
+      "seconds": 4.482500116864685e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1272,7 +1272,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0002",
-      "seconds": 0.00011986100071226247,
+      "seconds": 6.992199996602722e-05,
       "paragraphs": 4,
       "list_items": 4,
       "code_blocks": 0,
@@ -1282,7 +1282,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0003",
-      "seconds": 3.243399987695739e-05,
+      "seconds": 1.944699943123851e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1292,7 +1292,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0004",
-      "seconds": 0.0002792710001813248,
+      "seconds": 0.00016496799980814103,
       "paragraphs": 12,
       "list_items": 3,
       "code_blocks": 0,
@@ -1302,7 +1302,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0005",
-      "seconds": 1.758799953677226e-05,
+      "seconds": 1.1530999472597614e-05,
       "paragraphs": 0,
       "list_items": 0,
       "code_blocks": 0,
@@ -1312,7 +1312,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0006",
-      "seconds": 0.0003312289991299622,
+      "seconds": 0.00018428399926051497,
       "paragraphs": 11,
       "list_items": 3,
       "code_blocks": 1,
@@ -1322,7 +1322,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0007",
-      "seconds": 0.00024975999986054376,
+      "seconds": 0.00014130900126474444,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 1,
@@ -1332,7 +1332,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0008",
-      "seconds": 0.00015561599866487086,
+      "seconds": 9.371799933433067e-05,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 0,
@@ -1342,7 +1342,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0009",
-      "seconds": 2.562200097599998e-05,
+      "seconds": 2.026499896601308e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1352,7 +1352,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0010",
-      "seconds": 0.00012766600048053078,
+      "seconds": 0.00012550700012070592,
       "paragraphs": 5,
       "list_items": 5,
       "code_blocks": 0,
@@ -1362,7 +1362,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0011",
-      "seconds": 5.084699841972906e-05,
+      "seconds": 4.7374000132549554e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -1372,7 +1372,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0012",
-      "seconds": 6.557799861184321e-05,
+      "seconds": 6.225900142453611e-05,
       "paragraphs": 1,
       "list_items": 8,
       "code_blocks": 0,
@@ -1382,7 +1382,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0013",
-      "seconds": 8.268100100394804e-05,
+      "seconds": 7.904900121502578e-05,
       "paragraphs": 5,
       "list_items": 4,
       "code_blocks": 1,
@@ -1392,7 +1392,7 @@
     },
     {
       "node_id": "tutorial/dependencies/index::section-0014",
-      "seconds": 4.7097000788198784e-05,
+      "seconds": 3.8688000131514855e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,

@@ -250,7 +250,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/encoder::section-0001",
-      "seconds": 5.460799911816139e-05,
+      "seconds": 3.903200013155583e-05,
       "paragraphs": 3,
       "list_items": 0,
       "code_blocks": 0,
@@ -260,7 +260,7 @@
     },
     {
       "node_id": "tutorial/encoder::section-0002",
-      "seconds": 0.00011178100066899788,
+      "seconds": 0.00011431699931563344,
       "paragraphs": 10,
       "list_items": 0,
       "code_blocks": 0,

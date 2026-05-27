@@ -1102,7 +1102,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/metadata::section-0001",
-      "seconds": 2.2995000108494423e-05,
+      "seconds": 2.3177999537438154e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1112,7 +1112,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0002",
-      "seconds": 0.0004332089993113186,
+      "seconds": 0.0004414569993969053,
       "paragraphs": 5,
       "list_items": 0,
       "code_blocks": 0,
@@ -1122,7 +1122,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0003",
-      "seconds": 2.453500019328203e-05,
+      "seconds": 2.589699943200685e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1132,7 +1132,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0004",
-      "seconds": 0.00011267800073255785,
+      "seconds": 0.00012799200158042368,
       "paragraphs": 3,
       "list_items": 4,
       "code_blocks": 0,
@@ -1142,7 +1142,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0005",
-      "seconds": 6.305800161499064e-05,
+      "seconds": 5.74569985474227e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -1152,7 +1152,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0006",
-      "seconds": 4.4661001084023155e-05,
+      "seconds": 4.4006999814882874e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1162,7 +1162,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0007",
-      "seconds": 1.592499938851688e-05,
+      "seconds": 1.7020000086631626e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,
@@ -1172,7 +1172,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0008",
-      "seconds": 1.5861000065342523e-05,
+      "seconds": 1.643900031922385e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
@@ -1182,7 +1182,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0009",
-      "seconds": 3.309699968667701e-05,
+      "seconds": 3.288599873485509e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -1192,7 +1192,7 @@
     },
     {
       "node_id": "tutorial/metadata::section-0010",
-      "seconds": 0.0001248500011570286,
+      "seconds": 0.00011573700066946913,
       "paragraphs": 2,
       "list_items": 4,
       "code_blocks": 0,

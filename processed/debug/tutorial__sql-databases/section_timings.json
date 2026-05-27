@@ -1,7 +1,7 @@
 [
   {
     "node_id": "tutorial/sql-databases::section-0001",
-    "seconds": 0.00021862699941266328,
+    "seconds": 0.00021501199989870656,
     "paragraphs": 9,
     "list_items": 5,
     "code_blocks": 0,
@@ -11,7 +11,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0002",
-    "seconds": 5.589600004896056e-05,
+    "seconds": 4.3138999899383634e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 1,
@@ -21,7 +21,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0003",
-    "seconds": 2.972300171677489e-05,
+    "seconds": 2.7994001357001252e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -31,7 +31,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0004",
-    "seconds": 0.00018006099890044425,
+    "seconds": 0.00023845200121286325,
     "paragraphs": 8,
     "list_items": 0,
     "code_blocks": 0,
@@ -41,7 +41,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0005",
-    "seconds": 8.35880000522593e-05,
+    "seconds": 7.98679993749829e-05,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 0,
@@ -51,7 +51,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0006",
-    "seconds": 3.602700053306762e-05,
+    "seconds": 3.1024999771034345e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -61,7 +61,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0007",
-    "seconds": 6.767500053683762e-05,
+    "seconds": 6.222900083230343e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -71,7 +71,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0008",
-    "seconds": 5.100800080981571e-05,
+    "seconds": 4.325900044932496e-05,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 0,
@@ -81,7 +81,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0009",
-    "seconds": 9.023900020110887e-05,
+    "seconds": 5.972100007056724e-05,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 0,
@@ -91,7 +91,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0010",
-    "seconds": 4.785999954037834e-05,
+    "seconds": 2.9897000786149874e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -101,7 +101,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0011",
-    "seconds": 3.94670005334774e-05,
+    "seconds": 2.2262998754740693e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -111,7 +111,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0012",
-    "seconds": 4.115000047022477e-05,
+    "seconds": 2.1947998902760446e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -121,7 +121,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0013",
-    "seconds": 0.00010493400077393744,
+    "seconds": 8.587400043325033e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 1,
@@ -131,7 +131,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0014",
-    "seconds": 9.743100054038223e-05,
+    "seconds": 0.00010006000047724228,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 0,
@@ -141,7 +141,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0015",
-    "seconds": 5.763500121247489e-05,
+    "seconds": 5.504500040842686e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -151,7 +151,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0016",
-    "seconds": 5.185000009078067e-05,
+    "seconds": 4.8693000280763954e-05,
     "paragraphs": 1,
     "list_items": 2,
     "code_blocks": 0,
@@ -161,7 +161,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0017",
-    "seconds": 0.00011349600026733242,
+    "seconds": 0.00010838600064744242,
     "paragraphs": 2,
     "list_items": 6,
     "code_blocks": 0,
@@ -171,7 +171,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0018",
-    "seconds": 0.00013268800103105605,
+    "seconds": 0.0001313720003963681,
     "paragraphs": 7,
     "list_items": 3,
     "code_blocks": 0,
@@ -181,7 +181,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0019",
-    "seconds": 0.00012513699948613066,
+    "seconds": 0.00011978299880865961,
     "paragraphs": 6,
     "list_items": 3,
     "code_blocks": 0,
@@ -191,7 +191,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0020",
-    "seconds": 0.0001371099988318747,
+    "seconds": 0.00011532400094438344,
     "paragraphs": 5,
     "list_items": 3,
     "code_blocks": 0,
@@ -201,7 +201,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0021",
-    "seconds": 0.00015350099965871777,
+    "seconds": 0.00015124600031413138,
     "paragraphs": 7,
     "list_items": 0,
     "code_blocks": 0,
@@ -211,7 +211,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0022",
-    "seconds": 3.058400034205988e-05,
+    "seconds": 2.6712999897426926e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -221,7 +221,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0023",
-    "seconds": 2.3676000637351535e-05,
+    "seconds": 2.2090000129537657e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -231,7 +231,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0024",
-    "seconds": 5.716099985875189e-05,
+    "seconds": 5.070199949841481e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -241,7 +241,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0025",
-    "seconds": 2.628599941090215e-05,
+    "seconds": 2.4544999178033322e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -251,7 +251,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0026",
-    "seconds": 6.634100100200158e-05,
+    "seconds": 5.426800089480821e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 1,
@@ -261,7 +261,7 @@
   },
   {
     "node_id": "tutorial/sql-databases::section-0027",
-    "seconds": 0.00010474699956830591,
+    "seconds": 9.07180001377128e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,

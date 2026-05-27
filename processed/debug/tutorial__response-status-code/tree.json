@@ -639,7 +639,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/response-status-code::section-0001",
-      "seconds": 0.0001817009997466812,
+      "seconds": 0.00017390900029568002,
       "paragraphs": 7,
       "list_items": 7,
       "code_blocks": 0,
@@ -649,7 +649,7 @@
     },
     {
       "node_id": "tutorial/response-status-code::section-0002",
-      "seconds": 0.00019015100042452104,
+      "seconds": 0.0001839439992181724,
       "paragraphs": 5,
       "list_items": 6,
       "code_blocks": 0,
@@ -659,7 +659,7 @@
     },
     {
       "node_id": "tutorial/response-status-code::section-0003",
-      "seconds": 7.781400017847773e-05,
+      "seconds": 8.357000115211122e-05,
       "paragraphs": 7,
       "list_items": 0,
       "code_blocks": 0,
@@ -669,7 +669,7 @@
     },
     {
       "node_id": "tutorial/response-status-code::section-0004",
-      "seconds": 1.8187000023317523e-05,
+      "seconds": 1.7827000192482956e-05,
       "paragraphs": 1,
       "list_items": 0,
       "code_blocks": 0,

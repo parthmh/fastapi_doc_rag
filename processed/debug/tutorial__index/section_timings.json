@@ -1,7 +1,7 @@
 [
   {
     "node_id": "tutorial/index::section-0001",
-    "seconds": 3.1162999221123755e-05,
+    "seconds": 5.628600047202781e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -11,7 +11,7 @@
   },
   {
     "node_id": "tutorial/index::section-0002",
-    "seconds": 5.9145000705029815e-05,
+    "seconds": 0.00010933900011877995,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 1,
@@ -21,7 +21,7 @@
   },
   {
     "node_id": "tutorial/index::section-0003",
-    "seconds": 0.0001025950004986953,
+    "seconds": 0.00019537600019248202,
     "paragraphs": 6,
     "list_items": 0,
     "code_blocks": 1,
@@ -31,7 +31,7 @@
   },
   {
     "node_id": "tutorial/index::section-0004",
-    "seconds": 6.024100002832711e-05,
+    "seconds": 0.00012316899847064633,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 0,

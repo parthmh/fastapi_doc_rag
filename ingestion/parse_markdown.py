@@ -11,11 +11,6 @@ import pyromark
 
 
 CORPUS_ROOT = Path("corpus")
-TUTORIAL_ROOT = CORPUS_ROOT/ "tutorial"
-
-OUTPUT_DIR = Path("processed")
-DEBUG_OUTPUT_DIR = Path("processed/debug")
-
 SECTION_SEPARATOR = "\n\n"
 LINE_FEED = "\n"
 
@@ -126,55 +121,11 @@ class PageTree:
     section_timings: list[SectionTiming] = field(default_factory=list)
 
 
-def write_debug_page(page_tree: PageTree) -> None:
-    page_id = page_tree.page.page_id.replace("/", "__")
-
-    page_dir = DEBUG_OUTPUT_DIR / page_id
-    page_dir.mkdir(parents=True, exist_ok=True)
-
-    (page_dir / "page.json").write_text(
-        json.dumps(asdict(page_tree.page), indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
-    (page_dir / "tree.json").write_text(
-        json.dumps(asdict(page_tree), indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
-    (page_dir / "headings_by_id.json").write_text(
-        json.dumps(
-            {node_id: asdict(node) for node_id, node in page_tree.nodes_by_id.items()},
-            indent=2,
-            ensure_ascii=False,
-        ),
-        encoding="utf-8",
-    )
-
-    (page_dir / "admonitions_by_id.json").write_text(
-        json.dumps(
-            {node_id: asdict(node) for node_id, node in page_tree.admonition_nodes_by_id.items()},
-            indent=2,
-            ensure_ascii=False,
-        ),
-        encoding="utf-8",
-    )
-
-    (page_dir / "section_timings.json").write_text(
-        json.dumps(page_tree.section_timings, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
-def iter_markdown_files(root:Path):
-    yield from sorted(root.rglob("*.md"))
-
-
-
-def normalize_path(path: Path, corpus_root: Path) -> str:
+def normalize_path(path: Path, corpus_root: Path = CORPUS_ROOT) -> str:
     return path.resolve().relative_to(corpus_root.resolve()).as_posix()
 
 
-def make_page_id(markdown_path: Path, corpus_root: Path) -> str:
+def make_page_id(markdown_path: Path, corpus_root: Path = CORPUS_ROOT) -> str:
     return Path(normalize_path(markdown_path, corpus_root)).with_suffix("").as_posix()
 
 
@@ -218,7 +169,6 @@ def dedupe_stable(items: list[str]) -> list[str]:
 
 def parse_admonition_start(text: str) -> tuple[int, str, str | None, bool] | None:
     stripped = text.strip()
-
     if not stripped.startswith("/"):
         return None
 
@@ -253,7 +203,6 @@ def parse_code_ref(text: str) -> CodeRef | None:
     if not inner:
         return None
 
-    # The actual path is always the first token.
     raw_path = inner.split()[0]
     highlight_lines: list[int] = []
 
@@ -263,12 +212,10 @@ def parse_code_ref(text: str) -> CodeRef | None:
         hl_end = after_hl.find("]")
         if hl_end != -1:
             hl_spec = after_hl[:hl_end].strip()
-
             for chunk in hl_spec.split(","):
                 chunk = chunk.strip()
                 if not chunk:
                     continue
-
                 if "-" in chunk:
                     start_str, end_str = chunk.split("-", 1)
                     highlight_lines.extend(range(int(start_str), int(end_str) + 1))
@@ -287,14 +234,15 @@ def parse_code_ref(text: str) -> CodeRef | None:
         "section_url": "",
     }
 
-def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
-    page_id = make_page_id(markdown_path, CORPUS_ROOT)
+
+def build_page(markdown_text: str, markdown_path: Path, corpus_root: Path = CORPUS_ROOT) -> PageTree:
+    page_id = make_page_id(markdown_path, corpus_root)
     page = PageMetadata(
         page_id=page_id,
         page_uid=make_page_uid(page_id),
         page_title=page_id.split("/")[-1].replace("-", " ").title(),
         page_url=make_page_url(page_id),
-        source_file=normalize_path(markdown_path, CORPUS_ROOT),
+        source_file=normalize_path(markdown_path, corpus_root),
     )
 
     roots: list[Node] = []
@@ -303,6 +251,7 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
     admonition_nodes: list[AdmonitionNode] = []
     admonition_nodes_by_id: dict[str, AdmonitionNode] = {}
     heading_stack: list[Node] = []
+    admonition_stack: list[AdmonitionNode] = []
 
     in_heading = False
     heading_level = 0
@@ -320,8 +269,6 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
     in_item = False
     item_parts: list[str] = []
     item_inline_code: list[str] = []
-
-    admonition_stack: list[AdmonitionNode] = []
 
     in_code_block = False
     code_block_parts: list[str] = []
@@ -423,8 +370,13 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
         item_parts = []
         item_inline_code = []
 
-
-    def start_heading_section(heading_text: str, raw_heading: str, anchor_id: str | None, level: int, heading_code: list[str]) -> None:
+    def start_heading_section(
+        heading_text: str,
+        raw_heading: str,
+        anchor_id: str | None,
+        level: int,
+        heading_code: list[str],
+    ) -> None:
         nonlocal section_index, page_title_set, current_section_id, current_section_start
 
         while heading_stack and heading_stack[-1].level >= level:
@@ -600,20 +552,14 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
                             sync_heading(current_node)
                 else:
                     admonition_start = parse_admonition_start(paragraph_text)
-
                     if admonition_start is not None:
                         fence_depth, kind, title, is_opening = admonition_start
-
-                        # Closing fence:
-                        # - bare fence line
-                        # - or a fence with same depth as the current open admonition
                         if not is_opening:
                             if admonition_stack:
                                 sync_admonition(admonition_stack[-1])
                                 admonition_stack.pop()
                                 current_section_events["admonitions"] += 1
                         else:
-                            # Opening fence
                             start_admonition_section(fence_depth, kind, title)
                     else:
                         append_text(current_node, paragraph_text, paragraph_inline_code)
@@ -755,41 +701,3 @@ def build_page(markdown_text: str, markdown_path: Path) -> PageTree:
         admonition_nodes_by_id=admonition_nodes_by_id,
         section_timings=section_timings,
     )
-
-
-def main() -> None:
-    run_start = time.perf_counter()
-
-    if not TUTORIAL_ROOT.exists():
-        raise FileNotFoundError(f"Tutorial root not found: {TUTORIAL_ROOT}")
-
-    pages = []
-    parse_start = time.perf_counter()
-
-    for markdown_path in iter_markdown_files(TUTORIAL_ROOT):
-        markdown_text = markdown_path.read_text(encoding="utf-8")
-        page_tree = build_page(markdown_text, markdown_path)
-        write_debug_page(page_tree)
-        pages.append(page_tree)
-
-        print()
-        print("=" * 100)
-        print(f"PARSED: {page_tree.page.source_file}")
-        print(f"PAGE ID: {page_tree.page.page_id}")
-        print(f"ROOTS: {len(page_tree.roots)}")
-        print(f"FLAT HEADINGS: {len(page_tree.flat_nodes)}")
-        print(f"ADMONITIONS: {len(page_tree.admonition_nodes)}")
-        print(f"SECTIONS TIMED: {len(page_tree.section_timings)}")
-
-    parse_elapsed = time.perf_counter() - parse_start
-    total_elapsed = time.perf_counter() - run_start
-
-    print()
-    print("=" * 100)
-    print(f"PARSED PAGES: {len(pages)}")
-    print(f"PARSE TIME: {parse_elapsed:.4f}s")
-    print(f"TOTAL TIME: {total_elapsed:.4f}s")
-
-
-if __name__ == "__main__":
-    main()

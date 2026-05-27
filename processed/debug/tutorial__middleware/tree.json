@@ -645,7 +645,7 @@
   "section_timings": [
     {
       "node_id": "tutorial/middleware::section-0001",
-      "seconds": 0.00022259400066104718,
+      "seconds": 0.0002420370001345873,
       "paragraphs": 4,
       "list_items": 6,
       "code_blocks": 0,
@@ -655,7 +655,7 @@
     },
     {
       "node_id": "tutorial/middleware::section-0002",
-      "seconds": 0.000168914000823861,
+      "seconds": 0.00016565900114073884,
       "paragraphs": 6,
       "list_items": 3,
       "code_blocks": 0,
@@ -665,7 +665,7 @@
     },
     {
       "node_id": "tutorial/middleware::section-0003",
-      "seconds": 5.814100040879566e-05,
+      "seconds": 5.643499935104046e-05,
       "paragraphs": 4,
       "list_items": 0,
       "code_blocks": 0,
@@ -675,7 +675,7 @@
     },
     {
       "node_id": "tutorial/middleware::section-0004",
-      "seconds": 9.572300041327253e-05,
+      "seconds": 9.402599971508607e-05,
       "paragraphs": 8,
       "list_items": 0,
       "code_blocks": 1,
@@ -685,7 +685,7 @@
     },
     {
       "node_id": "tutorial/middleware::section-0005",
-      "seconds": 3.770200055441819e-05,
+      "seconds": 2.9327999072847888e-05,
       "paragraphs": 2,
       "list_items": 0,
       "code_blocks": 0,
