@@ -1,0 +1,42 @@
+[
+  {
+    "node_id": "tutorial/response-status-code::section-0001",
+    "seconds": 0.0001817009997466812,
+    "paragraphs": 7,
+    "list_items": 7,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 3
+  },
+  {
+    "node_id": "tutorial/response-status-code::section-0002",
+    "seconds": 0.00019015100042452104,
+    "paragraphs": 5,
+    "list_items": 6,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/response-status-code::section-0003",
+    "seconds": 7.781400017847773e-05,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 2,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/response-status-code::section-0004",
+    "seconds": 1.8187000023317523e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

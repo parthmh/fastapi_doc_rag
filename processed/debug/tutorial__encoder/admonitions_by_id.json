@@ -1,0 +1,21 @@
+{
+  "tutorial/encoder::section-0002::admonition-0001": {
+    "node_id": "tutorial/encoder::section-0002::admonition-0001",
+    "parent_id": "tutorial/encoder::section-0002",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/encoder/#using-the-jsonable-encoder",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "jsonable_encoder is actually used by FastAPI internally to convert data. But it is useful in many other scenarios."
+    ],
+    "section_text": "jsonable_encoder is actually used by FastAPI internally to convert data. But it is useful in many other scenarios.",
+    "section_inline_code": [
+      "jsonable_encoder"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

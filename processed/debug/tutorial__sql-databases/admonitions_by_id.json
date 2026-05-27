@@ -1,0 +1,131 @@
+{
+  "tutorial/sql-databases::section-0001::admonition-0001": {
+    "node_id": "tutorial/sql-databases::section-0001::admonition-0001",
+    "parent_id": "tutorial/sql-databases::section-0001",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#sql-relational-databases",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You could use any other SQL or NoSQL database library you want (in some cases called \"ORMs\" ), FastAPI doesn't force you to use anything. 😎"
+    ],
+    "section_text": "You could use any other SQL or NoSQL database library you want (in some cases called \"ORMs\" ), FastAPI doesn't force you to use anything. 😎",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/sql-databases::section-0001::admonition-0002": {
+    "node_id": "tutorial/sql-databases::section-0001::admonition-0002",
+    "parent_id": "tutorial/sql-databases::section-0001",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#sql-relational-databases",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "There is an official project generator with FastAPI and PostgreSQL including a frontend and more tools: https://github.com/fastapi/full-stack-fastapi-template"
+    ],
+    "section_text": "There is an official project generator with FastAPI and PostgreSQL including a frontend and more tools: https://github.com/fastapi/full-stack-fastapi-template",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "https://github.com/fastapi/full-stack-fastapi-template",
+        "url": "https://github.com/fastapi/full-stack-fastapi-template",
+        "section_id": "tutorial/sql-databases::section-0001::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#sql-relational-databases"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/sql-databases::section-0008::admonition-0003": {
+    "node_id": "tutorial/sql-databases::section-0008::admonition-0003",
+    "parent_id": "tutorial/sql-databases::section-0008",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#create-database-tables-on-startup",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "SQLModel will have migration utilities wrapping Alembic, but for now, you can use Alembic directly."
+    ],
+    "section_text": "SQLModel will have migration utilities wrapping Alembic, but for now, you can use Alembic directly.",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Alembic",
+        "url": "https://alembic.sqlalchemy.org/en/latest/",
+        "section_id": "tutorial/sql-databases::section-0008::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#create-database-tables-on-startup"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/sql-databases::section-0018::admonition-0004": {
+    "node_id": "tutorial/sql-databases::section-0018::admonition-0004",
+    "parent_id": "tutorial/sql-databases::section-0018",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#heropublic-the-public-data-model",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Having the return model ensure that a value is always available and always int (not None ) is very useful for the API clients, they can write much simpler code having this certainty.",
+      "Also, automatically generated clients will have simpler interfaces, so that the developers communicating with your API can have a much better time working with your API. 😎"
+    ],
+    "section_text": "Having the return model ensure that a value is always available and always int (not None ) is very useful for the API clients, they can write much simpler code having this certainty.\n\nAlso, automatically generated clients will have simpler interfaces, so that the developers communicating with your API can have a much better time working with your API. 😎",
+    "section_inline_code": [
+      "int",
+      "None"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/sql-databases::section-0019::admonition-0005": {
+    "node_id": "tutorial/sql-databases::section-0019::admonition-0005",
+    "parent_id": "tutorial/sql-databases::section-0019",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#herocreate-the-data-model-to-create-a-hero",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is how you would handle passwords . Receive them, but don't return them in the API.",
+      "You would also hash the values of the passwords before storing them, never store them in plain text ."
+    ],
+    "section_text": "This is how you would handle passwords . Receive them, but don't return them in the API.\n\nYou would also hash the values of the passwords before storing them, never store them in plain text .",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/sql-databases::section-0021::admonition-0006": {
+    "node_id": "tutorial/sql-databases::section-0021::admonition-0006",
+    "parent_id": "tutorial/sql-databases::section-0021",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/#create-with-herocreate-and-return-a-heropublic",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Now we use response_model=HeroPublic instead of the return type annotation -> HeroPublic because the value that we are returning is actually not a HeroPublic .",
+      "If we had declared -> HeroPublic , your editor and linter would complain (rightfully so) that you are returning a Hero instead of a HeroPublic .",
+      "By declaring it in response_model we are telling FastAPI to do its thing, without interfering with the type annotations and the help from your editor and other tools."
+    ],
+    "section_text": "Now we use response_model=HeroPublic instead of the return type annotation -> HeroPublic because the value that we are returning is actually not a HeroPublic .\n\nIf we had declared -> HeroPublic , your editor and linter would complain (rightfully so) that you are returning a Hero instead of a HeroPublic .\n\nBy declaring it in response_model we are telling FastAPI to do its thing, without interfering with the type annotations and the help from your editor and other tools.",
+    "section_inline_code": [
+      "response_model=HeroPublic",
+      "-> HeroPublic",
+      "HeroPublic",
+      "Hero",
+      "response_model"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

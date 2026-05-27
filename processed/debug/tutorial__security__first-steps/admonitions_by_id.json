@@ -1,0 +1,176 @@
+{
+  "tutorial/security/first-steps::section-0004::admonition-0001": {
+    "node_id": "tutorial/security/first-steps::section-0004::admonition-0001",
+    "parent_id": "tutorial/security/first-steps::section-0004",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#run-it",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "The python-multipart package is automatically installed with FastAPI when you run the pip install \"fastapi[standard]\" command.",
+      "However, if you use the pip install fastapi command, the python-multipart package is not included by default.",
+      "To install it manually, make sure you create a virtual environment , activate it, and then install it with:",
+      "This is because OAuth2 uses \"form data\" for sending the username and password ."
+    ],
+    "section_text": "The python-multipart package is automatically installed with FastAPI when you run the pip install \"fastapi[standard]\" command.\n\nHowever, if you use the pip install fastapi command, the python-multipart package is not included by default.\n\nTo install it manually, make sure you create a virtual environment , activate it, and then install it with:\n\nThis is because OAuth2 uses \"form data\" for sending the username and password .",
+    "section_inline_code": [
+      "python-multipart",
+      "pip install \"fastapi[standard]\"",
+      "pip install fastapi",
+      "username",
+      "password"
+    ],
+    "section_links": [
+      {
+        "text": "virtual environment",
+        "url": "../../virtual-environments.md",
+        "section_id": "tutorial/security/first-steps::section-0004::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#run-it"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ pip install python-multipart",
+        "section_id": "tutorial/security/first-steps::section-0004::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#run-it"
+      }
+    ]
+  },
+  "tutorial/security/first-steps::section-0005::admonition-0002": {
+    "node_id": "tutorial/security/first-steps::section-0005::admonition-0002",
+    "parent_id": "tutorial/security/first-steps::section-0005",
+    "node_kind": "admonition",
+    "kind": "check",
+    "title": "Authorize button!",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#check-it",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You already have a shiny new \"Authorize\" button.",
+      "And your path operation has a little lock in the top-right corner that you can click."
+    ],
+    "section_text": "You already have a shiny new \"Authorize\" button.\n\nAnd your path operation has a little lock in the top-right corner that you can click.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/security/first-steps::section-0005::admonition-0003": {
+    "node_id": "tutorial/security/first-steps::section-0005::admonition-0003",
+    "parent_id": "tutorial/security/first-steps::section-0005",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#check-it",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "It doesn't matter what you type in the form, it won't work yet. But we'll get there."
+    ],
+    "section_text": "It doesn't matter what you type in the form, it won't work yet. But we'll get there.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/security/first-steps::section-0007::admonition-0004": {
+    "node_id": "tutorial/security/first-steps::section-0007::admonition-0004",
+    "parent_id": "tutorial/security/first-steps::section-0007",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#fastapis-oauth2passwordbearer",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "A \"bearer\" token is not the only option.",
+      "But it's the best one for our use case.",
+      "And it might be the best for most use cases, unless you are an OAuth2 expert and know exactly why there's another option that better suits your needs.",
+      "In that case, FastAPI also provides you with the tools to build it."
+    ],
+    "section_text": "A \"bearer\" token is not the only option.\n\nBut it's the best one for our use case.\n\nAnd it might be the best for most use cases, unless you are an OAuth2 expert and know exactly why there's another option that better suits your needs.\n\nIn that case, FastAPI also provides you with the tools to build it.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/security/first-steps::section-0007::admonition-0005": {
+    "node_id": "tutorial/security/first-steps::section-0007::admonition-0005",
+    "parent_id": "tutorial/security/first-steps::section-0007",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#fastapis-oauth2passwordbearer",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Here tokenUrl=\"token\" refers to a relative URL token that we haven't created yet. As it's a relative URL, it's equivalent to ./token .",
+      "Because we are using a relative URL, if your API was located at https://example.com/ , then it would refer to https://example.com/token . But if your API was located at https://example.com/api/v1/ , then it would refer to https://example.com/api/v1/token .",
+      "Using a relative URL is important to make sure your application keeps working even in an advanced use case like Behind a Proxy ."
+    ],
+    "section_text": "Here tokenUrl=\"token\" refers to a relative URL token that we haven't created yet. As it's a relative URL, it's equivalent to ./token .\n\nBecause we are using a relative URL, if your API was located at https://example.com/ , then it would refer to https://example.com/token . But if your API was located at https://example.com/api/v1/ , then it would refer to https://example.com/api/v1/token .\n\nUsing a relative URL is important to make sure your application keeps working even in an advanced use case like Behind a Proxy .",
+    "section_inline_code": [
+      "tokenUrl=\"token\"",
+      "token",
+      "./token",
+      "https://example.com/",
+      "https://example.com/token",
+      "https://example.com/api/v1/",
+      "https://example.com/api/v1/token"
+    ],
+    "section_links": [
+      {
+        "text": "Behind a Proxy",
+        "url": "../../advanced/behind-a-proxy.md",
+        "section_id": "tutorial/security/first-steps::section-0007::admonition-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#fastapis-oauth2passwordbearer"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/security/first-steps::section-0007::admonition-0006": {
+    "node_id": "tutorial/security/first-steps::section-0007::admonition-0006",
+    "parent_id": "tutorial/security/first-steps::section-0007",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#fastapis-oauth2passwordbearer",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you are a very strict \"Pythonista\" you might dislike the style of the parameter name tokenUrl instead of token_url .",
+      "That's because it is using the same name as in the OpenAPI spec. So that if you need to investigate more about any of these security schemes you can just copy and paste it to find more information about it."
+    ],
+    "section_text": "If you are a very strict \"Pythonista\" you might dislike the style of the parameter name tokenUrl instead of token_url .\n\nThat's because it is using the same name as in the OpenAPI spec. So that if you need to investigate more about any of these security schemes you can just copy and paste it to find more information about it.",
+    "section_inline_code": [
+      "tokenUrl",
+      "token_url"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/security/first-steps::section-0008::admonition-0007": {
+    "node_id": "tutorial/security/first-steps::section-0008::admonition-0007",
+    "parent_id": "tutorial/security/first-steps::section-0008",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/#use-it",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "FastAPI will know that it can use the class OAuth2PasswordBearer (declared in a dependency) to define the security scheme in OpenAPI because it inherits from fastapi.security.oauth2.OAuth2 , which in turn inherits from fastapi.security.base.SecurityBase .",
+      "All the security utilities that integrate with OpenAPI (and the automatic API docs) inherit from SecurityBase , that's how FastAPI can know how to integrate them in OpenAPI."
+    ],
+    "section_text": "FastAPI will know that it can use the class OAuth2PasswordBearer (declared in a dependency) to define the security scheme in OpenAPI because it inherits from fastapi.security.oauth2.OAuth2 , which in turn inherits from fastapi.security.base.SecurityBase .\n\nAll the security utilities that integrate with OpenAPI (and the automatic API docs) inherit from SecurityBase , that's how FastAPI can know how to integrate them in OpenAPI.",
+    "section_inline_code": [
+      "OAuth2PasswordBearer",
+      "fastapi.security.oauth2.OAuth2",
+      "fastapi.security.base.SecurityBase",
+      "SecurityBase"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "tutorial/dependencies/global-dependencies::section-0001": {
+    "node_id": "tutorial/dependencies/global-dependencies::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Global Dependencies",
+    "anchor_id": "global-dependencies",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#global-dependencies",
+    "section_text": "For some types of applications you might want to add dependencies to the whole application.\n\nSimilar to the way you can add dependencies to the path operation decorators , you can add them to the FastAPI application.\n\nIn that case, they will be applied to all the path operations in the application:\n\nAnd all the ideas in the section about adding dependencies to the path operation decorators still apply, but in this case, to all of the path operations in the app.",
+    "section_inline_code": [
+      "dependencies",
+      "FastAPI"
+    ],
+    "section_links": [
+      {
+        "text": "add  to the path operation decorators",
+        "url": "dependencies-in-path-operation-decorators.md",
+        "section_id": "tutorial/dependencies/global-dependencies::section-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#global-dependencies"
+      },
+      {
+        "text": "adding  to the path operation decorators",
+        "url": "dependencies-in-path-operation-decorators.md",
+        "section_id": "tutorial/dependencies/global-dependencies::section-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#global-dependencies"
+      }
+    ],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/dependencies/tutorial012_an_py310.py",
+        "highlight_lines": [
+          17
+        ],
+        "raw": "{* ../../docs_src/dependencies/tutorial012_an_py310.py hl[17] *}",
+        "section_id": "tutorial/dependencies/global-dependencies::section-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#global-dependencies"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/global-dependencies::section-0002": {
+    "node_id": "tutorial/dependencies/global-dependencies::section-0002",
+    "parent_id": "tutorial/dependencies/global-dependencies::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Dependencies for groups of path operations",
+    "anchor_id": "dependencies-for-groups-of-path-operations",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#dependencies-for-groups-of-path-operations",
+    "section_text": "Later, when reading about how to structure bigger applications ( Bigger Applications - Multiple Files ), possibly with multiple files, you will learn how to declare a single dependencies parameter for a group of path operations .",
+    "section_inline_code": [
+      "dependencies"
+    ],
+    "section_links": [
+      {
+        "text": "Bigger Applications - Multiple Files",
+        "url": "../../tutorial/bigger-applications.md",
+        "section_id": "tutorial/dependencies/global-dependencies::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/#dependencies-for-groups-of-path-operations"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

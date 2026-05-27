@@ -1,0 +1,52 @@
+[
+  {
+    "node_id": "tutorial/debugging::section-0001",
+    "seconds": 1.5592999261571094e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/debugging::section-0002",
+    "seconds": 2.1726000341004692e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/debugging::section-0003",
+    "seconds": 5.0037999244523235e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 2,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/debugging::section-0004",
+    "seconds": 0.00013761300033365842,
+    "paragraphs": 11,
+    "list_items": 0,
+    "code_blocks": 4,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/debugging::section-0005",
+    "seconds": 0.00012342500122031197,
+    "paragraphs": 7,
+    "list_items": 8,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

@@ -1,0 +1,2803 @@
+{
+  "page": {
+    "page_id": "tutorial/first-steps",
+    "page_uid": "630a3d18b388004f1a7ad0f5f3ad06c3b776a943",
+    "page_title": "First Steps",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+    "source_file": "tutorial/first-steps.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/first-steps::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "First Steps",
+      "anchor_id": "first-steps",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps",
+      "section_text_parts": [
+        "The simplest FastAPI file could look like this:",
+        "Copy that to a file main.py .",
+        "Run the live server:",
+        "In the output, there's a line with something like:",
+        "That line shows the URL where your app is being served on your local machine."
+      ],
+      "section_text": "The simplest FastAPI file could look like this:\n\nCopy that to a file main.py .\n\nRun the live server:\n\nIn the output, there's a line with something like:\n\nThat line shows the URL where your app is being served on your local machine.",
+      "section_inline_code": [
+        "main.py"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py *}",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ <font color=\"#4E9A06\">fastapi</font> dev\n\n  <span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span>  Starting development server 🚀\n\n             Searching for package file structure from directories\n             with <font color=\"#3465A4\">__init__.py</font> files\n             Importing from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span>  🐍 main.py\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span>  Importing the FastAPI app object from the module with\n             the following code:\n\n             <u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span>  Using import string: <font color=\"#3465A4\">main:app</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Server started at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font>\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Documentation at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000/docs</u></font>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> tip </font></span>  Running in development mode, for production use:\n             <b>fastapi run</b>\n\n             Logs:\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Will watch for changes in these directories:\n             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/awesomeapp&apos;</font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Uvicorn running on <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font> <b>(</b>Press CTRL+C\n             to quit<b>)</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started reloader process <b>[</b><font color=\"#34E2E2\"><b>383138</b></font><b>]</b> using WatchFiles\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started server process <b>[</b><font color=\"#34E2E2\"><b>383153</b></font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Waiting for application startup.\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Application startup complete.",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        },
+        {
+          "type": "code_block",
+          "language": "hl_lines=\"4\"",
+          "text": "INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ],
+      "children": [
+        {
+          "node_id": "tutorial/first-steps::section-0002",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "Check it",
+          "anchor_id": "check-it",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it",
+          "section_text_parts": [
+            "Open your browser at http://127.0.0.1:8000 .",
+            "You will see the JSON response as:"
+          ],
+          "section_text": "Open your browser at http://127.0.0.1:8000 .\n\nYou will see the JSON response as:",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000",
+              "url": "http://127.0.0.1:8000",
+              "section_id": "tutorial/first-steps::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\"message\": \"Hello World\"}",
+              "section_id": "tutorial/first-steps::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0003",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "Interactive API docs",
+          "anchor_id": "interactive-api-docs",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs",
+          "section_text_parts": [
+            "Now go to http://127.0.0.1:8000/docs .",
+            "You will see the automatic interactive API documentation (provided by Swagger UI ):",
+            "Swagger UI"
+          ],
+          "section_text": "Now go to http://127.0.0.1:8000/docs .\n\nYou will see the automatic interactive API documentation (provided by Swagger UI ):\n\nSwagger UI",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/docs",
+              "url": "http://127.0.0.1:8000/docs",
+              "section_id": "tutorial/first-steps::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+            },
+            {
+              "text": "Swagger UI",
+              "url": "https://github.com/swagger-api/swagger-ui",
+              "section_id": "tutorial/first-steps::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0004",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "Alternative API docs",
+          "anchor_id": "alternative-api-docs",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs",
+          "section_text_parts": [
+            "And now, go to http://127.0.0.1:8000/redoc .",
+            "You will see the alternative automatic documentation (provided by ReDoc ):",
+            "ReDoc"
+          ],
+          "section_text": "And now, go to http://127.0.0.1:8000/redoc .\n\nYou will see the alternative automatic documentation (provided by ReDoc ):\n\nReDoc",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/redoc",
+              "url": "http://127.0.0.1:8000/redoc",
+              "section_id": "tutorial/first-steps::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+            },
+            {
+              "text": "ReDoc",
+              "url": "https://github.com/Rebilly/ReDoc",
+              "section_id": "tutorial/first-steps::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0005",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "OpenAPI",
+          "anchor_id": "openapi",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi",
+          "section_text_parts": [
+            "FastAPI generates a \"schema\" with all your API using the OpenAPI standard for defining APIs."
+          ],
+          "section_text": "FastAPI generates a \"schema\" with all your API using the OpenAPI standard for defining APIs.",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/first-steps::section-0006",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "Schema",
+              "anchor_id": "schema",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#schema",
+              "section_text_parts": [
+                "A \"schema\" is a definition or description of something. Not the code that implements it, but just an abstract description."
+              ],
+              "section_text": "A \"schema\" is a definition or description of something. Not the code that implements it, but just an abstract description.",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0007",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "API \"schema\"",
+              "anchor_id": "api-schema",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema",
+              "section_text_parts": [
+                "In this case, OpenAPI is a specification that dictates how to define a schema of your API.",
+                "This schema definition includes your API paths, the possible parameters they take, etc."
+              ],
+              "section_text": "In this case, OpenAPI is a specification that dictates how to define a schema of your API.\n\nThis schema definition includes your API paths, the possible parameters they take, etc.",
+              "section_inline_code": [],
+              "section_links": [
+                {
+                  "text": "OpenAPI",
+                  "url": "https://github.com/OAI/OpenAPI-Specification",
+                  "section_id": "tutorial/first-steps::section-0007",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema"
+                }
+              ],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0008",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "Data \"schema\"",
+              "anchor_id": "data-schema",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#data-schema",
+              "section_text_parts": [
+                "The term \"schema\" might also refer to the shape of some data, like a JSON content.",
+                "In that case, it would mean the JSON attributes, and data types they have, etc."
+              ],
+              "section_text": "The term \"schema\" might also refer to the shape of some data, like a JSON content.\n\nIn that case, it would mean the JSON attributes, and data types they have, etc.",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0009",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "OpenAPI and JSON Schema",
+              "anchor_id": "openapi-and-json-schema",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema",
+              "section_text_parts": [
+                "OpenAPI defines an API schema for your API. And that schema includes definitions (or \"schemas\") of the data sent and received by your API using JSON Schema , the standard for JSON data schemas."
+              ],
+              "section_text": "OpenAPI defines an API schema for your API. And that schema includes definitions (or \"schemas\") of the data sent and received by your API using JSON Schema , the standard for JSON data schemas.",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0010",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "Check the openapi.json",
+              "anchor_id": "check-the-openapi-json",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json",
+              "section_text_parts": [
+                "If you are curious about how the raw OpenAPI schema looks like, FastAPI automatically generates a JSON (schema) with the descriptions of all your API.",
+                "You can see it directly at: http://127.0.0.1:8000/openapi.json .",
+                "It will show a JSON starting with something like:"
+              ],
+              "section_text": "If you are curious about how the raw OpenAPI schema looks like, FastAPI automatically generates a JSON (schema) with the descriptions of all your API.\n\nYou can see it directly at: http://127.0.0.1:8000/openapi.json .\n\nIt will show a JSON starting with something like:",
+              "section_inline_code": [
+                "openapi.json"
+              ],
+              "section_links": [
+                {
+                  "text": "http://127.0.0.1:8000/openapi.json",
+                  "url": "http://127.0.0.1:8000/openapi.json",
+                  "section_id": "tutorial/first-steps::section-0010",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+                }
+              ],
+              "code_refs": [],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": "JSON",
+                  "text": "{\n    \"openapi\": \"3.1.0\",\n    \"info\": {\n        \"title\": \"FastAPI\",\n        \"version\": \"0.1.0\"\n    },\n    \"paths\": {\n        \"/items/\": {\n            \"get\": {\n                \"responses\": {\n                    \"200\": {\n                        \"description\": \"Successful Response\",\n                        \"content\": {\n                            \"application/json\": {\n\n\n\n...",
+                  "section_id": "tutorial/first-steps::section-0010",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0011",
+              "parent_id": "tutorial/first-steps::section-0005",
+              "level": 4,
+              "node_kind": "heading",
+              "heading_text": "What is OpenAPI for",
+              "anchor_id": "what-is-openapi-for",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#what-is-openapi-for",
+              "section_text_parts": [
+                "The OpenAPI schema is what powers the two interactive documentation systems included.",
+                "And there are dozens of alternatives, all based on OpenAPI. You could easily add any of those alternatives to your application built with FastAPI .",
+                "You could also use it to generate code automatically, for clients that communicate with your API. For example, frontend, mobile or IoT applications."
+              ],
+              "section_text": "The OpenAPI schema is what powers the two interactive documentation systems included.\n\nAnd there are dozens of alternatives, all based on OpenAPI. You could easily add any of those alternatives to your application built with FastAPI .\n\nYou could also use it to generate code automatically, for clients that communicate with your API. For example, frontend, mobile or IoT applications.",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0012",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "Configure the app entrypoint in pyproject.toml",
+          "anchor_id": "configure-the-app-entrypoint-in-pyproject-toml",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml",
+          "section_text_parts": [
+            "You can configure where your app is located in a pyproject.toml file like:",
+            "That entrypoint will tell the fastapi command that it should import the app like:",
+            "If your code was structured like:",
+            "Then you would set the entrypoint as:",
+            "which would be equivalent to:"
+          ],
+          "section_text": "You can configure where your app is located in a pyproject.toml file like:\n\nThat entrypoint will tell the fastapi command that it should import the app like:\n\nIf your code was structured like:\n\nThen you would set the entrypoint as:\n\nwhich would be equivalent to:",
+          "section_inline_code": [
+            "entrypoint",
+            "pyproject.toml",
+            "fastapi"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "toml",
+              "text": "[tool.fastapi]\nentrypoint = \"main:app\"",
+              "section_id": "tutorial/first-steps::section-0012",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+            },
+            {
+              "type": "code_block",
+              "language": "python",
+              "text": "from main import app",
+              "section_id": "tutorial/first-steps::section-0012",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": ".\n├── backend\n│   ├── main.py\n│   ├── __init__.py",
+              "section_id": "tutorial/first-steps::section-0012",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+            },
+            {
+              "type": "code_block",
+              "language": "toml",
+              "text": "[tool.fastapi]\nentrypoint = \"backend.main:app\"",
+              "section_id": "tutorial/first-steps::section-0012",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+            },
+            {
+              "type": "code_block",
+              "language": "python",
+              "text": "from backend.main import app",
+              "section_id": "tutorial/first-steps::section-0012",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0013",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "fastapi dev with path",
+          "anchor_id": "fastapi-dev-with-path",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path",
+          "section_text_parts": [
+            "You can also pass the file path to the fastapi dev command, and it will guess the FastAPI app object to use:",
+            "But you would have to remember to pass the correct path every time you call the fastapi command.",
+            "Additionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml ."
+          ],
+          "section_text": "You can also pass the file path to the fastapi dev command, and it will guess the FastAPI app object to use:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+          "section_inline_code": [
+            "fastapi dev",
+            "fastapi",
+            "entrypoint",
+            "pyproject.toml"
+          ],
+          "section_links": [
+            {
+              "text": "VS Code Extension",
+              "url": "../editor-support.md",
+              "section_id": "tutorial/first-steps::section-0013",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+            },
+            {
+              "text": "FastAPI Cloud",
+              "url": "https://fastapicloud.com",
+              "section_id": "tutorial/first-steps::section-0013",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "console",
+              "text": "$ fastapi dev main.py",
+              "section_id": "tutorial/first-steps::section-0013",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0014",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 3,
+          "node_kind": "heading",
+          "heading_text": "Deploy your app (optional)",
+          "anchor_id": "deploy-your-app-optional",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional",
+          "section_text_parts": [
+            "You can optionally deploy your FastAPI app to FastAPI Cloud , go and join the waiting list if you haven't. 🚀",
+            "If you already have a FastAPI Cloud account (we invited you from the waiting list 😉), you can deploy your application with one command.",
+            "Before deploying, make sure you are logged in:",
+            "Then deploy your app:",
+            "That's it! Now you can access your app at that URL. ✨"
+          ],
+          "section_text": "You can optionally deploy your FastAPI app to FastAPI Cloud , go and join the waiting list if you haven't. 🚀\n\nIf you already have a FastAPI Cloud account (we invited you from the waiting list 😉), you can deploy your application with one command.\n\nBefore deploying, make sure you are logged in:\n\nThen deploy your app:\n\nThat's it! Now you can access your app at that URL. ✨",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "FastAPI Cloud",
+              "url": "https://fastapicloud.com",
+              "section_id": "tutorial/first-steps::section-0014",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "console",
+              "text": "$ fastapi login\n\nYou are logged in to FastAPI Cloud 🚀",
+              "section_id": "tutorial/first-steps::section-0014",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+            },
+            {
+              "type": "code_block",
+              "language": "console",
+              "text": "$ fastapi deploy\n\nDeploying to FastAPI Cloud...\n\n✅ Deployment successful!\n\n🐔 Ready the chicken! Your app is ready at https://myapp.fastapicloud.dev",
+              "section_id": "tutorial/first-steps::section-0014",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0015",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap, step by step",
+          "anchor_id": "recap-step-by-step",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap-step-by-step",
+          "section_text_parts": [],
+          "section_text": "",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/first-steps::section-0016",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 1: import FastAPI",
+              "anchor_id": "step-1-import-fastapi",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+              "section_text_parts": [
+                "FastAPI is a Python class that provides all the functionality for your API."
+              ],
+              "section_text": "FastAPI is a Python class that provides all the functionality for your API.",
+              "section_inline_code": [
+                "FastAPI"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/first_steps/tutorial001_py310.py",
+                  "highlight_lines": [
+                    1
+                  ],
+                  "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[1] *}",
+                  "section_id": "tutorial/first-steps::section-0016",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0017",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 2: create a FastAPI \"instance\"",
+              "anchor_id": "step-2-create-a-fastapi-instance",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance",
+              "section_text_parts": [
+                "Here the app variable will be an \"instance\" of the class FastAPI .",
+                "This will be the main point of interaction to create all your API."
+              ],
+              "section_text": "Here the app variable will be an \"instance\" of the class FastAPI .\n\nThis will be the main point of interaction to create all your API.",
+              "section_inline_code": [
+                "FastAPI",
+                "app"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/first_steps/tutorial001_py310.py",
+                  "highlight_lines": [
+                    3
+                  ],
+                  "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[3] *}",
+                  "section_id": "tutorial/first-steps::section-0017",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0018",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 3: create a path operation",
+              "anchor_id": "step-3-create-a-path-operation",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-3-create-a-path-operation",
+              "section_text_parts": [],
+              "section_text": "",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": [
+                {
+                  "node_id": "tutorial/first-steps::section-0019",
+                  "parent_id": "tutorial/first-steps::section-0018",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Path",
+                  "anchor_id": "path",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+                  "section_text_parts": [
+                    "\"Path\" here refers to the last part of the URL starting from the first / .",
+                    "So, in a URL like:",
+                    "...the path would be:",
+                    "While building an API, the \"path\" is the main way to separate \"concerns\" and \"resources\"."
+                  ],
+                  "section_text": "\"Path\" here refers to the last part of the URL starting from the first / .\n\nSo, in a URL like:\n\n...the path would be:\n\nWhile building an API, the \"path\" is the main way to separate \"concerns\" and \"resources\".",
+                  "section_inline_code": [
+                    "/"
+                  ],
+                  "section_links": [],
+                  "code_refs": [],
+                  "code_blocks": [
+                    {
+                      "type": "code_block",
+                      "language": null,
+                      "text": "https://example.com/items/foo",
+                      "section_id": "tutorial/first-steps::section-0019",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": null,
+                      "text": "/items/foo",
+                      "section_id": "tutorial/first-steps::section-0019",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "tutorial/first-steps::section-0020",
+                  "parent_id": "tutorial/first-steps::section-0018",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Operation",
+                  "anchor_id": "operation",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#operation",
+                  "section_text_parts": [
+                    "\"Operation\" here refers to one of the HTTP \"methods\".",
+                    "One of:",
+                    "- POST",
+                    "- GET",
+                    "- PUT",
+                    "- DELETE",
+                    "...and the more exotic ones:",
+                    "- OPTIONS",
+                    "- HEAD",
+                    "- PATCH",
+                    "- TRACE",
+                    "In the HTTP protocol, you can communicate to each path using one (or more) of these \"methods\".",
+                    "When building APIs, you normally use these specific HTTP methods to perform a specific action.",
+                    "Normally you use:",
+                    "- POST : to create data.",
+                    "- GET : to read data.",
+                    "- PUT : to update data.",
+                    "- DELETE : to delete data.",
+                    "So, in OpenAPI, each of the HTTP methods is called an \"operation\".",
+                    "We are going to call them \" operations \" too."
+                  ],
+                  "section_text": "\"Operation\" here refers to one of the HTTP \"methods\".\n\nOne of:\n\n- POST\n\n- GET\n\n- PUT\n\n- DELETE\n\n...and the more exotic ones:\n\n- OPTIONS\n\n- HEAD\n\n- PATCH\n\n- TRACE\n\nIn the HTTP protocol, you can communicate to each path using one (or more) of these \"methods\".\n\nWhen building APIs, you normally use these specific HTTP methods to perform a specific action.\n\nNormally you use:\n\n- POST : to create data.\n\n- GET : to read data.\n\n- PUT : to update data.\n\n- DELETE : to delete data.\n\nSo, in OpenAPI, each of the HTTP methods is called an \"operation\".\n\nWe are going to call them \" operations \" too.",
+                  "section_inline_code": [
+                    "POST",
+                    "GET",
+                    "PUT",
+                    "DELETE",
+                    "OPTIONS",
+                    "HEAD",
+                    "PATCH",
+                    "TRACE"
+                  ],
+                  "section_links": [],
+                  "code_refs": [],
+                  "code_blocks": [],
+                  "children": []
+                },
+                {
+                  "node_id": "tutorial/first-steps::section-0021",
+                  "parent_id": "tutorial/first-steps::section-0018",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Define a path operation decorator",
+                  "anchor_id": "define-a-path-operation-decorator",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+                  "section_text_parts": [
+                    "The @app.get(\"/\") tells FastAPI that the function right below is in charge of handling requests that go to:",
+                    "- the path /",
+                    "- using a get operation",
+                    "You can also use the other operations:",
+                    "- @app.post()",
+                    "- @app.put()",
+                    "- @app.delete()",
+                    "And the more exotic ones:",
+                    "- @app.options()",
+                    "- @app.head()",
+                    "- @app.patch()",
+                    "- @app.trace()"
+                  ],
+                  "section_text": "The @app.get(\"/\") tells FastAPI that the function right below is in charge of handling requests that go to:\n\n- the path /\n\n- using a get operation\n\nYou can also use the other operations:\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\nAnd the more exotic ones:\n\n- @app.options()\n\n- @app.head()\n\n- @app.patch()\n\n- @app.trace()",
+                  "section_inline_code": [
+                    "@app.get(\"/\")",
+                    "/",
+                    "@app.post()",
+                    "@app.put()",
+                    "@app.delete()",
+                    "@app.options()",
+                    "@app.head()",
+                    "@app.patch()",
+                    "@app.trace()"
+                  ],
+                  "section_links": [],
+                  "code_refs": [
+                    {
+                      "type": "code_ref",
+                      "path": "../../docs_src/first_steps/tutorial001_py310.py",
+                      "highlight_lines": [
+                        6
+                      ],
+                      "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[6] *}",
+                      "section_id": "tutorial/first-steps::section-0021",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator"
+                    }
+                  ],
+                  "code_blocks": [],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0022",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 4: define the path operation function",
+              "anchor_id": "step-4-define-the-path-operation-function",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+              "section_text_parts": [
+                "This is our \" path operation function \":",
+                "- path : is / .",
+                "- operation : is get .",
+                "- function : is the function below the \"decorator\" (below @app.get(\"/\") ).",
+                "This is a Python function.",
+                "It will be called by FastAPI whenever it receives a request to the URL \" / \" using a GET operation.",
+                "In this case, it is an async function.",
+                "You could also define it as a normal function instead of async def :"
+              ],
+              "section_text": "This is our \" path operation function \":\n\n- path : is / .\n\n- operation : is get .\n\n- function : is the function below the \"decorator\" (below @app.get(\"/\") ).\n\nThis is a Python function.\n\nIt will be called by FastAPI whenever it receives a request to the URL \" / \" using a GET operation.\n\nIn this case, it is an async function.\n\nYou could also define it as a normal function instead of async def :",
+              "section_inline_code": [
+                "/",
+                "get",
+                "@app.get(\"/\")",
+                "GET",
+                "async",
+                "async def"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/first_steps/tutorial001_py310.py",
+                  "highlight_lines": [
+                    7
+                  ],
+                  "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[7] *}",
+                  "section_id": "tutorial/first-steps::section-0022",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+                },
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/first_steps/tutorial003_py310.py",
+                  "highlight_lines": [
+                    7
+                  ],
+                  "raw": "{* ../../docs_src/first_steps/tutorial003_py310.py hl[7] *}",
+                  "section_id": "tutorial/first-steps::section-0022",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0023",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 5: return the content",
+              "anchor_id": "step-5-return-the-content",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content",
+              "section_text_parts": [
+                "You can return a dict , list , singular values as str , int , etc.",
+                "You can also return Pydantic models (you'll see more about that later).",
+                "There are many other objects and models that will be automatically converted to JSON (including ORMs, etc). Try using your favorite ones, it's highly probable that they are already supported."
+              ],
+              "section_text": "You can return a dict , list , singular values as str , int , etc.\n\nYou can also return Pydantic models (you'll see more about that later).\n\nThere are many other objects and models that will be automatically converted to JSON (including ORMs, etc). Try using your favorite ones, it's highly probable that they are already supported.",
+              "section_inline_code": [
+                "dict",
+                "list",
+                "str",
+                "int"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/first_steps/tutorial001_py310.py",
+                  "highlight_lines": [
+                    8
+                  ],
+                  "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[8] *}",
+                  "section_id": "tutorial/first-steps::section-0023",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/first-steps::section-0024",
+              "parent_id": "tutorial/first-steps::section-0015",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Step 6: Deploy it",
+              "anchor_id": "step-6-deploy-it",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it",
+              "section_text_parts": [
+                "Deploy your app to FastAPI Cloud with one command: fastapi deploy . 🎉"
+              ],
+              "section_text": "Deploy your app to FastAPI Cloud with one command: fastapi deploy . 🎉",
+              "section_inline_code": [
+                "fastapi deploy"
+              ],
+              "section_links": [
+                {
+                  "text": "FastAPI Cloud",
+                  "url": "https://fastapicloud.com",
+                  "section_id": "tutorial/first-steps::section-0024",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it"
+                }
+              ],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": [
+                {
+                  "node_id": "tutorial/first-steps::section-0025",
+                  "parent_id": "tutorial/first-steps::section-0024",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "About FastAPI Cloud",
+                  "anchor_id": "about-fastapi-cloud",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud",
+                  "section_text_parts": [
+                    "FastAPI Cloud is built by the same author and team behind FastAPI .",
+                    "It streamlines the process of building , deploying , and accessing an API with minimal effort.",
+                    "It brings the same developer experience of building apps with FastAPI to deploying them to the cloud. 🎉",
+                    "FastAPI Cloud is the primary sponsor and funding provider for the FastAPI and friends open source projects. ✨"
+                  ],
+                  "section_text": "FastAPI Cloud is built by the same author and team behind FastAPI .\n\nIt streamlines the process of building , deploying , and accessing an API with minimal effort.\n\nIt brings the same developer experience of building apps with FastAPI to deploying them to the cloud. 🎉\n\nFastAPI Cloud is the primary sponsor and funding provider for the FastAPI and friends open source projects. ✨",
+                  "section_inline_code": [],
+                  "section_links": [
+                    {
+                      "text": "FastAPI Cloud",
+                      "url": "https://fastapicloud.com",
+                      "section_id": "tutorial/first-steps::section-0025",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud"
+                    }
+                  ],
+                  "code_refs": [],
+                  "code_blocks": [],
+                  "children": []
+                },
+                {
+                  "node_id": "tutorial/first-steps::section-0026",
+                  "parent_id": "tutorial/first-steps::section-0024",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Deploy to other cloud providers",
+                  "anchor_id": "deploy-to-other-cloud-providers",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-to-other-cloud-providers",
+                  "section_text_parts": [
+                    "FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud provider you choose.",
+                    "Follow your cloud provider's guides to deploy FastAPI apps with them. 🤓"
+                  ],
+                  "section_text": "FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud provider you choose.\n\nFollow your cloud provider's guides to deploy FastAPI apps with them. 🤓",
+                  "section_inline_code": [],
+                  "section_links": [],
+                  "code_refs": [],
+                  "code_blocks": [],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/first-steps::section-0027",
+          "parent_id": "tutorial/first-steps::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap",
+          "section_text_parts": [
+            "- Import FastAPI .",
+            "- Create an app instance.",
+            "- Write a path operation decorator using decorators like @app.get(\"/\") .",
+            "- Define a path operation function ; for example, def root(): ... .",
+            "- Run the development server using the command fastapi dev .",
+            "- Optionally deploy your app with fastapi deploy ."
+          ],
+          "section_text": "- Import FastAPI .\n\n- Create an app instance.\n\n- Write a path operation decorator using decorators like @app.get(\"/\") .\n\n- Define a path operation function ; for example, def root(): ... .\n\n- Run the development server using the command fastapi dev .\n\n- Optionally deploy your app with fastapi deploy .",
+          "section_inline_code": [
+            "FastAPI",
+            "app",
+            "@app.get(\"/\")",
+            "def root(): ...",
+            "fastapi dev",
+            "fastapi deploy"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/first-steps::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "First Steps",
+      "anchor_id": "first-steps",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps",
+      "section_text": "The simplest FastAPI file could look like this:\n\nCopy that to a file main.py .\n\nRun the live server:\n\nIn the output, there's a line with something like:\n\nThat line shows the URL where your app is being served on your local machine.",
+      "section_inline_code": [
+        "main.py"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py *}",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ <font color=\"#4E9A06\">fastapi</font> dev\n\n  <span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span>  Starting development server 🚀\n\n             Searching for package file structure from directories\n             with <font color=\"#3465A4\">__init__.py</font> files\n             Importing from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span>  🐍 main.py\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span>  Importing the FastAPI app object from the module with\n             the following code:\n\n             <u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span>  Using import string: <font color=\"#3465A4\">main:app</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Server started at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font>\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Documentation at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000/docs</u></font>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> tip </font></span>  Running in development mode, for production use:\n             <b>fastapi run</b>\n\n             Logs:\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Will watch for changes in these directories:\n             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/awesomeapp&apos;</font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Uvicorn running on <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font> <b>(</b>Press CTRL+C\n             to quit<b>)</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started reloader process <b>[</b><font color=\"#34E2E2\"><b>383138</b></font><b>]</b> using WatchFiles\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started server process <b>[</b><font color=\"#34E2E2\"><b>383153</b></font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Waiting for application startup.\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Application startup complete.",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        },
+        {
+          "type": "code_block",
+          "language": "hl_lines=\"4\"",
+          "text": "INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0002",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check it",
+      "anchor_id": "check-it",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it",
+      "section_text": "Open your browser at http://127.0.0.1:8000 .\n\nYou will see the JSON response as:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000",
+          "url": "http://127.0.0.1:8000",
+          "section_id": "tutorial/first-steps::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"message\": \"Hello World\"}",
+          "section_id": "tutorial/first-steps::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0003",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Interactive API docs",
+      "anchor_id": "interactive-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs",
+      "section_text": "Now go to http://127.0.0.1:8000/docs .\n\nYou will see the automatic interactive API documentation (provided by Swagger UI ):\n\nSwagger UI",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/first-steps::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+        },
+        {
+          "text": "Swagger UI",
+          "url": "https://github.com/swagger-api/swagger-ui",
+          "section_id": "tutorial/first-steps::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0004",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Alternative API docs",
+      "anchor_id": "alternative-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs",
+      "section_text": "And now, go to http://127.0.0.1:8000/redoc .\n\nYou will see the alternative automatic documentation (provided by ReDoc ):\n\nReDoc",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/redoc",
+          "url": "http://127.0.0.1:8000/redoc",
+          "section_id": "tutorial/first-steps::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+        },
+        {
+          "text": "ReDoc",
+          "url": "https://github.com/Rebilly/ReDoc",
+          "section_id": "tutorial/first-steps::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0005",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI",
+      "anchor_id": "openapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi",
+      "section_text": "FastAPI generates a \"schema\" with all your API using the OpenAPI standard for defining APIs.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0006",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Schema",
+      "anchor_id": "schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#schema",
+      "section_text": "A \"schema\" is a definition or description of something. Not the code that implements it, but just an abstract description.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0007",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "API \"schema\"",
+      "anchor_id": "api-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema",
+      "section_text": "In this case, OpenAPI is a specification that dictates how to define a schema of your API.\n\nThis schema definition includes your API paths, the possible parameters they take, etc.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "OpenAPI",
+          "url": "https://github.com/OAI/OpenAPI-Specification",
+          "section_id": "tutorial/first-steps::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0008",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Data \"schema\"",
+      "anchor_id": "data-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#data-schema",
+      "section_text": "The term \"schema\" might also refer to the shape of some data, like a JSON content.\n\nIn that case, it would mean the JSON attributes, and data types they have, etc.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0009",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI and JSON Schema",
+      "anchor_id": "openapi-and-json-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema",
+      "section_text": "OpenAPI defines an API schema for your API. And that schema includes definitions (or \"schemas\") of the data sent and received by your API using JSON Schema , the standard for JSON data schemas.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0010",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Check the openapi.json",
+      "anchor_id": "check-the-openapi-json",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json",
+      "section_text": "If you are curious about how the raw OpenAPI schema looks like, FastAPI automatically generates a JSON (schema) with the descriptions of all your API.\n\nYou can see it directly at: http://127.0.0.1:8000/openapi.json .\n\nIt will show a JSON starting with something like:",
+      "section_inline_code": [
+        "openapi.json"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/openapi.json",
+          "url": "http://127.0.0.1:8000/openapi.json",
+          "section_id": "tutorial/first-steps::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"openapi\": \"3.1.0\",\n    \"info\": {\n        \"title\": \"FastAPI\",\n        \"version\": \"0.1.0\"\n    },\n    \"paths\": {\n        \"/items/\": {\n            \"get\": {\n                \"responses\": {\n                    \"200\": {\n                        \"description\": \"Successful Response\",\n                        \"content\": {\n                            \"application/json\": {\n\n\n\n...",
+          "section_id": "tutorial/first-steps::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0011",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "What is OpenAPI for",
+      "anchor_id": "what-is-openapi-for",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#what-is-openapi-for",
+      "section_text": "The OpenAPI schema is what powers the two interactive documentation systems included.\n\nAnd there are dozens of alternatives, all based on OpenAPI. You could easily add any of those alternatives to your application built with FastAPI .\n\nYou could also use it to generate code automatically, for clients that communicate with your API. For example, frontend, mobile or IoT applications.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0012",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Configure the app entrypoint in pyproject.toml",
+      "anchor_id": "configure-the-app-entrypoint-in-pyproject-toml",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml",
+      "section_text": "You can configure where your app is located in a pyproject.toml file like:\n\nThat entrypoint will tell the fastapi command that it should import the app like:\n\nIf your code was structured like:\n\nThen you would set the entrypoint as:\n\nwhich would be equivalent to:",
+      "section_inline_code": [
+        "entrypoint",
+        "pyproject.toml",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"main:app\"",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from main import app",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": ".\n├── backend\n│   ├── main.py\n│   ├── __init__.py",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"backend.main:app\"",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from backend.main import app",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0013",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "fastapi dev with path",
+      "anchor_id": "fastapi-dev-with-path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path",
+      "section_text": "You can also pass the file path to the fastapi dev command, and it will guess the FastAPI app object to use:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+      "section_inline_code": [
+        "fastapi dev",
+        "fastapi",
+        "entrypoint",
+        "pyproject.toml"
+      ],
+      "section_links": [
+        {
+          "text": "VS Code Extension",
+          "url": "../editor-support.md",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        },
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev main.py",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0014",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Deploy your app (optional)",
+      "anchor_id": "deploy-your-app-optional",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional",
+      "section_text": "You can optionally deploy your FastAPI app to FastAPI Cloud , go and join the waiting list if you haven't. 🚀\n\nIf you already have a FastAPI Cloud account (we invited you from the waiting list 😉), you can deploy your application with one command.\n\nBefore deploying, make sure you are logged in:\n\nThen deploy your app:\n\nThat's it! Now you can access your app at that URL. ✨",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi login\n\nYou are logged in to FastAPI Cloud 🚀",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        },
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi deploy\n\nDeploying to FastAPI Cloud...\n\n✅ Deployment successful!\n\n🐔 Ready the chicken! Your app is ready at https://myapp.fastapicloud.dev",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0015",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap, step by step",
+      "anchor_id": "recap-step-by-step",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap-step-by-step",
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0016",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 1: import FastAPI",
+      "anchor_id": "step-1-import-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+      "section_text": "FastAPI is a Python class that provides all the functionality for your API.",
+      "section_inline_code": [
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            1
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[1] *}",
+          "section_id": "tutorial/first-steps::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0017",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 2: create a FastAPI \"instance\"",
+      "anchor_id": "step-2-create-a-fastapi-instance",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance",
+      "section_text": "Here the app variable will be an \"instance\" of the class FastAPI .\n\nThis will be the main point of interaction to create all your API.",
+      "section_inline_code": [
+        "FastAPI",
+        "app"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[3] *}",
+          "section_id": "tutorial/first-steps::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0018",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 3: create a path operation",
+      "anchor_id": "step-3-create-a-path-operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-3-create-a-path-operation",
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0019",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Path",
+      "anchor_id": "path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+      "section_text": "\"Path\" here refers to the last part of the URL starting from the first / .\n\nSo, in a URL like:\n\n...the path would be:\n\nWhile building an API, the \"path\" is the main way to separate \"concerns\" and \"resources\".",
+      "section_inline_code": [
+        "/"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "https://example.com/items/foo",
+          "section_id": "tutorial/first-steps::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "/items/foo",
+          "section_id": "tutorial/first-steps::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0020",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Operation",
+      "anchor_id": "operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#operation",
+      "section_text": "\"Operation\" here refers to one of the HTTP \"methods\".\n\nOne of:\n\n- POST\n\n- GET\n\n- PUT\n\n- DELETE\n\n...and the more exotic ones:\n\n- OPTIONS\n\n- HEAD\n\n- PATCH\n\n- TRACE\n\nIn the HTTP protocol, you can communicate to each path using one (or more) of these \"methods\".\n\nWhen building APIs, you normally use these specific HTTP methods to perform a specific action.\n\nNormally you use:\n\n- POST : to create data.\n\n- GET : to read data.\n\n- PUT : to update data.\n\n- DELETE : to delete data.\n\nSo, in OpenAPI, each of the HTTP methods is called an \"operation\".\n\nWe are going to call them \" operations \" too.",
+      "section_inline_code": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE",
+        "OPTIONS",
+        "HEAD",
+        "PATCH",
+        "TRACE"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0021",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Define a path operation decorator",
+      "anchor_id": "define-a-path-operation-decorator",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "section_text": "The @app.get(\"/\") tells FastAPI that the function right below is in charge of handling requests that go to:\n\n- the path /\n\n- using a get operation\n\nYou can also use the other operations:\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\nAnd the more exotic ones:\n\n- @app.options()\n\n- @app.head()\n\n- @app.patch()\n\n- @app.trace()",
+      "section_inline_code": [
+        "@app.get(\"/\")",
+        "/",
+        "@app.post()",
+        "@app.put()",
+        "@app.delete()",
+        "@app.options()",
+        "@app.head()",
+        "@app.patch()",
+        "@app.trace()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/first-steps::section-0021",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0022",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 4: define the path operation function",
+      "anchor_id": "step-4-define-the-path-operation-function",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+      "section_text": "This is our \" path operation function \":\n\n- path : is / .\n\n- operation : is get .\n\n- function : is the function below the \"decorator\" (below @app.get(\"/\") ).\n\nThis is a Python function.\n\nIt will be called by FastAPI whenever it receives a request to the URL \" / \" using a GET operation.\n\nIn this case, it is an async function.\n\nYou could also define it as a normal function instead of async def :",
+      "section_inline_code": [
+        "/",
+        "get",
+        "@app.get(\"/\")",
+        "GET",
+        "async",
+        "async def"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[7] *}",
+          "section_id": "tutorial/first-steps::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/first-steps::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0023",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 5: return the content",
+      "anchor_id": "step-5-return-the-content",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content",
+      "section_text": "You can return a dict , list , singular values as str , int , etc.\n\nYou can also return Pydantic models (you'll see more about that later).\n\nThere are many other objects and models that will be automatically converted to JSON (including ORMs, etc). Try using your favorite ones, it's highly probable that they are already supported.",
+      "section_inline_code": [
+        "dict",
+        "list",
+        "str",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            8
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[8] *}",
+          "section_id": "tutorial/first-steps::section-0023",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0024",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 6: Deploy it",
+      "anchor_id": "step-6-deploy-it",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it",
+      "section_text": "Deploy your app to FastAPI Cloud with one command: fastapi deploy . 🎉",
+      "section_inline_code": [
+        "fastapi deploy"
+      ],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0024",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0025",
+      "parent_id": "tutorial/first-steps::section-0024",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "About FastAPI Cloud",
+      "anchor_id": "about-fastapi-cloud",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud",
+      "section_text": "FastAPI Cloud is built by the same author and team behind FastAPI .\n\nIt streamlines the process of building , deploying , and accessing an API with minimal effort.\n\nIt brings the same developer experience of building apps with FastAPI to deploying them to the cloud. 🎉\n\nFastAPI Cloud is the primary sponsor and funding provider for the FastAPI and friends open source projects. ✨",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0025",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0026",
+      "parent_id": "tutorial/first-steps::section-0024",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Deploy to other cloud providers",
+      "anchor_id": "deploy-to-other-cloud-providers",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-to-other-cloud-providers",
+      "section_text": "FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud provider you choose.\n\nFollow your cloud provider's guides to deploy FastAPI apps with them. 🤓",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0027",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap",
+      "section_text": "- Import FastAPI .\n\n- Create an app instance.\n\n- Write a path operation decorator using decorators like @app.get(\"/\") .\n\n- Define a path operation function ; for example, def root(): ... .\n\n- Run the development server using the command fastapi dev .\n\n- Optionally deploy your app with fastapi deploy .",
+      "section_inline_code": [
+        "FastAPI",
+        "app",
+        "@app.get(\"/\")",
+        "def root(): ...",
+        "fastapi dev",
+        "fastapi deploy"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/first-steps::section-0001": {
+      "node_id": "tutorial/first-steps::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "First Steps",
+      "anchor_id": "first-steps",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps",
+      "section_text": "The simplest FastAPI file could look like this:\n\nCopy that to a file main.py .\n\nRun the live server:\n\nIn the output, there's a line with something like:\n\nThat line shows the URL where your app is being served on your local machine.",
+      "section_inline_code": [
+        "main.py"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py *}",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ <font color=\"#4E9A06\">fastapi</font> dev\n\n  <span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span>  Starting development server 🚀\n\n             Searching for package file structure from directories\n             with <font color=\"#3465A4\">__init__.py</font> files\n             Importing from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span>  🐍 main.py\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span>  Importing the FastAPI app object from the module with\n             the following code:\n\n             <u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span>  Using import string: <font color=\"#3465A4\">main:app</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Server started at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font>\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Documentation at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000/docs</u></font>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> tip </font></span>  Running in development mode, for production use:\n             <b>fastapi run</b>\n\n             Logs:\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Will watch for changes in these directories:\n             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/awesomeapp&apos;</font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Uvicorn running on <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font> <b>(</b>Press CTRL+C\n             to quit<b>)</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started reloader process <b>[</b><font color=\"#34E2E2\"><b>383138</b></font><b>]</b> using WatchFiles\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started server process <b>[</b><font color=\"#34E2E2\"><b>383153</b></font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Waiting for application startup.\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Application startup complete.",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        },
+        {
+          "type": "code_block",
+          "language": "hl_lines=\"4\"",
+          "text": "INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          "section_id": "tutorial/first-steps::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#first-steps"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0002": {
+      "node_id": "tutorial/first-steps::section-0002",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check it",
+      "anchor_id": "check-it",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it",
+      "section_text": "Open your browser at http://127.0.0.1:8000 .\n\nYou will see the JSON response as:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000",
+          "url": "http://127.0.0.1:8000",
+          "section_id": "tutorial/first-steps::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"message\": \"Hello World\"}",
+          "section_id": "tutorial/first-steps::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-it"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0003": {
+      "node_id": "tutorial/first-steps::section-0003",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Interactive API docs",
+      "anchor_id": "interactive-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs",
+      "section_text": "Now go to http://127.0.0.1:8000/docs .\n\nYou will see the automatic interactive API documentation (provided by Swagger UI ):\n\nSwagger UI",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/first-steps::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+        },
+        {
+          "text": "Swagger UI",
+          "url": "https://github.com/swagger-api/swagger-ui",
+          "section_id": "tutorial/first-steps::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0004": {
+      "node_id": "tutorial/first-steps::section-0004",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Alternative API docs",
+      "anchor_id": "alternative-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs",
+      "section_text": "And now, go to http://127.0.0.1:8000/redoc .\n\nYou will see the alternative automatic documentation (provided by ReDoc ):\n\nReDoc",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/redoc",
+          "url": "http://127.0.0.1:8000/redoc",
+          "section_id": "tutorial/first-steps::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+        },
+        {
+          "text": "ReDoc",
+          "url": "https://github.com/Rebilly/ReDoc",
+          "section_id": "tutorial/first-steps::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#alternative-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0005": {
+      "node_id": "tutorial/first-steps::section-0005",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI",
+      "anchor_id": "openapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi",
+      "section_text": "FastAPI generates a \"schema\" with all your API using the OpenAPI standard for defining APIs.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0006": {
+      "node_id": "tutorial/first-steps::section-0006",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Schema",
+      "anchor_id": "schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#schema",
+      "section_text": "A \"schema\" is a definition or description of something. Not the code that implements it, but just an abstract description.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0007": {
+      "node_id": "tutorial/first-steps::section-0007",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "API \"schema\"",
+      "anchor_id": "api-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema",
+      "section_text": "In this case, OpenAPI is a specification that dictates how to define a schema of your API.\n\nThis schema definition includes your API paths, the possible parameters they take, etc.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "OpenAPI",
+          "url": "https://github.com/OAI/OpenAPI-Specification",
+          "section_id": "tutorial/first-steps::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#api-schema"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0008": {
+      "node_id": "tutorial/first-steps::section-0008",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Data \"schema\"",
+      "anchor_id": "data-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#data-schema",
+      "section_text": "The term \"schema\" might also refer to the shape of some data, like a JSON content.\n\nIn that case, it would mean the JSON attributes, and data types they have, etc.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0009": {
+      "node_id": "tutorial/first-steps::section-0009",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI and JSON Schema",
+      "anchor_id": "openapi-and-json-schema",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema",
+      "section_text": "OpenAPI defines an API schema for your API. And that schema includes definitions (or \"schemas\") of the data sent and received by your API using JSON Schema , the standard for JSON data schemas.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0010": {
+      "node_id": "tutorial/first-steps::section-0010",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Check the openapi.json",
+      "anchor_id": "check-the-openapi-json",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json",
+      "section_text": "If you are curious about how the raw OpenAPI schema looks like, FastAPI automatically generates a JSON (schema) with the descriptions of all your API.\n\nYou can see it directly at: http://127.0.0.1:8000/openapi.json .\n\nIt will show a JSON starting with something like:",
+      "section_inline_code": [
+        "openapi.json"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/openapi.json",
+          "url": "http://127.0.0.1:8000/openapi.json",
+          "section_id": "tutorial/first-steps::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"openapi\": \"3.1.0\",\n    \"info\": {\n        \"title\": \"FastAPI\",\n        \"version\": \"0.1.0\"\n    },\n    \"paths\": {\n        \"/items/\": {\n            \"get\": {\n                \"responses\": {\n                    \"200\": {\n                        \"description\": \"Successful Response\",\n                        \"content\": {\n                            \"application/json\": {\n\n\n\n...",
+          "section_id": "tutorial/first-steps::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#check-the-openapi-json"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0011": {
+      "node_id": "tutorial/first-steps::section-0011",
+      "parent_id": "tutorial/first-steps::section-0005",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "What is OpenAPI for",
+      "anchor_id": "what-is-openapi-for",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#what-is-openapi-for",
+      "section_text": "The OpenAPI schema is what powers the two interactive documentation systems included.\n\nAnd there are dozens of alternatives, all based on OpenAPI. You could easily add any of those alternatives to your application built with FastAPI .\n\nYou could also use it to generate code automatically, for clients that communicate with your API. For example, frontend, mobile or IoT applications.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0012": {
+      "node_id": "tutorial/first-steps::section-0012",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Configure the app entrypoint in pyproject.toml",
+      "anchor_id": "configure-the-app-entrypoint-in-pyproject-toml",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml",
+      "section_text": "You can configure where your app is located in a pyproject.toml file like:\n\nThat entrypoint will tell the fastapi command that it should import the app like:\n\nIf your code was structured like:\n\nThen you would set the entrypoint as:\n\nwhich would be equivalent to:",
+      "section_inline_code": [
+        "entrypoint",
+        "pyproject.toml",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"main:app\"",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from main import app",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": ".\n├── backend\n│   ├── main.py\n│   ├── __init__.py",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"backend.main:app\"",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from backend.main import app",
+          "section_id": "tutorial/first-steps::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#configure-the-app-entrypoint-in-pyproject-toml"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0013": {
+      "node_id": "tutorial/first-steps::section-0013",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "fastapi dev with path",
+      "anchor_id": "fastapi-dev-with-path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path",
+      "section_text": "You can also pass the file path to the fastapi dev command, and it will guess the FastAPI app object to use:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+      "section_inline_code": [
+        "fastapi dev",
+        "fastapi",
+        "entrypoint",
+        "pyproject.toml"
+      ],
+      "section_links": [
+        {
+          "text": "VS Code Extension",
+          "url": "../editor-support.md",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        },
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev main.py",
+          "section_id": "tutorial/first-steps::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#fastapi-dev-with-path"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0014": {
+      "node_id": "tutorial/first-steps::section-0014",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Deploy your app (optional)",
+      "anchor_id": "deploy-your-app-optional",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional",
+      "section_text": "You can optionally deploy your FastAPI app to FastAPI Cloud , go and join the waiting list if you haven't. 🚀\n\nIf you already have a FastAPI Cloud account (we invited you from the waiting list 😉), you can deploy your application with one command.\n\nBefore deploying, make sure you are logged in:\n\nThen deploy your app:\n\nThat's it! Now you can access your app at that URL. ✨",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi login\n\nYou are logged in to FastAPI Cloud 🚀",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        },
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi deploy\n\nDeploying to FastAPI Cloud...\n\n✅ Deployment successful!\n\n🐔 Ready the chicken! Your app is ready at https://myapp.fastapicloud.dev",
+          "section_id": "tutorial/first-steps::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-your-app-optional"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0015": {
+      "node_id": "tutorial/first-steps::section-0015",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap, step by step",
+      "anchor_id": "recap-step-by-step",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap-step-by-step",
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0016": {
+      "node_id": "tutorial/first-steps::section-0016",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 1: import FastAPI",
+      "anchor_id": "step-1-import-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+      "section_text": "FastAPI is a Python class that provides all the functionality for your API.",
+      "section_inline_code": [
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            1
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[1] *}",
+          "section_id": "tutorial/first-steps::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0017": {
+      "node_id": "tutorial/first-steps::section-0017",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 2: create a FastAPI \"instance\"",
+      "anchor_id": "step-2-create-a-fastapi-instance",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance",
+      "section_text": "Here the app variable will be an \"instance\" of the class FastAPI .\n\nThis will be the main point of interaction to create all your API.",
+      "section_inline_code": [
+        "FastAPI",
+        "app"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[3] *}",
+          "section_id": "tutorial/first-steps::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-2-create-a-fastapi-instance"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0018": {
+      "node_id": "tutorial/first-steps::section-0018",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 3: create a path operation",
+      "anchor_id": "step-3-create-a-path-operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-3-create-a-path-operation",
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0019": {
+      "node_id": "tutorial/first-steps::section-0019",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Path",
+      "anchor_id": "path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+      "section_text": "\"Path\" here refers to the last part of the URL starting from the first / .\n\nSo, in a URL like:\n\n...the path would be:\n\nWhile building an API, the \"path\" is the main way to separate \"concerns\" and \"resources\".",
+      "section_inline_code": [
+        "/"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "https://example.com/items/foo",
+          "section_id": "tutorial/first-steps::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "/items/foo",
+          "section_id": "tutorial/first-steps::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path"
+        }
+      ]
+    },
+    "tutorial/first-steps::section-0020": {
+      "node_id": "tutorial/first-steps::section-0020",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Operation",
+      "anchor_id": "operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#operation",
+      "section_text": "\"Operation\" here refers to one of the HTTP \"methods\".\n\nOne of:\n\n- POST\n\n- GET\n\n- PUT\n\n- DELETE\n\n...and the more exotic ones:\n\n- OPTIONS\n\n- HEAD\n\n- PATCH\n\n- TRACE\n\nIn the HTTP protocol, you can communicate to each path using one (or more) of these \"methods\".\n\nWhen building APIs, you normally use these specific HTTP methods to perform a specific action.\n\nNormally you use:\n\n- POST : to create data.\n\n- GET : to read data.\n\n- PUT : to update data.\n\n- DELETE : to delete data.\n\nSo, in OpenAPI, each of the HTTP methods is called an \"operation\".\n\nWe are going to call them \" operations \" too.",
+      "section_inline_code": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE",
+        "OPTIONS",
+        "HEAD",
+        "PATCH",
+        "TRACE"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0021": {
+      "node_id": "tutorial/first-steps::section-0021",
+      "parent_id": "tutorial/first-steps::section-0018",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Define a path operation decorator",
+      "anchor_id": "define-a-path-operation-decorator",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "section_text": "The @app.get(\"/\") tells FastAPI that the function right below is in charge of handling requests that go to:\n\n- the path /\n\n- using a get operation\n\nYou can also use the other operations:\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\nAnd the more exotic ones:\n\n- @app.options()\n\n- @app.head()\n\n- @app.patch()\n\n- @app.trace()",
+      "section_inline_code": [
+        "@app.get(\"/\")",
+        "/",
+        "@app.post()",
+        "@app.put()",
+        "@app.delete()",
+        "@app.options()",
+        "@app.head()",
+        "@app.patch()",
+        "@app.trace()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/first-steps::section-0021",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0022": {
+      "node_id": "tutorial/first-steps::section-0022",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 4: define the path operation function",
+      "anchor_id": "step-4-define-the-path-operation-function",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+      "section_text": "This is our \" path operation function \":\n\n- path : is / .\n\n- operation : is get .\n\n- function : is the function below the \"decorator\" (below @app.get(\"/\") ).\n\nThis is a Python function.\n\nIt will be called by FastAPI whenever it receives a request to the URL \" / \" using a GET operation.\n\nIn this case, it is an async function.\n\nYou could also define it as a normal function instead of async def :",
+      "section_inline_code": [
+        "/",
+        "get",
+        "@app.get(\"/\")",
+        "GET",
+        "async",
+        "async def"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[7] *}",
+          "section_id": "tutorial/first-steps::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/first-steps::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0023": {
+      "node_id": "tutorial/first-steps::section-0023",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 5: return the content",
+      "anchor_id": "step-5-return-the-content",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content",
+      "section_text": "You can return a dict , list , singular values as str , int , etc.\n\nYou can also return Pydantic models (you'll see more about that later).\n\nThere are many other objects and models that will be automatically converted to JSON (including ORMs, etc). Try using your favorite ones, it's highly probable that they are already supported.",
+      "section_inline_code": [
+        "dict",
+        "list",
+        "str",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/first_steps/tutorial001_py310.py",
+          "highlight_lines": [
+            8
+          ],
+          "raw": "{* ../../docs_src/first_steps/tutorial001_py310.py hl[8] *}",
+          "section_id": "tutorial/first-steps::section-0023",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-5-return-the-content"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0024": {
+      "node_id": "tutorial/first-steps::section-0024",
+      "parent_id": "tutorial/first-steps::section-0015",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Step 6: Deploy it",
+      "anchor_id": "step-6-deploy-it",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it",
+      "section_text": "Deploy your app to FastAPI Cloud with one command: fastapi deploy . 🎉",
+      "section_inline_code": [
+        "fastapi deploy"
+      ],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0024",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-6-deploy-it"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0025": {
+      "node_id": "tutorial/first-steps::section-0025",
+      "parent_id": "tutorial/first-steps::section-0024",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "About FastAPI Cloud",
+      "anchor_id": "about-fastapi-cloud",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud",
+      "section_text": "FastAPI Cloud is built by the same author and team behind FastAPI .\n\nIt streamlines the process of building , deploying , and accessing an API with minimal effort.\n\nIt brings the same developer experience of building apps with FastAPI to deploying them to the cloud. 🎉\n\nFastAPI Cloud is the primary sponsor and funding provider for the FastAPI and friends open source projects. ✨",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/first-steps::section-0025",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#about-fastapi-cloud"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0026": {
+      "node_id": "tutorial/first-steps::section-0026",
+      "parent_id": "tutorial/first-steps::section-0024",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Deploy to other cloud providers",
+      "anchor_id": "deploy-to-other-cloud-providers",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#deploy-to-other-cloud-providers",
+      "section_text": "FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud provider you choose.\n\nFollow your cloud provider's guides to deploy FastAPI apps with them. 🤓",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0027": {
+      "node_id": "tutorial/first-steps::section-0027",
+      "parent_id": "tutorial/first-steps::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#recap",
+      "section_text": "- Import FastAPI .\n\n- Create an app instance.\n\n- Write a path operation decorator using decorators like @app.get(\"/\") .\n\n- Define a path operation function ; for example, def root(): ... .\n\n- Run the development server using the command fastapi dev .\n\n- Optionally deploy your app with fastapi deploy .",
+      "section_inline_code": [
+        "FastAPI",
+        "app",
+        "@app.get(\"/\")",
+        "def root(): ...",
+        "fastapi dev",
+        "fastapi deploy"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/first-steps::section-0016::admonition-0001",
+      "parent_id": "tutorial/first-steps::section-0016",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI is a class that inherits directly from Starlette .",
+        "You can use all the Starlette functionality with FastAPI too."
+      ],
+      "section_text": "FastAPI is a class that inherits directly from Starlette .\n\nYou can use all the Starlette functionality with FastAPI too.",
+      "section_inline_code": [
+        "FastAPI",
+        "Starlette"
+      ],
+      "section_links": [
+        {
+          "text": "Starlette",
+          "url": "https://www.starlette.dev/",
+          "section_id": "tutorial/first-steps::section-0016::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0019::admonition-0002",
+      "parent_id": "tutorial/first-steps::section-0019",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "A \"path\" is also commonly called an \"endpoint\" or a \"route\"."
+      ],
+      "section_text": "A \"path\" is also commonly called an \"endpoint\" or a \"route\".",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0021::admonition-0003",
+      "parent_id": "tutorial/first-steps::section-0021",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": "@decorator Info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "That @something syntax in Python is called a \"decorator\".",
+        "You put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).",
+        "A \"decorator\" takes the function below and does something with it.",
+        "In our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .",
+        "It is the \" path operation decorator \"."
+      ],
+      "section_text": "That @something syntax in Python is called a \"decorator\".\n\nYou put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).\n\nA \"decorator\" takes the function below and does something with it.\n\nIn our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .\n\nIt is the \" path operation decorator \".",
+      "section_inline_code": [
+        "@something",
+        "/",
+        "get"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0021::admonition-0004",
+      "parent_id": "tutorial/first-steps::section-0021",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You are free to use each operation (HTTP method) as you wish.",
+        "FastAPI doesn't enforce any specific meaning.",
+        "The information here is presented as a guideline, not a requirement.",
+        "For example, when using GraphQL you normally perform all the actions using only POST operations."
+      ],
+      "section_text": "You are free to use each operation (HTTP method) as you wish.\n\nFastAPI doesn't enforce any specific meaning.\n\nThe information here is presented as a guideline, not a requirement.\n\nFor example, when using GraphQL you normally perform all the actions using only POST operations.",
+      "section_inline_code": [
+        "POST"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0022::admonition-0005",
+      "parent_id": "tutorial/first-steps::section-0022",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you don't know the difference, check the Async: \"In a hurry?\" ."
+      ],
+      "section_text": "If you don't know the difference, check the Async: \"In a hurry?\" .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Async: \"In a hurry?\"",
+          "url": "../async.md#in-a-hurry",
+          "section_id": "tutorial/first-steps::section-0022::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/first-steps::section-0016::admonition-0001": {
+      "node_id": "tutorial/first-steps::section-0016::admonition-0001",
+      "parent_id": "tutorial/first-steps::section-0016",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI is a class that inherits directly from Starlette .",
+        "You can use all the Starlette functionality with FastAPI too."
+      ],
+      "section_text": "FastAPI is a class that inherits directly from Starlette .\n\nYou can use all the Starlette functionality with FastAPI too.",
+      "section_inline_code": [
+        "FastAPI",
+        "Starlette"
+      ],
+      "section_links": [
+        {
+          "text": "Starlette",
+          "url": "https://www.starlette.dev/",
+          "section_id": "tutorial/first-steps::section-0016::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-1-import-fastapi"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0019::admonition-0002": {
+      "node_id": "tutorial/first-steps::section-0019::admonition-0002",
+      "parent_id": "tutorial/first-steps::section-0019",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#path",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "A \"path\" is also commonly called an \"endpoint\" or a \"route\"."
+      ],
+      "section_text": "A \"path\" is also commonly called an \"endpoint\" or a \"route\".",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0021::admonition-0003": {
+      "node_id": "tutorial/first-steps::section-0021::admonition-0003",
+      "parent_id": "tutorial/first-steps::section-0021",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": "@decorator Info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "That @something syntax in Python is called a \"decorator\".",
+        "You put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).",
+        "A \"decorator\" takes the function below and does something with it.",
+        "In our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .",
+        "It is the \" path operation decorator \"."
+      ],
+      "section_text": "That @something syntax in Python is called a \"decorator\".\n\nYou put it on top of a function. Like a pretty decorative hat (I guess that's where the term came from).\n\nA \"decorator\" takes the function below and does something with it.\n\nIn our case, this decorator tells FastAPI that the function below corresponds to the path / with an operation get .\n\nIt is the \" path operation decorator \".",
+      "section_inline_code": [
+        "@something",
+        "/",
+        "get"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0021::admonition-0004": {
+      "node_id": "tutorial/first-steps::section-0021::admonition-0004",
+      "parent_id": "tutorial/first-steps::section-0021",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You are free to use each operation (HTTP method) as you wish.",
+        "FastAPI doesn't enforce any specific meaning.",
+        "The information here is presented as a guideline, not a requirement.",
+        "For example, when using GraphQL you normally perform all the actions using only POST operations."
+      ],
+      "section_text": "You are free to use each operation (HTTP method) as you wish.\n\nFastAPI doesn't enforce any specific meaning.\n\nThe information here is presented as a guideline, not a requirement.\n\nFor example, when using GraphQL you normally perform all the actions using only POST operations.",
+      "section_inline_code": [
+        "POST"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/first-steps::section-0022::admonition-0005": {
+      "node_id": "tutorial/first-steps::section-0022::admonition-0005",
+      "parent_id": "tutorial/first-steps::section-0022",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you don't know the difference, check the Async: \"In a hurry?\" ."
+      ],
+      "section_text": "If you don't know the difference, check the Async: \"In a hurry?\" .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Async: \"In a hurry?\"",
+          "url": "../async.md#in-a-hurry",
+          "section_id": "tutorial/first-steps::section-0022::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/first-steps/#step-4-define-the-path-operation-function"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/first-steps::section-0001",
+      "seconds": 7.448699943779502e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0002",
+      "seconds": 2.7134999982081354e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0003",
+      "seconds": 3.21829993481515e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0004",
+      "seconds": 3.061500137846451e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0005",
+      "seconds": 2.2436999643105082e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0006",
+      "seconds": 8.074001016211696e-06,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0007",
+      "seconds": 1.8488999558030628e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0008",
+      "seconds": 1.1669999366858974e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0009",
+      "seconds": 1.6014999346225522e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0010",
+      "seconds": 3.036499947484117e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0011",
+      "seconds": 2.4408000172115862e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0012",
+      "seconds": 7.222199928946793e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 5,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0013",
+      "seconds": 4.2706000385805964e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0014",
+      "seconds": 8.324499867740087e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0015",
+      "seconds": 5.370999133447185e-06,
+      "paragraphs": 0,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0016",
+      "seconds": 4.7307999921031296e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0017",
+      "seconds": 2.9086999347782694e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0018",
+      "seconds": 4.9030004447558895e-06,
+      "paragraphs": 0,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0019",
+      "seconds": 5.519599835679401e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0020",
+      "seconds": 0.00015359000099124387,
+      "paragraphs": 8,
+      "list_items": 12,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0021",
+      "seconds": 0.00021363200175983366,
+      "paragraphs": 12,
+      "list_items": 9,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0022",
+      "seconds": 0.00013549499999498948,
+      "paragraphs": 6,
+      "list_items": 3,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0023",
+      "seconds": 2.9348999305511825e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0024",
+      "seconds": 2.1946001652395353e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0025",
+      "seconds": 7.658799950149842e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0026",
+      "seconds": 1.245099883817602e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/first-steps::section-0027",
+      "seconds": 0.00010430899965285789,
+      "paragraphs": 0,
+      "list_items": 6,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

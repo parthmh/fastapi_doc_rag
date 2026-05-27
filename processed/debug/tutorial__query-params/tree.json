@@ -1,0 +1,1060 @@
+{
+  "page": {
+    "page_id": "tutorial/query-params",
+    "page_uid": "5f92a4cb1e258d2a9a1092c304317fe2adc3187e",
+    "page_title": "Query Parameters",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+    "source_file": "tutorial/query-params.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/query-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Query Parameters",
+      "anchor_id": "query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters",
+      "section_text_parts": [
+        "When you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.",
+        "The query is the set of key-value pairs that go after the ? in a URL, separated by & characters.",
+        "For example, in the URL:",
+        "...the query parameters are:",
+        "- skip : with a value of 0",
+        "- limit : with a value of 10",
+        "As they are part of the URL, they are \"naturally\" strings.",
+        "But when you declare them with Python types (in the example above, as int ), they are converted to that type and validated against it.",
+        "All the same process that applied for path parameters also applies for query parameters:",
+        "- Editor support (obviously)",
+        "- Data \"parsing\"",
+        "- Data validation",
+        "- Automatic documentation"
+      ],
+      "section_text": "When you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.\n\nThe query is the set of key-value pairs that go after the ? in a URL, separated by & characters.\n\nFor example, in the URL:\n\n...the query parameters are:\n\n- skip : with a value of 0\n\n- limit : with a value of 10\n\nAs they are part of the URL, they are \"naturally\" strings.\n\nBut when you declare them with Python types (in the example above, as int ), they are converted to that type and validated against it.\n\nAll the same process that applied for path parameters also applies for query parameters:\n\n- Editor support (obviously)\n\n- Data \"parsing\"\n\n- Data validation\n\n- Automatic documentation",
+      "section_inline_code": [
+        "?",
+        "&",
+        "skip",
+        "0",
+        "limit",
+        "10",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial001_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial001_py310.py hl[9] *}",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ],
+      "children": [
+        {
+          "node_id": "tutorial/query-params::section-0002",
+          "parent_id": "tutorial/query-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Defaults",
+          "anchor_id": "defaults",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults",
+          "section_text_parts": [
+            "As query parameters are not a fixed part of a path, they can be optional and can have default values.",
+            "In the example above they have default values of skip=0 and limit=10 .",
+            "So, going to the URL:",
+            "would be the same as going to:",
+            "But if you go to, for example:",
+            "The parameter values in your function will be:",
+            "- skip=20 : because you set it in the URL",
+            "- limit=10 : because that was the default value"
+          ],
+          "section_text": "As query parameters are not a fixed part of a path, they can be optional and can have default values.\n\nIn the example above they have default values of skip=0 and limit=10 .\n\nSo, going to the URL:\n\nwould be the same as going to:\n\nBut if you go to, for example:\n\nThe parameter values in your function will be:\n\n- skip=20 : because you set it in the URL\n\n- limit=10 : because that was the default value",
+          "section_inline_code": [
+            "skip=0",
+            "limit=10",
+            "skip=20"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/",
+              "section_id": "tutorial/query-params::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+              "section_id": "tutorial/query-params::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/?skip=20",
+              "section_id": "tutorial/query-params::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/query-params::section-0003",
+          "parent_id": "tutorial/query-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Optional parameters",
+          "anchor_id": "optional-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters",
+          "section_text_parts": [
+            "The same way, you can declare optional query parameters, by setting their default to None :",
+            "In this case, the function parameter q will be optional, and will be None by default."
+          ],
+          "section_text": "The same way, you can declare optional query parameters, by setting their default to None :\n\nIn this case, the function parameter q will be optional, and will be None by default.",
+          "section_inline_code": [
+            "None",
+            "q"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/query_params/tutorial002_py310.py",
+              "highlight_lines": [
+                7
+              ],
+              "raw": "{* ../../docs_src/query_params/tutorial002_py310.py hl[7] *}",
+              "section_id": "tutorial/query-params::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/query-params::section-0004",
+          "parent_id": "tutorial/query-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Query parameter type conversion",
+          "anchor_id": "query-parameter-type-conversion",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion",
+          "section_text_parts": [
+            "You can also declare bool types, and they will be converted:",
+            "In this case, if you go to:",
+            "or",
+            "or",
+            "or",
+            "or",
+            "or any other case variation (uppercase, first letter in uppercase, etc), your function will see the parameter short with a bool value of True . Otherwise as False ."
+          ],
+          "section_text": "You can also declare bool types, and they will be converted:\n\nIn this case, if you go to:\n\nor\n\nor\n\nor\n\nor\n\nor any other case variation (uppercase, first letter in uppercase, etc), your function will see the parameter short with a bool value of True . Otherwise as False .",
+          "section_inline_code": [
+            "bool",
+            "short",
+            "True",
+            "False"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/query_params/tutorial003_py310.py",
+              "highlight_lines": [
+                7
+              ],
+              "raw": "{* ../../docs_src/query_params/tutorial003_py310.py hl[7] *}",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            }
+          ],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo?short=1",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo?short=True",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo?short=true",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo?short=on",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo?short=yes",
+              "section_id": "tutorial/query-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/query-params::section-0005",
+          "parent_id": "tutorial/query-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Multiple path and query parameters",
+          "anchor_id": "multiple-path-and-query-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters",
+          "section_text_parts": [
+            "You can declare multiple path parameters and query parameters at the same time, FastAPI knows which is which.",
+            "And you don't have to declare them in any specific order.",
+            "They will be detected by name:"
+          ],
+          "section_text": "You can declare multiple path parameters and query parameters at the same time, FastAPI knows which is which.\n\nAnd you don't have to declare them in any specific order.\n\nThey will be detected by name:",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/query_params/tutorial004_py310.py",
+              "highlight_lines": [
+                6,
+                8
+              ],
+              "raw": "{* ../../docs_src/query_params/tutorial004_py310.py hl[6,8] *}",
+              "section_id": "tutorial/query-params::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/query-params::section-0006",
+          "parent_id": "tutorial/query-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Required query parameters",
+          "anchor_id": "required-query-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters",
+          "section_text_parts": [
+            "When you declare a default value for non-path parameters (for now, we have only seen query parameters), then it is not required.",
+            "If you don't want to add a specific value but just make it optional, set the default as None .",
+            "But when you want to make a query parameter required, you can just not declare any default value:",
+            "Here the query parameter needy is a required query parameter of type str .",
+            "If you open in your browser a URL like:",
+            "...without adding the required parameter needy , you will see an error like:",
+            "As needy is a required parameter, you would need to set it in the URL:",
+            "...this would work:",
+            "And of course, you can define some parameters as required, some as having a default value, and some entirely optional:",
+            "In this case, there are 3 query parameters:",
+            "- needy , a required str .",
+            "- skip , an int with a default value of 0 .",
+            "- limit , an optional int ."
+          ],
+          "section_text": "When you declare a default value for non-path parameters (for now, we have only seen query parameters), then it is not required.\n\nIf you don't want to add a specific value but just make it optional, set the default as None .\n\nBut when you want to make a query parameter required, you can just not declare any default value:\n\nHere the query parameter needy is a required query parameter of type str .\n\nIf you open in your browser a URL like:\n\n...without adding the required parameter needy , you will see an error like:\n\nAs needy is a required parameter, you would need to set it in the URL:\n\n...this would work:\n\nAnd of course, you can define some parameters as required, some as having a default value, and some entirely optional:\n\nIn this case, there are 3 query parameters:\n\n- needy , a required str .\n\n- skip , an int with a default value of 0 .\n\n- limit , an optional int .",
+          "section_inline_code": [
+            "None",
+            "needy",
+            "str",
+            "skip",
+            "int",
+            "0",
+            "limit"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/query_params/tutorial005_py310.py",
+              "highlight_lines": [
+                6,
+                7
+              ],
+              "raw": "{* ../../docs_src/query_params/tutorial005_py310.py hl[6:7] *}",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            },
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/query_params/tutorial006_py310.py",
+              "highlight_lines": [
+                8
+              ],
+              "raw": "{* ../../docs_src/query_params/tutorial006_py310.py hl[8] *}",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            }
+          ],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo-item",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            },
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\n  \"detail\": [\n    {\n      \"type\": \"missing\",\n      \"loc\": [\n        \"query\",\n        \"needy\"\n      ],\n      \"msg\": \"Field required\",\n      \"input\": null\n    }\n  ]\n}",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            },
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "http://127.0.0.1:8000/items/foo-item?needy=sooooneedy",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            },
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\n    \"item_id\": \"foo-item\",\n    \"needy\": \"sooooneedy\"\n}",
+              "section_id": "tutorial/query-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/query-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Query Parameters",
+      "anchor_id": "query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters",
+      "section_text": "When you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.\n\nThe query is the set of key-value pairs that go after the ? in a URL, separated by & characters.\n\nFor example, in the URL:\n\n...the query parameters are:\n\n- skip : with a value of 0\n\n- limit : with a value of 10\n\nAs they are part of the URL, they are \"naturally\" strings.\n\nBut when you declare them with Python types (in the example above, as int ), they are converted to that type and validated against it.\n\nAll the same process that applied for path parameters also applies for query parameters:\n\n- Editor support (obviously)\n\n- Data \"parsing\"\n\n- Data validation\n\n- Automatic documentation",
+      "section_inline_code": [
+        "?",
+        "&",
+        "skip",
+        "0",
+        "limit",
+        "10",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial001_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial001_py310.py hl[9] *}",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/query-params::section-0002",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Defaults",
+      "anchor_id": "defaults",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults",
+      "section_text": "As query parameters are not a fixed part of a path, they can be optional and can have default values.\n\nIn the example above they have default values of skip=0 and limit=10 .\n\nSo, going to the URL:\n\nwould be the same as going to:\n\nBut if you go to, for example:\n\nThe parameter values in your function will be:\n\n- skip=20 : because you set it in the URL\n\n- limit=10 : because that was the default value",
+      "section_inline_code": [
+        "skip=0",
+        "limit=10",
+        "skip=20"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=20",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/query-params::section-0003",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Optional parameters",
+      "anchor_id": "optional-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters",
+      "section_text": "The same way, you can declare optional query parameters, by setting their default to None :\n\nIn this case, the function parameter q will be optional, and will be None by default.",
+      "section_inline_code": [
+        "None",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/query-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/query-params::section-0004",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Query parameter type conversion",
+      "anchor_id": "query-parameter-type-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion",
+      "section_text": "You can also declare bool types, and they will be converted:\n\nIn this case, if you go to:\n\nor\n\nor\n\nor\n\nor\n\nor any other case variation (uppercase, first letter in uppercase, etc), your function will see the parameter short with a bool value of True . Otherwise as False .",
+      "section_inline_code": [
+        "bool",
+        "short",
+        "True",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=1",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=True",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=true",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=on",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=yes",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/query-params::section-0005",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Multiple path and query parameters",
+      "anchor_id": "multiple-path-and-query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters",
+      "section_text": "You can declare multiple path parameters and query parameters at the same time, FastAPI knows which is which.\n\nAnd you don't have to declare them in any specific order.\n\nThey will be detected by name:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial004_py310.py",
+          "highlight_lines": [
+            6,
+            8
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial004_py310.py hl[6,8] *}",
+          "section_id": "tutorial/query-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/query-params::section-0006",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Required query parameters",
+      "anchor_id": "required-query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters",
+      "section_text": "When you declare a default value for non-path parameters (for now, we have only seen query parameters), then it is not required.\n\nIf you don't want to add a specific value but just make it optional, set the default as None .\n\nBut when you want to make a query parameter required, you can just not declare any default value:\n\nHere the query parameter needy is a required query parameter of type str .\n\nIf you open in your browser a URL like:\n\n...without adding the required parameter needy , you will see an error like:\n\nAs needy is a required parameter, you would need to set it in the URL:\n\n...this would work:\n\nAnd of course, you can define some parameters as required, some as having a default value, and some entirely optional:\n\nIn this case, there are 3 query parameters:\n\n- needy , a required str .\n\n- skip , an int with a default value of 0 .\n\n- limit , an optional int .",
+      "section_inline_code": [
+        "None",
+        "needy",
+        "str",
+        "skip",
+        "int",
+        "0",
+        "limit"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial005_py310.py",
+          "highlight_lines": [
+            6,
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial005_py310.py hl[6:7] *}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial006_py310.py",
+          "highlight_lines": [
+            8
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial006_py310.py hl[8] *}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo-item",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"detail\": [\n    {\n      \"type\": \"missing\",\n      \"loc\": [\n        \"query\",\n        \"needy\"\n      ],\n      \"msg\": \"Field required\",\n      \"input\": null\n    }\n  ]\n}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo-item?needy=sooooneedy",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"item_id\": \"foo-item\",\n    \"needy\": \"sooooneedy\"\n}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ]
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/query-params::section-0001": {
+      "node_id": "tutorial/query-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Query Parameters",
+      "anchor_id": "query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters",
+      "section_text": "When you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.\n\nThe query is the set of key-value pairs that go after the ? in a URL, separated by & characters.\n\nFor example, in the URL:\n\n...the query parameters are:\n\n- skip : with a value of 0\n\n- limit : with a value of 10\n\nAs they are part of the URL, they are \"naturally\" strings.\n\nBut when you declare them with Python types (in the example above, as int ), they are converted to that type and validated against it.\n\nAll the same process that applied for path parameters also applies for query parameters:\n\n- Editor support (obviously)\n\n- Data \"parsing\"\n\n- Data validation\n\n- Automatic documentation",
+      "section_inline_code": [
+        "?",
+        "&",
+        "skip",
+        "0",
+        "limit",
+        "10",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial001_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial001_py310.py hl[9] *}",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+          "section_id": "tutorial/query-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameters"
+        }
+      ]
+    },
+    "tutorial/query-params::section-0002": {
+      "node_id": "tutorial/query-params::section-0002",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Defaults",
+      "anchor_id": "defaults",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults",
+      "section_text": "As query parameters are not a fixed part of a path, they can be optional and can have default values.\n\nIn the example above they have default values of skip=0 and limit=10 .\n\nSo, going to the URL:\n\nwould be the same as going to:\n\nBut if you go to, for example:\n\nThe parameter values in your function will be:\n\n- skip=20 : because you set it in the URL\n\n- limit=10 : because that was the default value",
+      "section_inline_code": [
+        "skip=0",
+        "limit=10",
+        "skip=20"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=0&limit=10",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/?skip=20",
+          "section_id": "tutorial/query-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#defaults"
+        }
+      ]
+    },
+    "tutorial/query-params::section-0003": {
+      "node_id": "tutorial/query-params::section-0003",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Optional parameters",
+      "anchor_id": "optional-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters",
+      "section_text": "The same way, you can declare optional query parameters, by setting their default to None :\n\nIn this case, the function parameter q will be optional, and will be None by default.",
+      "section_inline_code": [
+        "None",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/query-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/query-params::section-0004": {
+      "node_id": "tutorial/query-params::section-0004",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Query parameter type conversion",
+      "anchor_id": "query-parameter-type-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion",
+      "section_text": "You can also declare bool types, and they will be converted:\n\nIn this case, if you go to:\n\nor\n\nor\n\nor\n\nor\n\nor any other case variation (uppercase, first letter in uppercase, etc), your function will see the parameter short with a bool value of True . Otherwise as False .",
+      "section_inline_code": [
+        "bool",
+        "short",
+        "True",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=1",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=True",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=true",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=on",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo?short=yes",
+          "section_id": "tutorial/query-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#query-parameter-type-conversion"
+        }
+      ]
+    },
+    "tutorial/query-params::section-0005": {
+      "node_id": "tutorial/query-params::section-0005",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Multiple path and query parameters",
+      "anchor_id": "multiple-path-and-query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters",
+      "section_text": "You can declare multiple path parameters and query parameters at the same time, FastAPI knows which is which.\n\nAnd you don't have to declare them in any specific order.\n\nThey will be detected by name:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial004_py310.py",
+          "highlight_lines": [
+            6,
+            8
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial004_py310.py hl[6,8] *}",
+          "section_id": "tutorial/query-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#multiple-path-and-query-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/query-params::section-0006": {
+      "node_id": "tutorial/query-params::section-0006",
+      "parent_id": "tutorial/query-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Required query parameters",
+      "anchor_id": "required-query-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters",
+      "section_text": "When you declare a default value for non-path parameters (for now, we have only seen query parameters), then it is not required.\n\nIf you don't want to add a specific value but just make it optional, set the default as None .\n\nBut when you want to make a query parameter required, you can just not declare any default value:\n\nHere the query parameter needy is a required query parameter of type str .\n\nIf you open in your browser a URL like:\n\n...without adding the required parameter needy , you will see an error like:\n\nAs needy is a required parameter, you would need to set it in the URL:\n\n...this would work:\n\nAnd of course, you can define some parameters as required, some as having a default value, and some entirely optional:\n\nIn this case, there are 3 query parameters:\n\n- needy , a required str .\n\n- skip , an int with a default value of 0 .\n\n- limit , an optional int .",
+      "section_inline_code": [
+        "None",
+        "needy",
+        "str",
+        "skip",
+        "int",
+        "0",
+        "limit"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial005_py310.py",
+          "highlight_lines": [
+            6,
+            7
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial005_py310.py hl[6:7] *}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/query_params/tutorial006_py310.py",
+          "highlight_lines": [
+            8
+          ],
+          "raw": "{* ../../docs_src/query_params/tutorial006_py310.py hl[8] *}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo-item",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"detail\": [\n    {\n      \"type\": \"missing\",\n      \"loc\": [\n        \"query\",\n        \"needy\"\n      ],\n      \"msg\": \"Field required\",\n      \"input\": null\n    }\n  ]\n}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "http://127.0.0.1:8000/items/foo-item?needy=sooooneedy",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"item_id\": \"foo-item\",\n    \"needy\": \"sooooneedy\"\n}",
+          "section_id": "tutorial/query-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ]
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/query-params::section-0003::admonition-0001",
+      "parent_id": "tutorial/query-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Also notice that FastAPI is smart enough to notice that the path parameter item_id is a path parameter and q is not, so, it's a query parameter."
+      ],
+      "section_text": "Also notice that FastAPI is smart enough to notice that the path parameter item_id is a path parameter and q is not, so, it's a query parameter.",
+      "section_inline_code": [
+        "item_id",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/query-params::section-0006::admonition-0002",
+      "parent_id": "tutorial/query-params::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use Enum s the same way as with Path Parameters ."
+      ],
+      "section_text": "You could also use Enum s the same way as with Path Parameters .",
+      "section_inline_code": [
+        "Enum"
+      ],
+      "section_links": [
+        {
+          "text": "Path Parameters",
+          "url": "path-params.md#predefined-values",
+          "section_id": "tutorial/query-params::section-0006::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/query-params::section-0003::admonition-0001": {
+      "node_id": "tutorial/query-params::section-0003::admonition-0001",
+      "parent_id": "tutorial/query-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#optional-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Also notice that FastAPI is smart enough to notice that the path parameter item_id is a path parameter and q is not, so, it's a query parameter."
+      ],
+      "section_text": "Also notice that FastAPI is smart enough to notice that the path parameter item_id is a path parameter and q is not, so, it's a query parameter.",
+      "section_inline_code": [
+        "item_id",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/query-params::section-0006::admonition-0002": {
+      "node_id": "tutorial/query-params::section-0006::admonition-0002",
+      "parent_id": "tutorial/query-params::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use Enum s the same way as with Path Parameters ."
+      ],
+      "section_text": "You could also use Enum s the same way as with Path Parameters .",
+      "section_inline_code": [
+        "Enum"
+      ],
+      "section_links": [
+        {
+          "text": "Path Parameters",
+          "url": "path-params.md#predefined-values",
+          "section_id": "tutorial/query-params::section-0006::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/query-params/#required-query-parameters"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/query-params::section-0001",
+      "seconds": 0.00012970599891559687,
+      "paragraphs": 7,
+      "list_items": 6,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/query-params::section-0002",
+      "seconds": 7.805400127836037e-05,
+      "paragraphs": 6,
+      "list_items": 2,
+      "code_blocks": 3,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/query-params::section-0003",
+      "seconds": 5.279300057736691e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/query-params::section-0004",
+      "seconds": 8.601900117355399e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 5,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/query-params::section-0005",
+      "seconds": 2.890799987653736e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/query-params::section-0006",
+      "seconds": 0.00016777800010459032,
+      "paragraphs": 11,
+      "list_items": 3,
+      "code_blocks": 4,
+      "code_refs": 2,
+      "links": 1,
+      "admonitions": 1
+    }
+  ]
+}

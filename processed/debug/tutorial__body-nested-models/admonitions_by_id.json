@@ -1,0 +1,68 @@
+{
+  "tutorial/body-nested-models::section-0010::admonition-0001": {
+    "node_id": "tutorial/body-nested-models::section-0010::admonition-0001",
+    "parent_id": "tutorial/body-nested-models::section-0010",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-nested-models/#attributes-with-lists-of-submodels",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice how the images key now has a list of image objects."
+    ],
+    "section_text": "Notice how the images key now has a list of image objects.",
+    "section_inline_code": [
+      "images"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-nested-models::section-0011::admonition-0002": {
+    "node_id": "tutorial/body-nested-models::section-0011::admonition-0002",
+    "parent_id": "tutorial/body-nested-models::section-0011",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-nested-models/#deeply-nested-models",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice how Offer has a list of Item s, which in turn have an optional list of Image s"
+    ],
+    "section_text": "Notice how Offer has a list of Item s, which in turn have an optional list of Image s",
+    "section_inline_code": [
+      "Offer",
+      "Item",
+      "Image"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-nested-models::section-0014::admonition-0003": {
+    "node_id": "tutorial/body-nested-models::section-0014::admonition-0003",
+    "parent_id": "tutorial/body-nested-models::section-0014",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-nested-models/#bodies-of-arbitrary-dicts",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Keep in mind that JSON only supports str as keys.",
+      "But Pydantic has automatic data conversion.",
+      "This means that, even though your API clients can only send strings as keys, as long as those strings contain pure integers, Pydantic will convert them and validate them.",
+      "And the dict you receive as weights will actually have int keys and float values."
+    ],
+    "section_text": "Keep in mind that JSON only supports str as keys.\n\nBut Pydantic has automatic data conversion.\n\nThis means that, even though your API clients can only send strings as keys, as long as those strings contain pure integers, Pydantic will convert them and validate them.\n\nAnd the dict you receive as weights will actually have int keys and float values.",
+    "section_inline_code": [
+      "str",
+      "dict",
+      "weights",
+      "int",
+      "float"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

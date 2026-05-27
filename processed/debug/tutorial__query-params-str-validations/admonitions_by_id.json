@@ -1,0 +1,226 @@
+{
+  "tutorial/query-params-str-validations::section-0001::admonition-0001": {
+    "node_id": "tutorial/query-params-str-validations::section-0001::admonition-0001",
+    "parent_id": "tutorial/query-params-str-validations::section-0001",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#query-parameters-and-string-validations",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "FastAPI will know that the value of q is not required because of the default value = None .",
+      "Having str | None will allow your editor to give you better support and detect errors."
+    ],
+    "section_text": "FastAPI will know that the value of q is not required because of the default value = None .\n\nHaving str | None will allow your editor to give you better support and detect errors.",
+    "section_inline_code": [
+      "q",
+      "= None",
+      "str | None"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0003::admonition-0002": {
+    "node_id": "tutorial/query-params-str-validations::section-0003::admonition-0002",
+    "parent_id": "tutorial/query-params-str-validations::section-0003",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#import-query-and-annotated",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.",
+      "If you have an older version, you would get errors when trying to use Annotated .",
+      "Make sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated ."
+    ],
+    "section_text": "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.\n\nIf you have an older version, you would get errors when trying to use Annotated .\n\nMake sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated .",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [
+      {
+        "text": "Upgrade the FastAPI version",
+        "url": "../deployment/versions.md#upgrading-the-fastapi-versions",
+        "section_id": "tutorial/query-params-str-validations::section-0003::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#import-query-and-annotated"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0005::admonition-0003": {
+    "node_id": "tutorial/query-params-str-validations::section-0005::admonition-0003",
+    "parent_id": "tutorial/query-params-str-validations::section-0005",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#add-query-to-annotated-in-the-q-parameter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Here we are using Query() because this is a query parameter . Later we will see others like Path() , Body() , Header() , and Cookie() , that also accept the same arguments as Query() ."
+    ],
+    "section_text": "Here we are using Query() because this is a query parameter . Later we will see others like Path() , Body() , Header() , and Cookie() , that also accept the same arguments as Query() .",
+    "section_inline_code": [
+      "Query()",
+      "Path()",
+      "Body()",
+      "Header()",
+      "Cookie()"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0006::admonition-0004": {
+    "node_id": "tutorial/query-params-str-validations::section-0006::admonition-0004",
+    "parent_id": "tutorial/query-params-str-validations::section-0006",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#alternative-old-query-as-the-default-value",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "For new code and whenever possible, use Annotated as explained above. There are multiple advantages (explained below) and no disadvantages. 🍰"
+    ],
+    "section_text": "For new code and whenever possible, use Annotated as explained above. There are multiple advantages (explained below) and no disadvantages. 🍰",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0011::admonition-0005": {
+    "node_id": "tutorial/query-params-str-validations::section-0011::admonition-0005",
+    "parent_id": "tutorial/query-params-str-validations::section-0011",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#default-values",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Having a default value of any type, including None , makes the parameter optional (not required)."
+    ],
+    "section_text": "Having a default value of any type, including None , makes the parameter optional (not required).",
+    "section_inline_code": [
+      "None"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0014::admonition-0006": {
+    "node_id": "tutorial/query-params-str-validations::section-0014::admonition-0006",
+    "parent_id": "tutorial/query-params-str-validations::section-0014",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#query-parameter-list-multiple-values",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To declare a query parameter with a type of list , like in the example above, you need to explicitly use Query , otherwise it would be interpreted as a request body."
+    ],
+    "section_text": "To declare a query parameter with a type of list , like in the example above, you need to explicitly use Query , otherwise it would be interpreted as a request body.",
+    "section_inline_code": [
+      "list",
+      "Query"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0016::admonition-0007": {
+    "node_id": "tutorial/query-params-str-validations::section-0016::admonition-0007",
+    "parent_id": "tutorial/query-params-str-validations::section-0016",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#using-just-list",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Keep in mind that in this case, FastAPI won't check the contents of the list.",
+      "For example, list[int] would check (and document) that the contents of the list are integers. But list alone wouldn't."
+    ],
+    "section_text": "Keep in mind that in this case, FastAPI won't check the contents of the list.\n\nFor example, list[int] would check (and document) that the contents of the list are integers. But list alone wouldn't.",
+    "section_inline_code": [
+      "list[int]",
+      "list"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0017::admonition-0008": {
+    "node_id": "tutorial/query-params-str-validations::section-0017::admonition-0008",
+    "parent_id": "tutorial/query-params-str-validations::section-0017",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#declare-more-metadata",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Keep in mind that different tools might have different levels of OpenAPI support.",
+      "Some of them might not show all the extra information declared yet, although in most of the cases, the missing feature is already planned for development."
+    ],
+    "section_text": "Keep in mind that different tools might have different levels of OpenAPI support.\n\nSome of them might not show all the extra information declared yet, although in most of the cases, the missing feature is already planned for development.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0021::admonition-0009": {
+    "node_id": "tutorial/query-params-str-validations::section-0021::admonition-0009",
+    "parent_id": "tutorial/query-params-str-validations::section-0021",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#custom-validation",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Pydantic also has BeforeValidator and others. 🤓"
+    ],
+    "section_text": "Pydantic also has BeforeValidator and others. 🤓",
+    "section_inline_code": [
+      "BeforeValidator"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0021::admonition-0010": {
+    "node_id": "tutorial/query-params-str-validations::section-0021::admonition-0010",
+    "parent_id": "tutorial/query-params-str-validations::section-0021",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#custom-validation",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is available with Pydantic version 2 or above. 😎"
+    ],
+    "section_text": "This is available with Pydantic version 2 or above. 😎",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/query-params-str-validations::section-0021::admonition-0011": {
+    "node_id": "tutorial/query-params-str-validations::section-0021::admonition-0011",
+    "parent_id": "tutorial/query-params-str-validations::section-0021",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#custom-validation",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you need to do any type of validation that requires communicating with any external component , like a database or another API, you should instead use FastAPI Dependencies , you will learn about them later.",
+      "These custom validators are for things that can be checked with only the same data provided in the request."
+    ],
+    "section_text": "If you need to do any type of validation that requires communicating with any external component , like a database or another API, you should instead use FastAPI Dependencies , you will learn about them later.\n\nThese custom validators are for things that can be checked with only the same data provided in the request.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

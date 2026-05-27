@@ -1,0 +1,732 @@
+{
+  "page": {
+    "page_id": "tutorial/dependencies/sub-dependencies",
+    "page_uid": "d3b5be9517430ca427c9193b4debf096aeb14c84",
+    "page_title": "Sub-dependencies",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/",
+    "source_file": "tutorial/dependencies/sub-dependencies.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Sub-dependencies",
+      "anchor_id": "sub-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#sub-dependencies",
+      "section_text_parts": [
+        "You can create dependencies that have sub-dependencies .",
+        "They can be as deep as you need them to be.",
+        "FastAPI will take care of solving them."
+      ],
+      "section_text": "You can create dependencies that have sub-dependencies .\n\nThey can be as deep as you need them to be.\n\nFastAPI will take care of solving them.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/dependencies/sub-dependencies::section-0002",
+          "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "First dependency \"dependable\"",
+          "anchor_id": "first-dependency-dependable",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable",
+          "section_text_parts": [
+            "You could create a first dependency (\"dependable\") like:",
+            "It declares an optional query parameter q as a str , and then it just returns it.",
+            "This is quite simple (not very useful), but will help us focus on how the sub-dependencies work."
+          ],
+          "section_text": "You could create a first dependency (\"dependable\") like:\n\nIt declares an optional query parameter q as a str , and then it just returns it.\n\nThis is quite simple (not very useful), but will help us focus on how the sub-dependencies work.",
+          "section_inline_code": [
+            "q",
+            "str"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+              "highlight_lines": [
+                8,
+                9
+              ],
+              "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[8:9] *}",
+              "section_id": "tutorial/dependencies/sub-dependencies::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/dependencies/sub-dependencies::section-0003",
+          "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Second dependency, \"dependable\" and \"dependant\"",
+          "anchor_id": "second-dependency-dependable-and-dependant",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant",
+          "section_text_parts": [
+            "Then you can create another dependency function (a \"dependable\") that at the same time declares a dependency of its own (so it is a \"dependant\" too):",
+            "Let's focus on the parameters declared:",
+            "- It depends on the query_extractor , and assigns the value returned by it to the parameter q .",
+            "- If the user didn't provide any query q , we use the last query used, which we saved to a cookie before."
+          ],
+          "section_text": "Then you can create another dependency function (a \"dependable\") that at the same time declares a dependency of its own (so it is a \"dependant\" too):\n\nLet's focus on the parameters declared:\n\n- It depends on the query_extractor , and assigns the value returned by it to the parameter q .\n\n- If the user didn't provide any query q , we use the last query used, which we saved to a cookie before.",
+          "section_inline_code": [
+            "query_extractor",
+            "q"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+              "highlight_lines": [
+                13
+              ],
+              "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[13] *}",
+              "section_id": "tutorial/dependencies/sub-dependencies::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/dependencies/sub-dependencies::section-0004",
+          "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Use the dependency",
+          "anchor_id": "use-the-dependency",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+          "section_text_parts": [
+            "Then we can use the dependency with:"
+          ],
+          "section_text": "Then we can use the dependency with:",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+              "highlight_lines": [
+                23
+              ],
+              "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[23] *}",
+              "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+            }
+          ],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "mermaid",
+              "text": "graph TB\n\nquery_extractor([\"query_extractor\"])\nquery_or_cookie_extractor([\"query_or_cookie_extractor\"])\n\nread_query[\"/items/\"]\n\nquery_extractor --> query_or_cookie_extractor --> read_query",
+              "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/dependencies/sub-dependencies::section-0005",
+          "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Using the same dependency multiple times",
+          "anchor_id": "using-the-same-dependency-multiple-times",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+          "section_text_parts": [
+            "If one of your dependencies is declared multiple times for the same path operation , for example, multiple dependencies have a common sub-dependency, FastAPI will know to call that sub-dependency only once per request.",
+            "And it will save the returned value in a \"cache\" and pass it to all the \"dependants\" that need it in that specific request, instead of calling the dependency multiple times for the same request.",
+            "In an advanced scenario where you know you need the dependency to be called at every step (possibly multiple times) in the same request instead of using the \"cached\" value, you can set the parameter use_cache=False when using Depends :"
+          ],
+          "section_text": "If one of your dependencies is declared multiple times for the same path operation , for example, multiple dependencies have a common sub-dependency, FastAPI will know to call that sub-dependency only once per request.\n\nAnd it will save the returned value in a \"cache\" and pass it to all the \"dependants\" that need it in that specific request, instead of calling the dependency multiple times for the same request.\n\nIn an advanced scenario where you know you need the dependency to be called at every step (possibly multiple times) in the same request instead of using the \"cached\" value, you can set the parameter use_cache=False when using Depends :",
+          "section_inline_code": [
+            "use_cache=False",
+            "Depends"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/dependencies/sub-dependencies::section-0006",
+          "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+          "section_text_parts": [
+            "Apart from all the fancy words used here, the Dependency Injection system is quite simple.",
+            "Just functions that look the same as the path operation functions .",
+            "But still, it is very powerful, and allows you to declare arbitrarily deeply nested dependency \"graphs\" (trees)."
+          ],
+          "section_text": "Apart from all the fancy words used here, the Dependency Injection system is quite simple.\n\nJust functions that look the same as the path operation functions .\n\nBut still, it is very powerful, and allows you to declare arbitrarily deeply nested dependency \"graphs\" (trees).",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Sub-dependencies",
+      "anchor_id": "sub-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#sub-dependencies",
+      "section_text": "You can create dependencies that have sub-dependencies .\n\nThey can be as deep as you need them to be.\n\nFastAPI will take care of solving them.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0002",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "First dependency \"dependable\"",
+      "anchor_id": "first-dependency-dependable",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable",
+      "section_text": "You could create a first dependency (\"dependable\") like:\n\nIt declares an optional query parameter q as a str , and then it just returns it.\n\nThis is quite simple (not very useful), but will help us focus on how the sub-dependencies work.",
+      "section_inline_code": [
+        "q",
+        "str"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            8,
+            9
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[8:9] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0003",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Second dependency, \"dependable\" and \"dependant\"",
+      "anchor_id": "second-dependency-dependable-and-dependant",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant",
+      "section_text": "Then you can create another dependency function (a \"dependable\") that at the same time declares a dependency of its own (so it is a \"dependant\" too):\n\nLet's focus on the parameters declared:\n\n- It depends on the query_extractor , and assigns the value returned by it to the parameter q .\n\n- If the user didn't provide any query q , we use the last query used, which we saved to a cookie before.",
+      "section_inline_code": [
+        "query_extractor",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            13
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[13] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0004",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use the dependency",
+      "anchor_id": "use-the-dependency",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+      "section_text": "Then we can use the dependency with:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            23
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[23] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "mermaid",
+          "text": "graph TB\n\nquery_extractor([\"query_extractor\"])\nquery_or_cookie_extractor([\"query_or_cookie_extractor\"])\n\nread_query[\"/items/\"]\n\nquery_extractor --> query_or_cookie_extractor --> read_query",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Using the same dependency multiple times",
+      "anchor_id": "using-the-same-dependency-multiple-times",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "section_text": "If one of your dependencies is declared multiple times for the same path operation , for example, multiple dependencies have a common sub-dependency, FastAPI will know to call that sub-dependency only once per request.\n\nAnd it will save the returned value in a \"cache\" and pass it to all the \"dependants\" that need it in that specific request, instead of calling the dependency multiple times for the same request.\n\nIn an advanced scenario where you know you need the dependency to be called at every step (possibly multiple times) in the same request instead of using the \"cached\" value, you can set the parameter use_cache=False when using Depends :",
+      "section_inline_code": [
+        "use_cache=False",
+        "Depends"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0006",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+      "section_text": "Apart from all the fancy words used here, the Dependency Injection system is quite simple.\n\nJust functions that look the same as the path operation functions .\n\nBut still, it is very powerful, and allows you to declare arbitrarily deeply nested dependency \"graphs\" (trees).",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/dependencies/sub-dependencies::section-0001": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Sub-dependencies",
+      "anchor_id": "sub-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#sub-dependencies",
+      "section_text": "You can create dependencies that have sub-dependencies .\n\nThey can be as deep as you need them to be.\n\nFastAPI will take care of solving them.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0002": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0002",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "First dependency \"dependable\"",
+      "anchor_id": "first-dependency-dependable",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable",
+      "section_text": "You could create a first dependency (\"dependable\") like:\n\nIt declares an optional query parameter q as a str , and then it just returns it.\n\nThis is quite simple (not very useful), but will help us focus on how the sub-dependencies work.",
+      "section_inline_code": [
+        "q",
+        "str"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            8,
+            9
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[8:9] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#first-dependency-dependable"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0003": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0003",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Second dependency, \"dependable\" and \"dependant\"",
+      "anchor_id": "second-dependency-dependable-and-dependant",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant",
+      "section_text": "Then you can create another dependency function (a \"dependable\") that at the same time declares a dependency of its own (so it is a \"dependant\" too):\n\nLet's focus on the parameters declared:\n\n- It depends on the query_extractor , and assigns the value returned by it to the parameter q .\n\n- If the user didn't provide any query q , we use the last query used, which we saved to a cookie before.",
+      "section_inline_code": [
+        "query_extractor",
+        "q"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            13
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[13] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0004": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0004",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use the dependency",
+      "anchor_id": "use-the-dependency",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+      "section_text": "Then we can use the dependency with:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/dependencies/tutorial005_an_py310.py",
+          "highlight_lines": [
+            23
+          ],
+          "raw": "{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[23] *}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "mermaid",
+          "text": "graph TB\n\nquery_extractor([\"query_extractor\"])\nquery_or_cookie_extractor([\"query_or_cookie_extractor\"])\n\nread_query[\"/items/\"]\n\nquery_extractor --> query_or_cookie_extractor --> read_query",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency"
+        }
+      ]
+    },
+    "tutorial/dependencies/sub-dependencies::section-0005": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Using the same dependency multiple times",
+      "anchor_id": "using-the-same-dependency-multiple-times",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "section_text": "If one of your dependencies is declared multiple times for the same path operation , for example, multiple dependencies have a common sub-dependency, FastAPI will know to call that sub-dependency only once per request.\n\nAnd it will save the returned value in a \"cache\" and pass it to all the \"dependants\" that need it in that specific request, instead of calling the dependency multiple times for the same request.\n\nIn an advanced scenario where you know you need the dependency to be called at every step (possibly multiple times) in the same request instead of using the \"cached\" value, you can set the parameter use_cache=False when using Depends :",
+      "section_inline_code": [
+        "use_cache=False",
+        "Depends"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0006": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0006",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+      "section_text": "Apart from all the fancy words used here, the Dependency Injection system is quite simple.\n\nJust functions that look the same as the path operation functions .\n\nBut still, it is very powerful, and allows you to declare arbitrarily deeply nested dependency \"graphs\" (trees).",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0004::admonition-0001",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0004",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .",
+        "But FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it."
+      ],
+      "section_text": "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .\n\nBut FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it.",
+      "section_inline_code": [
+        "query_or_cookie_extractor",
+        "query_extractor"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "node_kind": "admonition",
+      "kind": "tab",
+      "title": "Python 3.10+",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 4,
+      "section_text_parts": [],
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "async def needy_dependency(fresh_value: Annotated[str, Depends(get_value, use_cache=False)]):\n    return {\"fresh_value\": fresh_value}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "node_kind": "admonition",
+      "kind": "tab",
+      "title": "Python 3.10+ non-Annotated",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 4,
+      "section_text_parts": [],
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "async def needy_dependency(fresh_value: str = Depends(get_value, use_cache=False)):\n    return {\"fresh_value\": fresh_value}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003::admonition-0004",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Prefer to use the Annotated version if possible."
+      ],
+      "section_text": "Prefer to use the Annotated version if possible.",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0006::admonition-0005",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "All this might not seem as useful with these simple examples.",
+        "But you will see how useful it is in the chapters about security .",
+        "And you will also see the amounts of code it will save you."
+      ],
+      "section_text": "All this might not seem as useful with these simple examples.\n\nBut you will see how useful it is in the chapters about security .\n\nAnd you will also see the amounts of code it will save you.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/dependencies/sub-dependencies::section-0004::admonition-0001": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0004::admonition-0001",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0004",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .",
+        "But FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it."
+      ],
+      "section_text": "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .\n\nBut FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it.",
+      "section_inline_code": [
+        "query_or_cookie_extractor",
+        "query_extractor"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "node_kind": "admonition",
+      "kind": "tab",
+      "title": "Python 3.10+",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 4,
+      "section_text_parts": [],
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "async def needy_dependency(fresh_value: Annotated[str, Depends(get_value, use_cache=False)]):\n    return {\"fresh_value\": fresh_value}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+        }
+      ]
+    },
+    "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "node_kind": "admonition",
+      "kind": "tab",
+      "title": "Python 3.10+ non-Annotated",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 4,
+      "section_text_parts": [],
+      "section_text": "",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "async def needy_dependency(fresh_value: str = Depends(get_value, use_cache=False)):\n    return {\"fresh_value\": fresh_value}",
+          "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+        }
+      ]
+    },
+    "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003::admonition-0004": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003::admonition-0004",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Prefer to use the Annotated version if possible."
+      ],
+      "section_text": "Prefer to use the Annotated version if possible.",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/dependencies/sub-dependencies::section-0006::admonition-0005": {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0006::admonition-0005",
+      "parent_id": "tutorial/dependencies/sub-dependencies::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "All this might not seem as useful with these simple examples.",
+        "But you will see how useful it is in the chapters about security .",
+        "And you will also see the amounts of code it will save you."
+      ],
+      "section_text": "All this might not seem as useful with these simple examples.\n\nBut you will see how useful it is in the chapters about security .\n\nAnd you will also see the amounts of code it will save you.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0001",
+      "seconds": 4.661299863073509e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0002",
+      "seconds": 3.275400013080798e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0003",
+      "seconds": 8.300800072902348e-05,
+      "paragraphs": 2,
+      "list_items": 2,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0004",
+      "seconds": 6.40479993307963e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0005",
+      "seconds": 9.394500011694618e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 3
+    },
+    {
+      "node_id": "tutorial/dependencies/sub-dependencies::section-0006",
+      "seconds": 5.881699871679302e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 1
+    }
+  ]
+}

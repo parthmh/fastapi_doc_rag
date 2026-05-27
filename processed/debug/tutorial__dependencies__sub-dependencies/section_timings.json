@@ -1,0 +1,62 @@
+[
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0001",
+    "seconds": 4.661299863073509e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0002",
+    "seconds": 3.275400013080798e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0003",
+    "seconds": 8.300800072902348e-05,
+    "paragraphs": 2,
+    "list_items": 2,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0004",
+    "seconds": 6.40479993307963e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0005",
+    "seconds": 9.394500011694618e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 2,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 3
+  },
+  {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0006",
+    "seconds": 5.881699871679302e-05,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 1
+  }
+]

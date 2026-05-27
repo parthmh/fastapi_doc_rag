@@ -1,0 +1,193 @@
+{
+  "tutorial/dependencies/dependencies-with-yield::section-0001::admonition-0001": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0001::admonition-0001",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0001",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Make sure to use yield one single time per dependency."
+    ],
+    "section_text": "Make sure to use yield one single time per dependency.",
+    "section_inline_code": [
+      "yield"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0001::admonition-0002": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0001::admonition-0002",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0001",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Any function that is valid to use with:",
+      "- @contextlib.contextmanager or",
+      "- @contextlib.asynccontextmanager",
+      "would be valid to use as a FastAPI dependency.",
+      "In fact, FastAPI uses those two decorators internally."
+    ],
+    "section_text": "Any function that is valid to use with:\n\n- @contextlib.contextmanager or\n\n- @contextlib.asynccontextmanager\n\nwould be valid to use as a FastAPI dependency.\n\nIn fact, FastAPI uses those two decorators internally.",
+    "section_inline_code": [
+      "@contextlib.contextmanager",
+      "@contextlib.asynccontextmanager"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0002::admonition-0003": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0002::admonition-0003",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#a-database-dependency-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You can use async or regular functions.",
+      "FastAPI will do the right thing with each, the same as with normal dependencies."
+    ],
+    "section_text": "You can use async or regular functions.\n\nFastAPI will do the right thing with each, the same as with normal dependencies.",
+    "section_inline_code": [
+      "async"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0004::admonition-0004": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0004::admonition-0004",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0004",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#sub-dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This works thanks to Python's Context Managers .",
+      "FastAPI uses them internally to achieve this."
+    ],
+    "section_text": "This works thanks to Python's Context Managers .\n\nFastAPI uses them internally to achieve this.",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Context Managers",
+        "url": "https://docs.python.org/3/library/contextlib.html",
+        "section_id": "tutorial/dependencies/dependencies-with-yield::section-0004::admonition-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#sub-dependencies-with-yield"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0005::admonition-0005": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0005::admonition-0005",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0005",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield-and-httpexception",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is a somewhat advanced technique, and in most of the cases you won't really need it, as you can raise exceptions (including HTTPException ) from inside of the rest of your application code, for example, in the path operation function .",
+      "But it's there for you if you need it. 🤓"
+    ],
+    "section_text": "This is a somewhat advanced technique, and in most of the cases you won't really need it, as you can raise exceptions (including HTTPException ) from inside of the rest of your application code, for example, in the path operation function .\n\nBut it's there for you if you need it. 🤓",
+    "section_inline_code": [
+      "HTTPException"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0008::admonition-0006": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0008::admonition-0006",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0008",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#execution-of-dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Only one response will be sent to the client. It might be one of the error responses or it will be the response from the path operation .",
+      "After one of those responses is sent, no other response can be sent."
+    ],
+    "section_text": "Only one response will be sent to the client. It might be one of the error responses or it will be the response from the path operation .\n\nAfter one of those responses is sent, no other response can be sent.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0008::admonition-0007": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0008::admonition-0007",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0008",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#execution-of-dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you raise any exception in the code from the path operation function , it will be passed to the dependencies with yield, including HTTPException . In most cases you will want to re-raise that same exception or a new one from the dependency with yield to make sure it's properly handled."
+    ],
+    "section_text": "If you raise any exception in the code from the path operation function , it will be passed to the dependencies with yield, including HTTPException . In most cases you will want to re-raise that same exception or a new one from the dependency with yield to make sure it's properly handled.",
+    "section_inline_code": [
+      "HTTPException",
+      "yield"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0014::admonition-0008": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0014::admonition-0008",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0014",
+    "node_kind": "admonition",
+    "kind": "warning",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#using-context-managers-in-dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is, more or less, an \"advanced\" idea.",
+      "If you are just starting with FastAPI you might want to skip it for now."
+    ],
+    "section_text": "This is, more or less, an \"advanced\" idea.\n\nIf you are just starting with FastAPI you might want to skip it for now.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-with-yield::section-0014::admonition-0009": {
+    "node_id": "tutorial/dependencies/dependencies-with-yield::section-0014::admonition-0009",
+    "parent_id": "tutorial/dependencies/dependencies-with-yield::section-0014",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#using-context-managers-in-dependencies-with-yield",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Another way to create a context manager is with:",
+      "- @contextlib.contextmanager or",
+      "- @contextlib.asynccontextmanager",
+      "using them to decorate a function with a single yield .",
+      "That's what FastAPI uses internally for dependencies with yield .",
+      "But you don't have to use the decorators for FastAPI dependencies (and you shouldn't).",
+      "FastAPI will do it for you internally."
+    ],
+    "section_text": "Another way to create a context manager is with:\n\n- @contextlib.contextmanager or\n\n- @contextlib.asynccontextmanager\n\nusing them to decorate a function with a single yield .\n\nThat's what FastAPI uses internally for dependencies with yield .\n\nBut you don't have to use the decorators for FastAPI dependencies (and you shouldn't).\n\nFastAPI will do it for you internally.",
+    "section_inline_code": [
+      "@contextlib.contextmanager",
+      "@contextlib.asynccontextmanager",
+      "yield"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

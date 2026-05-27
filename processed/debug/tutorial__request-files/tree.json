@@ -1,0 +1,1527 @@
+{
+  "page": {
+    "page_id": "tutorial/request-files",
+    "page_uid": "65e26c4d293de0ee969e979140fc908fdc157e7b",
+    "page_title": "Request Files",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+    "source_file": "tutorial/request-files.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/request-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Request Files",
+      "anchor_id": "request-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files",
+      "section_text_parts": [
+        "You can define files to be uploaded by the client using File ."
+      ],
+      "section_text": "You can define files to be uploaded by the client using File .",
+      "section_inline_code": [
+        "File"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/request-files::section-0002",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Import File",
+          "anchor_id": "import-file",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file",
+          "section_text_parts": [
+            "Import File and UploadFile from fastapi :"
+          ],
+          "section_text": "Import File and UploadFile from fastapi :",
+          "section_inline_code": [
+            "File",
+            "UploadFile",
+            "fastapi"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+              "highlight_lines": [
+                3
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[3] *}",
+              "section_id": "tutorial/request-files::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-files::section-0003",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Define File Parameters",
+          "anchor_id": "define-file-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+          "section_text_parts": [
+            "Create file parameters the same way you would for Body or Form :",
+            "The files will be uploaded as \"form data\".",
+            "If you declare the type of your path operation function parameter as bytes , FastAPI will read the file for you and you will receive the contents as bytes .",
+            "Keep in mind that this means that the whole contents will be stored in memory. This will work well for small files.",
+            "But there are several cases in which you might benefit from using UploadFile ."
+          ],
+          "section_text": "Create file parameters the same way you would for Body or Form :\n\nThe files will be uploaded as \"form data\".\n\nIf you declare the type of your path operation function parameter as bytes , FastAPI will read the file for you and you will receive the contents as bytes .\n\nKeep in mind that this means that the whole contents will be stored in memory. This will work well for small files.\n\nBut there are several cases in which you might benefit from using UploadFile .",
+          "section_inline_code": [
+            "File",
+            "Body",
+            "Form",
+            "bytes",
+            "UploadFile"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+              "highlight_lines": [
+                9
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[9] *}",
+              "section_id": "tutorial/request-files::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-files::section-0004",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "File Parameters with UploadFile",
+          "anchor_id": "file-parameters-with-uploadfile",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile",
+          "section_text_parts": [
+            "Define a file parameter with a type of UploadFile :",
+            "Using UploadFile has several advantages over bytes :",
+            "- You don't have to use File() in the default value of the parameter.",
+            "- A file stored in memory up to a maximum size limit, and after passing this limit it will be stored in disk."
+          ],
+          "section_text": "Define a file parameter with a type of UploadFile :\n\nUsing UploadFile has several advantages over bytes :\n\n- You don't have to use File() in the default value of the parameter.\n\n- A file stored in memory up to a maximum size limit, and after passing this limit it will be stored in disk.",
+          "section_inline_code": [
+            "UploadFile",
+            "bytes",
+            "File()"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+              "highlight_lines": [
+                14
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[14] *}",
+              "section_id": "tutorial/request-files::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/request-files::section-0005",
+              "parent_id": "tutorial/request-files::section-0004",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "UploadFile",
+              "anchor_id": "uploadfile",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+              "section_text_parts": [
+                "UploadFile has the following attributes:",
+                "- filename : A str with the original file name that was uploaded (e.g. myimage.jpg ).",
+                "- content_type : A str with the content type (MIME type / media type) (e.g. image/jpeg ).",
+                "- file : A SpooledTemporaryFile (a file-like object). This is the actual Python file object that you can pass directly to other functions or libraries that expect a \"file-like\" object.",
+                "UploadFile has the following async methods. They all call the corresponding file methods underneath (using the internal SpooledTemporaryFile ).",
+                "- write(data) : Writes data ( str or bytes ) to the file.",
+                "- read(size) : Reads size ( int ) bytes/characters of the file.",
+                "- E.g., await myfile.seek(0) would go to the start of the file.",
+                "- This is especially useful if you run await myfile.read() once and then need to read the contents again.",
+                "As all these methods are async methods, you need to \"await\" them.",
+                "For example, inside of an async path operation function you can get the contents with:",
+                "If you are inside of a normal def path operation function , you can access the UploadFile.file directly, for example:"
+              ],
+              "section_text": "UploadFile has the following attributes:\n\n- filename : A str with the original file name that was uploaded (e.g. myimage.jpg ).\n\n- content_type : A str with the content type (MIME type / media type) (e.g. image/jpeg ).\n\n- file : A SpooledTemporaryFile (a file-like object). This is the actual Python file object that you can pass directly to other functions or libraries that expect a \"file-like\" object.\n\nUploadFile has the following async methods. They all call the corresponding file methods underneath (using the internal SpooledTemporaryFile ).\n\n- write(data) : Writes data ( str or bytes ) to the file.\n\n- read(size) : Reads size ( int ) bytes/characters of the file.\n\n- E.g., await myfile.seek(0) would go to the start of the file.\n\n- This is especially useful if you run await myfile.read() once and then need to read the contents again.\n\nAs all these methods are async methods, you need to \"await\" them.\n\nFor example, inside of an async path operation function you can get the contents with:\n\nIf you are inside of a normal def path operation function , you can access the UploadFile.file directly, for example:",
+              "section_inline_code": [
+                "UploadFile",
+                "filename",
+                "str",
+                "myimage.jpg",
+                "content_type",
+                "image/jpeg",
+                "file",
+                "SpooledTemporaryFile",
+                "async",
+                "write(data)",
+                "data",
+                "bytes",
+                "read(size)",
+                "size",
+                "int",
+                "await myfile.seek(0)",
+                "await myfile.read()",
+                "def",
+                "UploadFile.file"
+              ],
+              "section_links": [
+                {
+                  "text": "file-like",
+                  "url": "https://docs.python.org/3/glossary.html#term-file-like-object",
+                  "section_id": "tutorial/request-files::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+                }
+              ],
+              "code_refs": [],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "contents = await myfile.read()",
+                  "section_id": "tutorial/request-files::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+                },
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "contents = myfile.file.read()",
+                  "section_id": "tutorial/request-files::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/request-files::section-0006",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "What is \"Form Data\"",
+          "anchor_id": "what-is-form-data",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+          "section_text_parts": [
+            "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.",
+            "FastAPI will make sure to read that data from the right place instead of JSON."
+          ],
+          "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+          "section_inline_code": [
+            "<form></form>"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-files::section-0007",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Optional File Upload",
+          "anchor_id": "optional-file-upload",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload",
+          "section_text_parts": [
+            "You can make a file optional by using standard type annotations and setting a default value of None :"
+          ],
+          "section_text": "You can make a file optional by using standard type annotations and setting a default value of None :",
+          "section_inline_code": [
+            "None"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial001_02_an_py310.py",
+              "highlight_lines": [
+                9,
+                17
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial001_02_an_py310.py hl[9,17] *}",
+              "section_id": "tutorial/request-files::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-files::section-0008",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "UploadFile with Additional Metadata",
+          "anchor_id": "uploadfile-with-additional-metadata",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata",
+          "section_text_parts": [
+            "You can also use File() with UploadFile , for example, to set additional metadata:"
+          ],
+          "section_text": "You can also use File() with UploadFile , for example, to set additional metadata:",
+          "section_inline_code": [
+            "UploadFile",
+            "File()"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial001_03_an_py310.py",
+              "highlight_lines": [
+                9,
+                15
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial001_03_an_py310.py hl[9,15] *}",
+              "section_id": "tutorial/request-files::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-files::section-0009",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Multiple File Uploads",
+          "anchor_id": "multiple-file-uploads",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads",
+          "section_text_parts": [
+            "It's possible to upload several files at the same time.",
+            "They would be associated to the same \"form field\" sent using \"form data\".",
+            "To use that, declare a list of bytes or UploadFile :",
+            "You will receive, as declared, a list of bytes or UploadFile s."
+          ],
+          "section_text": "It's possible to upload several files at the same time.\n\nThey would be associated to the same \"form field\" sent using \"form data\".\n\nTo use that, declare a list of bytes or UploadFile :\n\nYou will receive, as declared, a list of bytes or UploadFile s.",
+          "section_inline_code": [
+            "bytes",
+            "UploadFile",
+            "list"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_files/tutorial002_an_py310.py",
+              "highlight_lines": [
+                10,
+                15
+              ],
+              "raw": "{* ../../docs_src/request_files/tutorial002_an_py310.py hl[10,15] *}",
+              "section_id": "tutorial/request-files::section-0009",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/request-files::section-0010",
+              "parent_id": "tutorial/request-files::section-0009",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Multiple File Uploads with Additional Metadata",
+              "anchor_id": "multiple-file-uploads-with-additional-metadata",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata",
+              "section_text_parts": [
+                "And the same way as before, you can use File() to set additional parameters, even for UploadFile :"
+              ],
+              "section_text": "And the same way as before, you can use File() to set additional parameters, even for UploadFile :",
+              "section_inline_code": [
+                "File()",
+                "UploadFile"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/request_files/tutorial003_an_py310.py",
+                  "highlight_lines": [
+                    11,
+                    18,
+                    19,
+                    20
+                  ],
+                  "raw": "{* ../../docs_src/request_files/tutorial003_an_py310.py hl[11,18:20] *}",
+                  "section_id": "tutorial/request-files::section-0010",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/request-files::section-0011",
+          "parent_id": "tutorial/request-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#recap",
+          "section_text_parts": [
+            "Use File , bytes , and UploadFile to declare files to be uploaded in the request, sent as form data."
+          ],
+          "section_text": "Use File , bytes , and UploadFile to declare files to be uploaded in the request, sent as form data.",
+          "section_inline_code": [
+            "File",
+            "bytes",
+            "UploadFile"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/request-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Request Files",
+      "anchor_id": "request-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files",
+      "section_text": "You can define files to be uploaded by the client using File .",
+      "section_inline_code": [
+        "File"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0002",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import File",
+      "anchor_id": "import-file",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file",
+      "section_text": "Import File and UploadFile from fastapi :",
+      "section_inline_code": [
+        "File",
+        "UploadFile",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/request-files::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0003",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Define File Parameters",
+      "anchor_id": "define-file-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "section_text": "Create file parameters the same way you would for Body or Form :\n\nThe files will be uploaded as \"form data\".\n\nIf you declare the type of your path operation function parameter as bytes , FastAPI will read the file for you and you will receive the contents as bytes .\n\nKeep in mind that this means that the whole contents will be stored in memory. This will work well for small files.\n\nBut there are several cases in which you might benefit from using UploadFile .",
+      "section_inline_code": [
+        "File",
+        "Body",
+        "Form",
+        "bytes",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/request-files::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0004",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "File Parameters with UploadFile",
+      "anchor_id": "file-parameters-with-uploadfile",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile",
+      "section_text": "Define a file parameter with a type of UploadFile :\n\nUsing UploadFile has several advantages over bytes :\n\n- You don't have to use File() in the default value of the parameter.\n\n- A file stored in memory up to a maximum size limit, and after passing this limit it will be stored in disk.",
+      "section_inline_code": [
+        "UploadFile",
+        "bytes",
+        "File()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            14
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[14] *}",
+          "section_id": "tutorial/request-files::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0005",
+      "parent_id": "tutorial/request-files::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "UploadFile",
+      "anchor_id": "uploadfile",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "section_text": "UploadFile has the following attributes:\n\n- filename : A str with the original file name that was uploaded (e.g. myimage.jpg ).\n\n- content_type : A str with the content type (MIME type / media type) (e.g. image/jpeg ).\n\n- file : A SpooledTemporaryFile (a file-like object). This is the actual Python file object that you can pass directly to other functions or libraries that expect a \"file-like\" object.\n\nUploadFile has the following async methods. They all call the corresponding file methods underneath (using the internal SpooledTemporaryFile ).\n\n- write(data) : Writes data ( str or bytes ) to the file.\n\n- read(size) : Reads size ( int ) bytes/characters of the file.\n\n- E.g., await myfile.seek(0) would go to the start of the file.\n\n- This is especially useful if you run await myfile.read() once and then need to read the contents again.\n\nAs all these methods are async methods, you need to \"await\" them.\n\nFor example, inside of an async path operation function you can get the contents with:\n\nIf you are inside of a normal def path operation function , you can access the UploadFile.file directly, for example:",
+      "section_inline_code": [
+        "UploadFile",
+        "filename",
+        "str",
+        "myimage.jpg",
+        "content_type",
+        "image/jpeg",
+        "file",
+        "SpooledTemporaryFile",
+        "async",
+        "write(data)",
+        "data",
+        "bytes",
+        "read(size)",
+        "size",
+        "int",
+        "await myfile.seek(0)",
+        "await myfile.read()",
+        "def",
+        "UploadFile.file"
+      ],
+      "section_links": [
+        {
+          "text": "file-like",
+          "url": "https://docs.python.org/3/glossary.html#term-file-like-object",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "contents = await myfile.read()",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "contents = myfile.file.read()",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/request-files::section-0006",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "What is \"Form Data\"",
+      "anchor_id": "what-is-form-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+      "section_inline_code": [
+        "<form></form>"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0007",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Optional File Upload",
+      "anchor_id": "optional-file-upload",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload",
+      "section_text": "You can make a file optional by using standard type annotations and setting a default value of None :",
+      "section_inline_code": [
+        "None"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_02_an_py310.py",
+          "highlight_lines": [
+            9,
+            17
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_02_an_py310.py hl[9,17] *}",
+          "section_id": "tutorial/request-files::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0008",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "UploadFile with Additional Metadata",
+      "anchor_id": "uploadfile-with-additional-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata",
+      "section_text": "You can also use File() with UploadFile , for example, to set additional metadata:",
+      "section_inline_code": [
+        "UploadFile",
+        "File()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_03_an_py310.py",
+          "highlight_lines": [
+            9,
+            15
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_03_an_py310.py hl[9,15] *}",
+          "section_id": "tutorial/request-files::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0009",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Multiple File Uploads",
+      "anchor_id": "multiple-file-uploads",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads",
+      "section_text": "It's possible to upload several files at the same time.\n\nThey would be associated to the same \"form field\" sent using \"form data\".\n\nTo use that, declare a list of bytes or UploadFile :\n\nYou will receive, as declared, a list of bytes or UploadFile s.",
+      "section_inline_code": [
+        "bytes",
+        "UploadFile",
+        "list"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial002_an_py310.py",
+          "highlight_lines": [
+            10,
+            15
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial002_an_py310.py hl[10,15] *}",
+          "section_id": "tutorial/request-files::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0010",
+      "parent_id": "tutorial/request-files::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Multiple File Uploads with Additional Metadata",
+      "anchor_id": "multiple-file-uploads-with-additional-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata",
+      "section_text": "And the same way as before, you can use File() to set additional parameters, even for UploadFile :",
+      "section_inline_code": [
+        "File()",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial003_an_py310.py",
+          "highlight_lines": [
+            11,
+            18,
+            19,
+            20
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial003_an_py310.py hl[11,18:20] *}",
+          "section_id": "tutorial/request-files::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0011",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#recap",
+      "section_text": "Use File , bytes , and UploadFile to declare files to be uploaded in the request, sent as form data.",
+      "section_inline_code": [
+        "File",
+        "bytes",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/request-files::section-0001": {
+      "node_id": "tutorial/request-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Request Files",
+      "anchor_id": "request-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files",
+      "section_text": "You can define files to be uploaded by the client using File .",
+      "section_inline_code": [
+        "File"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0002": {
+      "node_id": "tutorial/request-files::section-0002",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import File",
+      "anchor_id": "import-file",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file",
+      "section_text": "Import File and UploadFile from fastapi :",
+      "section_inline_code": [
+        "File",
+        "UploadFile",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/request-files::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#import-file"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0003": {
+      "node_id": "tutorial/request-files::section-0003",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Define File Parameters",
+      "anchor_id": "define-file-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "section_text": "Create file parameters the same way you would for Body or Form :\n\nThe files will be uploaded as \"form data\".\n\nIf you declare the type of your path operation function parameter as bytes , FastAPI will read the file for you and you will receive the contents as bytes .\n\nKeep in mind that this means that the whole contents will be stored in memory. This will work well for small files.\n\nBut there are several cases in which you might benefit from using UploadFile .",
+      "section_inline_code": [
+        "File",
+        "Body",
+        "Form",
+        "bytes",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/request-files::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0004": {
+      "node_id": "tutorial/request-files::section-0004",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "File Parameters with UploadFile",
+      "anchor_id": "file-parameters-with-uploadfile",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile",
+      "section_text": "Define a file parameter with a type of UploadFile :\n\nUsing UploadFile has several advantages over bytes :\n\n- You don't have to use File() in the default value of the parameter.\n\n- A file stored in memory up to a maximum size limit, and after passing this limit it will be stored in disk.",
+      "section_inline_code": [
+        "UploadFile",
+        "bytes",
+        "File()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_an_py310.py",
+          "highlight_lines": [
+            14
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_an_py310.py hl[14] *}",
+          "section_id": "tutorial/request-files::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#file-parameters-with-uploadfile"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0005": {
+      "node_id": "tutorial/request-files::section-0005",
+      "parent_id": "tutorial/request-files::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "UploadFile",
+      "anchor_id": "uploadfile",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "section_text": "UploadFile has the following attributes:\n\n- filename : A str with the original file name that was uploaded (e.g. myimage.jpg ).\n\n- content_type : A str with the content type (MIME type / media type) (e.g. image/jpeg ).\n\n- file : A SpooledTemporaryFile (a file-like object). This is the actual Python file object that you can pass directly to other functions or libraries that expect a \"file-like\" object.\n\nUploadFile has the following async methods. They all call the corresponding file methods underneath (using the internal SpooledTemporaryFile ).\n\n- write(data) : Writes data ( str or bytes ) to the file.\n\n- read(size) : Reads size ( int ) bytes/characters of the file.\n\n- E.g., await myfile.seek(0) would go to the start of the file.\n\n- This is especially useful if you run await myfile.read() once and then need to read the contents again.\n\nAs all these methods are async methods, you need to \"await\" them.\n\nFor example, inside of an async path operation function you can get the contents with:\n\nIf you are inside of a normal def path operation function , you can access the UploadFile.file directly, for example:",
+      "section_inline_code": [
+        "UploadFile",
+        "filename",
+        "str",
+        "myimage.jpg",
+        "content_type",
+        "image/jpeg",
+        "file",
+        "SpooledTemporaryFile",
+        "async",
+        "write(data)",
+        "data",
+        "bytes",
+        "read(size)",
+        "size",
+        "int",
+        "await myfile.seek(0)",
+        "await myfile.read()",
+        "def",
+        "UploadFile.file"
+      ],
+      "section_links": [
+        {
+          "text": "file-like",
+          "url": "https://docs.python.org/3/glossary.html#term-file-like-object",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "contents = await myfile.read()",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "contents = myfile.file.read()",
+          "section_id": "tutorial/request-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile"
+        }
+      ]
+    },
+    "tutorial/request-files::section-0006": {
+      "node_id": "tutorial/request-files::section-0006",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "What is \"Form Data\"",
+      "anchor_id": "what-is-form-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+      "section_inline_code": [
+        "<form></form>"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0007": {
+      "node_id": "tutorial/request-files::section-0007",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Optional File Upload",
+      "anchor_id": "optional-file-upload",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload",
+      "section_text": "You can make a file optional by using standard type annotations and setting a default value of None :",
+      "section_inline_code": [
+        "None"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_02_an_py310.py",
+          "highlight_lines": [
+            9,
+            17
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_02_an_py310.py hl[9,17] *}",
+          "section_id": "tutorial/request-files::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#optional-file-upload"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0008": {
+      "node_id": "tutorial/request-files::section-0008",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "UploadFile with Additional Metadata",
+      "anchor_id": "uploadfile-with-additional-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata",
+      "section_text": "You can also use File() with UploadFile , for example, to set additional metadata:",
+      "section_inline_code": [
+        "UploadFile",
+        "File()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial001_03_an_py310.py",
+          "highlight_lines": [
+            9,
+            15
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial001_03_an_py310.py hl[9,15] *}",
+          "section_id": "tutorial/request-files::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile-with-additional-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0009": {
+      "node_id": "tutorial/request-files::section-0009",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Multiple File Uploads",
+      "anchor_id": "multiple-file-uploads",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads",
+      "section_text": "It's possible to upload several files at the same time.\n\nThey would be associated to the same \"form field\" sent using \"form data\".\n\nTo use that, declare a list of bytes or UploadFile :\n\nYou will receive, as declared, a list of bytes or UploadFile s.",
+      "section_inline_code": [
+        "bytes",
+        "UploadFile",
+        "list"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial002_an_py310.py",
+          "highlight_lines": [
+            10,
+            15
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial002_an_py310.py hl[10,15] *}",
+          "section_id": "tutorial/request-files::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0010": {
+      "node_id": "tutorial/request-files::section-0010",
+      "parent_id": "tutorial/request-files::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Multiple File Uploads with Additional Metadata",
+      "anchor_id": "multiple-file-uploads-with-additional-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata",
+      "section_text": "And the same way as before, you can use File() to set additional parameters, even for UploadFile :",
+      "section_inline_code": [
+        "File()",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_files/tutorial003_an_py310.py",
+          "highlight_lines": [
+            11,
+            18,
+            19,
+            20
+          ],
+          "raw": "{* ../../docs_src/request_files/tutorial003_an_py310.py hl[11,18:20] *}",
+          "section_id": "tutorial/request-files::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads-with-additional-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0011": {
+      "node_id": "tutorial/request-files::section-0011",
+      "parent_id": "tutorial/request-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#recap",
+      "section_text": "Use File , bytes , and UploadFile to declare files to be uploaded in the request, sent as form data.",
+      "section_inline_code": [
+        "File",
+        "bytes",
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/request-files::section-0001::admonition-0001",
+      "parent_id": "tutorial/request-files::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To receive uploaded files, first install python-multipart .",
+        "Make sure you create a virtual environment , activate it, and then install it, for example:",
+        "This is because uploaded files are sent as \"form data\"."
+      ],
+      "section_text": "To receive uploaded files, first install python-multipart .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:\n\nThis is because uploaded files are sent as \"form data\".",
+      "section_inline_code": [
+        "python-multipart"
+      ],
+      "section_links": [
+        {
+          "text": "virtual environment",
+          "url": "../virtual-environments.md",
+          "section_id": "tutorial/request-files::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ pip install python-multipart",
+          "section_id": "tutorial/request-files::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/request-files::section-0003::admonition-0002",
+      "parent_id": "tutorial/request-files::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "File is a class that inherits directly from Form .",
+        "But remember that when you import Query , Path , File and others from fastapi , those are actually functions that return special classes."
+      ],
+      "section_text": "File is a class that inherits directly from Form .\n\nBut remember that when you import Query , Path , File and others from fastapi , those are actually functions that return special classes.",
+      "section_inline_code": [
+        "File",
+        "Form",
+        "Query",
+        "Path",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0003::admonition-0003",
+      "parent_id": "tutorial/request-files::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare File bodies, you need to use File , because otherwise the parameters would be interpreted as query parameters or body (JSON) parameters."
+      ],
+      "section_text": "To declare File bodies, you need to use File , because otherwise the parameters would be interpreted as query parameters or body (JSON) parameters.",
+      "section_inline_code": [
+        "File"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0005::admonition-0004",
+      "parent_id": "tutorial/request-files::section-0005",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "async Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "When you use the async methods, FastAPI runs the file methods in a threadpool and awaits for them."
+      ],
+      "section_text": "When you use the async methods, FastAPI runs the file methods in a threadpool and awaits for them.",
+      "section_inline_code": [
+        "async"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0005::admonition-0005",
+      "parent_id": "tutorial/request-files::section-0005",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Starlette Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI 's UploadFile inherits directly from Starlette 's UploadFile , but adds some necessary parts to make it compatible with Pydantic and the other parts of FastAPI."
+      ],
+      "section_text": "FastAPI 's UploadFile inherits directly from Starlette 's UploadFile , but adds some necessary parts to make it compatible with Pydantic and the other parts of FastAPI.",
+      "section_inline_code": [
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0006::admonition-0006",
+      "parent_id": "tutorial/request-files::section-0006",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded when it doesn't include files.",
+        "But when the form includes files, it is encoded as multipart/form-data . If you use File , FastAPI will know it has to get the files from the correct part of the body.",
+        "If you want to read more about these encodings and form fields, head to the MDN web docs for POST ."
+      ],
+      "section_text": "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded when it doesn't include files.\n\nBut when the form includes files, it is encoded as multipart/form-data . If you use File , FastAPI will know it has to get the files from the correct part of the body.\n\nIf you want to read more about these encodings and form fields, head to the MDN web docs for POST .",
+      "section_inline_code": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "File",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MDN web docs for",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+          "section_id": "tutorial/request-files::section-0006::admonition-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0006::admonition-0007",
+      "parent_id": "tutorial/request-files::section-0006",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .",
+        "This is not a limitation of FastAPI , it's part of the HTTP protocol."
+      ],
+      "section_text": "You can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol.",
+      "section_inline_code": [
+        "File",
+        "Form",
+        "Body",
+        "multipart/form-data",
+        "application/json"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-files::section-0009::admonition-0008",
+      "parent_id": "tutorial/request-files::section-0009",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.responses import HTMLResponse .",
+        "FastAPI provides the same starlette.responses as fastapi.responses just as a convenience for you, the developer. But most of the available responses come directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.responses import HTMLResponse .\n\nFastAPI provides the same starlette.responses as fastapi.responses just as a convenience for you, the developer. But most of the available responses come directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.responses import HTMLResponse",
+        "starlette.responses",
+        "fastapi.responses"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/request-files::section-0001::admonition-0001": {
+      "node_id": "tutorial/request-files::section-0001::admonition-0001",
+      "parent_id": "tutorial/request-files::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To receive uploaded files, first install python-multipart .",
+        "Make sure you create a virtual environment , activate it, and then install it, for example:",
+        "This is because uploaded files are sent as \"form data\"."
+      ],
+      "section_text": "To receive uploaded files, first install python-multipart .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:\n\nThis is because uploaded files are sent as \"form data\".",
+      "section_inline_code": [
+        "python-multipart"
+      ],
+      "section_links": [
+        {
+          "text": "virtual environment",
+          "url": "../virtual-environments.md",
+          "section_id": "tutorial/request-files::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ pip install python-multipart",
+          "section_id": "tutorial/request-files::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#request-files"
+        }
+      ]
+    },
+    "tutorial/request-files::section-0003::admonition-0002": {
+      "node_id": "tutorial/request-files::section-0003::admonition-0002",
+      "parent_id": "tutorial/request-files::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "File is a class that inherits directly from Form .",
+        "But remember that when you import Query , Path , File and others from fastapi , those are actually functions that return special classes."
+      ],
+      "section_text": "File is a class that inherits directly from Form .\n\nBut remember that when you import Query , Path , File and others from fastapi , those are actually functions that return special classes.",
+      "section_inline_code": [
+        "File",
+        "Form",
+        "Query",
+        "Path",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0003::admonition-0003": {
+      "node_id": "tutorial/request-files::section-0003::admonition-0003",
+      "parent_id": "tutorial/request-files::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#define-file-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare File bodies, you need to use File , because otherwise the parameters would be interpreted as query parameters or body (JSON) parameters."
+      ],
+      "section_text": "To declare File bodies, you need to use File , because otherwise the parameters would be interpreted as query parameters or body (JSON) parameters.",
+      "section_inline_code": [
+        "File"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0005::admonition-0004": {
+      "node_id": "tutorial/request-files::section-0005::admonition-0004",
+      "parent_id": "tutorial/request-files::section-0005",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "async Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "When you use the async methods, FastAPI runs the file methods in a threadpool and awaits for them."
+      ],
+      "section_text": "When you use the async methods, FastAPI runs the file methods in a threadpool and awaits for them.",
+      "section_inline_code": [
+        "async"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0005::admonition-0005": {
+      "node_id": "tutorial/request-files::section-0005::admonition-0005",
+      "parent_id": "tutorial/request-files::section-0005",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Starlette Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#uploadfile",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI 's UploadFile inherits directly from Starlette 's UploadFile , but adds some necessary parts to make it compatible with Pydantic and the other parts of FastAPI."
+      ],
+      "section_text": "FastAPI 's UploadFile inherits directly from Starlette 's UploadFile , but adds some necessary parts to make it compatible with Pydantic and the other parts of FastAPI.",
+      "section_inline_code": [
+        "UploadFile"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0006::admonition-0006": {
+      "node_id": "tutorial/request-files::section-0006::admonition-0006",
+      "parent_id": "tutorial/request-files::section-0006",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded when it doesn't include files.",
+        "But when the form includes files, it is encoded as multipart/form-data . If you use File , FastAPI will know it has to get the files from the correct part of the body.",
+        "If you want to read more about these encodings and form fields, head to the MDN web docs for POST ."
+      ],
+      "section_text": "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded when it doesn't include files.\n\nBut when the form includes files, it is encoded as multipart/form-data . If you use File , FastAPI will know it has to get the files from the correct part of the body.\n\nIf you want to read more about these encodings and form fields, head to the MDN web docs for POST .",
+      "section_inline_code": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "File",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MDN web docs for",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+          "section_id": "tutorial/request-files::section-0006::admonition-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0006::admonition-0007": {
+      "node_id": "tutorial/request-files::section-0006::admonition-0007",
+      "parent_id": "tutorial/request-files::section-0006",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#what-is-form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .",
+        "This is not a limitation of FastAPI , it's part of the HTTP protocol."
+      ],
+      "section_text": "You can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol.",
+      "section_inline_code": [
+        "File",
+        "Form",
+        "Body",
+        "multipart/form-data",
+        "application/json"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-files::section-0009::admonition-0008": {
+      "node_id": "tutorial/request-files::section-0009::admonition-0008",
+      "parent_id": "tutorial/request-files::section-0009",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-files/#multiple-file-uploads",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.responses import HTMLResponse .",
+        "FastAPI provides the same starlette.responses as fastapi.responses just as a convenience for you, the developer. But most of the available responses come directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.responses import HTMLResponse .\n\nFastAPI provides the same starlette.responses as fastapi.responses just as a convenience for you, the developer. But most of the available responses come directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.responses import HTMLResponse",
+        "starlette.responses",
+        "fastapi.responses"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/request-files::section-0001",
+      "seconds": 0.00010008000026573427,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/request-files::section-0002",
+      "seconds": 2.6726998839876615e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-files::section-0003",
+      "seconds": 0.00010044100054074079,
+      "paragraphs": 8,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/request-files::section-0004",
+      "seconds": 0.00017421799930161797,
+      "paragraphs": 2,
+      "list_items": 2,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-files::section-0005",
+      "seconds": 0.0002904009998019319,
+      "paragraphs": 7,
+      "list_items": 7,
+      "code_blocks": 2,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/request-files::section-0006",
+      "seconds": 0.00011195300066901837,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/request-files::section-0007",
+      "seconds": 2.025800131377764e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-files::section-0008",
+      "seconds": 1.8422000721329823e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-files::section-0009",
+      "seconds": 6.475800000771414e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/request-files::section-0010",
+      "seconds": 2.034899989666883e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-files::section-0011",
+      "seconds": 3.0470000638160855e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

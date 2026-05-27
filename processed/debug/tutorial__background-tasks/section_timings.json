@@ -1,0 +1,82 @@
+[
+  {
+    "node_id": "tutorial/background-tasks::section-0001",
+    "seconds": 9.805300032894593e-05,
+    "paragraphs": 3,
+    "list_items": 2,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0002",
+    "seconds": 4.595900099957362e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0003",
+    "seconds": 4.885700036538765e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0004",
+    "seconds": 6.99560005159583e-05,
+    "paragraphs": 2,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0005",
+    "seconds": 6.417800068447832e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0006",
+    "seconds": 6.94089994794922e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0007",
+    "seconds": 3.049400038435124e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/background-tasks::section-0008",
+    "seconds": 2.0882998796878383e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "tutorial/body-multiple-params::section-0002::admonition-0001": {
+    "node_id": "tutorial/body-multiple-params::section-0002::admonition-0001",
+    "parent_id": "tutorial/body-multiple-params::section-0002",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-multiple-params/#mix-path-query-and-body-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice that, in this case, the item that would be taken from the body is optional. As it has a None default value."
+    ],
+    "section_text": "Notice that, in this case, the item that would be taken from the body is optional. As it has a None default value.",
+    "section_inline_code": [
+      "item",
+      "None"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-multiple-params::section-0003::admonition-0002": {
+    "node_id": "tutorial/body-multiple-params::section-0003::admonition-0002",
+    "parent_id": "tutorial/body-multiple-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-multiple-params/#multiple-body-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice that even though the item was declared the same way as before, it is now expected to be inside of the body with a key item ."
+    ],
+    "section_text": "Notice that even though the item was declared the same way as before, it is now expected to be inside of the body with a key item .",
+    "section_inline_code": [
+      "item"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-multiple-params::section-0005::admonition-0003": {
+    "node_id": "tutorial/body-multiple-params::section-0005::admonition-0003",
+    "parent_id": "tutorial/body-multiple-params::section-0005",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-multiple-params/#multiple-body-params-and-query",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Body also has all the same extra validation and metadata parameters as Query , Path and others you will see later."
+    ],
+    "section_text": "Body also has all the same extra validation and metadata parameters as Query , Path and others you will see later.",
+    "section_inline_code": [
+      "Body",
+      "Query",
+      "Path"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

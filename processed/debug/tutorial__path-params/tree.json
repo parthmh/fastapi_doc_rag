@@ -1,0 +1,2217 @@
+{
+  "page": {
+    "page_id": "tutorial/path-params",
+    "page_uid": "2bd1f7c37c49f54d04f1af3d816dde61a608e566",
+    "page_title": "Path Parameters",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+    "source_file": "tutorial/path-params.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/path-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters",
+      "anchor_id": "path-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters",
+      "section_text_parts": [
+        "You can declare path \"parameters\" or \"variables\" with the same syntax used by Python format strings:",
+        "The value of the path parameter item_id will be passed to your function as the argument item_id .",
+        "So, if you run this example and go to http://127.0.0.1:8000/items/foo , you will see a response of:"
+      ],
+      "section_text": "You can declare path \"parameters\" or \"variables\" with the same syntax used by Python format strings:\n\nThe value of the path parameter item_id will be passed to your function as the argument item_id .\n\nSo, if you run this example and go to http://127.0.0.1:8000/items/foo , you will see a response of:",
+      "section_inline_code": [
+        "item_id"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/foo",
+          "url": "http://127.0.0.1:8000/items/foo",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial001_py310.py",
+          "highlight_lines": [
+            6,
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial001_py310.py hl[6:7] *}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"item_id\":\"foo\"}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "children": [
+        {
+          "node_id": "tutorial/path-params::section-0002",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Path parameters with types",
+          "anchor_id": "path-parameters-with-types",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types",
+          "section_text_parts": [
+            "You can declare the type of a path parameter in the function, using standard Python type annotations:",
+            "In this case, item_id is declared to be an int ."
+          ],
+          "section_text": "You can declare the type of a path parameter in the function, using standard Python type annotations:\n\nIn this case, item_id is declared to be an int .",
+          "section_inline_code": [
+            "item_id",
+            "int"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params/tutorial002_py310.py",
+              "highlight_lines": [
+                7
+              ],
+              "raw": "{* ../../docs_src/path_params/tutorial002_py310.py hl[7] *}",
+              "section_id": "tutorial/path-params::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0003",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Data conversion",
+          "anchor_id": "data-conversion",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion",
+          "section_text_parts": [
+            "If you run this example and open your browser at http://127.0.0.1:8000/items/3 , you will see a response of:"
+          ],
+          "section_text": "If you run this example and open your browser at http://127.0.0.1:8000/items/3 , you will see a response of:",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/items/3",
+              "url": "http://127.0.0.1:8000/items/3",
+              "section_id": "tutorial/path-params::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\"item_id\":3}",
+              "section_id": "tutorial/path-params::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0004",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Data validation",
+          "anchor_id": "data-validation",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation",
+          "section_text_parts": [
+            "But if you go to the browser at http://127.0.0.1:8000/items/foo , you will see a nice HTTP error of:",
+            "because the path parameter item_id had a value of \"foo\" , which is not an int .",
+            "The same error would appear if you provided a float instead of an int , as in: http://127.0.0.1:8000/items/4.2"
+          ],
+          "section_text": "But if you go to the browser at http://127.0.0.1:8000/items/foo , you will see a nice HTTP error of:\n\nbecause the path parameter item_id had a value of \"foo\" , which is not an int .\n\nThe same error would appear if you provided a float instead of an int , as in: http://127.0.0.1:8000/items/4.2",
+          "section_inline_code": [
+            "item_id",
+            "\"foo\"",
+            "int",
+            "float"
+          ],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/items/foo",
+              "url": "http://127.0.0.1:8000/items/foo",
+              "section_id": "tutorial/path-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+            },
+            {
+              "text": "http://127.0.0.1:8000/items/4.2",
+              "url": "http://127.0.0.1:8000/items/4.2",
+              "section_id": "tutorial/path-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\n  \"detail\": [\n    {\n      \"type\": \"int_parsing\",\n      \"loc\": [\n        \"path\",\n        \"item_id\"\n      ],\n      \"msg\": \"Input should be a valid integer, unable to parse string as an integer\",\n      \"input\": \"foo\"\n    }\n  ]\n}",
+              "section_id": "tutorial/path-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0005",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Documentation",
+          "anchor_id": "documentation",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation",
+          "section_text_parts": [
+            "And when you open your browser at http://127.0.0.1:8000/docs , you will see an automatic, interactive, API documentation like:"
+          ],
+          "section_text": "And when you open your browser at http://127.0.0.1:8000/docs , you will see an automatic, interactive, API documentation like:",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/docs",
+              "url": "http://127.0.0.1:8000/docs",
+              "section_id": "tutorial/path-params::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0006",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Standards-based benefits, alternative documentation",
+          "anchor_id": "standards-based-benefits-alternative-documentation",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation",
+          "section_text_parts": [
+            "And because the generated schema is from the OpenAPI standard, there are many compatible tools.",
+            "Because of this, FastAPI itself provides an alternative API documentation (using ReDoc), which you can access at http://127.0.0.1:8000/redoc :",
+            "The same way, there are many compatible tools. Including code generation tools for many languages."
+          ],
+          "section_text": "And because the generated schema is from the OpenAPI standard, there are many compatible tools.\n\nBecause of this, FastAPI itself provides an alternative API documentation (using ReDoc), which you can access at http://127.0.0.1:8000/redoc :\n\nThe same way, there are many compatible tools. Including code generation tools for many languages.",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "OpenAPI",
+              "url": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.1.0.md",
+              "section_id": "tutorial/path-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+            },
+            {
+              "text": "http://127.0.0.1:8000/redoc",
+              "url": "http://127.0.0.1:8000/redoc",
+              "section_id": "tutorial/path-params::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0007",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Pydantic",
+          "anchor_id": "pydantic",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic",
+          "section_text_parts": [
+            "All the data validation is performed under the hood by Pydantic , so you get all the benefits from it. And you know you are in good hands.",
+            "You can use the same type declarations with str , float , bool and many other complex data types.",
+            "Several of these are explored in the next chapters of the tutorial."
+          ],
+          "section_text": "All the data validation is performed under the hood by Pydantic , so you get all the benefits from it. And you know you are in good hands.\n\nYou can use the same type declarations with str , float , bool and many other complex data types.\n\nSeveral of these are explored in the next chapters of the tutorial.",
+          "section_inline_code": [
+            "str",
+            "float",
+            "bool"
+          ],
+          "section_links": [
+            {
+              "text": "Pydantic",
+              "url": "https://docs.pydantic.dev/",
+              "section_id": "tutorial/path-params::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0008",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Order matters",
+          "anchor_id": "order-matters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters",
+          "section_text_parts": [
+            "When creating path operations , you can find situations where you have a fixed path.",
+            "Like /users/me , let's say that it's to get data about the current user.",
+            "And then you can also have a path /users/{user_id} to get data about a specific user by some user ID.",
+            "Because path operations are evaluated in order, you need to make sure that the path for /users/me is declared before the one for /users/{user_id} :",
+            "Otherwise, the path for /users/{user_id} would match also for /users/me , \"thinking\" that it's receiving a parameter user_id with a value of \"me\" .",
+            "Similarly, you cannot redefine a path operation:",
+            "The first one will always be used since the path matches first."
+          ],
+          "section_text": "When creating path operations , you can find situations where you have a fixed path.\n\nLike /users/me , let's say that it's to get data about the current user.\n\nAnd then you can also have a path /users/{user_id} to get data about a specific user by some user ID.\n\nBecause path operations are evaluated in order, you need to make sure that the path for /users/me is declared before the one for /users/{user_id} :\n\nOtherwise, the path for /users/{user_id} would match also for /users/me , \"thinking\" that it's receiving a parameter user_id with a value of \"me\" .\n\nSimilarly, you cannot redefine a path operation:\n\nThe first one will always be used since the path matches first.",
+          "section_inline_code": [
+            "/users/me",
+            "/users/{user_id}",
+            "user_id",
+            "\"me\""
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params/tutorial003_py310.py",
+              "highlight_lines": [
+                6,
+                11
+              ],
+              "raw": "{* ../../docs_src/path_params/tutorial003_py310.py hl[6,11] *}",
+              "section_id": "tutorial/path-params::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+            },
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params/tutorial003b_py310.py",
+              "highlight_lines": [
+                6,
+                11
+              ],
+              "raw": "{* ../../docs_src/path_params/tutorial003b_py310.py hl[6,11] *}",
+              "section_id": "tutorial/path-params::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params::section-0009",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Predefined values",
+          "anchor_id": "predefined-values",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#predefined-values",
+          "section_text_parts": [
+            "If you have a path operation that receives a path parameter , but you want the possible valid path parameter values to be predefined, you can use a standard Python Enum ."
+          ],
+          "section_text": "If you have a path operation that receives a path parameter , but you want the possible valid path parameter values to be predefined, you can use a standard Python Enum .",
+          "section_inline_code": [
+            "Enum"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/path-params::section-0010",
+              "parent_id": "tutorial/path-params::section-0009",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Create an Enum class",
+              "anchor_id": "create-an-enum-class",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class",
+              "section_text_parts": [
+                "Import Enum and create a sub-class that inherits from str and from Enum .",
+                "By inheriting from str the API docs will be able to know that the values must be of type string and will be able to render correctly.",
+                "Then create class attributes with fixed values, which will be the available valid values:"
+              ],
+              "section_text": "Import Enum and create a sub-class that inherits from str and from Enum .\n\nBy inheriting from str the API docs will be able to know that the values must be of type string and will be able to render correctly.\n\nThen create class attributes with fixed values, which will be the available valid values:",
+              "section_inline_code": [
+                "Enum",
+                "str",
+                "string"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/path_params/tutorial005_py310.py",
+                  "highlight_lines": [
+                    1,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[1,6:9] *}",
+                  "section_id": "tutorial/path-params::section-0010",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/path-params::section-0011",
+              "parent_id": "tutorial/path-params::section-0009",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Declare a path parameter",
+              "anchor_id": "declare-a-path-parameter",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter",
+              "section_text_parts": [
+                "Then create a path parameter with a type annotation using the enum class you created ( ModelName ):"
+              ],
+              "section_text": "Then create a path parameter with a type annotation using the enum class you created ( ModelName ):",
+              "section_inline_code": [
+                "ModelName"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/path_params/tutorial005_py310.py",
+                  "highlight_lines": [
+                    16
+                  ],
+                  "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[16] *}",
+                  "section_id": "tutorial/path-params::section-0011",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/path-params::section-0012",
+              "parent_id": "tutorial/path-params::section-0009",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Check the docs",
+              "anchor_id": "check-the-docs",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#check-the-docs",
+              "section_text_parts": [
+                "Because the available values for the path parameter are predefined, the interactive docs can show them nicely:"
+              ],
+              "section_text": "Because the available values for the path parameter are predefined, the interactive docs can show them nicely:",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/path-params::section-0013",
+              "parent_id": "tutorial/path-params::section-0009",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Working with Python enumerations",
+              "anchor_id": "working-with-python-enumerations",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#working-with-python-enumerations",
+              "section_text_parts": [
+                "The value of the path parameter will be an enumeration member ."
+              ],
+              "section_text": "The value of the path parameter will be an enumeration member .",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": [
+                {
+                  "node_id": "tutorial/path-params::section-0014",
+                  "parent_id": "tutorial/path-params::section-0013",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Compare enumeration members",
+                  "anchor_id": "compare-enumeration-members",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members",
+                  "section_text_parts": [
+                    "You can compare it with the enumeration member in your created enum ModelName :"
+                  ],
+                  "section_text": "You can compare it with the enumeration member in your created enum ModelName :",
+                  "section_inline_code": [
+                    "ModelName"
+                  ],
+                  "section_links": [],
+                  "code_refs": [
+                    {
+                      "type": "code_ref",
+                      "path": "../../docs_src/path_params/tutorial005_py310.py",
+                      "highlight_lines": [
+                        17
+                      ],
+                      "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[17] *}",
+                      "section_id": "tutorial/path-params::section-0014",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members"
+                    }
+                  ],
+                  "code_blocks": [],
+                  "children": []
+                },
+                {
+                  "node_id": "tutorial/path-params::section-0015",
+                  "parent_id": "tutorial/path-params::section-0013",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Get the enumeration value",
+                  "anchor_id": "get-the-enumeration-value",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value",
+                  "section_text_parts": [
+                    "You can get the actual value (a str in this case) using model_name.value , or in general, your_enum_member.value :"
+                  ],
+                  "section_text": "You can get the actual value (a str in this case) using model_name.value , or in general, your_enum_member.value :",
+                  "section_inline_code": [
+                    "str",
+                    "model_name.value",
+                    "your_enum_member.value"
+                  ],
+                  "section_links": [],
+                  "code_refs": [
+                    {
+                      "type": "code_ref",
+                      "path": "../../docs_src/path_params/tutorial005_py310.py",
+                      "highlight_lines": [
+                        20
+                      ],
+                      "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[20] *}",
+                      "section_id": "tutorial/path-params::section-0015",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value"
+                    }
+                  ],
+                  "code_blocks": [],
+                  "children": []
+                },
+                {
+                  "node_id": "tutorial/path-params::section-0016",
+                  "parent_id": "tutorial/path-params::section-0013",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "Return enumeration members",
+                  "anchor_id": "return-enumeration-members",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members",
+                  "section_text_parts": [
+                    "You can return enum members from your path operation , even nested in a JSON body (e.g. a dict ).",
+                    "They will be converted to their corresponding values (strings in this case) before returning them to the client:",
+                    "In your client you will get a JSON response like:"
+                  ],
+                  "section_text": "You can return enum members from your path operation , even nested in a JSON body (e.g. a dict ).\n\nThey will be converted to their corresponding values (strings in this case) before returning them to the client:\n\nIn your client you will get a JSON response like:",
+                  "section_inline_code": [
+                    "dict"
+                  ],
+                  "section_links": [],
+                  "code_refs": [
+                    {
+                      "type": "code_ref",
+                      "path": "../../docs_src/path_params/tutorial005_py310.py",
+                      "highlight_lines": [
+                        18,
+                        21,
+                        23
+                      ],
+                      "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[18,21,23] *}",
+                      "section_id": "tutorial/path-params::section-0016",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+                    }
+                  ],
+                  "code_blocks": [
+                    {
+                      "type": "code_block",
+                      "language": "JSON",
+                      "text": "{\n  \"model_name\": \"alexnet\",\n  \"message\": \"Deep Learning FTW!\"\n}",
+                      "section_id": "tutorial/path-params::section-0016",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/path-params::section-0017",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Path parameters containing paths",
+          "anchor_id": "path-parameters-containing-paths",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-containing-paths",
+          "section_text_parts": [
+            "Let's say you have a path operation with a path /files/{file_path} .",
+            "But you need file_path itself to contain a path , like home/johndoe/myfile.txt .",
+            "So, the URL for that file would be something like: /files/home/johndoe/myfile.txt ."
+          ],
+          "section_text": "Let's say you have a path operation with a path /files/{file_path} .\n\nBut you need file_path itself to contain a path , like home/johndoe/myfile.txt .\n\nSo, the URL for that file would be something like: /files/home/johndoe/myfile.txt .",
+          "section_inline_code": [
+            "/files/{file_path}",
+            "file_path",
+            "home/johndoe/myfile.txt",
+            "/files/home/johndoe/myfile.txt"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/path-params::section-0018",
+              "parent_id": "tutorial/path-params::section-0017",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "OpenAPI support",
+              "anchor_id": "openapi-support",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#openapi-support",
+              "section_text_parts": [
+                "OpenAPI doesn't support a way to declare a path parameter to contain a path inside, as that could lead to scenarios that are difficult to test and define.",
+                "Nevertheless, you can still do it in FastAPI , using one of the internal tools from Starlette.",
+                "And the docs would still work, although not adding any documentation telling that the parameter should contain a path."
+              ],
+              "section_text": "OpenAPI doesn't support a way to declare a path parameter to contain a path inside, as that could lead to scenarios that are difficult to test and define.\n\nNevertheless, you can still do it in FastAPI , using one of the internal tools from Starlette.\n\nAnd the docs would still work, although not adding any documentation telling that the parameter should contain a path.",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/path-params::section-0019",
+              "parent_id": "tutorial/path-params::section-0017",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Path convertor",
+              "anchor_id": "path-convertor",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor",
+              "section_text_parts": [
+                "Using an option directly from Starlette you can declare a path parameter containing a path using a URL like:",
+                "In this case, the name of the parameter is file_path , and the last part, :path , tells it that the parameter should match any path .",
+                "So, you can use it with:"
+              ],
+              "section_text": "Using an option directly from Starlette you can declare a path parameter containing a path using a URL like:\n\nIn this case, the name of the parameter is file_path , and the last part, :path , tells it that the parameter should match any path .\n\nSo, you can use it with:",
+              "section_inline_code": [
+                "file_path",
+                ":path"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/path_params/tutorial004_py310.py",
+                  "highlight_lines": [
+                    6
+                  ],
+                  "raw": "{* ../../docs_src/path_params/tutorial004_py310.py hl[6] *}",
+                  "section_id": "tutorial/path-params::section-0019",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+                }
+              ],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": null,
+                  "text": "/files/{file_path:path}",
+                  "section_id": "tutorial/path-params::section-0019",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/path-params::section-0020",
+          "parent_id": "tutorial/path-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#recap",
+          "section_text_parts": [
+            "With FastAPI , by using short, intuitive and standard Python type declarations, you get:",
+            "- Editor support: error checks, autocompletion, etc.",
+            "- Data \" parsing \"",
+            "- Data validation",
+            "- API annotation and automatic documentation",
+            "And you only have to declare them once.",
+            "That's probably the main visible advantage of FastAPI compared to alternative frameworks (apart from the raw performance)."
+          ],
+          "section_text": "With FastAPI , by using short, intuitive and standard Python type declarations, you get:\n\n- Editor support: error checks, autocompletion, etc.\n\n- Data \" parsing \"\n\n- Data validation\n\n- API annotation and automatic documentation\n\nAnd you only have to declare them once.\n\nThat's probably the main visible advantage of FastAPI compared to alternative frameworks (apart from the raw performance).",
+          "section_inline_code": [],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/path-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters",
+      "anchor_id": "path-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters",
+      "section_text": "You can declare path \"parameters\" or \"variables\" with the same syntax used by Python format strings:\n\nThe value of the path parameter item_id will be passed to your function as the argument item_id .\n\nSo, if you run this example and go to http://127.0.0.1:8000/items/foo , you will see a response of:",
+      "section_inline_code": [
+        "item_id"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/foo",
+          "url": "http://127.0.0.1:8000/items/foo",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial001_py310.py",
+          "highlight_lines": [
+            6,
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial001_py310.py hl[6:7] *}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"item_id\":\"foo\"}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/path-params::section-0002",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Path parameters with types",
+      "anchor_id": "path-parameters-with-types",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types",
+      "section_text": "You can declare the type of a path parameter in the function, using standard Python type annotations:\n\nIn this case, item_id is declared to be an int .",
+      "section_inline_code": [
+        "item_id",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0003",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Data conversion",
+      "anchor_id": "data-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion",
+      "section_text": "If you run this example and open your browser at http://127.0.0.1:8000/items/3 , you will see a response of:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/3",
+          "url": "http://127.0.0.1:8000/items/3",
+          "section_id": "tutorial/path-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"item_id\":3}",
+          "section_id": "tutorial/path-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/path-params::section-0004",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Data validation",
+      "anchor_id": "data-validation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation",
+      "section_text": "But if you go to the browser at http://127.0.0.1:8000/items/foo , you will see a nice HTTP error of:\n\nbecause the path parameter item_id had a value of \"foo\" , which is not an int .\n\nThe same error would appear if you provided a float instead of an int , as in: http://127.0.0.1:8000/items/4.2",
+      "section_inline_code": [
+        "item_id",
+        "\"foo\"",
+        "int",
+        "float"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/foo",
+          "url": "http://127.0.0.1:8000/items/foo",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        },
+        {
+          "text": "http://127.0.0.1:8000/items/4.2",
+          "url": "http://127.0.0.1:8000/items/4.2",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"detail\": [\n    {\n      \"type\": \"int_parsing\",\n      \"loc\": [\n        \"path\",\n        \"item_id\"\n      ],\n      \"msg\": \"Input should be a valid integer, unable to parse string as an integer\",\n      \"input\": \"foo\"\n    }\n  ]\n}",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/path-params::section-0005",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Documentation",
+      "anchor_id": "documentation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation",
+      "section_text": "And when you open your browser at http://127.0.0.1:8000/docs , you will see an automatic, interactive, API documentation like:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/path-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0006",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Standards-based benefits, alternative documentation",
+      "anchor_id": "standards-based-benefits-alternative-documentation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation",
+      "section_text": "And because the generated schema is from the OpenAPI standard, there are many compatible tools.\n\nBecause of this, FastAPI itself provides an alternative API documentation (using ReDoc), which you can access at http://127.0.0.1:8000/redoc :\n\nThe same way, there are many compatible tools. Including code generation tools for many languages.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "OpenAPI",
+          "url": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.1.0.md",
+          "section_id": "tutorial/path-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+        },
+        {
+          "text": "http://127.0.0.1:8000/redoc",
+          "url": "http://127.0.0.1:8000/redoc",
+          "section_id": "tutorial/path-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0007",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Pydantic",
+      "anchor_id": "pydantic",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic",
+      "section_text": "All the data validation is performed under the hood by Pydantic , so you get all the benefits from it. And you know you are in good hands.\n\nYou can use the same type declarations with str , float , bool and many other complex data types.\n\nSeveral of these are explored in the next chapters of the tutorial.",
+      "section_inline_code": [
+        "str",
+        "float",
+        "bool"
+      ],
+      "section_links": [
+        {
+          "text": "Pydantic",
+          "url": "https://docs.pydantic.dev/",
+          "section_id": "tutorial/path-params::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0008",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order matters",
+      "anchor_id": "order-matters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters",
+      "section_text": "When creating path operations , you can find situations where you have a fixed path.\n\nLike /users/me , let's say that it's to get data about the current user.\n\nAnd then you can also have a path /users/{user_id} to get data about a specific user by some user ID.\n\nBecause path operations are evaluated in order, you need to make sure that the path for /users/me is declared before the one for /users/{user_id} :\n\nOtherwise, the path for /users/{user_id} would match also for /users/me , \"thinking\" that it's receiving a parameter user_id with a value of \"me\" .\n\nSimilarly, you cannot redefine a path operation:\n\nThe first one will always be used since the path matches first.",
+      "section_inline_code": [
+        "/users/me",
+        "/users/{user_id}",
+        "user_id",
+        "\"me\""
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial003_py310.py",
+          "highlight_lines": [
+            6,
+            11
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial003_py310.py hl[6,11] *}",
+          "section_id": "tutorial/path-params::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial003b_py310.py",
+          "highlight_lines": [
+            6,
+            11
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial003b_py310.py hl[6,11] *}",
+          "section_id": "tutorial/path-params::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0009",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Predefined values",
+      "anchor_id": "predefined-values",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#predefined-values",
+      "section_text": "If you have a path operation that receives a path parameter , but you want the possible valid path parameter values to be predefined, you can use a standard Python Enum .",
+      "section_inline_code": [
+        "Enum"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0010",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Create an Enum class",
+      "anchor_id": "create-an-enum-class",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class",
+      "section_text": "Import Enum and create a sub-class that inherits from str and from Enum .\n\nBy inheriting from str the API docs will be able to know that the values must be of type string and will be able to render correctly.\n\nThen create class attributes with fixed values, which will be the available valid values:",
+      "section_inline_code": [
+        "Enum",
+        "str",
+        "string"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            1,
+            6,
+            7,
+            8,
+            9
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[1,6:9] *}",
+          "section_id": "tutorial/path-params::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0011",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Declare a path parameter",
+      "anchor_id": "declare-a-path-parameter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter",
+      "section_text": "Then create a path parameter with a type annotation using the enum class you created ( ModelName ):",
+      "section_inline_code": [
+        "ModelName"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            16
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[16] *}",
+          "section_id": "tutorial/path-params::section-0011",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0012",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check the docs",
+      "anchor_id": "check-the-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#check-the-docs",
+      "section_text": "Because the available values for the path parameter are predefined, the interactive docs can show them nicely:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0013",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Working with Python enumerations",
+      "anchor_id": "working-with-python-enumerations",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#working-with-python-enumerations",
+      "section_text": "The value of the path parameter will be an enumeration member .",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0014",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Compare enumeration members",
+      "anchor_id": "compare-enumeration-members",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members",
+      "section_text": "You can compare it with the enumeration member in your created enum ModelName :",
+      "section_inline_code": [
+        "ModelName"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            17
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[17] *}",
+          "section_id": "tutorial/path-params::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0015",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Get the enumeration value",
+      "anchor_id": "get-the-enumeration-value",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value",
+      "section_text": "You can get the actual value (a str in this case) using model_name.value , or in general, your_enum_member.value :",
+      "section_inline_code": [
+        "str",
+        "model_name.value",
+        "your_enum_member.value"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            20
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[20] *}",
+          "section_id": "tutorial/path-params::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0016",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Return enumeration members",
+      "anchor_id": "return-enumeration-members",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members",
+      "section_text": "You can return enum members from your path operation , even nested in a JSON body (e.g. a dict ).\n\nThey will be converted to their corresponding values (strings in this case) before returning them to the client:\n\nIn your client you will get a JSON response like:",
+      "section_inline_code": [
+        "dict"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            18,
+            21,
+            23
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[18,21,23] *}",
+          "section_id": "tutorial/path-params::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"model_name\": \"alexnet\",\n  \"message\": \"Deep Learning FTW!\"\n}",
+          "section_id": "tutorial/path-params::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/path-params::section-0017",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Path parameters containing paths",
+      "anchor_id": "path-parameters-containing-paths",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-containing-paths",
+      "section_text": "Let's say you have a path operation with a path /files/{file_path} .\n\nBut you need file_path itself to contain a path , like home/johndoe/myfile.txt .\n\nSo, the URL for that file would be something like: /files/home/johndoe/myfile.txt .",
+      "section_inline_code": [
+        "/files/{file_path}",
+        "file_path",
+        "home/johndoe/myfile.txt",
+        "/files/home/johndoe/myfile.txt"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0018",
+      "parent_id": "tutorial/path-params::section-0017",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI support",
+      "anchor_id": "openapi-support",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#openapi-support",
+      "section_text": "OpenAPI doesn't support a way to declare a path parameter to contain a path inside, as that could lead to scenarios that are difficult to test and define.\n\nNevertheless, you can still do it in FastAPI , using one of the internal tools from Starlette.\n\nAnd the docs would still work, although not adding any documentation telling that the parameter should contain a path.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0019",
+      "parent_id": "tutorial/path-params::section-0017",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Path convertor",
+      "anchor_id": "path-convertor",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor",
+      "section_text": "Using an option directly from Starlette you can declare a path parameter containing a path using a URL like:\n\nIn this case, the name of the parameter is file_path , and the last part, :path , tells it that the parameter should match any path .\n\nSo, you can use it with:",
+      "section_inline_code": [
+        "file_path",
+        ":path"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial004_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial004_py310.py hl[6] *}",
+          "section_id": "tutorial/path-params::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "/files/{file_path:path}",
+          "section_id": "tutorial/path-params::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/path-params::section-0020",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#recap",
+      "section_text": "With FastAPI , by using short, intuitive and standard Python type declarations, you get:\n\n- Editor support: error checks, autocompletion, etc.\n\n- Data \" parsing \"\n\n- Data validation\n\n- API annotation and automatic documentation\n\nAnd you only have to declare them once.\n\nThat's probably the main visible advantage of FastAPI compared to alternative frameworks (apart from the raw performance).",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/path-params::section-0001": {
+      "node_id": "tutorial/path-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters",
+      "anchor_id": "path-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters",
+      "section_text": "You can declare path \"parameters\" or \"variables\" with the same syntax used by Python format strings:\n\nThe value of the path parameter item_id will be passed to your function as the argument item_id .\n\nSo, if you run this example and go to http://127.0.0.1:8000/items/foo , you will see a response of:",
+      "section_inline_code": [
+        "item_id"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/foo",
+          "url": "http://127.0.0.1:8000/items/foo",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial001_py310.py",
+          "highlight_lines": [
+            6,
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial001_py310.py hl[6:7] *}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"item_id\":\"foo\"}",
+          "section_id": "tutorial/path-params::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters"
+        }
+      ]
+    },
+    "tutorial/path-params::section-0002": {
+      "node_id": "tutorial/path-params::section-0002",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Path parameters with types",
+      "anchor_id": "path-parameters-with-types",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types",
+      "section_text": "You can declare the type of a path parameter in the function, using standard Python type annotations:\n\nIn this case, item_id is declared to be an int .",
+      "section_inline_code": [
+        "item_id",
+        "int"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0003": {
+      "node_id": "tutorial/path-params::section-0003",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Data conversion",
+      "anchor_id": "data-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion",
+      "section_text": "If you run this example and open your browser at http://127.0.0.1:8000/items/3 , you will see a response of:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/3",
+          "url": "http://127.0.0.1:8000/items/3",
+          "section_id": "tutorial/path-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\"item_id\":3}",
+          "section_id": "tutorial/path-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion"
+        }
+      ]
+    },
+    "tutorial/path-params::section-0004": {
+      "node_id": "tutorial/path-params::section-0004",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Data validation",
+      "anchor_id": "data-validation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation",
+      "section_text": "But if you go to the browser at http://127.0.0.1:8000/items/foo , you will see a nice HTTP error of:\n\nbecause the path parameter item_id had a value of \"foo\" , which is not an int .\n\nThe same error would appear if you provided a float instead of an int , as in: http://127.0.0.1:8000/items/4.2",
+      "section_inline_code": [
+        "item_id",
+        "\"foo\"",
+        "int",
+        "float"
+      ],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/items/foo",
+          "url": "http://127.0.0.1:8000/items/foo",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        },
+        {
+          "text": "http://127.0.0.1:8000/items/4.2",
+          "url": "http://127.0.0.1:8000/items/4.2",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"detail\": [\n    {\n      \"type\": \"int_parsing\",\n      \"loc\": [\n        \"path\",\n        \"item_id\"\n      ],\n      \"msg\": \"Input should be a valid integer, unable to parse string as an integer\",\n      \"input\": \"foo\"\n    }\n  ]\n}",
+          "section_id": "tutorial/path-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation"
+        }
+      ]
+    },
+    "tutorial/path-params::section-0005": {
+      "node_id": "tutorial/path-params::section-0005",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Documentation",
+      "anchor_id": "documentation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation",
+      "section_text": "And when you open your browser at http://127.0.0.1:8000/docs , you will see an automatic, interactive, API documentation like:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/path-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0006": {
+      "node_id": "tutorial/path-params::section-0006",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Standards-based benefits, alternative documentation",
+      "anchor_id": "standards-based-benefits-alternative-documentation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation",
+      "section_text": "And because the generated schema is from the OpenAPI standard, there are many compatible tools.\n\nBecause of this, FastAPI itself provides an alternative API documentation (using ReDoc), which you can access at http://127.0.0.1:8000/redoc :\n\nThe same way, there are many compatible tools. Including code generation tools for many languages.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "OpenAPI",
+          "url": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.1.0.md",
+          "section_id": "tutorial/path-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+        },
+        {
+          "text": "http://127.0.0.1:8000/redoc",
+          "url": "http://127.0.0.1:8000/redoc",
+          "section_id": "tutorial/path-params::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#standards-based-benefits-alternative-documentation"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0007": {
+      "node_id": "tutorial/path-params::section-0007",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Pydantic",
+      "anchor_id": "pydantic",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic",
+      "section_text": "All the data validation is performed under the hood by Pydantic , so you get all the benefits from it. And you know you are in good hands.\n\nYou can use the same type declarations with str , float , bool and many other complex data types.\n\nSeveral of these are explored in the next chapters of the tutorial.",
+      "section_inline_code": [
+        "str",
+        "float",
+        "bool"
+      ],
+      "section_links": [
+        {
+          "text": "Pydantic",
+          "url": "https://docs.pydantic.dev/",
+          "section_id": "tutorial/path-params::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#pydantic"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0008": {
+      "node_id": "tutorial/path-params::section-0008",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order matters",
+      "anchor_id": "order-matters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters",
+      "section_text": "When creating path operations , you can find situations where you have a fixed path.\n\nLike /users/me , let's say that it's to get data about the current user.\n\nAnd then you can also have a path /users/{user_id} to get data about a specific user by some user ID.\n\nBecause path operations are evaluated in order, you need to make sure that the path for /users/me is declared before the one for /users/{user_id} :\n\nOtherwise, the path for /users/{user_id} would match also for /users/me , \"thinking\" that it's receiving a parameter user_id with a value of \"me\" .\n\nSimilarly, you cannot redefine a path operation:\n\nThe first one will always be used since the path matches first.",
+      "section_inline_code": [
+        "/users/me",
+        "/users/{user_id}",
+        "user_id",
+        "\"me\""
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial003_py310.py",
+          "highlight_lines": [
+            6,
+            11
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial003_py310.py hl[6,11] *}",
+          "section_id": "tutorial/path-params::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial003b_py310.py",
+          "highlight_lines": [
+            6,
+            11
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial003b_py310.py hl[6,11] *}",
+          "section_id": "tutorial/path-params::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#order-matters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0009": {
+      "node_id": "tutorial/path-params::section-0009",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Predefined values",
+      "anchor_id": "predefined-values",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#predefined-values",
+      "section_text": "If you have a path operation that receives a path parameter , but you want the possible valid path parameter values to be predefined, you can use a standard Python Enum .",
+      "section_inline_code": [
+        "Enum"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0010": {
+      "node_id": "tutorial/path-params::section-0010",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Create an Enum class",
+      "anchor_id": "create-an-enum-class",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class",
+      "section_text": "Import Enum and create a sub-class that inherits from str and from Enum .\n\nBy inheriting from str the API docs will be able to know that the values must be of type string and will be able to render correctly.\n\nThen create class attributes with fixed values, which will be the available valid values:",
+      "section_inline_code": [
+        "Enum",
+        "str",
+        "string"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            1,
+            6,
+            7,
+            8,
+            9
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[1,6:9] *}",
+          "section_id": "tutorial/path-params::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0011": {
+      "node_id": "tutorial/path-params::section-0011",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Declare a path parameter",
+      "anchor_id": "declare-a-path-parameter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter",
+      "section_text": "Then create a path parameter with a type annotation using the enum class you created ( ModelName ):",
+      "section_inline_code": [
+        "ModelName"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            16
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[16] *}",
+          "section_id": "tutorial/path-params::section-0011",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#declare-a-path-parameter"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0012": {
+      "node_id": "tutorial/path-params::section-0012",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check the docs",
+      "anchor_id": "check-the-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#check-the-docs",
+      "section_text": "Because the available values for the path parameter are predefined, the interactive docs can show them nicely:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0013": {
+      "node_id": "tutorial/path-params::section-0013",
+      "parent_id": "tutorial/path-params::section-0009",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Working with Python enumerations",
+      "anchor_id": "working-with-python-enumerations",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#working-with-python-enumerations",
+      "section_text": "The value of the path parameter will be an enumeration member .",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0014": {
+      "node_id": "tutorial/path-params::section-0014",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Compare enumeration members",
+      "anchor_id": "compare-enumeration-members",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members",
+      "section_text": "You can compare it with the enumeration member in your created enum ModelName :",
+      "section_inline_code": [
+        "ModelName"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            17
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[17] *}",
+          "section_id": "tutorial/path-params::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#compare-enumeration-members"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0015": {
+      "node_id": "tutorial/path-params::section-0015",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Get the enumeration value",
+      "anchor_id": "get-the-enumeration-value",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value",
+      "section_text": "You can get the actual value (a str in this case) using model_name.value , or in general, your_enum_member.value :",
+      "section_inline_code": [
+        "str",
+        "model_name.value",
+        "your_enum_member.value"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            20
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[20] *}",
+          "section_id": "tutorial/path-params::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0016": {
+      "node_id": "tutorial/path-params::section-0016",
+      "parent_id": "tutorial/path-params::section-0013",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "Return enumeration members",
+      "anchor_id": "return-enumeration-members",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members",
+      "section_text": "You can return enum members from your path operation , even nested in a JSON body (e.g. a dict ).\n\nThey will be converted to their corresponding values (strings in this case) before returning them to the client:\n\nIn your client you will get a JSON response like:",
+      "section_inline_code": [
+        "dict"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial005_py310.py",
+          "highlight_lines": [
+            18,
+            21,
+            23
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial005_py310.py hl[18,21,23] *}",
+          "section_id": "tutorial/path-params::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n  \"model_name\": \"alexnet\",\n  \"message\": \"Deep Learning FTW!\"\n}",
+          "section_id": "tutorial/path-params::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#return-enumeration-members"
+        }
+      ]
+    },
+    "tutorial/path-params::section-0017": {
+      "node_id": "tutorial/path-params::section-0017",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Path parameters containing paths",
+      "anchor_id": "path-parameters-containing-paths",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-containing-paths",
+      "section_text": "Let's say you have a path operation with a path /files/{file_path} .\n\nBut you need file_path itself to contain a path , like home/johndoe/myfile.txt .\n\nSo, the URL for that file would be something like: /files/home/johndoe/myfile.txt .",
+      "section_inline_code": [
+        "/files/{file_path}",
+        "file_path",
+        "home/johndoe/myfile.txt",
+        "/files/home/johndoe/myfile.txt"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0018": {
+      "node_id": "tutorial/path-params::section-0018",
+      "parent_id": "tutorial/path-params::section-0017",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI support",
+      "anchor_id": "openapi-support",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#openapi-support",
+      "section_text": "OpenAPI doesn't support a way to declare a path parameter to contain a path inside, as that could lead to scenarios that are difficult to test and define.\n\nNevertheless, you can still do it in FastAPI , using one of the internal tools from Starlette.\n\nAnd the docs would still work, although not adding any documentation telling that the parameter should contain a path.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0019": {
+      "node_id": "tutorial/path-params::section-0019",
+      "parent_id": "tutorial/path-params::section-0017",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Path convertor",
+      "anchor_id": "path-convertor",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor",
+      "section_text": "Using an option directly from Starlette you can declare a path parameter containing a path using a URL like:\n\nIn this case, the name of the parameter is file_path , and the last part, :path , tells it that the parameter should match any path .\n\nSo, you can use it with:",
+      "section_inline_code": [
+        "file_path",
+        ":path"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params/tutorial004_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/path_params/tutorial004_py310.py hl[6] *}",
+          "section_id": "tutorial/path-params::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "/files/{file_path:path}",
+          "section_id": "tutorial/path-params::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor"
+        }
+      ]
+    },
+    "tutorial/path-params::section-0020": {
+      "node_id": "tutorial/path-params::section-0020",
+      "parent_id": "tutorial/path-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#recap",
+      "section_text": "With FastAPI , by using short, intuitive and standard Python type declarations, you get:\n\n- Editor support: error checks, autocompletion, etc.\n\n- Data \" parsing \"\n\n- Data validation\n\n- API annotation and automatic documentation\n\nAnd you only have to declare them once.\n\nThat's probably the main visible advantage of FastAPI compared to alternative frameworks (apart from the raw performance).",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/path-params::section-0002::admonition-0001",
+      "parent_id": "tutorial/path-params::section-0002",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This will give you editor support inside of your function, with error checks, completion, etc."
+      ],
+      "section_text": "This will give you editor support inside of your function, with error checks, completion, etc.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0003::admonition-0002",
+      "parent_id": "tutorial/path-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that the value your function received (and returned) is 3 , as a Python int , not a string \"3\" .",
+        "So, with that type declaration, FastAPI gives you automatic request \"parsing\" ."
+      ],
+      "section_text": "Notice that the value your function received (and returned) is 3 , as a Python int , not a string \"3\" .\n\nSo, with that type declaration, FastAPI gives you automatic request \"parsing\" .",
+      "section_inline_code": [
+        "3",
+        "int",
+        "\"3\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0004::admonition-0003",
+      "parent_id": "tutorial/path-params::section-0004",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "So, with the same Python type declaration, FastAPI gives you data validation.",
+        "Notice that the error also clearly states exactly the point where the validation didn't pass.",
+        "This is incredibly helpful while developing and debugging code that interacts with your API."
+      ],
+      "section_text": "So, with the same Python type declaration, FastAPI gives you data validation.\n\nNotice that the error also clearly states exactly the point where the validation didn't pass.\n\nThis is incredibly helpful while developing and debugging code that interacts with your API.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0005::admonition-0004",
+      "parent_id": "tutorial/path-params::section-0005",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Again, just with that same Python type declaration, FastAPI gives you automatic, interactive documentation (integrating Swagger UI).",
+        "Notice that the path parameter is declared to be an integer."
+      ],
+      "section_text": "Again, just with that same Python type declaration, FastAPI gives you automatic, interactive documentation (integrating Swagger UI).\n\nNotice that the path parameter is declared to be an integer.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0010::admonition-0005",
+      "parent_id": "tutorial/path-params::section-0010",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you are wondering, \"AlexNet\", \"ResNet\", and \"LeNet\" are just names of Machine Learning models ."
+      ],
+      "section_text": "If you are wondering, \"AlexNet\", \"ResNet\", and \"LeNet\" are just names of Machine Learning models .",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0015::admonition-0006",
+      "parent_id": "tutorial/path-params::section-0015",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also access the value \"lenet\" with ModelName.lenet.value ."
+      ],
+      "section_text": "You could also access the value \"lenet\" with ModelName.lenet.value .",
+      "section_inline_code": [
+        "\"lenet\"",
+        "ModelName.lenet.value"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params::section-0019::admonition-0007",
+      "parent_id": "tutorial/path-params::section-0019",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You might need the parameter to contain /home/johndoe/myfile.txt , with a leading slash ( / ).",
+        "In that case, the URL would be: /files//home/johndoe/myfile.txt , with a double slash ( // ) between files and home ."
+      ],
+      "section_text": "You might need the parameter to contain /home/johndoe/myfile.txt , with a leading slash ( / ).\n\nIn that case, the URL would be: /files//home/johndoe/myfile.txt , with a double slash ( // ) between files and home .",
+      "section_inline_code": [
+        "/home/johndoe/myfile.txt",
+        "/",
+        "/files//home/johndoe/myfile.txt",
+        "//",
+        "files",
+        "home"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/path-params::section-0002::admonition-0001": {
+      "node_id": "tutorial/path-params::section-0002::admonition-0001",
+      "parent_id": "tutorial/path-params::section-0002",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-parameters-with-types",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This will give you editor support inside of your function, with error checks, completion, etc."
+      ],
+      "section_text": "This will give you editor support inside of your function, with error checks, completion, etc.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0003::admonition-0002": {
+      "node_id": "tutorial/path-params::section-0003::admonition-0002",
+      "parent_id": "tutorial/path-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-conversion",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that the value your function received (and returned) is 3 , as a Python int , not a string \"3\" .",
+        "So, with that type declaration, FastAPI gives you automatic request \"parsing\" ."
+      ],
+      "section_text": "Notice that the value your function received (and returned) is 3 , as a Python int , not a string \"3\" .\n\nSo, with that type declaration, FastAPI gives you automatic request \"parsing\" .",
+      "section_inline_code": [
+        "3",
+        "int",
+        "\"3\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0004::admonition-0003": {
+      "node_id": "tutorial/path-params::section-0004::admonition-0003",
+      "parent_id": "tutorial/path-params::section-0004",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#data-validation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "So, with the same Python type declaration, FastAPI gives you data validation.",
+        "Notice that the error also clearly states exactly the point where the validation didn't pass.",
+        "This is incredibly helpful while developing and debugging code that interacts with your API."
+      ],
+      "section_text": "So, with the same Python type declaration, FastAPI gives you data validation.\n\nNotice that the error also clearly states exactly the point where the validation didn't pass.\n\nThis is incredibly helpful while developing and debugging code that interacts with your API.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0005::admonition-0004": {
+      "node_id": "tutorial/path-params::section-0005::admonition-0004",
+      "parent_id": "tutorial/path-params::section-0005",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#documentation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Again, just with that same Python type declaration, FastAPI gives you automatic, interactive documentation (integrating Swagger UI).",
+        "Notice that the path parameter is declared to be an integer."
+      ],
+      "section_text": "Again, just with that same Python type declaration, FastAPI gives you automatic, interactive documentation (integrating Swagger UI).\n\nNotice that the path parameter is declared to be an integer.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0010::admonition-0005": {
+      "node_id": "tutorial/path-params::section-0010::admonition-0005",
+      "parent_id": "tutorial/path-params::section-0010",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#create-an-enum-class",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you are wondering, \"AlexNet\", \"ResNet\", and \"LeNet\" are just names of Machine Learning models ."
+      ],
+      "section_text": "If you are wondering, \"AlexNet\", \"ResNet\", and \"LeNet\" are just names of Machine Learning models .",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0015::admonition-0006": {
+      "node_id": "tutorial/path-params::section-0015::admonition-0006",
+      "parent_id": "tutorial/path-params::section-0015",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#get-the-enumeration-value",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also access the value \"lenet\" with ModelName.lenet.value ."
+      ],
+      "section_text": "You could also access the value \"lenet\" with ModelName.lenet.value .",
+      "section_inline_code": [
+        "\"lenet\"",
+        "ModelName.lenet.value"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params::section-0019::admonition-0007": {
+      "node_id": "tutorial/path-params::section-0019::admonition-0007",
+      "parent_id": "tutorial/path-params::section-0019",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params/#path-convertor",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You might need the parameter to contain /home/johndoe/myfile.txt , with a leading slash ( / ).",
+        "In that case, the URL would be: /files//home/johndoe/myfile.txt , with a double slash ( // ) between files and home ."
+      ],
+      "section_text": "You might need the parameter to contain /home/johndoe/myfile.txt , with a leading slash ( / ).\n\nIn that case, the URL would be: /files//home/johndoe/myfile.txt , with a double slash ( // ) between files and home .",
+      "section_inline_code": [
+        "/home/johndoe/myfile.txt",
+        "/",
+        "/files//home/johndoe/myfile.txt",
+        "//",
+        "files",
+        "home"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/path-params::section-0001",
+      "seconds": 5.371400038711727e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0002",
+      "seconds": 4.664100015361328e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0003",
+      "seconds": 6.167200081108604e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0004",
+      "seconds": 7.179299973358866e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0005",
+      "seconds": 4.472799992072396e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0006",
+      "seconds": 4.0163000448956154e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0007",
+      "seconds": 2.6096000510733575e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0008",
+      "seconds": 7.395300053758547e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0009",
+      "seconds": 3.856799958157353e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0010",
+      "seconds": 5.964900083199609e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0011",
+      "seconds": 2.3721000616205856e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0012",
+      "seconds": 2.9208000341895968e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0013",
+      "seconds": 2.8386000849423e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0014",
+      "seconds": 2.8441998438211158e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0015",
+      "seconds": 4.633800017472822e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0016",
+      "seconds": 4.778699985763524e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0017",
+      "seconds": 3.748199924302753e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0018",
+      "seconds": 3.604300036386121e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params::section-0019",
+      "seconds": 8.38410014694091e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params::section-0020",
+      "seconds": 8.239599992521107e-05,
+      "paragraphs": 3,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

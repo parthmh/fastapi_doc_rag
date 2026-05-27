@@ -1,0 +1,109 @@
+{
+  "tutorial/middleware::section-0001::admonition-0001": {
+    "node_id": "tutorial/middleware::section-0001::admonition-0001",
+    "parent_id": "tutorial/middleware::section-0001",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#middleware",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you have dependencies with yield , the exit code will run after the middleware.",
+      "If there were any background tasks (covered in the Background Tasks section, you will see it later), they will run after all the middleware."
+    ],
+    "section_text": "If you have dependencies with yield , the exit code will run after the middleware.\n\nIf there were any background tasks (covered in the Background Tasks section, you will see it later), they will run after all the middleware.",
+    "section_inline_code": [
+      "yield"
+    ],
+    "section_links": [
+      {
+        "text": "Background Tasks",
+        "url": "background-tasks.md",
+        "section_id": "tutorial/middleware::section-0001::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#middleware"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/middleware::section-0002::admonition-0002": {
+    "node_id": "tutorial/middleware::section-0002::admonition-0002",
+    "parent_id": "tutorial/middleware::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#create-a-middleware",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Keep in mind that custom proprietary headers can be added using the X- prefix .",
+      "But if you have custom headers that you want a client in a browser to be able to see, you need to add them to your CORS configurations ( CORS (Cross-Origin Resource Sharing) ) using the parameter expose_headers documented in Starlette's CORS docs ."
+    ],
+    "section_text": "Keep in mind that custom proprietary headers can be added using the X- prefix .\n\nBut if you have custom headers that you want a client in a browser to be able to see, you need to add them to your CORS configurations ( CORS (Cross-Origin Resource Sharing) ) using the parameter expose_headers documented in Starlette's CORS docs .",
+    "section_inline_code": [
+      "X-",
+      "expose_headers"
+    ],
+    "section_links": [
+      {
+        "text": "using the  prefix",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers",
+        "section_id": "tutorial/middleware::section-0002::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#create-a-middleware"
+      },
+      {
+        "text": "CORS (Cross-Origin Resource Sharing)",
+        "url": "cors.md",
+        "section_id": "tutorial/middleware::section-0002::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#create-a-middleware"
+      },
+      {
+        "text": "Starlette's CORS docs",
+        "url": "https://www.starlette.dev/middleware/#corsmiddleware",
+        "section_id": "tutorial/middleware::section-0002::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#create-a-middleware"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/middleware::section-0002::admonition-0003": {
+    "node_id": "tutorial/middleware::section-0002::admonition-0003",
+    "parent_id": "tutorial/middleware::section-0002",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#create-a-middleware",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You could also use from starlette.requests import Request .",
+      "FastAPI provides it as a convenience for you, the developer. But it comes directly from Starlette."
+    ],
+    "section_text": "You could also use from starlette.requests import Request .\n\nFastAPI provides it as a convenience for you, the developer. But it comes directly from Starlette.",
+    "section_inline_code": [
+      "from starlette.requests import Request"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/middleware::section-0003::admonition-0004": {
+    "node_id": "tutorial/middleware::section-0003::admonition-0004",
+    "parent_id": "tutorial/middleware::section-0003",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/middleware/#before-and-after-the-response",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Here we use time.perf_counter() instead of time.time() because it can be more precise for these use cases. 🤓"
+    ],
+    "section_text": "Here we use time.perf_counter() instead of time.time() because it can be more precise for these use cases. 🤓",
+    "section_inline_code": [
+      "time.perf_counter()",
+      "time.time()"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

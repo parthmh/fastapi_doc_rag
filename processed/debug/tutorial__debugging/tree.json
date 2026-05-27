@@ -1,0 +1,580 @@
+{
+  "page": {
+    "page_id": "tutorial/debugging",
+    "page_uid": "5d4d98f6366cd98b545512f7d13cfec7789c2982",
+    "page_title": "Debugging",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+    "source_file": "tutorial/debugging.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/debugging::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Debugging",
+      "anchor_id": "debugging",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#debugging",
+      "section_text_parts": [
+        "You can connect the debugger in your editor, for example with Visual Studio Code or PyCharm."
+      ],
+      "section_text": "You can connect the debugger in your editor, for example with Visual Studio Code or PyCharm.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/debugging::section-0002",
+          "parent_id": "tutorial/debugging::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Call uvicorn",
+          "anchor_id": "call-uvicorn",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn",
+          "section_text_parts": [
+            "In your FastAPI application, import and run uvicorn directly:"
+          ],
+          "section_text": "In your FastAPI application, import and run uvicorn directly:",
+          "section_inline_code": [
+            "uvicorn"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/debugging/tutorial001_py310.py",
+              "highlight_lines": [
+                1,
+                15
+              ],
+              "raw": "{* ../../docs_src/debugging/tutorial001_py310.py hl[1,15] *}",
+              "section_id": "tutorial/debugging::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/debugging::section-0003",
+              "parent_id": "tutorial/debugging::section-0002",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "About __name__ == \"__main__\"",
+              "anchor_id": "about-name-main",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main",
+              "section_text_parts": [
+                "The main purpose of the __name__ == \"__main__\" is to have some code that is executed when your file is called with:",
+                "but is not called when another file imports it, like in:"
+              ],
+              "section_text": "The main purpose of the __name__ == \"__main__\" is to have some code that is executed when your file is called with:\n\nbut is not called when another file imports it, like in:",
+              "section_inline_code": [
+                "__name__ == \"__main__\""
+              ],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": "console",
+                  "text": "$ python myapp.py",
+                  "section_id": "tutorial/debugging::section-0003",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+                },
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "from myapp import app",
+                  "section_id": "tutorial/debugging::section-0003",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "tutorial/debugging::section-0004",
+                  "parent_id": "tutorial/debugging::section-0003",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "More details",
+                  "anchor_id": "more-details",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+                  "section_text_parts": [
+                    "Let's say your file is named myapp.py .",
+                    "If you run it with:",
+                    "then the internal variable __name__ in your file, created automatically by Python, will have as value the string \"__main__\" .",
+                    "So, the section:",
+                    "will run.",
+                    "This won't happen if you import that module (file).",
+                    "So, if you have another file importer.py with:",
+                    "in that case, the automatically created variable __name__ inside of myapp.py will not have the value \"__main__\" .",
+                    "So, the line:",
+                    "will not be executed."
+                  ],
+                  "section_text": "Let's say your file is named myapp.py .\n\nIf you run it with:\n\nthen the internal variable __name__ in your file, created automatically by Python, will have as value the string \"__main__\" .\n\nSo, the section:\n\nwill run.\n\nThis won't happen if you import that module (file).\n\nSo, if you have another file importer.py with:\n\nin that case, the automatically created variable __name__ inside of myapp.py will not have the value \"__main__\" .\n\nSo, the line:\n\nwill not be executed.",
+                  "section_inline_code": [
+                    "myapp.py",
+                    "__name__",
+                    "\"__main__\"",
+                    "importer.py"
+                  ],
+                  "section_links": [],
+                  "code_refs": [],
+                  "code_blocks": [
+                    {
+                      "type": "code_block",
+                      "language": "console",
+                      "text": "$ python myapp.py",
+                      "section_id": "tutorial/debugging::section-0004",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+                      "section_id": "tutorial/debugging::section-0004",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "from myapp import app\n\n# Some more code",
+                      "section_id": "tutorial/debugging::section-0004",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+                      "section_id": "tutorial/debugging::section-0004",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/debugging::section-0005",
+          "parent_id": "tutorial/debugging::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Run your code with your debugger",
+          "anchor_id": "run-your-code-with-your-debugger",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#run-your-code-with-your-debugger",
+          "section_text_parts": [
+            "Because you are running the Uvicorn server directly from your code, you can call your Python program (your FastAPI application) directly from the debugger.",
+            "For example, in Visual Studio Code, you can:",
+            "- Go to the \"Debug\" panel.",
+            "- \"Add configuration...\".",
+            "- Select \"Python\"",
+            "- Run the debugger with the option \" Python: Current File (Integrated Terminal) \".",
+            "It will then start the server with your FastAPI code, stop at your breakpoints, etc.",
+            "Here's how it might look:",
+            "If you use Pycharm, you can:",
+            "- Open the \"Run\" menu.",
+            "- Select the option \"Debug...\".",
+            "- Then a context menu shows up.",
+            "- Select the file to debug (in this case, main.py ).",
+            "It will then start the server with your FastAPI code, stop at your breakpoints, etc.",
+            "Here's how it might look:"
+          ],
+          "section_text": "Because you are running the Uvicorn server directly from your code, you can call your Python program (your FastAPI application) directly from the debugger.\n\nFor example, in Visual Studio Code, you can:\n\n- Go to the \"Debug\" panel.\n\n- \"Add configuration...\".\n\n- Select \"Python\"\n\n- Run the debugger with the option \" Python: Current File (Integrated Terminal) \".\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:\n\nIf you use Pycharm, you can:\n\n- Open the \"Run\" menu.\n\n- Select the option \"Debug...\".\n\n- Then a context menu shows up.\n\n- Select the file to debug (in this case, main.py ).\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:",
+          "section_inline_code": [
+            "Python: Current File (Integrated Terminal)",
+            "main.py"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/debugging::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Debugging",
+      "anchor_id": "debugging",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#debugging",
+      "section_text": "You can connect the debugger in your editor, for example with Visual Studio Code or PyCharm.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/debugging::section-0002",
+      "parent_id": "tutorial/debugging::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Call uvicorn",
+      "anchor_id": "call-uvicorn",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn",
+      "section_text": "In your FastAPI application, import and run uvicorn directly:",
+      "section_inline_code": [
+        "uvicorn"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/debugging/tutorial001_py310.py",
+          "highlight_lines": [
+            1,
+            15
+          ],
+          "raw": "{* ../../docs_src/debugging/tutorial001_py310.py hl[1,15] *}",
+          "section_id": "tutorial/debugging::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/debugging::section-0003",
+      "parent_id": "tutorial/debugging::section-0002",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "About __name__ == \"__main__\"",
+      "anchor_id": "about-name-main",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main",
+      "section_text": "The main purpose of the __name__ == \"__main__\" is to have some code that is executed when your file is called with:\n\nbut is not called when another file imports it, like in:",
+      "section_inline_code": [
+        "__name__ == \"__main__\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ python myapp.py",
+          "section_id": "tutorial/debugging::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from myapp import app",
+          "section_id": "tutorial/debugging::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/debugging::section-0004",
+      "parent_id": "tutorial/debugging::section-0003",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "More details",
+      "anchor_id": "more-details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+      "section_text": "Let's say your file is named myapp.py .\n\nIf you run it with:\n\nthen the internal variable __name__ in your file, created automatically by Python, will have as value the string \"__main__\" .\n\nSo, the section:\n\nwill run.\n\nThis won't happen if you import that module (file).\n\nSo, if you have another file importer.py with:\n\nin that case, the automatically created variable __name__ inside of myapp.py will not have the value \"__main__\" .\n\nSo, the line:\n\nwill not be executed.",
+      "section_inline_code": [
+        "myapp.py",
+        "__name__",
+        "\"__main__\"",
+        "importer.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ python myapp.py",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from myapp import app\n\n# Some more code",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/debugging::section-0005",
+      "parent_id": "tutorial/debugging::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Run your code with your debugger",
+      "anchor_id": "run-your-code-with-your-debugger",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#run-your-code-with-your-debugger",
+      "section_text": "Because you are running the Uvicorn server directly from your code, you can call your Python program (your FastAPI application) directly from the debugger.\n\nFor example, in Visual Studio Code, you can:\n\n- Go to the \"Debug\" panel.\n\n- \"Add configuration...\".\n\n- Select \"Python\"\n\n- Run the debugger with the option \" Python: Current File (Integrated Terminal) \".\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:\n\nIf you use Pycharm, you can:\n\n- Open the \"Run\" menu.\n\n- Select the option \"Debug...\".\n\n- Then a context menu shows up.\n\n- Select the file to debug (in this case, main.py ).\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:",
+      "section_inline_code": [
+        "Python: Current File (Integrated Terminal)",
+        "main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/debugging::section-0001": {
+      "node_id": "tutorial/debugging::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Debugging",
+      "anchor_id": "debugging",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#debugging",
+      "section_text": "You can connect the debugger in your editor, for example with Visual Studio Code or PyCharm.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/debugging::section-0002": {
+      "node_id": "tutorial/debugging::section-0002",
+      "parent_id": "tutorial/debugging::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Call uvicorn",
+      "anchor_id": "call-uvicorn",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn",
+      "section_text": "In your FastAPI application, import and run uvicorn directly:",
+      "section_inline_code": [
+        "uvicorn"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/debugging/tutorial001_py310.py",
+          "highlight_lines": [
+            1,
+            15
+          ],
+          "raw": "{* ../../docs_src/debugging/tutorial001_py310.py hl[1,15] *}",
+          "section_id": "tutorial/debugging::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#call-uvicorn"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/debugging::section-0003": {
+      "node_id": "tutorial/debugging::section-0003",
+      "parent_id": "tutorial/debugging::section-0002",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "About __name__ == \"__main__\"",
+      "anchor_id": "about-name-main",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main",
+      "section_text": "The main purpose of the __name__ == \"__main__\" is to have some code that is executed when your file is called with:\n\nbut is not called when another file imports it, like in:",
+      "section_inline_code": [
+        "__name__ == \"__main__\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ python myapp.py",
+          "section_id": "tutorial/debugging::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from myapp import app",
+          "section_id": "tutorial/debugging::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#about-name-main"
+        }
+      ]
+    },
+    "tutorial/debugging::section-0004": {
+      "node_id": "tutorial/debugging::section-0004",
+      "parent_id": "tutorial/debugging::section-0003",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "More details",
+      "anchor_id": "more-details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+      "section_text": "Let's say your file is named myapp.py .\n\nIf you run it with:\n\nthen the internal variable __name__ in your file, created automatically by Python, will have as value the string \"__main__\" .\n\nSo, the section:\n\nwill run.\n\nThis won't happen if you import that module (file).\n\nSo, if you have another file importer.py with:\n\nin that case, the automatically created variable __name__ inside of myapp.py will not have the value \"__main__\" .\n\nSo, the line:\n\nwill not be executed.",
+      "section_inline_code": [
+        "myapp.py",
+        "__name__",
+        "\"__main__\"",
+        "importer.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ python myapp.py",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from myapp import app\n\n# Some more code",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+          "section_id": "tutorial/debugging::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        }
+      ]
+    },
+    "tutorial/debugging::section-0005": {
+      "node_id": "tutorial/debugging::section-0005",
+      "parent_id": "tutorial/debugging::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Run your code with your debugger",
+      "anchor_id": "run-your-code-with-your-debugger",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#run-your-code-with-your-debugger",
+      "section_text": "Because you are running the Uvicorn server directly from your code, you can call your Python program (your FastAPI application) directly from the debugger.\n\nFor example, in Visual Studio Code, you can:\n\n- Go to the \"Debug\" panel.\n\n- \"Add configuration...\".\n\n- Select \"Python\"\n\n- Run the debugger with the option \" Python: Current File (Integrated Terminal) \".\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:\n\nIf you use Pycharm, you can:\n\n- Open the \"Run\" menu.\n\n- Select the option \"Debug...\".\n\n- Then a context menu shows up.\n\n- Select the file to debug (in this case, main.py ).\n\nIt will then start the server with your FastAPI code, stop at your breakpoints, etc.\n\nHere's how it might look:",
+      "section_inline_code": [
+        "Python: Current File (Integrated Terminal)",
+        "main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/debugging::section-0004::admonition-0001",
+      "parent_id": "tutorial/debugging::section-0004",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "For more information, check the official Python docs ."
+      ],
+      "section_text": "For more information, check the official Python docs .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "the official Python docs",
+          "url": "https://docs.python.org/3/library/__main__.html",
+          "section_id": "tutorial/debugging::section-0004::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/debugging::section-0004::admonition-0001": {
+      "node_id": "tutorial/debugging::section-0004::admonition-0001",
+      "parent_id": "tutorial/debugging::section-0004",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "For more information, check the official Python docs ."
+      ],
+      "section_text": "For more information, check the official Python docs .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "the official Python docs",
+          "url": "https://docs.python.org/3/library/__main__.html",
+          "section_id": "tutorial/debugging::section-0004::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/debugging::section-0001",
+      "seconds": 1.5592999261571094e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/debugging::section-0002",
+      "seconds": 2.1726000341004692e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/debugging::section-0003",
+      "seconds": 5.0037999244523235e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/debugging::section-0004",
+      "seconds": 0.00013761300033365842,
+      "paragraphs": 11,
+      "list_items": 0,
+      "code_blocks": 4,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/debugging::section-0005",
+      "seconds": 0.00012342500122031197,
+      "paragraphs": 7,
+      "list_items": 8,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

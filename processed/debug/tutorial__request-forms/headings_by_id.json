@@ -1,0 +1,112 @@
+{
+  "tutorial/request-forms::section-0001": {
+    "node_id": "tutorial/request-forms::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Form Data",
+    "anchor_id": "form-data",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+    "section_text": "When you need to receive form fields instead of JSON, you can use Form .",
+    "section_inline_code": [
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-forms::section-0002": {
+    "node_id": "tutorial/request-forms::section-0002",
+    "parent_id": "tutorial/request-forms::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Import Form",
+    "anchor_id": "import-form",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form",
+    "section_text": "Import Form from fastapi :",
+    "section_inline_code": [
+      "Form",
+      "fastapi"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+        "highlight_lines": [
+          3
+        ],
+        "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[3] *}",
+        "section_id": "tutorial/request-forms::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/request-forms::section-0003": {
+    "node_id": "tutorial/request-forms::section-0003",
+    "parent_id": "tutorial/request-forms::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Define Form parameters",
+    "anchor_id": "define-form-parameters",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+    "section_text": "Create form parameters the same way you would for Body or Query :\n\nFor example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a username and password as form fields.\n\nThe spec requires the fields to be exactly named username and password , and to be sent as form fields, not JSON.\n\nWith Form you can declare the same configurations as with Body (and Query , Path , Cookie ), including validation, examples, an alias (e.g. user-name instead of username ), etc.",
+    "section_inline_code": [
+      "Form",
+      "Body",
+      "Query",
+      "username",
+      "password",
+      "Path",
+      "Cookie",
+      "user-name"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+        "highlight_lines": [
+          9
+        ],
+        "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[9] *}",
+        "section_id": "tutorial/request-forms::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/request-forms::section-0004": {
+    "node_id": "tutorial/request-forms::section-0004",
+    "parent_id": "tutorial/request-forms::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "About \"Form Fields\"",
+    "anchor_id": "about-form-fields",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+    "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+    "section_inline_code": [
+      "<form></form>"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-forms::section-0005": {
+    "node_id": "tutorial/request-forms::section-0005",
+    "parent_id": "tutorial/request-forms::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Recap",
+    "anchor_id": "recap",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#recap",
+    "section_text": "Use Form to declare form data input parameters.",
+    "section_inline_code": [
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "node_id": "tutorial/encoder::section-0001",
+    "seconds": 5.460799911816139e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/encoder::section-0002",
+    "seconds": 0.00011178100066899788,
+    "paragraphs": 10,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 1
+  }
+]

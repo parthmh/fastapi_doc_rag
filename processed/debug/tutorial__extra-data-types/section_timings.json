@@ -1,0 +1,32 @@
+[
+  {
+    "node_id": "tutorial/extra-data-types::section-0001",
+    "seconds": 8.679799975652713e-05,
+    "paragraphs": 3,
+    "list_items": 9,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/extra-data-types::section-0002",
+    "seconds": 0.00036740700124937575,
+    "paragraphs": 1,
+    "list_items": 19,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/extra-data-types::section-0003",
+    "seconds": 3.663299867184833e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 2,
+    "links": 0,
+    "admonitions": 0
+  }
+]

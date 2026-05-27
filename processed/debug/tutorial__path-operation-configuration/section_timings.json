@@ -1,0 +1,92 @@
+[
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0001",
+    "seconds": 8.7946000348893e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0002",
+    "seconds": 0.00014031200043973513,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0003",
+    "seconds": 6.897599996591453e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0004",
+    "seconds": 8.62359993334394e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0005",
+    "seconds": 3.0451001293840818e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0006",
+    "seconds": 9.625099846743979e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0007",
+    "seconds": 0.00012370299918984529,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0008",
+    "seconds": 6.597399988095276e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/path-operation-configuration::section-0009",
+    "seconds": 3.1323999792221e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

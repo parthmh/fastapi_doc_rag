@@ -1,7 +1,7 @@
 [
   {
     "node_id": "tutorial/first-steps::section-0001",
-    "seconds": 9.433000013814308e-05,
+    "seconds": 0.00010349900003348012,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 2,
@@ -11,7 +11,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0002",
-    "seconds": 3.2153999200090766e-05,
+    "seconds": 4.07100001211802e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 1,
@@ -21,7 +21,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0003",
-    "seconds": 3.6178000300424173e-05,
+    "seconds": 4.2767000195453875e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -31,7 +31,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0004",
-    "seconds": 3.5663000744534656e-05,
+    "seconds": 3.362799998285482e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -41,7 +41,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0005",
-    "seconds": 2.4182998458854854e-05,
+    "seconds": 2.3086000055627665e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -51,7 +51,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0006",
-    "seconds": 8.53799792821519e-06,
+    "seconds": 8.633999641460832e-06,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -61,7 +61,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0007",
-    "seconds": 1.819099998101592e-05,
+    "seconds": 1.763700038281968e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -71,7 +71,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0008",
-    "seconds": 1.1710999388014898e-05,
+    "seconds": 1.2086999959137756e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -81,7 +81,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0009",
-    "seconds": 1.6979000065475702e-05,
+    "seconds": 1.817800011849613e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -91,7 +91,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0010",
-    "seconds": 2.9631999495904893e-05,
+    "seconds": 3.260199991927948e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 1,
@@ -101,7 +101,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0011",
-    "seconds": 2.6490997697692364e-05,
+    "seconds": 2.740700028880383e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -111,7 +111,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0012",
-    "seconds": 7.486399772460572e-05,
+    "seconds": 7.751400016786647e-05,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 5,
@@ -121,7 +121,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0013",
-    "seconds": 4.281699875718914e-05,
+    "seconds": 4.3215000005147886e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 1,
@@ -131,7 +131,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0014",
-    "seconds": 8.419900041189976e-05,
+    "seconds": 8.582899999964866e-05,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 2,
@@ -141,7 +141,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0015",
-    "seconds": 5.39699976798147e-06,
+    "seconds": 5.720999979530461e-06,
     "paragraphs": 0,
     "list_items": 0,
     "code_blocks": 0,
@@ -151,7 +151,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0016",
-    "seconds": 5.31980003870558e-05,
+    "seconds": 5.589600004896056e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -161,7 +161,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0017",
-    "seconds": 2.9898998036514968e-05,
+    "seconds": 3.362699999343022e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -171,7 +171,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0018",
-    "seconds": 5.832996976096183e-06,
+    "seconds": 5.152000085217878e-06,
     "paragraphs": 0,
     "list_items": 0,
     "code_blocks": 0,
@@ -181,7 +181,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0019",
-    "seconds": 5.375099863158539e-05,
+    "seconds": 5.61460001335945e-05,
     "paragraphs": 5,
     "list_items": 0,
     "code_blocks": 2,
@@ -191,7 +191,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0020",
-    "seconds": 0.00015365299987024628,
+    "seconds": 0.00015148600004977197,
     "paragraphs": 8,
     "list_items": 12,
     "code_blocks": 0,
@@ -201,7 +201,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0021",
-    "seconds": 0.0002570079996075947,
+    "seconds": 0.00022869899976285524,
     "paragraphs": 12,
     "list_items": 9,
     "code_blocks": 0,
@@ -211,7 +211,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0022",
-    "seconds": 0.00014161500075715594,
+    "seconds": 0.00013634400011142134,
     "paragraphs": 6,
     "list_items": 3,
     "code_blocks": 0,
@@ -221,7 +221,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0023",
-    "seconds": 3.176500104018487e-05,
+    "seconds": 2.9836000067007262e-05,
     "paragraphs": 3,
     "list_items": 0,
     "code_blocks": 0,
@@ -231,7 +231,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0024",
-    "seconds": 2.1938001736998558e-05,
+    "seconds": 2.211900027759839e-05,
     "paragraphs": 1,
     "list_items": 0,
     "code_blocks": 0,
@@ -241,7 +241,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0025",
-    "seconds": 8.007100041140802e-05,
+    "seconds": 8.123199995679897e-05,
     "paragraphs": 4,
     "list_items": 0,
     "code_blocks": 0,
@@ -251,7 +251,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0026",
-    "seconds": 1.485699976910837e-05,
+    "seconds": 1.3664999642060138e-05,
     "paragraphs": 2,
     "list_items": 0,
     "code_blocks": 0,
@@ -261,7 +261,7 @@
   },
   {
     "node_id": "tutorial/first-steps::section-0027",
-    "seconds": 0.00011229699885006994,
+    "seconds": 0.00010430300017105765,
     "paragraphs": 0,
     "list_items": 6,
     "code_blocks": 0,

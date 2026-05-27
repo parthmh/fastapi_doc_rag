@@ -1,0 +1,1278 @@
+{
+  "page": {
+    "page_id": "tutorial/server-sent-events",
+    "page_uid": "8a78ec06d955c8c871defc6bddea75a0617cf626",
+    "page_title": "Server-Sent Events (SSE)",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/",
+    "source_file": "tutorial/server-sent-events.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/server-sent-events::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Server-Sent Events (SSE)",
+      "anchor_id": "server-sent-events-sse",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse",
+      "section_text_parts": [
+        "You can stream data to the client using Server-Sent Events (SSE).",
+        "This is similar to Stream JSON Lines , but uses the text/event-stream format, which is supported natively by browsers with the EventSource API ."
+      ],
+      "section_text": "You can stream data to the client using Server-Sent Events (SSE).\n\nThis is similar to Stream JSON Lines , but uses the text/event-stream format, which is supported natively by browsers with the EventSource API .",
+      "section_inline_code": [
+        "text/event-stream",
+        "EventSource"
+      ],
+      "section_links": [
+        {
+          "text": "Stream JSON Lines",
+          "url": "stream-json-lines.md",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        },
+        {
+          "text": "API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/EventSource",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/server-sent-events::section-0002",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "What are Server-Sent Events?",
+          "anchor_id": "what-are-server-sent-events",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events",
+          "section_text_parts": [
+            "SSE is a standard for streaming data from the server to the client over HTTP.",
+            "Each event is a small text block with \"fields\" like data , event , id , and retry , separated by blank lines.",
+            "It looks like this:",
+            "SSE is commonly used for AI chat streaming, live notifications, logs and observability, and other cases where the server pushes updates to the client."
+          ],
+          "section_text": "SSE is a standard for streaming data from the server to the client over HTTP.\n\nEach event is a small text block with \"fields\" like data , event , id , and retry , separated by blank lines.\n\nIt looks like this:\n\nSSE is commonly used for AI chat streaming, live notifications, logs and observability, and other cases where the server pushes updates to the client.",
+          "section_inline_code": [
+            "data",
+            "event",
+            "id",
+            "retry"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "data: {\"name\": \"Portal Gun\", \"price\": 999.99}\n\ndata: {\"name\": \"Plumbus\", \"price\": 32.99}",
+              "section_id": "tutorial/server-sent-events::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0003",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Stream SSE with FastAPI",
+          "anchor_id": "stream-sse-with-fastapi",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi",
+          "section_text_parts": [
+            "To stream SSE with FastAPI, use yield in your path operation function and set response_class=EventSourceResponse .",
+            "Import EventSourceResponse from fastapi.sse :",
+            "Each yielded item is encoded as JSON and sent in the data: field of an SSE event.",
+            "If you declare the return type as AsyncIterable[Item] , FastAPI will use it to validate , document , and serialize the data using Pydantic."
+          ],
+          "section_text": "To stream SSE with FastAPI, use yield in your path operation function and set response_class=EventSourceResponse .\n\nImport EventSourceResponse from fastapi.sse :\n\nEach yielded item is encoded as JSON and sent in the data: field of an SSE event.\n\nIf you declare the return type as AsyncIterable[Item] , FastAPI will use it to validate , document , and serialize the data using Pydantic.",
+          "section_inline_code": [
+            "yield",
+            "response_class=EventSourceResponse",
+            "EventSourceResponse",
+            "fastapi.sse",
+            "data:",
+            "AsyncIterable[Item]"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+              "highlight_lines": [
+                4,
+                22
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[4,22] *}",
+              "section_id": "tutorial/server-sent-events::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+            },
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+              "highlight_lines": [
+                10,
+                11,
+                12,
+                23
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[10:12,23] *}",
+              "section_id": "tutorial/server-sent-events::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/server-sent-events::section-0004",
+              "parent_id": "tutorial/server-sent-events::section-0003",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Non-async path operation functions",
+              "anchor_id": "non-async-path-operation-functions",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions",
+              "section_text_parts": [
+                "You can also use regular def functions (without async ), and use yield the same way.",
+                "FastAPI will make sure it's run correctly so that it doesn't block the event loop.",
+                "As in this case the function is not async, the right return type would be Iterable[Item] :"
+              ],
+              "section_text": "You can also use regular def functions (without async ), and use yield the same way.\n\nFastAPI will make sure it's run correctly so that it doesn't block the event loop.\n\nAs in this case the function is not async, the right return type would be Iterable[Item] :",
+              "section_inline_code": [
+                "def",
+                "async",
+                "yield",
+                "Iterable[Item]"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+                  "highlight_lines": [
+                    29
+                  ],
+                  "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[28:31] hl[29] *}",
+                  "section_id": "tutorial/server-sent-events::section-0004",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/server-sent-events::section-0005",
+              "parent_id": "tutorial/server-sent-events::section-0003",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "No Return Type",
+              "anchor_id": "no-return-type",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type",
+              "section_text_parts": [
+                "You can also omit the return type. FastAPI will use the jsonable_encoder to convert the data and send it."
+              ],
+              "section_text": "You can also omit the return type. FastAPI will use the jsonable_encoder to convert the data and send it.",
+              "section_inline_code": [
+                "jsonable_encoder"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+                  "highlight_lines": [
+                    35
+                  ],
+                  "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[34:37] hl[35] *}",
+                  "section_id": "tutorial/server-sent-events::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0006",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "ServerSentEvent",
+          "anchor_id": "serversentevent",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent",
+          "section_text_parts": [
+            "If you need to set SSE fields like event , id , retry , or comment , you can yield ServerSentEvent objects instead of plain data.",
+            "Import ServerSentEvent from fastapi.sse :",
+            "The data field is always encoded as JSON. You can pass any value that can be serialized as JSON, including Pydantic models."
+          ],
+          "section_text": "If you need to set SSE fields like event , id , retry , or comment , you can yield ServerSentEvent objects instead of plain data.\n\nImport ServerSentEvent from fastapi.sse :\n\nThe data field is always encoded as JSON. You can pass any value that can be serialized as JSON, including Pydantic models.",
+          "section_inline_code": [
+            "ServerSentEvent",
+            "event",
+            "id",
+            "retry",
+            "comment",
+            "fastapi.sse",
+            "data"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial002_py310.py",
+              "highlight_lines": [
+                4,
+                26
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial002_py310.py hl[4,26] *}",
+              "section_id": "tutorial/server-sent-events::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0007",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Raw Data",
+          "anchor_id": "raw-data",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data",
+          "section_text_parts": [
+            "If you need to send data without JSON encoding, use raw_data instead of data .",
+            "This is useful for sending pre-formatted text, log lines, or special \"sentinel\" values like [DONE] ."
+          ],
+          "section_text": "If you need to send data without JSON encoding, use raw_data instead of data .\n\nThis is useful for sending pre-formatted text, log lines, or special \"sentinel\" values like [DONE] .",
+          "section_inline_code": [
+            "raw_data",
+            "data",
+            "[DONE]"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial003_py310.py",
+              "highlight_lines": [
+                17
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial003_py310.py hl[17] *}",
+              "section_id": "tutorial/server-sent-events::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0008",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Resuming with Last-Event-ID",
+          "anchor_id": "resuming-with-last-event-id",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id",
+          "section_text_parts": [
+            "When a browser reconnects after a connection drop, it sends the last received id in the Last-Event-ID header.",
+            "You can read it as a header parameter and use it to resume the stream from where the client left off:"
+          ],
+          "section_text": "When a browser reconnects after a connection drop, it sends the last received id in the Last-Event-ID header.\n\nYou can read it as a header parameter and use it to resume the stream from where the client left off:",
+          "section_inline_code": [
+            "Last-Event-ID",
+            "id"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial004_py310.py",
+              "highlight_lines": [
+                25,
+                27,
+                31
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial004_py310.py hl[25,27,31] *}",
+              "section_id": "tutorial/server-sent-events::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0009",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "SSE with POST",
+          "anchor_id": "sse-with-post",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post",
+          "section_text_parts": [
+            "SSE works with any HTTP method , not just GET .",
+            "This is useful for protocols like MCP that stream SSE over POST :"
+          ],
+          "section_text": "SSE works with any HTTP method , not just GET .\n\nThis is useful for protocols like MCP that stream SSE over POST :",
+          "section_inline_code": [
+            "GET",
+            "POST"
+          ],
+          "section_links": [
+            {
+              "text": "MCP",
+              "url": "https://modelcontextprotocol.io",
+              "section_id": "tutorial/server-sent-events::section-0009",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+            }
+          ],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/server_sent_events/tutorial005_py310.py",
+              "highlight_lines": [
+                14
+              ],
+              "raw": "{* ../../docs_src/server_sent_events/tutorial005_py310.py hl[14] *}",
+              "section_id": "tutorial/server-sent-events::section-0009",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/server-sent-events::section-0010",
+          "parent_id": "tutorial/server-sent-events::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Technical Details",
+          "anchor_id": "technical-details",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details",
+          "section_text_parts": [
+            "FastAPI implements some SSE best practices out of the box.",
+            "- Send a \"keep alive\" ping comment every 15 seconds when there hasn't been any message, to prevent some proxies from closing the connection, as suggested in the HTML specification: Server-Sent Events .",
+            "- Set the Cache-Control: no-cache header to prevent caching of the stream.",
+            "- Set a special header X-Accel-Buffering: no to prevent buffering in some proxies like Nginx.",
+            "You don't have to do anything about it, it works out of the box. 🤓"
+          ],
+          "section_text": "FastAPI implements some SSE best practices out of the box.\n\n- Send a \"keep alive\" ping comment every 15 seconds when there hasn't been any message, to prevent some proxies from closing the connection, as suggested in the HTML specification: Server-Sent Events .\n\n- Set the Cache-Control: no-cache header to prevent caching of the stream.\n\n- Set a special header X-Accel-Buffering: no to prevent buffering in some proxies like Nginx.\n\nYou don't have to do anything about it, it works out of the box. 🤓",
+          "section_inline_code": [
+            "ping",
+            "Cache-Control: no-cache",
+            "X-Accel-Buffering: no"
+          ],
+          "section_links": [
+            {
+              "text": "HTML specification: Server-Sent Events",
+              "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html#authoring-notes",
+              "section_id": "tutorial/server-sent-events::section-0010",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/server-sent-events::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Server-Sent Events (SSE)",
+      "anchor_id": "server-sent-events-sse",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse",
+      "section_text": "You can stream data to the client using Server-Sent Events (SSE).\n\nThis is similar to Stream JSON Lines , but uses the text/event-stream format, which is supported natively by browsers with the EventSource API .",
+      "section_inline_code": [
+        "text/event-stream",
+        "EventSource"
+      ],
+      "section_links": [
+        {
+          "text": "Stream JSON Lines",
+          "url": "stream-json-lines.md",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        },
+        {
+          "text": "API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/EventSource",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0002",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "What are Server-Sent Events?",
+      "anchor_id": "what-are-server-sent-events",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events",
+      "section_text": "SSE is a standard for streaming data from the server to the client over HTTP.\n\nEach event is a small text block with \"fields\" like data , event , id , and retry , separated by blank lines.\n\nIt looks like this:\n\nSSE is commonly used for AI chat streaming, live notifications, logs and observability, and other cases where the server pushes updates to the client.",
+      "section_inline_code": [
+        "data",
+        "event",
+        "id",
+        "retry"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "data: {\"name\": \"Portal Gun\", \"price\": 999.99}\n\ndata: {\"name\": \"Plumbus\", \"price\": 32.99}",
+          "section_id": "tutorial/server-sent-events::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0003",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Stream SSE with FastAPI",
+      "anchor_id": "stream-sse-with-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi",
+      "section_text": "To stream SSE with FastAPI, use yield in your path operation function and set response_class=EventSourceResponse .\n\nImport EventSourceResponse from fastapi.sse :\n\nEach yielded item is encoded as JSON and sent in the data: field of an SSE event.\n\nIf you declare the return type as AsyncIterable[Item] , FastAPI will use it to validate , document , and serialize the data using Pydantic.",
+      "section_inline_code": [
+        "yield",
+        "response_class=EventSourceResponse",
+        "EventSourceResponse",
+        "fastapi.sse",
+        "data:",
+        "AsyncIterable[Item]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            4,
+            22
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[4,22] *}",
+          "section_id": "tutorial/server-sent-events::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            10,
+            11,
+            12,
+            23
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[10:12,23] *}",
+          "section_id": "tutorial/server-sent-events::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0004",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Non-async path operation functions",
+      "anchor_id": "non-async-path-operation-functions",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions",
+      "section_text": "You can also use regular def functions (without async ), and use yield the same way.\n\nFastAPI will make sure it's run correctly so that it doesn't block the event loop.\n\nAs in this case the function is not async, the right return type would be Iterable[Item] :",
+      "section_inline_code": [
+        "def",
+        "async",
+        "yield",
+        "Iterable[Item]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            29
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[28:31] hl[29] *}",
+          "section_id": "tutorial/server-sent-events::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0005",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "No Return Type",
+      "anchor_id": "no-return-type",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type",
+      "section_text": "You can also omit the return type. FastAPI will use the jsonable_encoder to convert the data and send it.",
+      "section_inline_code": [
+        "jsonable_encoder"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            35
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[34:37] hl[35] *}",
+          "section_id": "tutorial/server-sent-events::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0006",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "ServerSentEvent",
+      "anchor_id": "serversentevent",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent",
+      "section_text": "If you need to set SSE fields like event , id , retry , or comment , you can yield ServerSentEvent objects instead of plain data.\n\nImport ServerSentEvent from fastapi.sse :\n\nThe data field is always encoded as JSON. You can pass any value that can be serialized as JSON, including Pydantic models.",
+      "section_inline_code": [
+        "ServerSentEvent",
+        "event",
+        "id",
+        "retry",
+        "comment",
+        "fastapi.sse",
+        "data"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial002_py310.py",
+          "highlight_lines": [
+            4,
+            26
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial002_py310.py hl[4,26] *}",
+          "section_id": "tutorial/server-sent-events::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0007",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Raw Data",
+      "anchor_id": "raw-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data",
+      "section_text": "If you need to send data without JSON encoding, use raw_data instead of data .\n\nThis is useful for sending pre-formatted text, log lines, or special \"sentinel\" values like [DONE] .",
+      "section_inline_code": [
+        "raw_data",
+        "data",
+        "[DONE]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial003_py310.py",
+          "highlight_lines": [
+            17
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial003_py310.py hl[17] *}",
+          "section_id": "tutorial/server-sent-events::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0008",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Resuming with Last-Event-ID",
+      "anchor_id": "resuming-with-last-event-id",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id",
+      "section_text": "When a browser reconnects after a connection drop, it sends the last received id in the Last-Event-ID header.\n\nYou can read it as a header parameter and use it to resume the stream from where the client left off:",
+      "section_inline_code": [
+        "Last-Event-ID",
+        "id"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial004_py310.py",
+          "highlight_lines": [
+            25,
+            27,
+            31
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial004_py310.py hl[25,27,31] *}",
+          "section_id": "tutorial/server-sent-events::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0009",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "SSE with POST",
+      "anchor_id": "sse-with-post",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post",
+      "section_text": "SSE works with any HTTP method , not just GET .\n\nThis is useful for protocols like MCP that stream SSE over POST :",
+      "section_inline_code": [
+        "GET",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MCP",
+          "url": "https://modelcontextprotocol.io",
+          "section_id": "tutorial/server-sent-events::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial005_py310.py",
+          "highlight_lines": [
+            14
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial005_py310.py hl[14] *}",
+          "section_id": "tutorial/server-sent-events::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0010",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Technical Details",
+      "anchor_id": "technical-details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details",
+      "section_text": "FastAPI implements some SSE best practices out of the box.\n\n- Send a \"keep alive\" ping comment every 15 seconds when there hasn't been any message, to prevent some proxies from closing the connection, as suggested in the HTML specification: Server-Sent Events .\n\n- Set the Cache-Control: no-cache header to prevent caching of the stream.\n\n- Set a special header X-Accel-Buffering: no to prevent buffering in some proxies like Nginx.\n\nYou don't have to do anything about it, it works out of the box. 🤓",
+      "section_inline_code": [
+        "ping",
+        "Cache-Control: no-cache",
+        "X-Accel-Buffering: no"
+      ],
+      "section_links": [
+        {
+          "text": "HTML specification: Server-Sent Events",
+          "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html#authoring-notes",
+          "section_id": "tutorial/server-sent-events::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/server-sent-events::section-0001": {
+      "node_id": "tutorial/server-sent-events::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Server-Sent Events (SSE)",
+      "anchor_id": "server-sent-events-sse",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse",
+      "section_text": "You can stream data to the client using Server-Sent Events (SSE).\n\nThis is similar to Stream JSON Lines , but uses the text/event-stream format, which is supported natively by browsers with the EventSource API .",
+      "section_inline_code": [
+        "text/event-stream",
+        "EventSource"
+      ],
+      "section_links": [
+        {
+          "text": "Stream JSON Lines",
+          "url": "stream-json-lines.md",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        },
+        {
+          "text": "API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/EventSource",
+          "section_id": "tutorial/server-sent-events::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0002": {
+      "node_id": "tutorial/server-sent-events::section-0002",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "What are Server-Sent Events?",
+      "anchor_id": "what-are-server-sent-events",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events",
+      "section_text": "SSE is a standard for streaming data from the server to the client over HTTP.\n\nEach event is a small text block with \"fields\" like data , event , id , and retry , separated by blank lines.\n\nIt looks like this:\n\nSSE is commonly used for AI chat streaming, live notifications, logs and observability, and other cases where the server pushes updates to the client.",
+      "section_inline_code": [
+        "data",
+        "event",
+        "id",
+        "retry"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "data: {\"name\": \"Portal Gun\", \"price\": 999.99}\n\ndata: {\"name\": \"Plumbus\", \"price\": 32.99}",
+          "section_id": "tutorial/server-sent-events::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events"
+        }
+      ]
+    },
+    "tutorial/server-sent-events::section-0003": {
+      "node_id": "tutorial/server-sent-events::section-0003",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Stream SSE with FastAPI",
+      "anchor_id": "stream-sse-with-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi",
+      "section_text": "To stream SSE with FastAPI, use yield in your path operation function and set response_class=EventSourceResponse .\n\nImport EventSourceResponse from fastapi.sse :\n\nEach yielded item is encoded as JSON and sent in the data: field of an SSE event.\n\nIf you declare the return type as AsyncIterable[Item] , FastAPI will use it to validate , document , and serialize the data using Pydantic.",
+      "section_inline_code": [
+        "yield",
+        "response_class=EventSourceResponse",
+        "EventSourceResponse",
+        "fastapi.sse",
+        "data:",
+        "AsyncIterable[Item]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            4,
+            22
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[4,22] *}",
+          "section_id": "tutorial/server-sent-events::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            10,
+            11,
+            12,
+            23
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[1:25] hl[10:12,23] *}",
+          "section_id": "tutorial/server-sent-events::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0004": {
+      "node_id": "tutorial/server-sent-events::section-0004",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Non-async path operation functions",
+      "anchor_id": "non-async-path-operation-functions",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions",
+      "section_text": "You can also use regular def functions (without async ), and use yield the same way.\n\nFastAPI will make sure it's run correctly so that it doesn't block the event loop.\n\nAs in this case the function is not async, the right return type would be Iterable[Item] :",
+      "section_inline_code": [
+        "def",
+        "async",
+        "yield",
+        "Iterable[Item]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            29
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[28:31] hl[29] *}",
+          "section_id": "tutorial/server-sent-events::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#non-async-path-operation-functions"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0005": {
+      "node_id": "tutorial/server-sent-events::section-0005",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "No Return Type",
+      "anchor_id": "no-return-type",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type",
+      "section_text": "You can also omit the return type. FastAPI will use the jsonable_encoder to convert the data and send it.",
+      "section_inline_code": [
+        "jsonable_encoder"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial001_py310.py",
+          "highlight_lines": [
+            35
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial001_py310.py ln[34:37] hl[35] *}",
+          "section_id": "tutorial/server-sent-events::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#no-return-type"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0006": {
+      "node_id": "tutorial/server-sent-events::section-0006",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "ServerSentEvent",
+      "anchor_id": "serversentevent",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent",
+      "section_text": "If you need to set SSE fields like event , id , retry , or comment , you can yield ServerSentEvent objects instead of plain data.\n\nImport ServerSentEvent from fastapi.sse :\n\nThe data field is always encoded as JSON. You can pass any value that can be serialized as JSON, including Pydantic models.",
+      "section_inline_code": [
+        "ServerSentEvent",
+        "event",
+        "id",
+        "retry",
+        "comment",
+        "fastapi.sse",
+        "data"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial002_py310.py",
+          "highlight_lines": [
+            4,
+            26
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial002_py310.py hl[4,26] *}",
+          "section_id": "tutorial/server-sent-events::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#serversentevent"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0007": {
+      "node_id": "tutorial/server-sent-events::section-0007",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Raw Data",
+      "anchor_id": "raw-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data",
+      "section_text": "If you need to send data without JSON encoding, use raw_data instead of data .\n\nThis is useful for sending pre-formatted text, log lines, or special \"sentinel\" values like [DONE] .",
+      "section_inline_code": [
+        "raw_data",
+        "data",
+        "[DONE]"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial003_py310.py",
+          "highlight_lines": [
+            17
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial003_py310.py hl[17] *}",
+          "section_id": "tutorial/server-sent-events::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0008": {
+      "node_id": "tutorial/server-sent-events::section-0008",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Resuming with Last-Event-ID",
+      "anchor_id": "resuming-with-last-event-id",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id",
+      "section_text": "When a browser reconnects after a connection drop, it sends the last received id in the Last-Event-ID header.\n\nYou can read it as a header parameter and use it to resume the stream from where the client left off:",
+      "section_inline_code": [
+        "Last-Event-ID",
+        "id"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial004_py310.py",
+          "highlight_lines": [
+            25,
+            27,
+            31
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial004_py310.py hl[25,27,31] *}",
+          "section_id": "tutorial/server-sent-events::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#resuming-with-last-event-id"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0009": {
+      "node_id": "tutorial/server-sent-events::section-0009",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "SSE with POST",
+      "anchor_id": "sse-with-post",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post",
+      "section_text": "SSE works with any HTTP method , not just GET .\n\nThis is useful for protocols like MCP that stream SSE over POST :",
+      "section_inline_code": [
+        "GET",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MCP",
+          "url": "https://modelcontextprotocol.io",
+          "section_id": "tutorial/server-sent-events::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/server_sent_events/tutorial005_py310.py",
+          "highlight_lines": [
+            14
+          ],
+          "raw": "{* ../../docs_src/server_sent_events/tutorial005_py310.py hl[14] *}",
+          "section_id": "tutorial/server-sent-events::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#sse-with-post"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0010": {
+      "node_id": "tutorial/server-sent-events::section-0010",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Technical Details",
+      "anchor_id": "technical-details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details",
+      "section_text": "FastAPI implements some SSE best practices out of the box.\n\n- Send a \"keep alive\" ping comment every 15 seconds when there hasn't been any message, to prevent some proxies from closing the connection, as suggested in the HTML specification: Server-Sent Events .\n\n- Set the Cache-Control: no-cache header to prevent caching of the stream.\n\n- Set a special header X-Accel-Buffering: no to prevent buffering in some proxies like Nginx.\n\nYou don't have to do anything about it, it works out of the box. 🤓",
+      "section_inline_code": [
+        "ping",
+        "Cache-Control: no-cache",
+        "X-Accel-Buffering: no"
+      ],
+      "section_links": [
+        {
+          "text": "HTML specification: Server-Sent Events",
+          "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html#authoring-notes",
+          "section_id": "tutorial/server-sent-events::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#technical-details"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/server-sent-events::section-0001::admonition-0001",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Added in FastAPI 0.135.0."
+      ],
+      "section_text": "Added in FastAPI 0.135.0.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0002::admonition-0002",
+      "parent_id": "tutorial/server-sent-events::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you want to stream binary data, for example video or audio, check the advanced guide: Stream Data ."
+      ],
+      "section_text": "If you want to stream binary data, for example video or audio, check the advanced guide: Stream Data .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Stream Data",
+          "url": "../advanced/stream-data.md",
+          "section_id": "tutorial/server-sent-events::section-0002::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0003::admonition-0003",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "As Pydantic will serialize it in the Rust side, you will get much higher performance than if you don't declare a return type."
+      ],
+      "section_text": "As Pydantic will serialize it in the Rust side, you will get much higher performance than if you don't declare a return type.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0007::admonition-0004",
+      "parent_id": "tutorial/server-sent-events::section-0007",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "data and raw_data are mutually exclusive. You can only set one of them on each ServerSentEvent ."
+      ],
+      "section_text": "data and raw_data are mutually exclusive. You can only set one of them on each ServerSentEvent .",
+      "section_inline_code": [
+        "data",
+        "raw_data",
+        "ServerSentEvent"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/server-sent-events::section-0001::admonition-0001": {
+      "node_id": "tutorial/server-sent-events::section-0001::admonition-0001",
+      "parent_id": "tutorial/server-sent-events::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#server-sent-events-sse",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Added in FastAPI 0.135.0."
+      ],
+      "section_text": "Added in FastAPI 0.135.0.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0002::admonition-0002": {
+      "node_id": "tutorial/server-sent-events::section-0002::admonition-0002",
+      "parent_id": "tutorial/server-sent-events::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you want to stream binary data, for example video or audio, check the advanced guide: Stream Data ."
+      ],
+      "section_text": "If you want to stream binary data, for example video or audio, check the advanced guide: Stream Data .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Stream Data",
+          "url": "../advanced/stream-data.md",
+          "section_id": "tutorial/server-sent-events::section-0002::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#what-are-server-sent-events"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0003::admonition-0003": {
+      "node_id": "tutorial/server-sent-events::section-0003::admonition-0003",
+      "parent_id": "tutorial/server-sent-events::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#stream-sse-with-fastapi",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "As Pydantic will serialize it in the Rust side, you will get much higher performance than if you don't declare a return type."
+      ],
+      "section_text": "As Pydantic will serialize it in the Rust side, you will get much higher performance than if you don't declare a return type.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/server-sent-events::section-0007::admonition-0004": {
+      "node_id": "tutorial/server-sent-events::section-0007::admonition-0004",
+      "parent_id": "tutorial/server-sent-events::section-0007",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/server-sent-events/#raw-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "data and raw_data are mutually exclusive. You can only set one of them on each ServerSentEvent ."
+      ],
+      "section_text": "data and raw_data are mutually exclusive. You can only set one of them on each ServerSentEvent .",
+      "section_inline_code": [
+        "data",
+        "raw_data",
+        "ServerSentEvent"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/server-sent-events::section-0001",
+      "seconds": 6.325899994408246e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0002",
+      "seconds": 6.087200017645955e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0003",
+      "seconds": 0.00011564799933694303,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0004",
+      "seconds": 3.9427999581675977e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0005",
+      "seconds": 2.0557999960146844e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0006",
+      "seconds": 4.180200085102115e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0007",
+      "seconds": 5.888899977435358e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0008",
+      "seconds": 6.553399907716084e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0009",
+      "seconds": 3.669399848149624e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/server-sent-events::section-0010",
+      "seconds": 9.315299939771648e-05,
+      "paragraphs": 2,
+      "list_items": 3,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    }
+  ]
+}

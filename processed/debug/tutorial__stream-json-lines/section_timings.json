@@ -1,0 +1,82 @@
+[
+  {
+    "node_id": "tutorial/stream-json-lines::section-0001",
+    "seconds": 4.946199987898581e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0002",
+    "seconds": 3.6579000152414665e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0003",
+    "seconds": 8.54540012369398e-05,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0004",
+    "seconds": 5.7051000112551264e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0005",
+    "seconds": 0.0001108029991883086,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 2,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0006",
+    "seconds": 3.2160000046133064e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0007",
+    "seconds": 7.004399958532304e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/stream-json-lines::section-0008",
+    "seconds": 2.1656998796970583e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

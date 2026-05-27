@@ -1,0 +1,142 @@
+[
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0001",
+    "seconds": 3.5475999538903125e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0002",
+    "seconds": 5.2400000640773214e-05,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0003",
+    "seconds": 7.69950001995312e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 2,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0004",
+    "seconds": 1.758600046741776e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0005",
+    "seconds": 1.3569000657298602e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0006",
+    "seconds": 9.4521001301473e-05,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0007",
+    "seconds": 9.424000018043444e-05,
+    "paragraphs": 11,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0008",
+    "seconds": 7.359000119322445e-05,
+    "paragraphs": 8,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0009",
+    "seconds": 3.272899994044565e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0010",
+    "seconds": 2.216299981228076e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0011",
+    "seconds": 6.483499964815564e-05,
+    "paragraphs": 10,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0012",
+    "seconds": 0.00011687700134643819,
+    "paragraphs": 9,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0013",
+    "seconds": 3.455300065979827e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/oauth2-jwt::section-0014",
+    "seconds": 8.35110004118178e-05,
+    "paragraphs": 9,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

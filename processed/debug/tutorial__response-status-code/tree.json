@@ -1,0 +1,681 @@
+{
+  "page": {
+    "page_id": "tutorial/response-status-code",
+    "page_uid": "b878c05ed56895dcc20f2393d7a197d9225bf97c",
+    "page_title": "Response Status Code",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+    "source_file": "tutorial/response-status-code.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/response-status-code::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Response Status Code",
+      "anchor_id": "response-status-code",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "section_text_parts": [
+        "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter status_code in any of the path operations :",
+        "- @app.get()",
+        "- @app.post()",
+        "- @app.put()",
+        "- @app.delete()",
+        "- etc.",
+        "The status_code parameter receives a number with the HTTP status code.",
+        "It will:",
+        "- Return that status code in the response.",
+        "- Document it as such in the OpenAPI schema (and so, in the user interfaces):"
+      ],
+      "section_text": "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter status_code in any of the path operations :\n\n- @app.get()\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\n- etc.\n\nThe status_code parameter receives a number with the HTTP status code.\n\nIt will:\n\n- Return that status code in the response.\n\n- Document it as such in the OpenAPI schema (and so, in the user interfaces):",
+      "section_inline_code": [
+        "status_code",
+        "@app.get()",
+        "@app.post()",
+        "@app.put()",
+        "@app.delete()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/response-status-code::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code"
+        }
+      ],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/response-status-code::section-0002",
+          "parent_id": "tutorial/response-status-code::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "About HTTP status codes",
+          "anchor_id": "about-http-status-codes",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+          "section_text_parts": [
+            "In HTTP, you send a numeric status code of 3 digits as part of the response.",
+            "These status codes have a name associated to recognize them, but the important part is the number.",
+            "In short:",
+            "- 100 - 199 are for \"Information\". You rarely use them directly.  Responses with these status codes cannot have a body.",
+            "- 200 is the default status code, which means everything was \"OK\".",
+            "- Another example would be 201 , \"Created\". It is commonly used after creating a new record in the database.",
+            "- A special case is 204 , \"No Content\".  This response is used when there is no content to return to the client, and so the response must not have a body.",
+            "- An example is 404 , for a \"Not Found\" response.",
+            "- For generic errors from the client, you can just use 400 ."
+          ],
+          "section_text": "In HTTP, you send a numeric status code of 3 digits as part of the response.\n\nThese status codes have a name associated to recognize them, but the important part is the number.\n\nIn short:\n\n- 100 - 199 are for \"Information\". You rarely use them directly.  Responses with these status codes cannot have a body.\n\n- 200 is the default status code, which means everything was \"OK\".\n\n- Another example would be 201 , \"Created\". It is commonly used after creating a new record in the database.\n\n- A special case is 204 , \"No Content\".  This response is used when there is no content to return to the client, and so the response must not have a body.\n\n- An example is 404 , for a \"Not Found\" response.\n\n- For generic errors from the client, you can just use 400 .",
+          "section_inline_code": [
+            "100 - 199",
+            "200",
+            "201",
+            "204",
+            "404",
+            "400"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/response-status-code::section-0003",
+          "parent_id": "tutorial/response-status-code::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Shortcut to remember the names",
+          "anchor_id": "shortcut-to-remember-the-names",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names",
+          "section_text_parts": [
+            "Let's see the previous example again:",
+            "201 is the status code for \"Created\".",
+            "But you don't have to memorize what each of these codes mean.",
+            "You can use the convenience variables from fastapi.status .",
+            "They are just a convenience, they hold the same number, but that way you can use the editor's autocomplete to find them:"
+          ],
+          "section_text": "Let's see the previous example again:\n\n201 is the status code for \"Created\".\n\nBut you don't have to memorize what each of these codes mean.\n\nYou can use the convenience variables from fastapi.status .\n\nThey are just a convenience, they hold the same number, but that way you can use the editor's autocomplete to find them:",
+          "section_inline_code": [
+            "201",
+            "fastapi.status"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+              "highlight_lines": [
+                6
+              ],
+              "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+              "section_id": "tutorial/response-status-code::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+            },
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/response_status_code/tutorial002_py310.py",
+              "highlight_lines": [
+                1,
+                6
+              ],
+              "raw": "{* ../../docs_src/response_status_code/tutorial002_py310.py hl[1,6] *}",
+              "section_id": "tutorial/response-status-code::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/response-status-code::section-0004",
+          "parent_id": "tutorial/response-status-code::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Changing the default",
+          "anchor_id": "changing-the-default",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default",
+          "section_text_parts": [
+            "Later, in the Advanced User Guide , you will see how to return a different status code than the default you are declaring here."
+          ],
+          "section_text": "Later, in the Advanced User Guide , you will see how to return a different status code than the default you are declaring here.",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "Advanced User Guide",
+              "url": "../advanced/response-change-status-code.md",
+              "section_id": "tutorial/response-status-code::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/response-status-code::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Response Status Code",
+      "anchor_id": "response-status-code",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "section_text": "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter status_code in any of the path operations :\n\n- @app.get()\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\n- etc.\n\nThe status_code parameter receives a number with the HTTP status code.\n\nIt will:\n\n- Return that status code in the response.\n\n- Document it as such in the OpenAPI schema (and so, in the user interfaces):",
+      "section_inline_code": [
+        "status_code",
+        "@app.get()",
+        "@app.post()",
+        "@app.put()",
+        "@app.delete()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/response-status-code::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0002",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "About HTTP status codes",
+      "anchor_id": "about-http-status-codes",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "section_text": "In HTTP, you send a numeric status code of 3 digits as part of the response.\n\nThese status codes have a name associated to recognize them, but the important part is the number.\n\nIn short:\n\n- 100 - 199 are for \"Information\". You rarely use them directly.  Responses with these status codes cannot have a body.\n\n- 200 is the default status code, which means everything was \"OK\".\n\n- Another example would be 201 , \"Created\". It is commonly used after creating a new record in the database.\n\n- A special case is 204 , \"No Content\".  This response is used when there is no content to return to the client, and so the response must not have a body.\n\n- An example is 404 , for a \"Not Found\" response.\n\n- For generic errors from the client, you can just use 400 .",
+      "section_inline_code": [
+        "100 - 199",
+        "200",
+        "201",
+        "204",
+        "404",
+        "400"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0003",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Shortcut to remember the names",
+      "anchor_id": "shortcut-to-remember-the-names",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names",
+      "section_text": "Let's see the previous example again:\n\n201 is the status code for \"Created\".\n\nBut you don't have to memorize what each of these codes mean.\n\nYou can use the convenience variables from fastapi.status .\n\nThey are just a convenience, they hold the same number, but that way you can use the editor's autocomplete to find them:",
+      "section_inline_code": [
+        "201",
+        "fastapi.status"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/response-status-code::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial002_py310.py",
+          "highlight_lines": [
+            1,
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial002_py310.py hl[1,6] *}",
+          "section_id": "tutorial/response-status-code::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0004",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Changing the default",
+      "anchor_id": "changing-the-default",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default",
+      "section_text": "Later, in the Advanced User Guide , you will see how to return a different status code than the default you are declaring here.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Advanced User Guide",
+          "url": "../advanced/response-change-status-code.md",
+          "section_id": "tutorial/response-status-code::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/response-status-code::section-0001": {
+      "node_id": "tutorial/response-status-code::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Response Status Code",
+      "anchor_id": "response-status-code",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "section_text": "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter status_code in any of the path operations :\n\n- @app.get()\n\n- @app.post()\n\n- @app.put()\n\n- @app.delete()\n\n- etc.\n\nThe status_code parameter receives a number with the HTTP status code.\n\nIt will:\n\n- Return that status code in the response.\n\n- Document it as such in the OpenAPI schema (and so, in the user interfaces):",
+      "section_inline_code": [
+        "status_code",
+        "@app.get()",
+        "@app.post()",
+        "@app.put()",
+        "@app.delete()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/response-status-code::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0002": {
+      "node_id": "tutorial/response-status-code::section-0002",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "About HTTP status codes",
+      "anchor_id": "about-http-status-codes",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "section_text": "In HTTP, you send a numeric status code of 3 digits as part of the response.\n\nThese status codes have a name associated to recognize them, but the important part is the number.\n\nIn short:\n\n- 100 - 199 are for \"Information\". You rarely use them directly.  Responses with these status codes cannot have a body.\n\n- 200 is the default status code, which means everything was \"OK\".\n\n- Another example would be 201 , \"Created\". It is commonly used after creating a new record in the database.\n\n- A special case is 204 , \"No Content\".  This response is used when there is no content to return to the client, and so the response must not have a body.\n\n- An example is 404 , for a \"Not Found\" response.\n\n- For generic errors from the client, you can just use 400 .",
+      "section_inline_code": [
+        "100 - 199",
+        "200",
+        "201",
+        "204",
+        "404",
+        "400"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0003": {
+      "node_id": "tutorial/response-status-code::section-0003",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Shortcut to remember the names",
+      "anchor_id": "shortcut-to-remember-the-names",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names",
+      "section_text": "Let's see the previous example again:\n\n201 is the status code for \"Created\".\n\nBut you don't have to memorize what each of these codes mean.\n\nYou can use the convenience variables from fastapi.status .\n\nThey are just a convenience, they hold the same number, but that way you can use the editor's autocomplete to find them:",
+      "section_inline_code": [
+        "201",
+        "fastapi.status"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial001_py310.py",
+          "highlight_lines": [
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial001_py310.py hl[6] *}",
+          "section_id": "tutorial/response-status-code::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/response_status_code/tutorial002_py310.py",
+          "highlight_lines": [
+            1,
+            6
+          ],
+          "raw": "{* ../../docs_src/response_status_code/tutorial002_py310.py hl[1,6] *}",
+          "section_id": "tutorial/response-status-code::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0004": {
+      "node_id": "tutorial/response-status-code::section-0004",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Changing the default",
+      "anchor_id": "changing-the-default",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default",
+      "section_text": "Later, in the Advanced User Guide , you will see how to return a different status code than the default you are declaring here.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Advanced User Guide",
+          "url": "../advanced/response-change-status-code.md",
+          "section_id": "tutorial/response-status-code::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#changing-the-default"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0001",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that status_code is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body."
+      ],
+      "section_text": "Notice that status_code is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body.",
+      "section_inline_code": [
+        "status_code",
+        "get",
+        "post"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0002",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "status_code can alternatively also receive an IntEnum , such as Python's http.HTTPStatus ."
+      ],
+      "section_text": "status_code can alternatively also receive an IntEnum , such as Python's http.HTTPStatus .",
+      "section_inline_code": [
+        "status_code",
+        "IntEnum",
+        "http.HTTPStatus"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0003",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Some response codes (see the next section) indicate that the response does not have a body.",
+        "FastAPI knows this, and will produce OpenAPI docs that state there is no response body."
+      ],
+      "section_text": "Some response codes (see the next section) indicate that the response does not have a body.\n\nFastAPI knows this, and will produce OpenAPI docs that state there is no response body.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0002::admonition-0004",
+      "parent_id": "tutorial/response-status-code::section-0002",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you already know what HTTP status codes are, skip to the next section."
+      ],
+      "section_text": "If you already know what HTTP status codes are, skip to the next section.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0002::admonition-0005",
+      "parent_id": "tutorial/response-status-code::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To know more about each status code and which code is for what, check the MDN documentation about HTTP status codes ."
+      ],
+      "section_text": "To know more about each status code and which code is for what, check the MDN documentation about HTTP status codes .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "MDN documentation about HTTP status codes",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status",
+          "section_id": "tutorial/response-status-code::section-0002::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0003::admonition-0006",
+      "parent_id": "tutorial/response-status-code::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette import status .",
+        "FastAPI provides the same starlette.status as fastapi.status just as a convenience for you, the developer. But it comes directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette import status .\n\nFastAPI provides the same starlette.status as fastapi.status just as a convenience for you, the developer. But it comes directly from Starlette.",
+      "section_inline_code": [
+        "from starlette import status",
+        "starlette.status",
+        "fastapi.status"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/response-status-code::section-0001::admonition-0001": {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0001",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Notice that status_code is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body."
+      ],
+      "section_text": "Notice that status_code is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body.",
+      "section_inline_code": [
+        "status_code",
+        "get",
+        "post"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0001::admonition-0002": {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0002",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "status_code can alternatively also receive an IntEnum , such as Python's http.HTTPStatus ."
+      ],
+      "section_text": "status_code can alternatively also receive an IntEnum , such as Python's http.HTTPStatus .",
+      "section_inline_code": [
+        "status_code",
+        "IntEnum",
+        "http.HTTPStatus"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0001::admonition-0003": {
+      "node_id": "tutorial/response-status-code::section-0001::admonition-0003",
+      "parent_id": "tutorial/response-status-code::section-0001",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#response-status-code",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Some response codes (see the next section) indicate that the response does not have a body.",
+        "FastAPI knows this, and will produce OpenAPI docs that state there is no response body."
+      ],
+      "section_text": "Some response codes (see the next section) indicate that the response does not have a body.\n\nFastAPI knows this, and will produce OpenAPI docs that state there is no response body.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0002::admonition-0004": {
+      "node_id": "tutorial/response-status-code::section-0002::admonition-0004",
+      "parent_id": "tutorial/response-status-code::section-0002",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you already know what HTTP status codes are, skip to the next section."
+      ],
+      "section_text": "If you already know what HTTP status codes are, skip to the next section.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0002::admonition-0005": {
+      "node_id": "tutorial/response-status-code::section-0002::admonition-0005",
+      "parent_id": "tutorial/response-status-code::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To know more about each status code and which code is for what, check the MDN documentation about HTTP status codes ."
+      ],
+      "section_text": "To know more about each status code and which code is for what, check the MDN documentation about HTTP status codes .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "MDN documentation about HTTP status codes",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status",
+          "section_id": "tutorial/response-status-code::section-0002::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#about-http-status-codes"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/response-status-code::section-0003::admonition-0006": {
+      "node_id": "tutorial/response-status-code::section-0003::admonition-0006",
+      "parent_id": "tutorial/response-status-code::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/#shortcut-to-remember-the-names",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette import status .",
+        "FastAPI provides the same starlette.status as fastapi.status just as a convenience for you, the developer. But it comes directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette import status .\n\nFastAPI provides the same starlette.status as fastapi.status just as a convenience for you, the developer. But it comes directly from Starlette.",
+      "section_inline_code": [
+        "from starlette import status",
+        "starlette.status",
+        "fastapi.status"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/response-status-code::section-0001",
+      "seconds": 0.0001817009997466812,
+      "paragraphs": 7,
+      "list_items": 7,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 3
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0002",
+      "seconds": 0.00019015100042452104,
+      "paragraphs": 5,
+      "list_items": 6,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0003",
+      "seconds": 7.781400017847773e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/response-status-code::section-0004",
+      "seconds": 1.8187000023317523e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    }
+  ]
+}

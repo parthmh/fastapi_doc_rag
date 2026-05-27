@@ -1,0 +1,52 @@
+[
+  {
+    "node_id": "tutorial/request-forms::section-0001",
+    "seconds": 6.244200085347984e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/request-forms::section-0002",
+    "seconds": 2.3028000214253552e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-forms::section-0003",
+    "seconds": 9.240500003215857e-05,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/request-forms::section-0004",
+    "seconds": 9.894699905999005e-05,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/request-forms::section-0005",
+    "seconds": 1.428199902875349e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

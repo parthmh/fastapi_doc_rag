@@ -1,0 +1,66 @@
+{
+  "tutorial/cookie-params::section-0003::admonition-0001": {
+    "node_id": "tutorial/cookie-params::section-0003::admonition-0001",
+    "parent_id": "tutorial/cookie-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-params/#declare-cookie-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Cookie is a \"sister\" class of Path and Query . It also inherits from the same common Param class.",
+      "But remember that when you import Query , Path , Cookie and others from fastapi , those are actually functions that return special classes."
+    ],
+    "section_text": "Cookie is a \"sister\" class of Path and Query . It also inherits from the same common Param class.\n\nBut remember that when you import Query , Path , Cookie and others from fastapi , those are actually functions that return special classes.",
+    "section_inline_code": [
+      "Cookie",
+      "Path",
+      "Query",
+      "Param",
+      "fastapi"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/cookie-params::section-0003::admonition-0002": {
+    "node_id": "tutorial/cookie-params::section-0003::admonition-0002",
+    "parent_id": "tutorial/cookie-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-params/#declare-cookie-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To declare cookies, you need to use Cookie , because otherwise the parameters would be interpreted as query parameters."
+    ],
+    "section_text": "To declare cookies, you need to use Cookie , because otherwise the parameters would be interpreted as query parameters.",
+    "section_inline_code": [
+      "Cookie"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/cookie-params::section-0003::admonition-0003": {
+    "node_id": "tutorial/cookie-params::section-0003::admonition-0003",
+    "parent_id": "tutorial/cookie-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-params/#declare-cookie-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Have in mind that, as browsers handle cookies in special ways and behind the scenes, they don't easily allow JavaScript to touch them.",
+      "If you go to the API docs UI at /docs you will be able to see the documentation for cookies for your path operations .",
+      "But even if you fill the data and click \"Execute\", because the docs UI works with JavaScript , the cookies won't be sent, and you will see an error message as if you didn't write any values."
+    ],
+    "section_text": "Have in mind that, as browsers handle cookies in special ways and behind the scenes, they don't easily allow JavaScript to touch them.\n\nIf you go to the API docs UI at /docs you will be able to see the documentation for cookies for your path operations .\n\nBut even if you fill the data and click \"Execute\", because the docs UI works with JavaScript , the cookies won't be sent, and you will see an error message as if you didn't write any values.",
+    "section_inline_code": [
+      "/docs"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

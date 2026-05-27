@@ -1,0 +1,209 @@
+{
+  "tutorial/body-updates::section-0001": {
+    "node_id": "tutorial/body-updates::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Body - Updates",
+    "anchor_id": "body-updates",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#body-updates",
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-updates::section-0002": {
+    "node_id": "tutorial/body-updates::section-0002",
+    "parent_id": "tutorial/body-updates::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Update replacing with PUT",
+    "anchor_id": "update-replacing-with-put",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#update-replacing-with-put",
+    "section_text": "To update an item you can use the HTTP PUT operation.\n\nYou can use the jsonable_encoder to convert the input data to data that can be stored as JSON (e.g. with a NoSQL database). For example, converting datetime to str .\n\nPUT is used to receive data that should replace the existing data.",
+    "section_inline_code": [
+      "PUT",
+      "jsonable_encoder",
+      "datetime",
+      "str"
+    ],
+    "section_links": [
+      {
+        "text": "HTTP",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT",
+        "section_id": "tutorial/body-updates::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#update-replacing-with-put"
+      }
+    ],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/body_updates/tutorial001_py310.py",
+        "highlight_lines": [
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "raw": "{* ../../docs_src/body_updates/tutorial001_py310.py hl[28:33] *}",
+        "section_id": "tutorial/body-updates::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#update-replacing-with-put"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/body-updates::section-0003": {
+    "node_id": "tutorial/body-updates::section-0003",
+    "parent_id": "tutorial/body-updates::section-0002",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "Warning about replacing",
+    "anchor_id": "warning-about-replacing",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#warning-about-replacing",
+    "section_text": "That means that if you want to update the item bar using PUT with a body containing:\n\nbecause it doesn't include the already stored attribute \"tax\": 20.2 , the input model would take the default value of \"tax\": 10.5 .\n\nAnd the data would be saved with that \"new\" tax of 10.5 .",
+    "section_inline_code": [
+      "bar",
+      "PUT",
+      "\"tax\": 20.2",
+      "\"tax\": 10.5",
+      "tax",
+      "10.5"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "{\n    \"name\": \"Barz\",\n    \"price\": 3,\n    \"description\": None,\n}",
+        "section_id": "tutorial/body-updates::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#warning-about-replacing"
+      }
+    ]
+  },
+  "tutorial/body-updates::section-0004": {
+    "node_id": "tutorial/body-updates::section-0004",
+    "parent_id": "tutorial/body-updates::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Partial updates with PATCH",
+    "anchor_id": "partial-updates-with-patch",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#partial-updates-with-patch",
+    "section_text": "You can also use the HTTP PATCH operation to partially update data.\n\nThis means that you can send only the data that you want to update, leaving the rest intact.",
+    "section_inline_code": [
+      "PATCH"
+    ],
+    "section_links": [
+      {
+        "text": "HTTP",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH",
+        "section_id": "tutorial/body-updates::section-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#partial-updates-with-patch"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body-updates::section-0005": {
+    "node_id": "tutorial/body-updates::section-0005",
+    "parent_id": "tutorial/body-updates::section-0004",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "Using Pydantic's exclude_unset parameter",
+    "anchor_id": "using-pydantics-exclude-unset-parameter",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#using-pydantics-exclude-unset-parameter",
+    "section_text": "If you want to receive partial updates, it's very useful to use the parameter exclude_unset in Pydantic's model's .model_dump() .\n\nLike item.model_dump(exclude_unset=True) .\n\nThat would generate a dict with only the data that was set when creating the item model, excluding default values.\n\nThen you can use this to generate a dict with only the data that was set (sent in the request), omitting default values:",
+    "section_inline_code": [
+      "exclude_unset",
+      ".model_dump()",
+      "item.model_dump(exclude_unset=True)",
+      "dict",
+      "item"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/body_updates/tutorial002_py310.py",
+        "highlight_lines": [
+          32
+        ],
+        "raw": "{* ../../docs_src/body_updates/tutorial002_py310.py hl[32] *}",
+        "section_id": "tutorial/body-updates::section-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#using-pydantics-exclude-unset-parameter"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/body-updates::section-0006": {
+    "node_id": "tutorial/body-updates::section-0006",
+    "parent_id": "tutorial/body-updates::section-0004",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "Using Pydantic's update parameter",
+    "anchor_id": "using-pydantics-update-parameter",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#using-pydantics-update-parameter",
+    "section_text": "Now, you can create a copy of the existing model using .model_copy() , and pass the update parameter with a dict containing the data to update.\n\nLike stored_item_model.model_copy(update=update_data) :",
+    "section_inline_code": [
+      "update",
+      ".model_copy()",
+      "dict",
+      "stored_item_model.model_copy(update=update_data)"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/body_updates/tutorial002_py310.py",
+        "highlight_lines": [
+          33
+        ],
+        "raw": "{* ../../docs_src/body_updates/tutorial002_py310.py hl[33] *}",
+        "section_id": "tutorial/body-updates::section-0006",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#using-pydantics-update-parameter"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/body-updates::section-0007": {
+    "node_id": "tutorial/body-updates::section-0007",
+    "parent_id": "tutorial/body-updates::section-0004",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "Partial updates recap",
+    "anchor_id": "partial-updates-recap",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#partial-updates-recap",
+    "section_text": "In summary, to apply partial updates you would:\n\n- (Optionally) use PATCH instead of PUT .\n\n- Retrieve the stored data.\n\n- Put that data in a Pydantic model.\n\n- This way you can update only the values actually set by the user, instead of overriding values already stored with default values in your model.\n\n- This is comparable to using the model's .model_dump() method again, but it makes sure (and converts) the values to data types that can be converted to JSON, for example, datetime to str .",
+    "section_inline_code": [
+      "PATCH",
+      "PUT",
+      ".model_dump()",
+      "datetime",
+      "str"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/body_updates/tutorial002_py310.py",
+        "highlight_lines": [
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "raw": "{* ../../docs_src/body_updates/tutorial002_py310.py hl[28:35] *}",
+        "section_id": "tutorial/body-updates::section-0007",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body-updates/#partial-updates-recap"
+      }
+    ],
+    "code_blocks": []
+  }
+}

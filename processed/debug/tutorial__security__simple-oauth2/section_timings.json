@@ -1,0 +1,172 @@
+[
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0001",
+    "seconds": 1.8767999790725298e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0002",
+    "seconds": 7.027300125628244e-05,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0003",
+    "seconds": 9.19720005185809e-05,
+    "paragraphs": 8,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0004",
+    "seconds": 1.8168999304180034e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0005",
+    "seconds": 0.00021271000150591135,
+    "paragraphs": 8,
+    "list_items": 6,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0006",
+    "seconds": 5.3838999519939534e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0007",
+    "seconds": 2.2869000531500205e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0008",
+    "seconds": 1.6529000276932493e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0009",
+    "seconds": 1.9782999515882693e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0010",
+    "seconds": 6.249299985938706e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0011",
+    "seconds": 9.562099876347929e-05,
+    "paragraphs": 10,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0012",
+    "seconds": 0.00011416400047892239,
+    "paragraphs": 12,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0013",
+    "seconds": 2.3259000954567455e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0014",
+    "seconds": 5.1339999117772095e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0015",
+    "seconds": 5.313600013323594e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 2,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0016",
+    "seconds": 4.903899935015943e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/security/simple-oauth2::section-0017",
+    "seconds": 5.082299867353868e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

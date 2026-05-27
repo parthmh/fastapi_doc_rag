@@ -1,0 +1,115 @@
+{
+  "tutorial/cookie-param-models::section-0001": {
+    "node_id": "tutorial/cookie-param-models::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Cookie Parameter Models",
+    "anchor_id": "cookie-parameter-models",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#cookie-parameter-models",
+    "section_text": "If you have a group of cookies that are related, you can create a Pydantic model to declare them. 🍪\n\nThis would allow you to re-use the model in multiple places and also to declare validations and metadata for all the parameters at once. 😎",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/cookie-param-models::section-0002": {
+    "node_id": "tutorial/cookie-param-models::section-0002",
+    "parent_id": "tutorial/cookie-param-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Cookies with a Pydantic Model",
+    "anchor_id": "cookies-with-a-pydantic-model",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#cookies-with-a-pydantic-model",
+    "section_text": "Declare the cookie parameters that you need in a Pydantic model , and then declare the parameter as Cookie :\n\nFastAPI will extract the data for each field from the cookies received in the request and give you the Pydantic model you defined.",
+    "section_inline_code": [
+      "Cookie"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/cookie_param_models/tutorial001_an_py310.py",
+        "highlight_lines": [
+          9,
+          10,
+          11,
+          12,
+          16
+        ],
+        "raw": "{* ../../docs_src/cookie_param_models/tutorial001_an_py310.py hl[9:12,16] *}",
+        "section_id": "tutorial/cookie-param-models::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#cookies-with-a-pydantic-model"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/cookie-param-models::section-0003": {
+    "node_id": "tutorial/cookie-param-models::section-0003",
+    "parent_id": "tutorial/cookie-param-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Check the Docs",
+    "anchor_id": "check-the-docs",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#check-the-docs",
+    "section_text": "You can see the defined cookies in the docs UI at /docs :",
+    "section_inline_code": [
+      "/docs"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/cookie-param-models::section-0004": {
+    "node_id": "tutorial/cookie-param-models::section-0004",
+    "parent_id": "tutorial/cookie-param-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Forbid Extra Cookies",
+    "anchor_id": "forbid-extra-cookies",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#forbid-extra-cookies",
+    "section_text": "In some special use cases (probably not very common), you might want to restrict the cookies that you want to receive.\n\nYour API now has the power to control its own cookie consent . 🤪🍪\n\nYou can use Pydantic's model configuration to forbid any extra fields:\n\nIf a client tries to send some extra cookies , they will receive an error response.\n\nPoor cookie banners with all their effort to get your consent for the API to reject it . 🍪\n\nFor example, if the client tries to send a santa_tracker cookie with a value of good-list-please , the client will receive an error response telling them that the santa_tracker cookie is not allowed :",
+    "section_inline_code": [
+      "forbid",
+      "extra",
+      "santa_tracker",
+      "good-list-please"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/cookie_param_models/tutorial002_an_py310.py",
+        "highlight_lines": [
+          10
+        ],
+        "raw": "{* ../../docs_src/cookie_param_models/tutorial002_an_py310.py hl[10] *}",
+        "section_id": "tutorial/cookie-param-models::section-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#forbid-extra-cookies"
+      }
+    ],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "json",
+        "text": "{\n    \"detail\": [\n        {\n            \"type\": \"extra_forbidden\",\n            \"loc\": [\"cookie\", \"santa_tracker\"],\n            \"msg\": \"Extra inputs are not permitted\",\n            \"input\": \"good-list-please\",\n        }\n    ]\n}",
+        "section_id": "tutorial/cookie-param-models::section-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#forbid-extra-cookies"
+      }
+    ]
+  },
+  "tutorial/cookie-param-models::section-0005": {
+    "node_id": "tutorial/cookie-param-models::section-0005",
+    "parent_id": "tutorial/cookie-param-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Summary",
+    "anchor_id": "summary",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/#summary",
+    "section_text": "You can use Pydantic models to declare cookies in FastAPI . 😎",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

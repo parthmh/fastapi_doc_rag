@@ -1,0 +1,205 @@
+{
+  "tutorial/response-model::section-0002::admonition-0001": {
+    "node_id": "tutorial/response-model::section-0002::admonition-0001",
+    "parent_id": "tutorial/response-model::section-0002",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#response-model-parameter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice that response_model is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body."
+    ],
+    "section_text": "Notice that response_model is a parameter of the \"decorator\" method ( get , post , etc). Not of your path operation function , like all the parameters and body.",
+    "section_inline_code": [
+      "response_model",
+      "get",
+      "post"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0002::admonition-0002": {
+    "node_id": "tutorial/response-model::section-0002::admonition-0002",
+    "parent_id": "tutorial/response-model::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#response-model-parameter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you have strict type checks in your editor, mypy, etc, you can declare the function return type as Any .",
+      "That way you tell the editor that you are intentionally returning anything. But FastAPI will still do the data documentation, validation, filtering, etc. with the response_model ."
+    ],
+    "section_text": "If you have strict type checks in your editor, mypy, etc, you can declare the function return type as Any .\n\nThat way you tell the editor that you are intentionally returning anything. But FastAPI will still do the data documentation, validation, filtering, etc. with the response_model .",
+    "section_inline_code": [
+      "Any",
+      "response_model"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0004::admonition-0003": {
+    "node_id": "tutorial/response-model::section-0004::admonition-0003",
+    "parent_id": "tutorial/response-model::section-0004",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#return-the-same-input-data",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To use EmailStr , first install email-validator .",
+      "Make sure you create a virtual environment , activate it, and then install it, for example:",
+      "or with:"
+    ],
+    "section_text": "To use EmailStr , first install email-validator .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:\n\nor with:",
+    "section_inline_code": [
+      "EmailStr",
+      "email-validator"
+    ],
+    "section_links": [
+      {
+        "text": "virtual environment",
+        "url": "../virtual-environments.md",
+        "section_id": "tutorial/response-model::section-0004::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#return-the-same-input-data"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ pip install email-validator",
+        "section_id": "tutorial/response-model::section-0004::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#return-the-same-input-data"
+      },
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ pip install \"pydantic[email]\"",
+        "section_id": "tutorial/response-model::section-0004::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#return-the-same-input-data"
+      }
+    ]
+  },
+  "tutorial/response-model::section-0004::admonition-0004": {
+    "node_id": "tutorial/response-model::section-0004::admonition-0004",
+    "parent_id": "tutorial/response-model::section-0004",
+    "node_kind": "admonition",
+    "kind": "danger",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#return-the-same-input-data",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Never store the plain password of a user or send it in a response like this, unless you know all the caveats and you know what you are doing."
+    ],
+    "section_text": "Never store the plain password of a user or send it in a response like this, unless you know all the caveats and you know what you are doing.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0017::admonition-0005": {
+    "node_id": "tutorial/response-model::section-0017::admonition-0005",
+    "parent_id": "tutorial/response-model::section-0017",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#use-the-response-model-exclude-unset-parameter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You can also use:",
+      "- response_model_exclude_defaults=True",
+      "- response_model_exclude_none=True",
+      "as described in the Pydantic docs for exclude_defaults and exclude_none ."
+    ],
+    "section_text": "You can also use:\n\n- response_model_exclude_defaults=True\n\n- response_model_exclude_none=True\n\nas described in the Pydantic docs for exclude_defaults and exclude_none .",
+    "section_inline_code": [
+      "response_model_exclude_defaults=True",
+      "response_model_exclude_none=True",
+      "exclude_defaults",
+      "exclude_none"
+    ],
+    "section_links": [
+      {
+        "text": "the Pydantic docs",
+        "url": "https://docs.pydantic.dev/1.10/usage/exporting_models/#modeldict",
+        "section_id": "tutorial/response-model::section-0017::admonition-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#use-the-response-model-exclude-unset-parameter"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0019::admonition-0006": {
+    "node_id": "tutorial/response-model::section-0019::admonition-0006",
+    "parent_id": "tutorial/response-model::section-0019",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#data-with-the-same-values-as-the-defaults",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice that the default values can be anything, not only None .",
+      "They can be a list ( [] ), a float of 10.5 , etc."
+    ],
+    "section_text": "Notice that the default values can be anything, not only None .\n\nThey can be a list ( [] ), a float of 10.5 , etc.",
+    "section_inline_code": [
+      "None",
+      "[]",
+      "float",
+      "10.5"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0020::admonition-0007": {
+    "node_id": "tutorial/response-model::section-0020::admonition-0007",
+    "parent_id": "tutorial/response-model::section-0020",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#response-model-include-and-response-model-exclude",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "But it is still recommended to use the ideas above, using multiple classes, instead of these parameters.",
+      "This is because the JSON Schema generated in your app's OpenAPI (and the docs) will still be the one for the complete model, even if you use response_model_include or response_model_exclude to omit some attributes.",
+      "This also applies to response_model_by_alias that works similarly."
+    ],
+    "section_text": "But it is still recommended to use the ideas above, using multiple classes, instead of these parameters.\n\nThis is because the JSON Schema generated in your app's OpenAPI (and the docs) will still be the one for the complete model, even if you use response_model_include or response_model_exclude to omit some attributes.\n\nThis also applies to response_model_by_alias that works similarly.",
+    "section_inline_code": [
+      "response_model_include",
+      "response_model_exclude",
+      "response_model_by_alias"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/response-model::section-0020::admonition-0008": {
+    "node_id": "tutorial/response-model::section-0020::admonition-0008",
+    "parent_id": "tutorial/response-model::section-0020",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/response-model/#response-model-include-and-response-model-exclude",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "The syntax {\"name\", \"description\"} creates a set with those two values.",
+      "It is equivalent to set([\"name\", \"description\"]) ."
+    ],
+    "section_text": "The syntax {\"name\", \"description\"} creates a set with those two values.\n\nIt is equivalent to set([\"name\", \"description\"]) .",
+    "section_inline_code": [
+      "{\"name\", \"description\"}",
+      "set",
+      "set([\"name\", \"description\"])"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

@@ -1,0 +1,272 @@
+[
+  {
+    "node_id": "tutorial/sql-databases::section-0001",
+    "seconds": 0.00021862699941266328,
+    "paragraphs": 9,
+    "list_items": 5,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 4,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0002",
+    "seconds": 5.589600004896056e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0003",
+    "seconds": 2.972300171677489e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0004",
+    "seconds": 0.00018006099890044425,
+    "paragraphs": 8,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0005",
+    "seconds": 8.35880000522593e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0006",
+    "seconds": 3.602700053306762e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0007",
+    "seconds": 6.767500053683762e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0008",
+    "seconds": 5.100800080981571e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0009",
+    "seconds": 9.023900020110887e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0010",
+    "seconds": 4.785999954037834e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0011",
+    "seconds": 3.94670005334774e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0012",
+    "seconds": 4.115000047022477e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0013",
+    "seconds": 0.00010493400077393744,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0014",
+    "seconds": 9.743100054038223e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0015",
+    "seconds": 5.763500121247489e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0016",
+    "seconds": 5.185000009078067e-05,
+    "paragraphs": 1,
+    "list_items": 2,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0017",
+    "seconds": 0.00011349600026733242,
+    "paragraphs": 2,
+    "list_items": 6,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0018",
+    "seconds": 0.00013268800103105605,
+    "paragraphs": 7,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0019",
+    "seconds": 0.00012513699948613066,
+    "paragraphs": 6,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0020",
+    "seconds": 0.0001371099988318747,
+    "paragraphs": 5,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0021",
+    "seconds": 0.00015350099965871777,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0022",
+    "seconds": 3.058400034205988e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0023",
+    "seconds": 2.3676000637351535e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0024",
+    "seconds": 5.716099985875189e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0025",
+    "seconds": 2.628599941090215e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0026",
+    "seconds": 6.634100100200158e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/sql-databases::section-0027",
+    "seconds": 0.00010474699956830591,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 2,
+    "admonitions": 0
+  }
+]

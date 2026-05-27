@@ -1,0 +1,107 @@
+{
+  "tutorial/dependencies/sub-dependencies::section-0004::admonition-0001": {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0004::admonition-0001",
+    "parent_id": "tutorial/dependencies/sub-dependencies::section-0004",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#use-the-dependency",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .",
+      "But FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it."
+    ],
+    "section_text": "Notice that we are only declaring one dependency in the path operation function , the query_or_cookie_extractor .\n\nBut FastAPI will know that it has to solve query_extractor first, to pass the results of that to query_or_cookie_extractor while calling it.",
+    "section_inline_code": [
+      "query_or_cookie_extractor",
+      "query_extractor"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002": {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+    "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python hl_lines=\"1\"",
+        "text": "async def needy_dependency(fresh_value: Annotated[str, Depends(get_value, use_cache=False)]):\n    return {\"fresh_value\": fresh_value}",
+        "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+      }
+    ]
+  },
+  "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003": {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+    "parent_id": "tutorial/dependencies/sub-dependencies::section-0005",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python hl_lines=\"1\"",
+        "text": "async def needy_dependency(fresh_value: str = Depends(get_value, use_cache=False)):\n    return {\"fresh_value\": fresh_value}",
+        "section_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times"
+      }
+    ]
+  },
+  "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003::admonition-0004": {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003::admonition-0004",
+    "parent_id": "tutorial/dependencies/sub-dependencies::section-0005::admonition-0003",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/sub-dependencies::section-0006::admonition-0005": {
+    "node_id": "tutorial/dependencies/sub-dependencies::section-0006::admonition-0005",
+    "parent_id": "tutorial/dependencies/sub-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/#recap",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "All this might not seem as useful with these simple examples.",
+      "But you will see how useful it is in the chapters about security .",
+      "And you will also see the amounts of code it will save you."
+    ],
+    "section_text": "All this might not seem as useful with these simple examples.\n\nBut you will see how useful it is in the chapters about security .\n\nAnd you will also see the amounts of code it will save you.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

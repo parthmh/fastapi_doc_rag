@@ -1,0 +1,112 @@
+[
+  {
+    "node_id": "tutorial/request-files::section-0001",
+    "seconds": 0.00010008000026573427,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/request-files::section-0002",
+    "seconds": 2.6726998839876615e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-files::section-0003",
+    "seconds": 0.00010044100054074079,
+    "paragraphs": 8,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/request-files::section-0004",
+    "seconds": 0.00017421799930161797,
+    "paragraphs": 2,
+    "list_items": 2,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-files::section-0005",
+    "seconds": 0.0002904009998019319,
+    "paragraphs": 7,
+    "list_items": 7,
+    "code_blocks": 2,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/request-files::section-0006",
+    "seconds": 0.00011195300066901837,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/request-files::section-0007",
+    "seconds": 2.025800131377764e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-files::section-0008",
+    "seconds": 1.8422000721329823e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-files::section-0009",
+    "seconds": 6.475800000771414e-05,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/request-files::section-0010",
+    "seconds": 2.034899989666883e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/request-files::section-0011",
+    "seconds": 3.0470000638160855e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

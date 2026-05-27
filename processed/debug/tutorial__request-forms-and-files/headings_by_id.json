@@ -1,0 +1,98 @@
+{
+  "tutorial/request-forms-and-files::section-0001": {
+    "node_id": "tutorial/request-forms-and-files::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Request Forms and Files",
+    "anchor_id": "request-forms-and-files",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#request-forms-and-files",
+    "section_text": "You can define files and form fields at the same time using File and Form .",
+    "section_inline_code": [
+      "File",
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-forms-and-files::section-0002": {
+    "node_id": "tutorial/request-forms-and-files::section-0002",
+    "parent_id": "tutorial/request-forms-and-files::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Import File and Form",
+    "anchor_id": "import-file-and-form",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#import-file-and-form",
+    "section_text": "",
+    "section_inline_code": [
+      "File",
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_forms_and_files/tutorial001_an_py310.py",
+        "highlight_lines": [
+          3
+        ],
+        "raw": "{* ../../docs_src/request_forms_and_files/tutorial001_an_py310.py hl[3] *}",
+        "section_id": "tutorial/request-forms-and-files::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#import-file-and-form"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/request-forms-and-files::section-0003": {
+    "node_id": "tutorial/request-forms-and-files::section-0003",
+    "parent_id": "tutorial/request-forms-and-files::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Define File and Form parameters",
+    "anchor_id": "define-file-and-form-parameters",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#define-file-and-form-parameters",
+    "section_text": "Create file and form parameters the same way you would for Body or Query :\n\nThe files and form fields will be uploaded as form data and you will receive the files and form fields.\n\nAnd you can declare some of the files as bytes and some as UploadFile .",
+    "section_inline_code": [
+      "File",
+      "Form",
+      "Body",
+      "Query",
+      "bytes",
+      "UploadFile"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_forms_and_files/tutorial001_an_py310.py",
+        "highlight_lines": [
+          10,
+          11,
+          12
+        ],
+        "raw": "{* ../../docs_src/request_forms_and_files/tutorial001_an_py310.py hl[10:12] *}",
+        "section_id": "tutorial/request-forms-and-files::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#define-file-and-form-parameters"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/request-forms-and-files::section-0004": {
+    "node_id": "tutorial/request-forms-and-files::section-0004",
+    "parent_id": "tutorial/request-forms-and-files::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Recap",
+    "anchor_id": "recap",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/#recap",
+    "section_text": "Use File and Form together when you need to receive data and files in the same request.",
+    "section_inline_code": [
+      "File",
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

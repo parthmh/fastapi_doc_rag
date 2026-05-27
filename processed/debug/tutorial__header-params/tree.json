@@ -1,0 +1,769 @@
+{
+  "page": {
+    "page_id": "tutorial/header-params",
+    "page_uid": "565f4430c4f3a5f3569699a5bbab30b0f5b67d50",
+    "page_title": "Header Parameters",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/header-params/",
+    "source_file": "tutorial/header-params.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/header-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Header Parameters",
+      "anchor_id": "header-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#header-parameters",
+      "section_text_parts": [
+        "You can define Header parameters the same way you define Query , Path and Cookie parameters."
+      ],
+      "section_text": "You can define Header parameters the same way you define Query , Path and Cookie parameters.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/header-params::section-0002",
+          "parent_id": "tutorial/header-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Import Header",
+          "anchor_id": "import-header",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header",
+          "section_text_parts": [
+            "First import Header :"
+          ],
+          "section_text": "First import Header :",
+          "section_inline_code": [
+            "Header"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+              "highlight_lines": [
+                3
+              ],
+              "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[3] *}",
+              "section_id": "tutorial/header-params::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/header-params::section-0003",
+          "parent_id": "tutorial/header-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Declare Header parameters",
+          "anchor_id": "declare-header-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+          "section_text_parts": [
+            "Then declare the header parameters using the same structure as with Path , Query and Cookie .",
+            "You can define the default value as well as all the extra validation or annotation parameters:"
+          ],
+          "section_text": "Then declare the header parameters using the same structure as with Path , Query and Cookie .\n\nYou can define the default value as well as all the extra validation or annotation parameters:",
+          "section_inline_code": [
+            "Header",
+            "Path",
+            "Query",
+            "Cookie"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+              "highlight_lines": [
+                9
+              ],
+              "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[9] *}",
+              "section_id": "tutorial/header-params::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/header-params::section-0004",
+          "parent_id": "tutorial/header-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Automatic conversion",
+          "anchor_id": "automatic-conversion",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+          "section_text_parts": [
+            "Header has a little extra functionality on top of what Path , Query and Cookie provide.",
+            "Most of the standard headers are separated by a \"hyphen\" character, also known as the \"minus symbol\" ( - ).",
+            "But a variable like user-agent is invalid in Python.",
+            "So, by default, Header will convert the parameter names characters from underscore ( _ ) to hyphen ( - ) to extract and document the headers.",
+            "Also, HTTP headers are case-insensitive, so, you can declare them with standard Python style (also known as \"snake_case\").",
+            "So, you can use user_agent as you normally would in Python code, instead of needing to capitalize the first letters as User_Agent or something similar.",
+            "If for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter convert_underscores of Header to False :"
+          ],
+          "section_text": "Header has a little extra functionality on top of what Path , Query and Cookie provide.\n\nMost of the standard headers are separated by a \"hyphen\" character, also known as the \"minus symbol\" ( - ).\n\nBut a variable like user-agent is invalid in Python.\n\nSo, by default, Header will convert the parameter names characters from underscore ( _ ) to hyphen ( - ) to extract and document the headers.\n\nAlso, HTTP headers are case-insensitive, so, you can declare them with standard Python style (also known as \"snake_case\").\n\nSo, you can use user_agent as you normally would in Python code, instead of needing to capitalize the first letters as User_Agent or something similar.\n\nIf for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter convert_underscores of Header to False :",
+          "section_inline_code": [
+            "Header",
+            "Path",
+            "Query",
+            "Cookie",
+            "-",
+            "user-agent",
+            "_",
+            "user_agent",
+            "User_Agent",
+            "convert_underscores",
+            "False"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/header_params/tutorial002_an_py310.py",
+              "highlight_lines": [
+                10
+              ],
+              "raw": "{* ../../docs_src/header_params/tutorial002_an_py310.py hl[10] *}",
+              "section_id": "tutorial/header-params::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/header-params::section-0005",
+          "parent_id": "tutorial/header-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Duplicate headers",
+          "anchor_id": "duplicate-headers",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers",
+          "section_text_parts": [
+            "It is possible to receive duplicate headers. That means, the same header with multiple values.",
+            "You can define those cases using a list in the type declaration.",
+            "You will receive all the values from the duplicate header as a Python list .",
+            "For example, to declare a header of X-Token that can appear more than once, you can write:",
+            "If you communicate with that path operation sending two HTTP headers like:",
+            "The response would be like:"
+          ],
+          "section_text": "It is possible to receive duplicate headers. That means, the same header with multiple values.\n\nYou can define those cases using a list in the type declaration.\n\nYou will receive all the values from the duplicate header as a Python list .\n\nFor example, to declare a header of X-Token that can appear more than once, you can write:\n\nIf you communicate with that path operation sending two HTTP headers like:\n\nThe response would be like:",
+          "section_inline_code": [
+            "list",
+            "X-Token"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/header_params/tutorial003_an_py310.py",
+              "highlight_lines": [
+                9
+              ],
+              "raw": "{* ../../docs_src/header_params/tutorial003_an_py310.py hl[9] *}",
+              "section_id": "tutorial/header-params::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+            }
+          ],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": "X-Token: foo\nX-Token: bar",
+              "section_id": "tutorial/header-params::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+            },
+            {
+              "type": "code_block",
+              "language": "JSON",
+              "text": "{\n    \"X-Token values\": [\n        \"bar\",\n        \"foo\"\n    ]\n}",
+              "section_id": "tutorial/header-params::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/header-params::section-0006",
+          "parent_id": "tutorial/header-params::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#recap",
+          "section_text_parts": [
+            "Declare headers with Header , using the same common pattern as Query , Path and Cookie .",
+            "And don't worry about underscores in your variables, FastAPI will take care of converting them."
+          ],
+          "section_text": "Declare headers with Header , using the same common pattern as Query , Path and Cookie .\n\nAnd don't worry about underscores in your variables, FastAPI will take care of converting them.",
+          "section_inline_code": [
+            "Header",
+            "Query",
+            "Path",
+            "Cookie"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/header-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Header Parameters",
+      "anchor_id": "header-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#header-parameters",
+      "section_text": "You can define Header parameters the same way you define Query , Path and Cookie parameters.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0002",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Header",
+      "anchor_id": "import-header",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header",
+      "section_text": "First import Header :",
+      "section_inline_code": [
+        "Header"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/header-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0003",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Declare Header parameters",
+      "anchor_id": "declare-header-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "section_text": "Then declare the header parameters using the same structure as with Path , Query and Cookie .\n\nYou can define the default value as well as all the extra validation or annotation parameters:",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/header-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0004",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Automatic conversion",
+      "anchor_id": "automatic-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+      "section_text": "Header has a little extra functionality on top of what Path , Query and Cookie provide.\n\nMost of the standard headers are separated by a \"hyphen\" character, also known as the \"minus symbol\" ( - ).\n\nBut a variable like user-agent is invalid in Python.\n\nSo, by default, Header will convert the parameter names characters from underscore ( _ ) to hyphen ( - ) to extract and document the headers.\n\nAlso, HTTP headers are case-insensitive, so, you can declare them with standard Python style (also known as \"snake_case\").\n\nSo, you can use user_agent as you normally would in Python code, instead of needing to capitalize the first letters as User_Agent or something similar.\n\nIf for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter convert_underscores of Header to False :",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie",
+        "-",
+        "user-agent",
+        "_",
+        "user_agent",
+        "User_Agent",
+        "convert_underscores",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial002_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial002_an_py310.py hl[10] *}",
+          "section_id": "tutorial/header-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0005",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Duplicate headers",
+      "anchor_id": "duplicate-headers",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers",
+      "section_text": "It is possible to receive duplicate headers. That means, the same header with multiple values.\n\nYou can define those cases using a list in the type declaration.\n\nYou will receive all the values from the duplicate header as a Python list .\n\nFor example, to declare a header of X-Token that can appear more than once, you can write:\n\nIf you communicate with that path operation sending two HTTP headers like:\n\nThe response would be like:",
+      "section_inline_code": [
+        "list",
+        "X-Token"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial003_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial003_an_py310.py hl[9] *}",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "X-Token: foo\nX-Token: bar",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"X-Token values\": [\n        \"bar\",\n        \"foo\"\n    ]\n}",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/header-params::section-0006",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#recap",
+      "section_text": "Declare headers with Header , using the same common pattern as Query , Path and Cookie .\n\nAnd don't worry about underscores in your variables, FastAPI will take care of converting them.",
+      "section_inline_code": [
+        "Header",
+        "Query",
+        "Path",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/header-params::section-0001": {
+      "node_id": "tutorial/header-params::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Header Parameters",
+      "anchor_id": "header-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#header-parameters",
+      "section_text": "You can define Header parameters the same way you define Query , Path and Cookie parameters.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0002": {
+      "node_id": "tutorial/header-params::section-0002",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Header",
+      "anchor_id": "import-header",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header",
+      "section_text": "First import Header :",
+      "section_inline_code": [
+        "Header"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/header-params::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#import-header"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0003": {
+      "node_id": "tutorial/header-params::section-0003",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Declare Header parameters",
+      "anchor_id": "declare-header-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "section_text": "Then declare the header parameters using the same structure as with Path , Query and Cookie .\n\nYou can define the default value as well as all the extra validation or annotation parameters:",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/header-params::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0004": {
+      "node_id": "tutorial/header-params::section-0004",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Automatic conversion",
+      "anchor_id": "automatic-conversion",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+      "section_text": "Header has a little extra functionality on top of what Path , Query and Cookie provide.\n\nMost of the standard headers are separated by a \"hyphen\" character, also known as the \"minus symbol\" ( - ).\n\nBut a variable like user-agent is invalid in Python.\n\nSo, by default, Header will convert the parameter names characters from underscore ( _ ) to hyphen ( - ) to extract and document the headers.\n\nAlso, HTTP headers are case-insensitive, so, you can declare them with standard Python style (also known as \"snake_case\").\n\nSo, you can use user_agent as you normally would in Python code, instead of needing to capitalize the first letters as User_Agent or something similar.\n\nIf for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter convert_underscores of Header to False :",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie",
+        "-",
+        "user-agent",
+        "_",
+        "user_agent",
+        "User_Agent",
+        "convert_underscores",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial002_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial002_an_py310.py hl[10] *}",
+          "section_id": "tutorial/header-params::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0005": {
+      "node_id": "tutorial/header-params::section-0005",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Duplicate headers",
+      "anchor_id": "duplicate-headers",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers",
+      "section_text": "It is possible to receive duplicate headers. That means, the same header with multiple values.\n\nYou can define those cases using a list in the type declaration.\n\nYou will receive all the values from the duplicate header as a Python list .\n\nFor example, to declare a header of X-Token that can appear more than once, you can write:\n\nIf you communicate with that path operation sending two HTTP headers like:\n\nThe response would be like:",
+      "section_inline_code": [
+        "list",
+        "X-Token"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/header_params/tutorial003_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/header_params/tutorial003_an_py310.py hl[9] *}",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "X-Token: foo\nX-Token: bar",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        },
+        {
+          "type": "code_block",
+          "language": "JSON",
+          "text": "{\n    \"X-Token values\": [\n        \"bar\",\n        \"foo\"\n    ]\n}",
+          "section_id": "tutorial/header-params::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#duplicate-headers"
+        }
+      ]
+    },
+    "tutorial/header-params::section-0006": {
+      "node_id": "tutorial/header-params::section-0006",
+      "parent_id": "tutorial/header-params::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#recap",
+      "section_text": "Declare headers with Header , using the same common pattern as Query , Path and Cookie .\n\nAnd don't worry about underscores in your variables, FastAPI will take care of converting them.",
+      "section_inline_code": [
+        "Header",
+        "Query",
+        "Path",
+        "Cookie"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/header-params::section-0003::admonition-0001",
+      "parent_id": "tutorial/header-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.",
+        "But remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes."
+      ],
+      "section_text": "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.\n\nBut remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes.",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie",
+        "Param",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0003::admonition-0002",
+      "parent_id": "tutorial/header-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters."
+      ],
+      "section_text": "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters.",
+      "section_inline_code": [
+        "Header"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/header-params::section-0004::admonition-0003",
+      "parent_id": "tutorial/header-params::section-0004",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores."
+      ],
+      "section_text": "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores.",
+      "section_inline_code": [
+        "convert_underscores",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/header-params::section-0003::admonition-0001": {
+      "node_id": "tutorial/header-params::section-0003::admonition-0001",
+      "parent_id": "tutorial/header-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.",
+        "But remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes."
+      ],
+      "section_text": "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.\n\nBut remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes.",
+      "section_inline_code": [
+        "Header",
+        "Path",
+        "Query",
+        "Cookie",
+        "Param",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0003::admonition-0002": {
+      "node_id": "tutorial/header-params::section-0003::admonition-0002",
+      "parent_id": "tutorial/header-params::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters."
+      ],
+      "section_text": "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters.",
+      "section_inline_code": [
+        "Header"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/header-params::section-0004::admonition-0003": {
+      "node_id": "tutorial/header-params::section-0004::admonition-0003",
+      "parent_id": "tutorial/header-params::section-0004",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores."
+      ],
+      "section_text": "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores.",
+      "section_inline_code": [
+        "convert_underscores",
+        "False"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/header-params::section-0001",
+      "seconds": 0.00024985299933177885,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/header-params::section-0002",
+      "seconds": 2.4352999389520846e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/header-params::section-0003",
+      "seconds": 7.677999929001089e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/header-params::section-0004",
+      "seconds": 8.28890006232541e-05,
+      "paragraphs": 8,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/header-params::section-0005",
+      "seconds": 6.343899985949975e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 2,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/header-params::section-0006",
+      "seconds": 2.9771999834338203e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

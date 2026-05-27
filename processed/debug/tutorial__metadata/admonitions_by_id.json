@@ -1,0 +1,62 @@
+{
+  "tutorial/metadata::section-0002::admonition-0001": {
+    "node_id": "tutorial/metadata::section-0002::admonition-0001",
+    "parent_id": "tutorial/metadata::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You can write Markdown in the description field and it will be rendered in the output."
+    ],
+    "section_text": "You can write Markdown in the description field and it will be rendered in the output.",
+    "section_inline_code": [
+      "description"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/metadata::section-0005::admonition-0002": {
+    "node_id": "tutorial/metadata::section-0005::admonition-0002",
+    "parent_id": "tutorial/metadata::section-0005",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You don't have to add metadata for all the tags that you use."
+    ],
+    "section_text": "You don't have to add metadata for all the tags that you use.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/metadata::section-0006::admonition-0003": {
+    "node_id": "tutorial/metadata::section-0006::admonition-0003",
+    "parent_id": "tutorial/metadata::section-0006",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Read more about tags in Path Operation Configuration ."
+    ],
+    "section_text": "Read more about tags in Path Operation Configuration .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Path Operation Configuration",
+        "url": "path-operation-configuration.md#tags",
+        "section_id": "tutorial/metadata::section-0006::admonition-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

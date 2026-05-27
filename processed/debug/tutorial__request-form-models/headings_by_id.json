@@ -1,0 +1,117 @@
+{
+  "tutorial/request-form-models::section-0001": {
+    "node_id": "tutorial/request-form-models::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Form Models",
+    "anchor_id": "form-models",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#form-models",
+    "section_text": "You can use Pydantic models to declare form fields in FastAPI.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-form-models::section-0002": {
+    "node_id": "tutorial/request-form-models::section-0002",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Pydantic Models for Forms",
+    "anchor_id": "pydantic-models-for-forms",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#pydantic-models-for-forms",
+    "section_text": "You just need to declare a Pydantic model with the fields you want to receive as form fields , and then declare the parameter as Form :\n\nFastAPI will extract the data for each field from the form data in the request and give you the Pydantic model you defined.",
+    "section_inline_code": [
+      "Form"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_form_models/tutorial001_an_py310.py",
+        "highlight_lines": [
+          9,
+          10,
+          11,
+          15
+        ],
+        "raw": "{* ../../docs_src/request_form_models/tutorial001_an_py310.py hl[9:11,15] *}",
+        "section_id": "tutorial/request-form-models::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#pydantic-models-for-forms"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/request-form-models::section-0003": {
+    "node_id": "tutorial/request-form-models::section-0003",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Check the Docs",
+    "anchor_id": "check-the-docs",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#check-the-docs",
+    "section_text": "You can verify it in the docs UI at /docs :",
+    "section_inline_code": [
+      "/docs"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-form-models::section-0004": {
+    "node_id": "tutorial/request-form-models::section-0004",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Forbid Extra Form Fields",
+    "anchor_id": "forbid-extra-form-fields",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#forbid-extra-form-fields",
+    "section_text": "In some special use cases (probably not very common), you might want to restrict the form fields to only those declared in the Pydantic model. And forbid any extra fields.\n\nYou can use Pydantic's model configuration to forbid any extra fields:\n\nIf a client tries to send some extra data, they will receive an error response.\n\nFor example, if the client tries to send the form fields:\n\n- username : Rick\n\n- password : Portal Gun\n\n- extra : Mr. Poopybutthole\n\nThey will receive an error response telling them that the field extra is not allowed:",
+    "section_inline_code": [
+      "forbid",
+      "extra",
+      "username",
+      "Rick",
+      "password",
+      "Portal Gun",
+      "Mr. Poopybutthole"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/request_form_models/tutorial002_an_py310.py",
+        "highlight_lines": [
+          12
+        ],
+        "raw": "{* ../../docs_src/request_form_models/tutorial002_an_py310.py hl[12] *}",
+        "section_id": "tutorial/request-form-models::section-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#forbid-extra-form-fields"
+      }
+    ],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "json",
+        "text": "{\n    \"detail\": [\n        {\n            \"type\": \"extra_forbidden\",\n            \"loc\": [\"body\", \"extra\"],\n            \"msg\": \"Extra inputs are not permitted\",\n            \"input\": \"Mr. Poopybutthole\"\n        }\n    ]\n}",
+        "section_id": "tutorial/request-form-models::section-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#forbid-extra-form-fields"
+      }
+    ]
+  },
+  "tutorial/request-form-models::section-0005": {
+    "node_id": "tutorial/request-form-models::section-0005",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Summary",
+    "anchor_id": "summary",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#summary",
+    "section_text": "You can use Pydantic models to declare form fields in FastAPI. 😎",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

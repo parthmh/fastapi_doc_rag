@@ -1,0 +1,680 @@
+{
+  "page": {
+    "page_id": "tutorial/request-forms",
+    "page_uid": "36ca5e0ebd54daf64db61d205dd8817101c63ae0",
+    "page_title": "Form Data",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+    "source_file": "tutorial/request-forms.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/request-forms::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Form Data",
+      "anchor_id": "form-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+      "section_text_parts": [
+        "When you need to receive form fields instead of JSON, you can use Form ."
+      ],
+      "section_text": "When you need to receive form fields instead of JSON, you can use Form .",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/request-forms::section-0002",
+          "parent_id": "tutorial/request-forms::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Import Form",
+          "anchor_id": "import-form",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form",
+          "section_text_parts": [
+            "Import Form from fastapi :"
+          ],
+          "section_text": "Import Form from fastapi :",
+          "section_inline_code": [
+            "Form",
+            "fastapi"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+              "highlight_lines": [
+                3
+              ],
+              "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[3] *}",
+              "section_id": "tutorial/request-forms::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-forms::section-0003",
+          "parent_id": "tutorial/request-forms::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Define Form parameters",
+          "anchor_id": "define-form-parameters",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+          "section_text_parts": [
+            "Create form parameters the same way you would for Body or Query :",
+            "For example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a username and password as form fields.",
+            "The spec requires the fields to be exactly named username and password , and to be sent as form fields, not JSON.",
+            "With Form you can declare the same configurations as with Body (and Query , Path , Cookie ), including validation, examples, an alias (e.g. user-name instead of username ), etc."
+          ],
+          "section_text": "Create form parameters the same way you would for Body or Query :\n\nFor example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a username and password as form fields.\n\nThe spec requires the fields to be exactly named username and password , and to be sent as form fields, not JSON.\n\nWith Form you can declare the same configurations as with Body (and Query , Path , Cookie ), including validation, examples, an alias (e.g. user-name instead of username ), etc.",
+          "section_inline_code": [
+            "Form",
+            "Body",
+            "Query",
+            "username",
+            "password",
+            "Path",
+            "Cookie",
+            "user-name"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+              "highlight_lines": [
+                9
+              ],
+              "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[9] *}",
+              "section_id": "tutorial/request-forms::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-forms::section-0004",
+          "parent_id": "tutorial/request-forms::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "About \"Form Fields\"",
+          "anchor_id": "about-form-fields",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+          "section_text_parts": [
+            "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.",
+            "FastAPI will make sure to read that data from the right place instead of JSON."
+          ],
+          "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+          "section_inline_code": [
+            "<form></form>"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/request-forms::section-0005",
+          "parent_id": "tutorial/request-forms::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#recap",
+          "section_text_parts": [
+            "Use Form to declare form data input parameters."
+          ],
+          "section_text": "Use Form to declare form data input parameters.",
+          "section_inline_code": [
+            "Form"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/request-forms::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Form Data",
+      "anchor_id": "form-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+      "section_text": "When you need to receive form fields instead of JSON, you can use Form .",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0002",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Form",
+      "anchor_id": "import-form",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form",
+      "section_text": "Import Form from fastapi :",
+      "section_inline_code": [
+        "Form",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/request-forms::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0003",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Define Form parameters",
+      "anchor_id": "define-form-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "section_text": "Create form parameters the same way you would for Body or Query :\n\nFor example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a username and password as form fields.\n\nThe spec requires the fields to be exactly named username and password , and to be sent as form fields, not JSON.\n\nWith Form you can declare the same configurations as with Body (and Query , Path , Cookie ), including validation, examples, an alias (e.g. user-name instead of username ), etc.",
+      "section_inline_code": [
+        "Form",
+        "Body",
+        "Query",
+        "username",
+        "password",
+        "Path",
+        "Cookie",
+        "user-name"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/request-forms::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0004",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "About \"Form Fields\"",
+      "anchor_id": "about-form-fields",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+      "section_inline_code": [
+        "<form></form>"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0005",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#recap",
+      "section_text": "Use Form to declare form data input parameters.",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/request-forms::section-0001": {
+      "node_id": "tutorial/request-forms::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Form Data",
+      "anchor_id": "form-data",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+      "section_text": "When you need to receive form fields instead of JSON, you can use Form .",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0002": {
+      "node_id": "tutorial/request-forms::section-0002",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Form",
+      "anchor_id": "import-form",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form",
+      "section_text": "Import Form from fastapi :",
+      "section_inline_code": [
+        "Form",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[3] *}",
+          "section_id": "tutorial/request-forms::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#import-form"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0003": {
+      "node_id": "tutorial/request-forms::section-0003",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Define Form parameters",
+      "anchor_id": "define-form-parameters",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "section_text": "Create form parameters the same way you would for Body or Query :\n\nFor example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a username and password as form fields.\n\nThe spec requires the fields to be exactly named username and password , and to be sent as form fields, not JSON.\n\nWith Form you can declare the same configurations as with Body (and Query , Path , Cookie ), including validation, examples, an alias (e.g. user-name instead of username ), etc.",
+      "section_inline_code": [
+        "Form",
+        "Body",
+        "Query",
+        "username",
+        "password",
+        "Path",
+        "Cookie",
+        "user-name"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/request_forms/tutorial001_an_py310.py",
+          "highlight_lines": [
+            9
+          ],
+          "raw": "{* ../../docs_src/request_forms/tutorial001_an_py310.py hl[9] *}",
+          "section_id": "tutorial/request-forms::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0004": {
+      "node_id": "tutorial/request-forms::section-0004",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "About \"Form Fields\"",
+      "anchor_id": "about-form-fields",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "section_text": "The way HTML forms ( <form></form> ) sends the data to the server normally uses a \"special\" encoding for that data, it's different from JSON.\n\nFastAPI will make sure to read that data from the right place instead of JSON.",
+      "section_inline_code": [
+        "<form></form>"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0005": {
+      "node_id": "tutorial/request-forms::section-0005",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#recap",
+      "section_text": "Use Form to declare form data input parameters.",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/request-forms::section-0001::admonition-0001",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To use forms, first install python-multipart .",
+        "Make sure you create a virtual environment , activate it, and then install it, for example:"
+      ],
+      "section_text": "To use forms, first install python-multipart .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:",
+      "section_inline_code": [
+        "python-multipart"
+      ],
+      "section_links": [
+        {
+          "text": "virtual environment",
+          "url": "../virtual-environments.md",
+          "section_id": "tutorial/request-forms::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ pip install python-multipart",
+          "section_id": "tutorial/request-forms::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0003::admonition-0002",
+      "parent_id": "tutorial/request-forms::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Form is a class that inherits directly from Body ."
+      ],
+      "section_text": "Form is a class that inherits directly from Body .",
+      "section_inline_code": [
+        "Form",
+        "Body"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0003::admonition-0003",
+      "parent_id": "tutorial/request-forms::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare form bodies, you need to use Form explicitly, because without it the parameters would be interpreted as query parameters or body (JSON) parameters."
+      ],
+      "section_text": "To declare form bodies, you need to use Form explicitly, because without it the parameters would be interpreted as query parameters or body (JSON) parameters.",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0004::admonition-0004",
+      "parent_id": "tutorial/request-forms::section-0004",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded .",
+        "But when the form includes files, it is encoded as multipart/form-data . You'll read about handling files in the next chapter.",
+        "If you want to read more about these encodings and form fields, head to the MDN web docs for POST ."
+      ],
+      "section_text": "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded .\n\nBut when the form includes files, it is encoded as multipart/form-data . You'll read about handling files in the next chapter.\n\nIf you want to read more about these encodings and form fields, head to the MDN web docs for POST .",
+      "section_inline_code": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MDN web docs for",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+          "section_id": "tutorial/request-forms::section-0004::admonition-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0004::admonition-0005",
+      "parent_id": "tutorial/request-forms::section-0004",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can declare multiple Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using application/x-www-form-urlencoded instead of application/json .",
+        "This is not a limitation of FastAPI , it's part of the HTTP protocol."
+      ],
+      "section_text": "You can declare multiple Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using application/x-www-form-urlencoded instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol.",
+      "section_inline_code": [
+        "Form",
+        "Body",
+        "application/x-www-form-urlencoded",
+        "application/json"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/request-forms::section-0001::admonition-0001": {
+      "node_id": "tutorial/request-forms::section-0001::admonition-0001",
+      "parent_id": "tutorial/request-forms::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To use forms, first install python-multipart .",
+        "Make sure you create a virtual environment , activate it, and then install it, for example:"
+      ],
+      "section_text": "To use forms, first install python-multipart .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:",
+      "section_inline_code": [
+        "python-multipart"
+      ],
+      "section_links": [
+        {
+          "text": "virtual environment",
+          "url": "../virtual-environments.md",
+          "section_id": "tutorial/request-forms::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ pip install python-multipart",
+          "section_id": "tutorial/request-forms::section-0001::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#form-data"
+        }
+      ]
+    },
+    "tutorial/request-forms::section-0003::admonition-0002": {
+      "node_id": "tutorial/request-forms::section-0003::admonition-0002",
+      "parent_id": "tutorial/request-forms::section-0003",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Form is a class that inherits directly from Body ."
+      ],
+      "section_text": "Form is a class that inherits directly from Body .",
+      "section_inline_code": [
+        "Form",
+        "Body"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0003::admonition-0003": {
+      "node_id": "tutorial/request-forms::section-0003::admonition-0003",
+      "parent_id": "tutorial/request-forms::section-0003",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#define-form-parameters",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "To declare form bodies, you need to use Form explicitly, because without it the parameters would be interpreted as query parameters or body (JSON) parameters."
+      ],
+      "section_text": "To declare form bodies, you need to use Form explicitly, because without it the parameters would be interpreted as query parameters or body (JSON) parameters.",
+      "section_inline_code": [
+        "Form"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0004::admonition-0004": {
+      "node_id": "tutorial/request-forms::section-0004::admonition-0004",
+      "parent_id": "tutorial/request-forms::section-0004",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded .",
+        "But when the form includes files, it is encoded as multipart/form-data . You'll read about handling files in the next chapter.",
+        "If you want to read more about these encodings and form fields, head to the MDN web docs for POST ."
+      ],
+      "section_text": "Data from forms is normally encoded using the \"media type\" application/x-www-form-urlencoded .\n\nBut when the form includes files, it is encoded as multipart/form-data . You'll read about handling files in the next chapter.\n\nIf you want to read more about these encodings and form fields, head to the MDN web docs for POST .",
+      "section_inline_code": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "POST"
+      ],
+      "section_links": [
+        {
+          "text": "MDN web docs for",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+          "section_id": "tutorial/request-forms::section-0004::admonition-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/request-forms::section-0004::admonition-0005": {
+      "node_id": "tutorial/request-forms::section-0004::admonition-0005",
+      "parent_id": "tutorial/request-forms::section-0004",
+      "node_kind": "admonition",
+      "kind": "warning",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/request-forms/#about-form-fields",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can declare multiple Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using application/x-www-form-urlencoded instead of application/json .",
+        "This is not a limitation of FastAPI , it's part of the HTTP protocol."
+      ],
+      "section_text": "You can declare multiple Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using application/x-www-form-urlencoded instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol.",
+      "section_inline_code": [
+        "Form",
+        "Body",
+        "application/x-www-form-urlencoded",
+        "application/json"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/request-forms::section-0001",
+      "seconds": 6.244200085347984e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0002",
+      "seconds": 2.3028000214253552e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0003",
+      "seconds": 9.240500003215857e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0004",
+      "seconds": 9.894699905999005e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 2
+    },
+    {
+      "node_id": "tutorial/request-forms::section-0005",
+      "seconds": 1.428199902875349e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

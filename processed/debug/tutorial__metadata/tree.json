@@ -1,0 +1,1204 @@
+{
+  "page": {
+    "page_id": "tutorial/metadata",
+    "page_uid": "44a72c512a500eaaa0ccbae19941c656e6035787",
+    "page_title": "Metadata and Docs URLs",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+    "source_file": "tutorial/metadata.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/metadata::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Metadata and Docs URLs",
+      "anchor_id": "metadata-and-docs-urls",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-and-docs-urls",
+      "section_text_parts": [
+        "You can customize several metadata configurations in your FastAPI application."
+      ],
+      "section_text": "You can customize several metadata configurations in your FastAPI application.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/metadata::section-0002",
+          "parent_id": "tutorial/metadata::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Metadata for API",
+          "anchor_id": "metadata-for-api",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+          "section_text_parts": [
+            "You can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs:",
+            "| Parameter | Type | Description | |------------|------|-------------| | title | str | The title of the API. | | summary | str | A short summary of the API. Available since OpenAPI 3.1.0, FastAPI 0.99.0. | | description | str | A short description of the API. It can use Markdown. | | version | string | The version of the API. This is the version of your own application, not of OpenAPI. For example 2.5.0 . | | terms_of_service | str | A URL to the Terms of Service for the API. If provided, this has to be a URL. | | contact | dict | The contact information for the exposed API. It can contain several fields. contact fields Parameter Type Description name str The identifying name of the contact person/organization. url str The URL pointing to the contact information. MUST be in the format of a URL. email str The email address of the contact person/organization. MUST be in the format of an email address. | | license_info | dict | The license information for the exposed API. It can contain several fields. license_info fields Parameter Type Description name str REQUIRED (if a license_info is set). The license name used for the API. identifier str An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Available since OpenAPI 3.1.0, FastAPI 0.99.0. url str A URL to the license used for the API. MUST be in the format of a URL. |",
+            "You can set them as follows:",
+            "With this configuration, the automatic API docs would look like:"
+          ],
+          "section_text": "You can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs:\n\n| Parameter | Type | Description | |------------|------|-------------| | title | str | The title of the API. | | summary | str | A short summary of the API. Available since OpenAPI 3.1.0, FastAPI 0.99.0. | | description | str | A short description of the API. It can use Markdown. | | version | string | The version of the API. This is the version of your own application, not of OpenAPI. For example 2.5.0 . | | terms_of_service | str | A URL to the Terms of Service for the API. If provided, this has to be a URL. | | contact | dict | The contact information for the exposed API. It can contain several fields. contact fields Parameter Type Description name str The identifying name of the contact person/organization. url str The URL pointing to the contact information. MUST be in the format of a URL. email str The email address of the contact person/organization. MUST be in the format of an email address. | | license_info | dict | The license information for the exposed API. It can contain several fields. license_info fields Parameter Type Description name str REQUIRED (if a license_info is set). The license name used for the API. identifier str An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Available since OpenAPI 3.1.0, FastAPI 0.99.0. url str A URL to the license used for the API. MUST be in the format of a URL. |\n\nYou can set them as follows:\n\nWith this configuration, the automatic API docs would look like:",
+          "section_inline_code": [
+            "title",
+            "str",
+            "summary",
+            "description",
+            "version",
+            "string",
+            "2.5.0",
+            "terms_of_service",
+            "contact",
+            "dict",
+            "license_info"
+          ],
+          "section_links": [
+            {
+              "text": "SPDX",
+              "url": "https://spdx.org/licenses/",
+              "section_id": "tutorial/metadata::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+            }
+          ],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/metadata/tutorial001_py310.py",
+              "highlight_lines": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ],
+              "raw": "{* ../../docs_src/metadata/tutorial001_py310.py hl[3:16, 19:32] *}",
+              "section_id": "tutorial/metadata::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/metadata::section-0003",
+          "parent_id": "tutorial/metadata::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "License identifier",
+          "anchor_id": "license-identifier",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier",
+          "section_text_parts": [
+            "Since OpenAPI 3.1.0 and FastAPI 0.99.0, you can also set the license_info with an identifier instead of a url .",
+            "For example:"
+          ],
+          "section_text": "Since OpenAPI 3.1.0 and FastAPI 0.99.0, you can also set the license_info with an identifier instead of a url .\n\nFor example:",
+          "section_inline_code": [
+            "license_info",
+            "identifier",
+            "url"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/metadata/tutorial001_1_py310.py",
+              "highlight_lines": [
+                31
+              ],
+              "raw": "{* ../../docs_src/metadata/tutorial001_1_py310.py hl[31] *}",
+              "section_id": "tutorial/metadata::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/metadata::section-0004",
+          "parent_id": "tutorial/metadata::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Metadata for tags",
+          "anchor_id": "metadata-for-tags",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-tags",
+          "section_text_parts": [
+            "You can also add additional metadata for the different tags used to group your path operations with the parameter openapi_tags .",
+            "It takes a list containing one dictionary for each tag.",
+            "Each dictionary can contain:",
+            "- name ( required ): a str with the same tag name you use in the tags parameter in your path operations and APIRouter s.",
+            "- description : a str with a short description for the tag. It can have Markdown and will be shown in the docs UI.",
+            "- description : a str with a short description for the external docs.",
+            "- url ( required ): a str with the URL for the external documentation."
+          ],
+          "section_text": "You can also add additional metadata for the different tags used to group your path operations with the parameter openapi_tags .\n\nIt takes a list containing one dictionary for each tag.\n\nEach dictionary can contain:\n\n- name ( required ): a str with the same tag name you use in the tags parameter in your path operations and APIRouter s.\n\n- description : a str with a short description for the tag. It can have Markdown and will be shown in the docs UI.\n\n- description : a str with a short description for the external docs.\n\n- url ( required ): a str with the URL for the external documentation.",
+          "section_inline_code": [
+            "openapi_tags",
+            "name",
+            "str",
+            "tags",
+            "APIRouter",
+            "description",
+            "url"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/metadata::section-0005",
+              "parent_id": "tutorial/metadata::section-0004",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Create metadata for tags",
+              "anchor_id": "create-metadata-for-tags",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+              "section_text_parts": [
+                "Let's try that in an example with tags for users and items .",
+                "Create metadata for your tags and pass it to the openapi_tags parameter:",
+                "Notice that you can use Markdown inside of the descriptions, for example \"login\" will be shown in bold ( login ) and \"fancy\" will be shown in italics ( fancy )."
+              ],
+              "section_text": "Let's try that in an example with tags for users and items .\n\nCreate metadata for your tags and pass it to the openapi_tags parameter:\n\nNotice that you can use Markdown inside of the descriptions, for example \"login\" will be shown in bold ( login ) and \"fancy\" will be shown in italics ( fancy ).",
+              "section_inline_code": [
+                "users",
+                "items",
+                "openapi_tags"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/metadata/tutorial004_py310.py",
+                  "highlight_lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    18
+                  ],
+                  "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[3:16,18] *}",
+                  "section_id": "tutorial/metadata::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/metadata::section-0006",
+              "parent_id": "tutorial/metadata::section-0004",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Use your tags",
+              "anchor_id": "use-your-tags",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+              "section_text_parts": [
+                "Use the tags parameter with your path operations (and APIRouter s) to assign them to different tags:"
+              ],
+              "section_text": "Use the tags parameter with your path operations (and APIRouter s) to assign them to different tags:",
+              "section_inline_code": [
+                "tags",
+                "APIRouter"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/metadata/tutorial004_py310.py",
+                  "highlight_lines": [
+                    21,
+                    26
+                  ],
+                  "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[21,26] *}",
+                  "section_id": "tutorial/metadata::section-0006",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/metadata::section-0007",
+              "parent_id": "tutorial/metadata::section-0004",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Check the docs",
+              "anchor_id": "check-the-docs",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#check-the-docs",
+              "section_text_parts": [
+                "Now, if you check the docs, they will show all the additional metadata:"
+              ],
+              "section_text": "Now, if you check the docs, they will show all the additional metadata:",
+              "section_inline_code": [],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/metadata::section-0008",
+              "parent_id": "tutorial/metadata::section-0004",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Order of tags",
+              "anchor_id": "order-of-tags",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#order-of-tags",
+              "section_text_parts": [
+                "The order of each tag metadata dictionary also defines the order shown in the docs UI.",
+                "For example, even though users would go after items in alphabetical order, it is shown before them, because we added their metadata as the first dictionary in the list."
+              ],
+              "section_text": "The order of each tag metadata dictionary also defines the order shown in the docs UI.\n\nFor example, even though users would go after items in alphabetical order, it is shown before them, because we added their metadata as the first dictionary in the list.",
+              "section_inline_code": [
+                "users",
+                "items"
+              ],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/metadata::section-0009",
+          "parent_id": "tutorial/metadata::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "OpenAPI URL",
+          "anchor_id": "openapi-url",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url",
+          "section_text_parts": [
+            "By default, the OpenAPI schema is served at /openapi.json .",
+            "But you can configure it with the parameter openapi_url .",
+            "For example, to set it to be served at /api/v1/openapi.json :",
+            "If you want to disable the OpenAPI schema completely you can set openapi_url=None , that will also disable the documentation user interfaces that use it."
+          ],
+          "section_text": "By default, the OpenAPI schema is served at /openapi.json .\n\nBut you can configure it with the parameter openapi_url .\n\nFor example, to set it to be served at /api/v1/openapi.json :\n\nIf you want to disable the OpenAPI schema completely you can set openapi_url=None , that will also disable the documentation user interfaces that use it.",
+          "section_inline_code": [
+            "/openapi.json",
+            "openapi_url",
+            "/api/v1/openapi.json",
+            "openapi_url=None"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/metadata/tutorial002_py310.py",
+              "highlight_lines": [
+                3
+              ],
+              "raw": "{* ../../docs_src/metadata/tutorial002_py310.py hl[3] *}",
+              "section_id": "tutorial/metadata::section-0009",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/metadata::section-0010",
+          "parent_id": "tutorial/metadata::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Docs URLs",
+          "anchor_id": "docs-urls",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls",
+          "section_text_parts": [
+            "You can configure the two documentation user interfaces included:",
+            "- You can set its URL with the parameter docs_url .",
+            "- You can disable it by setting docs_url=None .",
+            "- You can set its URL with the parameter redoc_url .",
+            "- You can disable it by setting redoc_url=None .",
+            "For example, to set Swagger UI to be served at /documentation and disable ReDoc:"
+          ],
+          "section_text": "You can configure the two documentation user interfaces included:\n\n- You can set its URL with the parameter docs_url .\n\n- You can disable it by setting docs_url=None .\n\n- You can set its URL with the parameter redoc_url .\n\n- You can disable it by setting redoc_url=None .\n\nFor example, to set Swagger UI to be served at /documentation and disable ReDoc:",
+          "section_inline_code": [
+            "docs_url",
+            "docs_url=None",
+            "redoc_url",
+            "redoc_url=None",
+            "/documentation"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/metadata/tutorial003_py310.py",
+              "highlight_lines": [
+                3
+              ],
+              "raw": "{* ../../docs_src/metadata/tutorial003_py310.py hl[3] *}",
+              "section_id": "tutorial/metadata::section-0010",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/metadata::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Metadata and Docs URLs",
+      "anchor_id": "metadata-and-docs-urls",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-and-docs-urls",
+      "section_text": "You can customize several metadata configurations in your FastAPI application.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0002",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Metadata for API",
+      "anchor_id": "metadata-for-api",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+      "section_text": "You can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs:\n\n| Parameter | Type | Description | |------------|------|-------------| | title | str | The title of the API. | | summary | str | A short summary of the API. Available since OpenAPI 3.1.0, FastAPI 0.99.0. | | description | str | A short description of the API. It can use Markdown. | | version | string | The version of the API. This is the version of your own application, not of OpenAPI. For example 2.5.0 . | | terms_of_service | str | A URL to the Terms of Service for the API. If provided, this has to be a URL. | | contact | dict | The contact information for the exposed API. It can contain several fields. contact fields Parameter Type Description name str The identifying name of the contact person/organization. url str The URL pointing to the contact information. MUST be in the format of a URL. email str The email address of the contact person/organization. MUST be in the format of an email address. | | license_info | dict | The license information for the exposed API. It can contain several fields. license_info fields Parameter Type Description name str REQUIRED (if a license_info is set). The license name used for the API. identifier str An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Available since OpenAPI 3.1.0, FastAPI 0.99.0. url str A URL to the license used for the API. MUST be in the format of a URL. |\n\nYou can set them as follows:\n\nWith this configuration, the automatic API docs would look like:",
+      "section_inline_code": [
+        "title",
+        "str",
+        "summary",
+        "description",
+        "version",
+        "string",
+        "2.5.0",
+        "terms_of_service",
+        "contact",
+        "dict",
+        "license_info"
+      ],
+      "section_links": [
+        {
+          "text": "SPDX",
+          "url": "https://spdx.org/licenses/",
+          "section_id": "tutorial/metadata::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial001_py310.py",
+          "highlight_lines": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial001_py310.py hl[3:16, 19:32] *}",
+          "section_id": "tutorial/metadata::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0003",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "License identifier",
+      "anchor_id": "license-identifier",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier",
+      "section_text": "Since OpenAPI 3.1.0 and FastAPI 0.99.0, you can also set the license_info with an identifier instead of a url .\n\nFor example:",
+      "section_inline_code": [
+        "license_info",
+        "identifier",
+        "url"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial001_1_py310.py",
+          "highlight_lines": [
+            31
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial001_1_py310.py hl[31] *}",
+          "section_id": "tutorial/metadata::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0004",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Metadata for tags",
+      "anchor_id": "metadata-for-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-tags",
+      "section_text": "You can also add additional metadata for the different tags used to group your path operations with the parameter openapi_tags .\n\nIt takes a list containing one dictionary for each tag.\n\nEach dictionary can contain:\n\n- name ( required ): a str with the same tag name you use in the tags parameter in your path operations and APIRouter s.\n\n- description : a str with a short description for the tag. It can have Markdown and will be shown in the docs UI.\n\n- description : a str with a short description for the external docs.\n\n- url ( required ): a str with the URL for the external documentation.",
+      "section_inline_code": [
+        "openapi_tags",
+        "name",
+        "str",
+        "tags",
+        "APIRouter",
+        "description",
+        "url"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0005",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Create metadata for tags",
+      "anchor_id": "create-metadata-for-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+      "section_text": "Let's try that in an example with tags for users and items .\n\nCreate metadata for your tags and pass it to the openapi_tags parameter:\n\nNotice that you can use Markdown inside of the descriptions, for example \"login\" will be shown in bold ( login ) and \"fancy\" will be shown in italics ( fancy ).",
+      "section_inline_code": [
+        "users",
+        "items",
+        "openapi_tags"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial004_py310.py",
+          "highlight_lines": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[3:16,18] *}",
+          "section_id": "tutorial/metadata::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0006",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Use your tags",
+      "anchor_id": "use-your-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+      "section_text": "Use the tags parameter with your path operations (and APIRouter s) to assign them to different tags:",
+      "section_inline_code": [
+        "tags",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial004_py310.py",
+          "highlight_lines": [
+            21,
+            26
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[21,26] *}",
+          "section_id": "tutorial/metadata::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0007",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check the docs",
+      "anchor_id": "check-the-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#check-the-docs",
+      "section_text": "Now, if you check the docs, they will show all the additional metadata:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0008",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Order of tags",
+      "anchor_id": "order-of-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#order-of-tags",
+      "section_text": "The order of each tag metadata dictionary also defines the order shown in the docs UI.\n\nFor example, even though users would go after items in alphabetical order, it is shown before them, because we added their metadata as the first dictionary in the list.",
+      "section_inline_code": [
+        "users",
+        "items"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0009",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI URL",
+      "anchor_id": "openapi-url",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url",
+      "section_text": "By default, the OpenAPI schema is served at /openapi.json .\n\nBut you can configure it with the parameter openapi_url .\n\nFor example, to set it to be served at /api/v1/openapi.json :\n\nIf you want to disable the OpenAPI schema completely you can set openapi_url=None , that will also disable the documentation user interfaces that use it.",
+      "section_inline_code": [
+        "/openapi.json",
+        "openapi_url",
+        "/api/v1/openapi.json",
+        "openapi_url=None"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial002_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial002_py310.py hl[3] *}",
+          "section_id": "tutorial/metadata::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0010",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Docs URLs",
+      "anchor_id": "docs-urls",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls",
+      "section_text": "You can configure the two documentation user interfaces included:\n\n- You can set its URL with the parameter docs_url .\n\n- You can disable it by setting docs_url=None .\n\n- You can set its URL with the parameter redoc_url .\n\n- You can disable it by setting redoc_url=None .\n\nFor example, to set Swagger UI to be served at /documentation and disable ReDoc:",
+      "section_inline_code": [
+        "docs_url",
+        "docs_url=None",
+        "redoc_url",
+        "redoc_url=None",
+        "/documentation"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial003_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial003_py310.py hl[3] *}",
+          "section_id": "tutorial/metadata::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls"
+        }
+      ],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/metadata::section-0001": {
+      "node_id": "tutorial/metadata::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Metadata and Docs URLs",
+      "anchor_id": "metadata-and-docs-urls",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-and-docs-urls",
+      "section_text": "You can customize several metadata configurations in your FastAPI application.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0002": {
+      "node_id": "tutorial/metadata::section-0002",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Metadata for API",
+      "anchor_id": "metadata-for-api",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+      "section_text": "You can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs:\n\n| Parameter | Type | Description | |------------|------|-------------| | title | str | The title of the API. | | summary | str | A short summary of the API. Available since OpenAPI 3.1.0, FastAPI 0.99.0. | | description | str | A short description of the API. It can use Markdown. | | version | string | The version of the API. This is the version of your own application, not of OpenAPI. For example 2.5.0 . | | terms_of_service | str | A URL to the Terms of Service for the API. If provided, this has to be a URL. | | contact | dict | The contact information for the exposed API. It can contain several fields. contact fields Parameter Type Description name str The identifying name of the contact person/organization. url str The URL pointing to the contact information. MUST be in the format of a URL. email str The email address of the contact person/organization. MUST be in the format of an email address. | | license_info | dict | The license information for the exposed API. It can contain several fields. license_info fields Parameter Type Description name str REQUIRED (if a license_info is set). The license name used for the API. identifier str An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Available since OpenAPI 3.1.0, FastAPI 0.99.0. url str A URL to the license used for the API. MUST be in the format of a URL. |\n\nYou can set them as follows:\n\nWith this configuration, the automatic API docs would look like:",
+      "section_inline_code": [
+        "title",
+        "str",
+        "summary",
+        "description",
+        "version",
+        "string",
+        "2.5.0",
+        "terms_of_service",
+        "contact",
+        "dict",
+        "license_info"
+      ],
+      "section_links": [
+        {
+          "text": "SPDX",
+          "url": "https://spdx.org/licenses/",
+          "section_id": "tutorial/metadata::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial001_py310.py",
+          "highlight_lines": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial001_py310.py hl[3:16, 19:32] *}",
+          "section_id": "tutorial/metadata::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0003": {
+      "node_id": "tutorial/metadata::section-0003",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "License identifier",
+      "anchor_id": "license-identifier",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier",
+      "section_text": "Since OpenAPI 3.1.0 and FastAPI 0.99.0, you can also set the license_info with an identifier instead of a url .\n\nFor example:",
+      "section_inline_code": [
+        "license_info",
+        "identifier",
+        "url"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial001_1_py310.py",
+          "highlight_lines": [
+            31
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial001_1_py310.py hl[31] *}",
+          "section_id": "tutorial/metadata::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#license-identifier"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0004": {
+      "node_id": "tutorial/metadata::section-0004",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Metadata for tags",
+      "anchor_id": "metadata-for-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-tags",
+      "section_text": "You can also add additional metadata for the different tags used to group your path operations with the parameter openapi_tags .\n\nIt takes a list containing one dictionary for each tag.\n\nEach dictionary can contain:\n\n- name ( required ): a str with the same tag name you use in the tags parameter in your path operations and APIRouter s.\n\n- description : a str with a short description for the tag. It can have Markdown and will be shown in the docs UI.\n\n- description : a str with a short description for the external docs.\n\n- url ( required ): a str with the URL for the external documentation.",
+      "section_inline_code": [
+        "openapi_tags",
+        "name",
+        "str",
+        "tags",
+        "APIRouter",
+        "description",
+        "url"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0005": {
+      "node_id": "tutorial/metadata::section-0005",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Create metadata for tags",
+      "anchor_id": "create-metadata-for-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+      "section_text": "Let's try that in an example with tags for users and items .\n\nCreate metadata for your tags and pass it to the openapi_tags parameter:\n\nNotice that you can use Markdown inside of the descriptions, for example \"login\" will be shown in bold ( login ) and \"fancy\" will be shown in italics ( fancy ).",
+      "section_inline_code": [
+        "users",
+        "items",
+        "openapi_tags"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial004_py310.py",
+          "highlight_lines": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[3:16,18] *}",
+          "section_id": "tutorial/metadata::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0006": {
+      "node_id": "tutorial/metadata::section-0006",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Use your tags",
+      "anchor_id": "use-your-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+      "section_text": "Use the tags parameter with your path operations (and APIRouter s) to assign them to different tags:",
+      "section_inline_code": [
+        "tags",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial004_py310.py",
+          "highlight_lines": [
+            21,
+            26
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial004_py310.py hl[21,26] *}",
+          "section_id": "tutorial/metadata::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0007": {
+      "node_id": "tutorial/metadata::section-0007",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Check the docs",
+      "anchor_id": "check-the-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#check-the-docs",
+      "section_text": "Now, if you check the docs, they will show all the additional metadata:",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0008": {
+      "node_id": "tutorial/metadata::section-0008",
+      "parent_id": "tutorial/metadata::section-0004",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Order of tags",
+      "anchor_id": "order-of-tags",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#order-of-tags",
+      "section_text": "The order of each tag metadata dictionary also defines the order shown in the docs UI.\n\nFor example, even though users would go after items in alphabetical order, it is shown before them, because we added their metadata as the first dictionary in the list.",
+      "section_inline_code": [
+        "users",
+        "items"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0009": {
+      "node_id": "tutorial/metadata::section-0009",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "OpenAPI URL",
+      "anchor_id": "openapi-url",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url",
+      "section_text": "By default, the OpenAPI schema is served at /openapi.json .\n\nBut you can configure it with the parameter openapi_url .\n\nFor example, to set it to be served at /api/v1/openapi.json :\n\nIf you want to disable the OpenAPI schema completely you can set openapi_url=None , that will also disable the documentation user interfaces that use it.",
+      "section_inline_code": [
+        "/openapi.json",
+        "openapi_url",
+        "/api/v1/openapi.json",
+        "openapi_url=None"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial002_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial002_py310.py hl[3] *}",
+          "section_id": "tutorial/metadata::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0010": {
+      "node_id": "tutorial/metadata::section-0010",
+      "parent_id": "tutorial/metadata::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Docs URLs",
+      "anchor_id": "docs-urls",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls",
+      "section_text": "You can configure the two documentation user interfaces included:\n\n- You can set its URL with the parameter docs_url .\n\n- You can disable it by setting docs_url=None .\n\n- You can set its URL with the parameter redoc_url .\n\n- You can disable it by setting redoc_url=None .\n\nFor example, to set Swagger UI to be served at /documentation and disable ReDoc:",
+      "section_inline_code": [
+        "docs_url",
+        "docs_url=None",
+        "redoc_url",
+        "redoc_url=None",
+        "/documentation"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/metadata/tutorial003_py310.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/metadata/tutorial003_py310.py hl[3] *}",
+          "section_id": "tutorial/metadata::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#docs-urls"
+        }
+      ],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/metadata::section-0002::admonition-0001",
+      "parent_id": "tutorial/metadata::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can write Markdown in the description field and it will be rendered in the output."
+      ],
+      "section_text": "You can write Markdown in the description field and it will be rendered in the output.",
+      "section_inline_code": [
+        "description"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0005::admonition-0002",
+      "parent_id": "tutorial/metadata::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You don't have to add metadata for all the tags that you use."
+      ],
+      "section_text": "You don't have to add metadata for all the tags that you use.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/metadata::section-0006::admonition-0003",
+      "parent_id": "tutorial/metadata::section-0006",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Read more about tags in Path Operation Configuration ."
+      ],
+      "section_text": "Read more about tags in Path Operation Configuration .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Path Operation Configuration",
+          "url": "path-operation-configuration.md#tags",
+          "section_id": "tutorial/metadata::section-0006::admonition-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/metadata::section-0002::admonition-0001": {
+      "node_id": "tutorial/metadata::section-0002::admonition-0001",
+      "parent_id": "tutorial/metadata::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You can write Markdown in the description field and it will be rendered in the output."
+      ],
+      "section_text": "You can write Markdown in the description field and it will be rendered in the output.",
+      "section_inline_code": [
+        "description"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0005::admonition-0002": {
+      "node_id": "tutorial/metadata::section-0005::admonition-0002",
+      "parent_id": "tutorial/metadata::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#create-metadata-for-tags",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You don't have to add metadata for all the tags that you use."
+      ],
+      "section_text": "You don't have to add metadata for all the tags that you use.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/metadata::section-0006::admonition-0003": {
+      "node_id": "tutorial/metadata::section-0006::admonition-0003",
+      "parent_id": "tutorial/metadata::section-0006",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Read more about tags in Path Operation Configuration ."
+      ],
+      "section_text": "Read more about tags in Path Operation Configuration .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Path Operation Configuration",
+          "url": "path-operation-configuration.md#tags",
+          "section_id": "tutorial/metadata::section-0006::admonition-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/metadata/#use-your-tags"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/metadata::section-0001",
+      "seconds": 2.2995000108494423e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0002",
+      "seconds": 0.0004332089993113186,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/metadata::section-0003",
+      "seconds": 2.453500019328203e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0004",
+      "seconds": 0.00011267800073255785,
+      "paragraphs": 3,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0005",
+      "seconds": 6.305800161499064e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/metadata::section-0006",
+      "seconds": 4.4661001084023155e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/metadata::section-0007",
+      "seconds": 1.592499938851688e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0008",
+      "seconds": 1.5861000065342523e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0009",
+      "seconds": 3.309699968667701e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/metadata::section-0010",
+      "seconds": 0.0001248500011570286,
+      "paragraphs": 2,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

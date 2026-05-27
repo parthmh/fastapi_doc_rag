@@ -1,0 +1,72 @@
+[
+  {
+    "node_id": "tutorial/body-updates::section-0001",
+    "seconds": 1.2952001270605251e-05,
+    "paragraphs": 0,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0002",
+    "seconds": 7.479000123566948e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0003",
+    "seconds": 6.684700019832235e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0004",
+    "seconds": 0.00010706099965318572,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0005",
+    "seconds": 4.8459000026923604e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0006",
+    "seconds": 2.5659999664640054e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body-updates::section-0007",
+    "seconds": 0.00019725200036191382,
+    "paragraphs": 6,
+    "list_items": 5,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 2
+  }
+]

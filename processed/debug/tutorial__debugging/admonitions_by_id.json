@@ -1,0 +1,26 @@
+{
+  "tutorial/debugging::section-0004::admonition-0001": {
+    "node_id": "tutorial/debugging::section-0004::admonition-0001",
+    "parent_id": "tutorial/debugging::section-0004",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "For more information, check the official Python docs ."
+    ],
+    "section_text": "For more information, check the official Python docs .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "the official Python docs",
+        "url": "https://docs.python.org/3/library/__main__.html",
+        "section_id": "tutorial/debugging::section-0004::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/debugging/#more-details"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

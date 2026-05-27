@@ -1,0 +1,92 @@
+[
+  {
+    "node_id": "tutorial/testing::section-0001",
+    "seconds": 5.908899947826285e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 3,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0002",
+    "seconds": 0.0002550859990151366,
+    "paragraphs": 13,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 2,
+    "admonitions": 4
+  },
+  {
+    "node_id": "tutorial/testing::section-0003",
+    "seconds": 2.7072999728261493e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0004",
+    "seconds": 5.068700011179317e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0005",
+    "seconds": 6.183200093801133e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0006",
+    "seconds": 1.548300133435987e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0007",
+    "seconds": 6.916900019859895e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/testing::section-0008",
+    "seconds": 0.00018297200040251482,
+    "paragraphs": 7,
+    "list_items": 5,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 2,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/testing::section-0009",
+    "seconds": 8.967399844550528e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 2,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "node_id": "tutorial/cors::section-0001",
+    "seconds": 3.171599928464275e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0002",
+    "seconds": 0.00010470000052009709,
+    "paragraphs": 3,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0003",
+    "seconds": 6.933700024092104e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0004",
+    "seconds": 3.226099943276495e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0005",
+    "seconds": 0.0003164410009048879,
+    "paragraphs": 13,
+    "list_items": 6,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 2,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0006",
+    "seconds": 2.2621999960392714e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0007",
+    "seconds": 1.135200000135228e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cors::section-0008",
+    "seconds": 5.810000038763974e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  }
+]

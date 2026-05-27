@@ -1,0 +1,467 @@
+{
+  "page": {
+    "page_id": "tutorial/static-files",
+    "page_uid": "be344dba5f4424d82f7dc261f09fc98c09bcbc37",
+    "page_title": "Static Files",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/static-files/",
+    "source_file": "tutorial/static-files.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/static-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Static Files",
+      "anchor_id": "static-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#static-files",
+      "section_text_parts": [
+        "You can serve static files automatically from a directory using StaticFiles ."
+      ],
+      "section_text": "You can serve static files automatically from a directory using StaticFiles .",
+      "section_inline_code": [
+        "StaticFiles"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/static-files::section-0002",
+          "parent_id": "tutorial/static-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Use StaticFiles",
+          "anchor_id": "use-staticfiles",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles",
+          "section_text_parts": [
+            "- Import StaticFiles .",
+            "- \"Mount\" a StaticFiles() instance in a specific path."
+          ],
+          "section_text": "- Import StaticFiles .\n\n- \"Mount\" a StaticFiles() instance in a specific path.",
+          "section_inline_code": [
+            "StaticFiles",
+            "StaticFiles()"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/static_files/tutorial001_py310.py",
+              "highlight_lines": [
+                2,
+                6
+              ],
+              "raw": "{* ../../docs_src/static_files/tutorial001_py310.py hl[2,6] *}",
+              "section_id": "tutorial/static-files::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/static-files::section-0003",
+              "parent_id": "tutorial/static-files::section-0002",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "What is \"Mounting\"",
+              "anchor_id": "what-is-mounting",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting",
+              "section_text_parts": [
+                "\"Mounting\" means adding a complete \"independent\" application in a specific path, that then takes care of handling all the sub-paths.",
+                "This is different from using an APIRouter as a mounted application is completely independent. The OpenAPI and docs from your main application won't include anything from the mounted application, etc.",
+                "You can read more about this in the Advanced User Guide ."
+              ],
+              "section_text": "\"Mounting\" means adding a complete \"independent\" application in a specific path, that then takes care of handling all the sub-paths.\n\nThis is different from using an APIRouter as a mounted application is completely independent. The OpenAPI and docs from your main application won't include anything from the mounted application, etc.\n\nYou can read more about this in the Advanced User Guide .",
+              "section_inline_code": [
+                "APIRouter"
+              ],
+              "section_links": [
+                {
+                  "text": "Advanced User Guide",
+                  "url": "../advanced/index.md",
+                  "section_id": "tutorial/static-files::section-0003",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting"
+                }
+              ],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/static-files::section-0004",
+          "parent_id": "tutorial/static-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Details",
+          "anchor_id": "details",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#details",
+          "section_text_parts": [
+            "The first \"/static\" refers to the sub-path this \"sub-application\" will be \"mounted\" on. So, any path that starts with \"/static\" will be handled by it.",
+            "The directory=\"static\" refers to the name of the directory that contains your static files.",
+            "The name=\"static\" gives it a name that can be used internally by FastAPI .",
+            "All these parameters can be different than \" static \", adjust them with the needs and specific details of your own application."
+          ],
+          "section_text": "The first \"/static\" refers to the sub-path this \"sub-application\" will be \"mounted\" on. So, any path that starts with \"/static\" will be handled by it.\n\nThe directory=\"static\" refers to the name of the directory that contains your static files.\n\nThe name=\"static\" gives it a name that can be used internally by FastAPI .\n\nAll these parameters can be different than \" static \", adjust them with the needs and specific details of your own application.",
+          "section_inline_code": [
+            "\"/static\"",
+            "directory=\"static\"",
+            "name=\"static\"",
+            "static"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/static-files::section-0005",
+          "parent_id": "tutorial/static-files::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "More info",
+          "anchor_id": "more-info",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info",
+          "section_text_parts": [
+            "For more details and options check Starlette's docs about Static Files ."
+          ],
+          "section_text": "For more details and options check Starlette's docs about Static Files .",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "Starlette's docs about Static Files",
+              "url": "https://www.starlette.dev/staticfiles/",
+              "section_id": "tutorial/static-files::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/static-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Static Files",
+      "anchor_id": "static-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#static-files",
+      "section_text": "You can serve static files automatically from a directory using StaticFiles .",
+      "section_inline_code": [
+        "StaticFiles"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/static-files::section-0002",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use StaticFiles",
+      "anchor_id": "use-staticfiles",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles",
+      "section_text": "- Import StaticFiles .\n\n- \"Mount\" a StaticFiles() instance in a specific path.",
+      "section_inline_code": [
+        "StaticFiles",
+        "StaticFiles()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/static_files/tutorial001_py310.py",
+          "highlight_lines": [
+            2,
+            6
+          ],
+          "raw": "{* ../../docs_src/static_files/tutorial001_py310.py hl[2,6] *}",
+          "section_id": "tutorial/static-files::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/static-files::section-0003",
+      "parent_id": "tutorial/static-files::section-0002",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "What is \"Mounting\"",
+      "anchor_id": "what-is-mounting",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting",
+      "section_text": "\"Mounting\" means adding a complete \"independent\" application in a specific path, that then takes care of handling all the sub-paths.\n\nThis is different from using an APIRouter as a mounted application is completely independent. The OpenAPI and docs from your main application won't include anything from the mounted application, etc.\n\nYou can read more about this in the Advanced User Guide .",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [
+        {
+          "text": "Advanced User Guide",
+          "url": "../advanced/index.md",
+          "section_id": "tutorial/static-files::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/static-files::section-0004",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Details",
+      "anchor_id": "details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#details",
+      "section_text": "The first \"/static\" refers to the sub-path this \"sub-application\" will be \"mounted\" on. So, any path that starts with \"/static\" will be handled by it.\n\nThe directory=\"static\" refers to the name of the directory that contains your static files.\n\nThe name=\"static\" gives it a name that can be used internally by FastAPI .\n\nAll these parameters can be different than \" static \", adjust them with the needs and specific details of your own application.",
+      "section_inline_code": [
+        "\"/static\"",
+        "directory=\"static\"",
+        "name=\"static\"",
+        "static"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/static-files::section-0005",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "More info",
+      "anchor_id": "more-info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info",
+      "section_text": "For more details and options check Starlette's docs about Static Files .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Starlette's docs about Static Files",
+          "url": "https://www.starlette.dev/staticfiles/",
+          "section_id": "tutorial/static-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/static-files::section-0001": {
+      "node_id": "tutorial/static-files::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Static Files",
+      "anchor_id": "static-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#static-files",
+      "section_text": "You can serve static files automatically from a directory using StaticFiles .",
+      "section_inline_code": [
+        "StaticFiles"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/static-files::section-0002": {
+      "node_id": "tutorial/static-files::section-0002",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use StaticFiles",
+      "anchor_id": "use-staticfiles",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles",
+      "section_text": "- Import StaticFiles .\n\n- \"Mount\" a StaticFiles() instance in a specific path.",
+      "section_inline_code": [
+        "StaticFiles",
+        "StaticFiles()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/static_files/tutorial001_py310.py",
+          "highlight_lines": [
+            2,
+            6
+          ],
+          "raw": "{* ../../docs_src/static_files/tutorial001_py310.py hl[2,6] *}",
+          "section_id": "tutorial/static-files::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/static-files::section-0003": {
+      "node_id": "tutorial/static-files::section-0003",
+      "parent_id": "tutorial/static-files::section-0002",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "What is \"Mounting\"",
+      "anchor_id": "what-is-mounting",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting",
+      "section_text": "\"Mounting\" means adding a complete \"independent\" application in a specific path, that then takes care of handling all the sub-paths.\n\nThis is different from using an APIRouter as a mounted application is completely independent. The OpenAPI and docs from your main application won't include anything from the mounted application, etc.\n\nYou can read more about this in the Advanced User Guide .",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [
+        {
+          "text": "Advanced User Guide",
+          "url": "../advanced/index.md",
+          "section_id": "tutorial/static-files::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#what-is-mounting"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/static-files::section-0004": {
+      "node_id": "tutorial/static-files::section-0004",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Details",
+      "anchor_id": "details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#details",
+      "section_text": "The first \"/static\" refers to the sub-path this \"sub-application\" will be \"mounted\" on. So, any path that starts with \"/static\" will be handled by it.\n\nThe directory=\"static\" refers to the name of the directory that contains your static files.\n\nThe name=\"static\" gives it a name that can be used internally by FastAPI .\n\nAll these parameters can be different than \" static \", adjust them with the needs and specific details of your own application.",
+      "section_inline_code": [
+        "\"/static\"",
+        "directory=\"static\"",
+        "name=\"static\"",
+        "static"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/static-files::section-0005": {
+      "node_id": "tutorial/static-files::section-0005",
+      "parent_id": "tutorial/static-files::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "More info",
+      "anchor_id": "more-info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info",
+      "section_text": "For more details and options check Starlette's docs about Static Files .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Starlette's docs about Static Files",
+          "url": "https://www.starlette.dev/staticfiles/",
+          "section_id": "tutorial/static-files::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#more-info"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/static-files::section-0002::admonition-0001",
+      "parent_id": "tutorial/static-files::section-0002",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.staticfiles import StaticFiles .",
+        "FastAPI provides the same starlette.staticfiles as fastapi.staticfiles just as a convenience for you, the developer. But it actually comes directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.staticfiles import StaticFiles .\n\nFastAPI provides the same starlette.staticfiles as fastapi.staticfiles just as a convenience for you, the developer. But it actually comes directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.staticfiles import StaticFiles",
+        "starlette.staticfiles",
+        "fastapi.staticfiles"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/static-files::section-0002::admonition-0001": {
+      "node_id": "tutorial/static-files::section-0002::admonition-0001",
+      "parent_id": "tutorial/static-files::section-0002",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/static-files/#use-staticfiles",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.staticfiles import StaticFiles .",
+        "FastAPI provides the same starlette.staticfiles as fastapi.staticfiles just as a convenience for you, the developer. But it actually comes directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.staticfiles import StaticFiles .\n\nFastAPI provides the same starlette.staticfiles as fastapi.staticfiles just as a convenience for you, the developer. But it actually comes directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.staticfiles import StaticFiles",
+        "starlette.staticfiles",
+        "fastapi.staticfiles"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/static-files::section-0001",
+      "seconds": 2.2034000721760094e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/static-files::section-0002",
+      "seconds": 7.696899956499692e-05,
+      "paragraphs": 2,
+      "list_items": 2,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/static-files::section-0003",
+      "seconds": 2.7260000933893025e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/static-files::section-0004",
+      "seconds": 3.945700154872611e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/static-files::section-0005",
+      "seconds": 1.4576000467059202e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    }
+  ]
+}

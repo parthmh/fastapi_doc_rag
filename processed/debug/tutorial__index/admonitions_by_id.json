@@ -1,0 +1,57 @@
+{
+  "tutorial/index::section-0003::admonition-0001": {
+    "node_id": "tutorial/index::section-0003::admonition-0001",
+    "parent_id": "tutorial/index::section-0003",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "When you install with pip install \"fastapi[standard]\" it comes with some default optional standard dependencies, including fastapi-cloud-cli , which allows you to deploy to FastAPI Cloud .",
+      "If you don't want to have those optional dependencies, you can instead install pip install fastapi .",
+      "If you want to install the standard dependencies but without the fastapi-cloud-cli , you can install with pip install \"fastapi[standard-no-fastapi-cloud-cli]\" ."
+    ],
+    "section_text": "When you install with pip install \"fastapi[standard]\" it comes with some default optional standard dependencies, including fastapi-cloud-cli , which allows you to deploy to FastAPI Cloud .\n\nIf you don't want to have those optional dependencies, you can instead install pip install fastapi .\n\nIf you want to install the standard dependencies but without the fastapi-cloud-cli , you can install with pip install \"fastapi[standard-no-fastapi-cloud-cli]\" .",
+    "section_inline_code": [
+      "pip install \"fastapi[standard]\"",
+      "fastapi-cloud-cli",
+      "pip install fastapi",
+      "pip install \"fastapi[standard-no-fastapi-cloud-cli]\""
+    ],
+    "section_links": [
+      {
+        "text": "FastAPI Cloud",
+        "url": "https://fastapicloud.com",
+        "section_id": "tutorial/index::section-0003::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/index::section-0003::admonition-0002": {
+    "node_id": "tutorial/index::section-0003::admonition-0002",
+    "parent_id": "tutorial/index::section-0003",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "FastAPI has an official extension for VS Code (and Cursor), which provides a lot of features, including a path operation explorer, path operation search, CodeLens navigation in tests (jump to definition from tests), and FastAPI Cloud deployment and logs, all from your editor."
+    ],
+    "section_text": "FastAPI has an official extension for VS Code (and Cursor), which provides a lot of features, including a path operation explorer, path operation search, CodeLens navigation in tests (jump to definition from tests), and FastAPI Cloud deployment and logs, all from your editor.",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "official extension for VS Code",
+        "url": "https://marketplace.visualstudio.com/items?itemName=FastAPILabs.fastapi-vscode",
+        "section_id": "tutorial/index::section-0003::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

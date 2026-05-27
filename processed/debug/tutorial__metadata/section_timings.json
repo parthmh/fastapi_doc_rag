@@ -1,0 +1,102 @@
+[
+  {
+    "node_id": "tutorial/metadata::section-0001",
+    "seconds": 2.2995000108494423e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0002",
+    "seconds": 0.0004332089993113186,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/metadata::section-0003",
+    "seconds": 2.453500019328203e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0004",
+    "seconds": 0.00011267800073255785,
+    "paragraphs": 3,
+    "list_items": 4,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0005",
+    "seconds": 6.305800161499064e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/metadata::section-0006",
+    "seconds": 4.4661001084023155e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/metadata::section-0007",
+    "seconds": 1.592499938851688e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0008",
+    "seconds": 1.5861000065342523e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0009",
+    "seconds": 3.309699968667701e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/metadata::section-0010",
+    "seconds": 0.0001248500011570286,
+    "paragraphs": 2,
+    "list_items": 4,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  }
+]

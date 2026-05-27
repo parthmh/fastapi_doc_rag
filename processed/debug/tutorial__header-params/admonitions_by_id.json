@@ -1,0 +1,66 @@
+{
+  "tutorial/header-params::section-0003::admonition-0001": {
+    "node_id": "tutorial/header-params::section-0003::admonition-0001",
+    "parent_id": "tutorial/header-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.",
+      "But remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes."
+    ],
+    "section_text": "Header is a \"sister\" class of Path , Query and Cookie . It also inherits from the same common Param class.\n\nBut remember that when you import Query , Path , Header , and others from fastapi , those are actually functions that return special classes.",
+    "section_inline_code": [
+      "Header",
+      "Path",
+      "Query",
+      "Cookie",
+      "Param",
+      "fastapi"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/header-params::section-0003::admonition-0002": {
+    "node_id": "tutorial/header-params::section-0003::admonition-0002",
+    "parent_id": "tutorial/header-params::section-0003",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#declare-header-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters."
+    ],
+    "section_text": "To declare headers, you need to use Header , because otherwise the parameters would be interpreted as query parameters.",
+    "section_inline_code": [
+      "Header"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/header-params::section-0004::admonition-0003": {
+    "node_id": "tutorial/header-params::section-0004::admonition-0003",
+    "parent_id": "tutorial/header-params::section-0004",
+    "node_kind": "admonition",
+    "kind": "warning",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/header-params/#automatic-conversion",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores."
+    ],
+    "section_text": "Before setting convert_underscores to False , bear in mind that some HTTP proxies and servers disallow the usage of headers with underscores.",
+    "section_inline_code": [
+      "convert_underscores",
+      "False"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

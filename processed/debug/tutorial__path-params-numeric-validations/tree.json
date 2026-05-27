@@ -1,0 +1,1372 @@
+{
+  "page": {
+    "page_id": "tutorial/path-params-numeric-validations",
+    "page_uid": "ea4ca7ea11d8fa35efb5a72d491ffc87888298e2",
+    "page_title": "Path Parameters and Numeric Validations",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/",
+    "source_file": "tutorial/path-params-numeric-validations.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters and Numeric Validations",
+      "anchor_id": "path-parameters-and-numeric-validations",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#path-parameters-and-numeric-validations",
+      "section_text_parts": [
+        "In the same way that you can declare more validations and metadata for query parameters with Query , you can declare the same type of validations and metadata for path parameters with Path ."
+      ],
+      "section_text": "In the same way that you can declare more validations and metadata for query parameters with Query , you can declare the same type of validations and metadata for path parameters with Path .",
+      "section_inline_code": [
+        "Query",
+        "Path"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0002",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Import Path",
+          "anchor_id": "import-path",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path",
+          "section_text_parts": [
+            "First, import Path from fastapi , and import Annotated :"
+          ],
+          "section_text": "First, import Path from fastapi , and import Annotated :",
+          "section_inline_code": [
+            "Path",
+            "fastapi",
+            "Annotated"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+              "highlight_lines": [
+                1,
+                3
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[1,3] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0003",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Declare metadata",
+          "anchor_id": "declare-metadata",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata",
+          "section_text_parts": [
+            "You can declare all the same parameters as for Query .",
+            "For example, to declare a title metadata value for the path parameter item_id you can type:"
+          ],
+          "section_text": "You can declare all the same parameters as for Query .\n\nFor example, to declare a title metadata value for the path parameter item_id you can type:",
+          "section_inline_code": [
+            "Query",
+            "title",
+            "item_id"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+              "highlight_lines": [
+                10
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[10] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0003",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0004",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Order the parameters as you need",
+          "anchor_id": "order-the-parameters-as-you-need",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need",
+          "section_text_parts": [
+            "Let's say that you want to declare the query parameter q as a required str .",
+            "And you don't need to declare anything else for that parameter, so you don't really need to use Query .",
+            "But you still need to use Path for the item_id path parameter. And you don't want to use Annotated for some reason.",
+            "Python will complain if you put a value with a \"default\" before a value that doesn't have a \"default\".",
+            "But you can re-order them, and have the value without a default (the query parameter q ) first.",
+            "It doesn't matter for FastAPI . It will detect the parameters by their names, types and default declarations ( Query , Path , etc), it doesn't care about the order.",
+            "So, you can declare your function as:",
+            "But keep in mind that if you use Annotated , you won't have this problem, it won't matter as you're not using the function parameter default values for Query() or Path() ."
+          ],
+          "section_text": "Let's say that you want to declare the query parameter q as a required str .\n\nAnd you don't need to declare anything else for that parameter, so you don't really need to use Query .\n\nBut you still need to use Path for the item_id path parameter. And you don't want to use Annotated for some reason.\n\nPython will complain if you put a value with a \"default\" before a value that doesn't have a \"default\".\n\nBut you can re-order them, and have the value without a default (the query parameter q ) first.\n\nIt doesn't matter for FastAPI . It will detect the parameters by their names, types and default declarations ( Query , Path , etc), it doesn't care about the order.\n\nSo, you can declare your function as:\n\nBut keep in mind that if you use Annotated , you won't have this problem, it won't matter as you're not using the function parameter default values for Query() or Path() .",
+          "section_inline_code": [
+            "q",
+            "str",
+            "Query",
+            "Path",
+            "item_id",
+            "Annotated",
+            "Query()",
+            "Path()"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial002_py310.py",
+              "highlight_lines": [
+                7
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_py310.py hl[7] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+            },
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py",
+              "highlight_lines": [],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0004",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0005",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Order the parameters as you need, tricks",
+          "anchor_id": "order-the-parameters-as-you-need-tricks",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks",
+          "section_text_parts": [
+            "Here's a small trick that can be handy, but you won't need it often.",
+            "If you want to:",
+            "- declare the q query parameter without a Query nor any default value",
+            "- declare the path parameter item_id using Path",
+            "- have them in a different order",
+            "- not use Annotated",
+            "...Python has a little special syntax for that.",
+            "Pass * , as the first parameter of the function.",
+            "Python won't do anything with that * , but it will know that all the following parameters should be called as keyword arguments (key-value pairs), also known as kwargs . Even if they don't have a default value."
+          ],
+          "section_text": "Here's a small trick that can be handy, but you won't need it often.\n\nIf you want to:\n\n- declare the q query parameter without a Query nor any default value\n\n- declare the path parameter item_id using Path\n\n- have them in a different order\n\n- not use Annotated\n\n...Python has a little special syntax for that.\n\nPass * , as the first parameter of the function.\n\nPython won't do anything with that * , but it will know that all the following parameters should be called as keyword arguments (key-value pairs), also known as kwargs . Even if they don't have a default value.",
+          "section_inline_code": [
+            "q",
+            "Query",
+            "item_id",
+            "Path",
+            "Annotated",
+            "*"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial003_py310.py",
+              "highlight_lines": [
+                7
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_py310.py hl[7] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/path-params-numeric-validations::section-0006",
+              "parent_id": "tutorial/path-params-numeric-validations::section-0005",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Better with Annotated",
+              "anchor_id": "better-with-annotated",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated",
+              "section_text_parts": [
+                "Keep in mind that if you use Annotated , as you are not using function parameter default values, you won't have this problem, and you probably won't need to use * ."
+              ],
+              "section_text": "Keep in mind that if you use Annotated , as you are not using function parameter default values, you won't have this problem, and you probably won't need to use * .",
+              "section_inline_code": [
+                "Annotated",
+                "*"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py",
+                  "highlight_lines": [
+                    10
+                  ],
+                  "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py hl[10] *}",
+                  "section_id": "tutorial/path-params-numeric-validations::section-0006",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0007",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Number validations: greater than or equal",
+          "anchor_id": "number-validations-greater-than-or-equal",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal",
+          "section_text_parts": [
+            "With Query and Path (and others you'll see later) you can declare number constraints.",
+            "Here, with ge=1 , item_id will need to be an integer number \" g reater than or e qual\" to 1 ."
+          ],
+          "section_text": "With Query and Path (and others you'll see later) you can declare number constraints.\n\nHere, with ge=1 , item_id will need to be an integer number \" g reater than or e qual\" to 1 .",
+          "section_inline_code": [
+            "Query",
+            "Path",
+            "ge=1",
+            "item_id",
+            "g",
+            "e",
+            "1"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py",
+              "highlight_lines": [
+                10
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py hl[10] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0008",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Number validations: greater than and less than or equal",
+          "anchor_id": "number-validations-greater-than-and-less-than-or-equal",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal",
+          "section_text_parts": [
+            "The same applies for:",
+            "- gt : g reater t han",
+            "- le : l ess than or e qual"
+          ],
+          "section_text": "The same applies for:\n\n- gt : g reater t han\n\n- le : l ess than or e qual",
+          "section_inline_code": [
+            "gt",
+            "g",
+            "t",
+            "le",
+            "l",
+            "e"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py",
+              "highlight_lines": [
+                10
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py hl[10] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0009",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Number validations: floats, greater than and less than",
+          "anchor_id": "number-validations-floats-greater-than-and-less-than",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than",
+          "section_text_parts": [
+            "Number validations also work for float values.",
+            "Here's where it becomes important to be able to declare gt and not just ge . As with it you can require, for example, that a value must be greater than 0 , even if it is less than 1 .",
+            "So, 0.5 would be a valid value. But 0.0 or 0 would not.",
+            "And the same for lt ."
+          ],
+          "section_text": "Number validations also work for float values.\n\nHere's where it becomes important to be able to declare gt and not just ge . As with it you can require, for example, that a value must be greater than 0 , even if it is less than 1 .\n\nSo, 0.5 would be a valid value. But 0.0 or 0 would not.\n\nAnd the same for lt .",
+          "section_inline_code": [
+            "float",
+            "0",
+            "1",
+            "0.5",
+            "0.0"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py",
+              "highlight_lines": [
+                13
+              ],
+              "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py hl[13] *}",
+              "section_id": "tutorial/path-params-numeric-validations::section-0009",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/path-params-numeric-validations::section-0010",
+          "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Recap",
+          "anchor_id": "recap",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+          "section_text_parts": [
+            "With Query , Path (and others you haven't seen yet) you can declare metadata and string validations in the same ways as with Query Parameters and String Validations .",
+            "And you can also declare numeric validations:",
+            "- gt : g reater t han",
+            "- ge : g reater than or e qual",
+            "- lt : l ess t han",
+            "- le : l ess than or e qual"
+          ],
+          "section_text": "With Query , Path (and others you haven't seen yet) you can declare metadata and string validations in the same ways as with Query Parameters and String Validations .\n\nAnd you can also declare numeric validations:\n\n- gt : g reater t han\n\n- ge : g reater than or e qual\n\n- lt : l ess t han\n\n- le : l ess than or e qual",
+          "section_inline_code": [
+            "Query",
+            "Path",
+            "gt",
+            "g",
+            "t",
+            "ge",
+            "e",
+            "lt",
+            "l",
+            "le"
+          ],
+          "section_links": [
+            {
+              "text": "Query Parameters and String Validations",
+              "url": "query-params-str-validations.md",
+              "section_id": "tutorial/path-params-numeric-validations::section-0010",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters and Numeric Validations",
+      "anchor_id": "path-parameters-and-numeric-validations",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#path-parameters-and-numeric-validations",
+      "section_text": "In the same way that you can declare more validations and metadata for query parameters with Query , you can declare the same type of validations and metadata for path parameters with Path .",
+      "section_inline_code": [
+        "Query",
+        "Path"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0002",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Path",
+      "anchor_id": "import-path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path",
+      "section_text": "First, import Path from fastapi , and import Annotated :",
+      "section_inline_code": [
+        "Path",
+        "fastapi",
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+          "highlight_lines": [
+            1,
+            3
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[1,3] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0003",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Declare metadata",
+      "anchor_id": "declare-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata",
+      "section_text": "You can declare all the same parameters as for Query .\n\nFor example, to declare a title metadata value for the path parameter item_id you can type:",
+      "section_inline_code": [
+        "Query",
+        "title",
+        "item_id"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0004",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order the parameters as you need",
+      "anchor_id": "order-the-parameters-as-you-need",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need",
+      "section_text": "Let's say that you want to declare the query parameter q as a required str .\n\nAnd you don't need to declare anything else for that parameter, so you don't really need to use Query .\n\nBut you still need to use Path for the item_id path parameter. And you don't want to use Annotated for some reason.\n\nPython will complain if you put a value with a \"default\" before a value that doesn't have a \"default\".\n\nBut you can re-order them, and have the value without a default (the query parameter q ) first.\n\nIt doesn't matter for FastAPI . It will detect the parameters by their names, types and default declarations ( Query , Path , etc), it doesn't care about the order.\n\nSo, you can declare your function as:\n\nBut keep in mind that if you use Annotated , you won't have this problem, it won't matter as you're not using the function parameter default values for Query() or Path() .",
+      "section_inline_code": [
+        "q",
+        "str",
+        "Query",
+        "Path",
+        "item_id",
+        "Annotated",
+        "Query()",
+        "Path()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py",
+          "highlight_lines": [],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0005",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order the parameters as you need, tricks",
+      "anchor_id": "order-the-parameters-as-you-need-tricks",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks",
+      "section_text": "Here's a small trick that can be handy, but you won't need it often.\n\nIf you want to:\n\n- declare the q query parameter without a Query nor any default value\n\n- declare the path parameter item_id using Path\n\n- have them in a different order\n\n- not use Annotated\n\n...Python has a little special syntax for that.\n\nPass * , as the first parameter of the function.\n\nPython won't do anything with that * , but it will know that all the following parameters should be called as keyword arguments (key-value pairs), also known as kwargs . Even if they don't have a default value.",
+      "section_inline_code": [
+        "q",
+        "Query",
+        "item_id",
+        "Path",
+        "Annotated",
+        "*"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0006",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Better with Annotated",
+      "anchor_id": "better-with-annotated",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated",
+      "section_text": "Keep in mind that if you use Annotated , as you are not using function parameter default values, you won't have this problem, and you probably won't need to use * .",
+      "section_inline_code": [
+        "Annotated",
+        "*"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0007",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: greater than or equal",
+      "anchor_id": "number-validations-greater-than-or-equal",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal",
+      "section_text": "With Query and Path (and others you'll see later) you can declare number constraints.\n\nHere, with ge=1 , item_id will need to be an integer number \" g reater than or e qual\" to 1 .",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "ge=1",
+        "item_id",
+        "g",
+        "e",
+        "1"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0008",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: greater than and less than or equal",
+      "anchor_id": "number-validations-greater-than-and-less-than-or-equal",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal",
+      "section_text": "The same applies for:\n\n- gt : g reater t han\n\n- le : l ess than or e qual",
+      "section_inline_code": [
+        "gt",
+        "g",
+        "t",
+        "le",
+        "l",
+        "e"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0009",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: floats, greater than and less than",
+      "anchor_id": "number-validations-floats-greater-than-and-less-than",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than",
+      "section_text": "Number validations also work for float values.\n\nHere's where it becomes important to be able to declare gt and not just ge . As with it you can require, for example, that a value must be greater than 0 , even if it is less than 1 .\n\nSo, 0.5 would be a valid value. But 0.0 or 0 would not.\n\nAnd the same for lt .",
+      "section_inline_code": [
+        "float",
+        "0",
+        "1",
+        "0.5",
+        "0.0"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py",
+          "highlight_lines": [
+            13
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py hl[13] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "section_text": "With Query , Path (and others you haven't seen yet) you can declare metadata and string validations in the same ways as with Query Parameters and String Validations .\n\nAnd you can also declare numeric validations:\n\n- gt : g reater t han\n\n- ge : g reater than or e qual\n\n- lt : l ess t han\n\n- le : l ess than or e qual",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "gt",
+        "g",
+        "t",
+        "ge",
+        "e",
+        "lt",
+        "l",
+        "le"
+      ],
+      "section_links": [
+        {
+          "text": "Query Parameters and String Validations",
+          "url": "query-params-str-validations.md",
+          "section_id": "tutorial/path-params-numeric-validations::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/path-params-numeric-validations::section-0001": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Path Parameters and Numeric Validations",
+      "anchor_id": "path-parameters-and-numeric-validations",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#path-parameters-and-numeric-validations",
+      "section_text": "In the same way that you can declare more validations and metadata for query parameters with Query , you can declare the same type of validations and metadata for path parameters with Path .",
+      "section_inline_code": [
+        "Query",
+        "Path"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0002": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0002",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Import Path",
+      "anchor_id": "import-path",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path",
+      "section_text": "First, import Path from fastapi , and import Annotated :",
+      "section_inline_code": [
+        "Path",
+        "fastapi",
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+          "highlight_lines": [
+            1,
+            3
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[1,3] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0003": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0003",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Declare metadata",
+      "anchor_id": "declare-metadata",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata",
+      "section_text": "You can declare all the same parameters as for Query .\n\nFor example, to declare a title metadata value for the path parameter item_id you can type:",
+      "section_inline_code": [
+        "Query",
+        "title",
+        "item_id"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0003",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0004": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0004",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order the parameters as you need",
+      "anchor_id": "order-the-parameters-as-you-need",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need",
+      "section_text": "Let's say that you want to declare the query parameter q as a required str .\n\nAnd you don't need to declare anything else for that parameter, so you don't really need to use Query .\n\nBut you still need to use Path for the item_id path parameter. And you don't want to use Annotated for some reason.\n\nPython will complain if you put a value with a \"default\" before a value that doesn't have a \"default\".\n\nBut you can re-order them, and have the value without a default (the query parameter q ) first.\n\nIt doesn't matter for FastAPI . It will detect the parameters by their names, types and default declarations ( Query , Path , etc), it doesn't care about the order.\n\nSo, you can declare your function as:\n\nBut keep in mind that if you use Annotated , you won't have this problem, it won't matter as you're not using the function parameter default values for Query() or Path() .",
+      "section_inline_code": [
+        "q",
+        "str",
+        "Query",
+        "Path",
+        "item_id",
+        "Annotated",
+        "Query()",
+        "Path()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial002_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py",
+          "highlight_lines": [],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial002_an_py310.py *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0005": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0005",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Order the parameters as you need, tricks",
+      "anchor_id": "order-the-parameters-as-you-need-tricks",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks",
+      "section_text": "Here's a small trick that can be handy, but you won't need it often.\n\nIf you want to:\n\n- declare the q query parameter without a Query nor any default value\n\n- declare the path parameter item_id using Path\n\n- have them in a different order\n\n- not use Annotated\n\n...Python has a little special syntax for that.\n\nPass * , as the first parameter of the function.\n\nPython won't do anything with that * , but it will know that all the following parameters should be called as keyword arguments (key-value pairs), also known as kwargs . Even if they don't have a default value.",
+      "section_inline_code": [
+        "q",
+        "Query",
+        "item_id",
+        "Path",
+        "Annotated",
+        "*"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial003_py310.py",
+          "highlight_lines": [
+            7
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_py310.py hl[7] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0006": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0006",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Better with Annotated",
+      "anchor_id": "better-with-annotated",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated",
+      "section_text": "Keep in mind that if you use Annotated , as you are not using function parameter default values, you won't have this problem, and you probably won't need to use * .",
+      "section_inline_code": [
+        "Annotated",
+        "*"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial003_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#better-with-annotated"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0007": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0007",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: greater than or equal",
+      "anchor_id": "number-validations-greater-than-or-equal",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal",
+      "section_text": "With Query and Path (and others you'll see later) you can declare number constraints.\n\nHere, with ge=1 , item_id will need to be an integer number \" g reater than or e qual\" to 1 .",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "ge=1",
+        "item_id",
+        "g",
+        "e",
+        "1"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial004_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-or-equal"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0008": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0008",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: greater than and less than or equal",
+      "anchor_id": "number-validations-greater-than-and-less-than-or-equal",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal",
+      "section_text": "The same applies for:\n\n- gt : g reater t han\n\n- le : l ess than or e qual",
+      "section_inline_code": [
+        "gt",
+        "g",
+        "t",
+        "le",
+        "l",
+        "e"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py",
+          "highlight_lines": [
+            10
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial005_an_py310.py hl[10] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0009": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0009",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Number validations: floats, greater than and less than",
+      "anchor_id": "number-validations-floats-greater-than-and-less-than",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than",
+      "section_text": "Number validations also work for float values.\n\nHere's where it becomes important to be able to declare gt and not just ge . As with it you can require, for example, that a value must be greater than 0 , even if it is less than 1 .\n\nSo, 0.5 would be a valid value. But 0.0 or 0 would not.\n\nAnd the same for lt .",
+      "section_inline_code": [
+        "float",
+        "0",
+        "1",
+        "0.5",
+        "0.0"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py",
+          "highlight_lines": [
+            13
+          ],
+          "raw": "{* ../../docs_src/path_params_numeric_validations/tutorial006_an_py310.py hl[13] *}",
+          "section_id": "tutorial/path-params-numeric-validations::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#number-validations-floats-greater-than-and-less-than"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0010": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Recap",
+      "anchor_id": "recap",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "section_text": "With Query , Path (and others you haven't seen yet) you can declare metadata and string validations in the same ways as with Query Parameters and String Validations .\n\nAnd you can also declare numeric validations:\n\n- gt : g reater t han\n\n- ge : g reater than or e qual\n\n- lt : l ess t han\n\n- le : l ess than or e qual",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "gt",
+        "g",
+        "t",
+        "ge",
+        "e",
+        "lt",
+        "l",
+        "le"
+      ],
+      "section_links": [
+        {
+          "text": "Query Parameters and String Validations",
+          "url": "query-params-str-validations.md",
+          "section_id": "tutorial/path-params-numeric-validations::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0002::admonition-0001",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0002",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.",
+        "If you have an older version, you would get errors when trying to use Annotated .",
+        "Make sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated ."
+      ],
+      "section_text": "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.\n\nIf you have an older version, you would get errors when trying to use Annotated .\n\nMake sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [
+        {
+          "text": "Upgrade the FastAPI version",
+          "url": "../deployment/versions.md#upgrading-the-fastapi-versions",
+          "section_id": "tutorial/path-params-numeric-validations::section-0002::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0003::admonition-0002",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "A path parameter is always required as it has to be part of the path. Even if you declared it with None or set a default value, it would not affect anything, it would still be always required."
+      ],
+      "section_text": "A path parameter is always required as it has to be part of the path. Even if you declared it with None or set a default value, it would not affect anything, it would still be always required.",
+      "section_inline_code": [
+        "None"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0004::admonition-0003",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0004",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This is probably not as important or necessary if you use Annotated ."
+      ],
+      "section_text": "This is probably not as important or necessary if you use Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0005::admonition-0004",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This is probably not as important or necessary if you use Annotated ."
+      ],
+      "section_text": "This is probably not as important or necessary if you use Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010::admonition-0005",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0010",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Query , Path , and other classes you will see later are subclasses of a common Param class.",
+        "All of them share the same parameters for additional validation and metadata you have seen."
+      ],
+      "section_text": "Query , Path , and other classes you will see later are subclasses of a common Param class.\n\nAll of them share the same parameters for additional validation and metadata you have seen.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "Param"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010::admonition-0006",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0010",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "When you import Query , Path and others from fastapi , they are actually functions.",
+        "That when called, return instances of classes of the same name.",
+        "So, you import Query , which is a function. And when you call it, it returns an instance of a class also named Query .",
+        "These functions are there (instead of just using the classes directly) so that your editor doesn't mark errors about their types.",
+        "That way you can use your normal editor and coding tools without having to add custom configurations to disregard those errors."
+      ],
+      "section_text": "When you import Query , Path and others from fastapi , they are actually functions.\n\nThat when called, return instances of classes of the same name.\n\nSo, you import Query , which is a function. And when you call it, it returns an instance of a class also named Query .\n\nThese functions are there (instead of just using the classes directly) so that your editor doesn't mark errors about their types.\n\nThat way you can use your normal editor and coding tools without having to add custom configurations to disregard those errors.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/path-params-numeric-validations::section-0002::admonition-0001": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0002::admonition-0001",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0002",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.",
+        "If you have an older version, you would get errors when trying to use Annotated .",
+        "Make sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated ."
+      ],
+      "section_text": "FastAPI added support for Annotated (and started recommending it) in version 0.95.0.\n\nIf you have an older version, you would get errors when trying to use Annotated .\n\nMake sure you Upgrade the FastAPI version to at least 0.95.1 before using Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [
+        {
+          "text": "Upgrade the FastAPI version",
+          "url": "../deployment/versions.md#upgrading-the-fastapi-versions",
+          "section_id": "tutorial/path-params-numeric-validations::section-0002::admonition-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#import-path"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0003::admonition-0002": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0003::admonition-0002",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0003",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#declare-metadata",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "A path parameter is always required as it has to be part of the path. Even if you declared it with None or set a default value, it would not affect anything, it would still be always required."
+      ],
+      "section_text": "A path parameter is always required as it has to be part of the path. Even if you declared it with None or set a default value, it would not affect anything, it would still be always required.",
+      "section_inline_code": [
+        "None"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0004::admonition-0003": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0004::admonition-0003",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0004",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This is probably not as important or necessary if you use Annotated ."
+      ],
+      "section_text": "This is probably not as important or necessary if you use Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0005::admonition-0004": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0005::admonition-0004",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need-tricks",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This is probably not as important or necessary if you use Annotated ."
+      ],
+      "section_text": "This is probably not as important or necessary if you use Annotated .",
+      "section_inline_code": [
+        "Annotated"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0010::admonition-0005": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010::admonition-0005",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0010",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Query , Path , and other classes you will see later are subclasses of a common Param class.",
+        "All of them share the same parameters for additional validation and metadata you have seen."
+      ],
+      "section_text": "Query , Path , and other classes you will see later are subclasses of a common Param class.\n\nAll of them share the same parameters for additional validation and metadata you have seen.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "Param"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/path-params-numeric-validations::section-0010::admonition-0006": {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010::admonition-0006",
+      "parent_id": "tutorial/path-params-numeric-validations::section-0010",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/#recap",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "When you import Query , Path and others from fastapi , they are actually functions.",
+        "That when called, return instances of classes of the same name.",
+        "So, you import Query , which is a function. And when you call it, it returns an instance of a class also named Query .",
+        "These functions are there (instead of just using the classes directly) so that your editor doesn't mark errors about their types.",
+        "That way you can use your normal editor and coding tools without having to add custom configurations to disregard those errors."
+      ],
+      "section_text": "When you import Query , Path and others from fastapi , they are actually functions.\n\nThat when called, return instances of classes of the same name.\n\nSo, you import Query , which is a function. And when you call it, it returns an instance of a class also named Query .\n\nThese functions are there (instead of just using the classes directly) so that your editor doesn't mark errors about their types.\n\nThat way you can use your normal editor and coding tools without having to add custom configurations to disregard those errors.",
+      "section_inline_code": [
+        "Query",
+        "Path",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0001",
+      "seconds": 3.253899922128767e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0002",
+      "seconds": 9.543600026518106e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0003",
+      "seconds": 6.663099884463008e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0004",
+      "seconds": 0.00021829199977219105,
+      "paragraphs": 9,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0005",
+      "seconds": 0.00020071699873369653,
+      "paragraphs": 6,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0006",
+      "seconds": 3.2543999623158015e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0007",
+      "seconds": 5.3665999075747095e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0008",
+      "seconds": 8.315899867739063e-05,
+      "paragraphs": 1,
+      "list_items": 2,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0009",
+      "seconds": 0.00012951099961355794,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/path-params-numeric-validations::section-0010",
+      "seconds": 0.0002696470000955742,
+      "paragraphs": 9,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 2
+    }
+  ]
+}

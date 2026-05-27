@@ -1,0 +1,84 @@
+{
+  "tutorial/index::section-0001": {
+    "node_id": "tutorial/index::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Tutorial - User Guide",
+    "anchor_id": "tutorial-user-guide",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#tutorial-user-guide",
+    "section_text": "This tutorial shows you how to use FastAPI with most of its features, step by step.\n\nEach section gradually builds on the previous ones, but it's structured to separate topics, so that you can go directly to any specific one to solve your specific API needs.\n\nIt is also built to work as a future reference so you can come back and see exactly what you need.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/index::section-0002": {
+    "node_id": "tutorial/index::section-0002",
+    "parent_id": "tutorial/index::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Run the code",
+    "anchor_id": "run-the-code",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#run-the-code",
+    "section_text": "All the code blocks can be copied and used directly (they are actually tested Python files).\n\nTo run any of the examples, copy the code to a file main.py , and start fastapi dev :\n\nIt is HIGHLY encouraged that you write or copy the code, edit it and run it locally.\n\nUsing it in your editor is what really shows you the benefits of FastAPI, seeing how little code you have to write, all the type checks, autocompletion, etc.",
+    "section_inline_code": [
+      "main.py",
+      "fastapi dev"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ <font color=\"#4E9A06\">fastapi</font> dev\n\n  <span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span>  Starting development server 🚀\n\n             Searching for package file structure from directories\n             with <font color=\"#3465A4\">__init__.py</font> files\n             Importing from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span>  🐍 main.py\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span>  Importing the FastAPI app object from the module with\n             the following code:\n\n             <u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span>  Using import string: <font color=\"#3465A4\">main:app</font>\n\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Server started at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font>\n   <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> server </font></span>  Documentation at <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000/docs</u></font>\n\n      <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> tip </font></span>  Running in development mode, for production use:\n             <b>fastapi run</b>\n\n             Logs:\n\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Will watch for changes in these directories:\n             <b>[</b><font color=\"#4E9A06\">&apos;/home/user/code/awesomeapp&apos;</font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Uvicorn running on <font color=\"#729FCF\"><u style=\"text-decoration-style:solid\">http://127.0.0.1:8000</u></font> <b>(</b>Press CTRL+C\n             to quit<b>)</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started reloader process <b>[</b><font color=\"#34E2E2\"><b>383138</b></font><b>]</b> using WatchFiles\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Started server process <b>[</b><font color=\"#34E2E2\"><b>383153</b></font><b>]</b>\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Waiting for application startup.\n     <span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> INFO </font></span>  Application startup complete.",
+        "section_id": "tutorial/index::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/index/#run-the-code"
+      }
+    ]
+  },
+  "tutorial/index::section-0003": {
+    "node_id": "tutorial/index::section-0003",
+    "parent_id": "tutorial/index::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Install FastAPI",
+    "anchor_id": "install-fastapi",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi",
+    "section_text": "The first step is to install FastAPI.\n\nMake sure you create a virtual environment , activate it, and then install FastAPI :",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "virtual environment",
+        "url": "../virtual-environments.md",
+        "section_id": "tutorial/index::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ pip install \"fastapi[standard]\"\n\n---> 100%",
+        "section_id": "tutorial/index::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/index/#install-fastapi"
+      }
+    ]
+  },
+  "tutorial/index::section-0004": {
+    "node_id": "tutorial/index::section-0004",
+    "parent_id": "tutorial/index::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Advanced User Guide",
+    "anchor_id": "advanced-user-guide",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/index/#advanced-user-guide",
+    "section_text": "There is also an Advanced User Guide that you can read later after this Tutorial - User guide .\n\nThe Advanced User Guide builds on this one, uses the same concepts, and teaches you some extra features.\n\nBut you should first read the Tutorial - User Guide (what you are reading right now).\n\nIt's designed so that you can build a complete application with just the Tutorial - User Guide , and then extend it in different ways, depending on your needs, using some of the additional ideas from the Advanced User Guide .",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

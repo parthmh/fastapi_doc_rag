@@ -18,6 +18,8 @@ MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 VECTOR_SIZE = 384
 BATCH_SIZE = 32
 
+QDRANT_URL = "http://localhost:6333"
+
 
 def stable_point_id(chunk_id: str) -> str:
     return str(uuid.uuid5(uuid.NAMESPACE_URL, chunk_id))
@@ -116,6 +118,7 @@ def run_query(
         collection_name=COLLECTION_NAME,
         query=query_vector,
         limit=limit,
+        with_payload=True,
     )
 
     print()
@@ -124,16 +127,15 @@ def run_query(
     print("=" * 80)
 
     for point in results.points:
-        payload = point.payload
+        payload = point.payload or {}
 
         print()
         print(f"score={point.score:.4f}")
-        print(f"chunk_id={payload['chunk_id']}")
+        print(f"chunk_id={payload.get('chunk_id')}")
         print(f"heading={payload.get('heading_text')}")
         print(f"tokens={payload.get('token_count')}")
         print()
-
-        print(payload["chunk_text"][:500])
+        print(str(payload.get("chunk_text", ""))[:500])
 
 
 def main() -> None:
@@ -143,7 +145,7 @@ def main() -> None:
         print(f"No chunks found in {CHUNKS_PATH}")
         return
 
-    client = QdrantClient(":memory:")
+    client = QdrantClient(url=QDRANT_URL)
 
     ensure_collection(client)
 
@@ -158,7 +160,7 @@ def main() -> None:
     print(
         f"Embedded and upserted "
         f"{len(chunks)} chunks into "
-        f"{COLLECTION_NAME} in memory"
+        f"{COLLECTION_NAME} at {QDRANT_URL}"
     )
 
     print_collection_info(client)

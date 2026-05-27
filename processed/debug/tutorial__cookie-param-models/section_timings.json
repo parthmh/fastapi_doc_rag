@@ -1,0 +1,52 @@
+[
+  {
+    "node_id": "tutorial/cookie-param-models::section-0001",
+    "seconds": 0.0001086430002033012,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/cookie-param-models::section-0002",
+    "seconds": 7.590499990328681e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cookie-param-models::section-0003",
+    "seconds": 0.0001167840000562137,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/cookie-param-models::section-0004",
+    "seconds": 0.00010393100092187524,
+    "paragraphs": 6,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/cookie-param-models::section-0005",
+    "seconds": 3.732799996214453e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  }
+]

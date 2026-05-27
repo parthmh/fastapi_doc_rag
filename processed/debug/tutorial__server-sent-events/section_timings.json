@@ -1,0 +1,102 @@
+[
+  {
+    "node_id": "tutorial/server-sent-events::section-0001",
+    "seconds": 6.325899994408246e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 2,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0002",
+    "seconds": 6.087200017645955e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0003",
+    "seconds": 0.00011564799933694303,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 2,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0004",
+    "seconds": 3.9427999581675977e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0005",
+    "seconds": 2.0557999960146844e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0006",
+    "seconds": 4.180200085102115e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0007",
+    "seconds": 5.888899977435358e-05,
+    "paragraphs": 3,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0008",
+    "seconds": 6.553399907716084e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0009",
+    "seconds": 3.669399848149624e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 1,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/server-sent-events::section-0010",
+    "seconds": 9.315299939771648e-05,
+    "paragraphs": 2,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

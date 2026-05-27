@@ -1,0 +1,23 @@
+{
+  "tutorial/cors::section-0008::admonition-0001": {
+    "node_id": "tutorial/cors::section-0008::admonition-0001",
+    "parent_id": "tutorial/cors::section-0008",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You could also use from starlette.middleware.cors import CORSMiddleware .",
+      "FastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette."
+    ],
+    "section_text": "You could also use from starlette.middleware.cors import CORSMiddleware .\n\nFastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette.",
+    "section_inline_code": [
+      "from starlette.middleware.cors import CORSMiddleware",
+      "fastapi.middleware"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

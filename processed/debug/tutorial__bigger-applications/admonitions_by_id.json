@@ -1,0 +1,368 @@
+{
+  "tutorial/bigger-applications::section-0001::admonition-0001": {
+    "node_id": "tutorial/bigger-applications::section-0001::admonition-0001",
+    "parent_id": "tutorial/bigger-applications::section-0001",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you come from Flask, this would be the equivalent of Flask's Blueprints."
+    ],
+    "section_text": "If you come from Flask, this would be the equivalent of Flask's Blueprints.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0002::admonition-0002": {
+    "node_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+    "parent_id": "tutorial/bigger-applications::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "There are several __init__.py files: one in each directory or subdirectory.",
+      "This is what allows importing code from one file into another.",
+      "For example, in app/main.py you could have a line like:"
+    ],
+    "section_text": "There are several __init__.py files: one in each directory or subdirectory.\n\nThis is what allows importing code from one file into another.\n\nFor example, in app/main.py you could have a line like:",
+    "section_inline_code": [
+      "__init__.py",
+      "app/main.py"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": null,
+        "text": "from app.routers import items",
+        "section_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+      }
+    ]
+  },
+  "tutorial/bigger-applications::section-0005::admonition-0003": {
+    "node_id": "tutorial/bigger-applications::section-0005::admonition-0003",
+    "parent_id": "tutorial/bigger-applications::section-0005",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "In this example, the variable is called router , but you can name it however you want."
+    ],
+    "section_text": "In this example, the variable is called router , but you can name it however you want.",
+    "section_inline_code": [
+      "router"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0006::admonition-0004": {
+    "node_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+    "parent_id": "tutorial/bigger-applications::section-0006",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "We are using an invented header to simplify this example.",
+      "But in real cases you will get better results using the integrated Security utilities ."
+    ],
+    "section_text": "We are using an invented header to simplify this example.\n\nBut in real cases you will get better results using the integrated Security utilities .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Security utilities",
+        "url": "security/index.md",
+        "section_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0007::admonition-0005": {
+    "node_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+    "parent_id": "tutorial/bigger-applications::section-0007",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function ."
+    ],
+    "section_text": "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "dependencies in path operation decorators",
+        "url": "dependencies/dependencies-in-path-operation-decorators.md",
+        "section_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0007::admonition-0006": {
+    "node_id": "tutorial/bigger-applications::section-0007::admonition-0006",
+    "parent_id": "tutorial/bigger-applications::section-0007",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them."
+    ],
+    "section_text": "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them.",
+    "section_inline_code": [
+      "dependencies",
+      "APIRouter"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0007::admonition-0007": {
+    "node_id": "tutorial/bigger-applications::section-0007::admonition-0007",
+    "parent_id": "tutorial/bigger-applications::section-0007",
+    "node_kind": "admonition",
+    "kind": "check",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication."
+    ],
+    "section_text": "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication.",
+    "section_inline_code": [
+      "prefix",
+      "tags",
+      "responses",
+      "dependencies"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0009::admonition-0008": {
+    "node_id": "tutorial/bigger-applications::section-0009::admonition-0008",
+    "parent_id": "tutorial/bigger-applications::section-0009",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you know perfectly how imports work, continue to the next section below."
+    ],
+    "section_text": "If you know perfectly how imports work, continue to the next section below.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0010::admonition-0009": {
+    "node_id": "tutorial/bigger-applications::section-0010::admonition-0009",
+    "parent_id": "tutorial/bigger-applications::section-0010",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This last path operation will have the combination of tags: [\"items\", \"custom\"] .",
+      "And it will also have both responses in the documentation, one for 404 and one for 403 ."
+    ],
+    "section_text": "This last path operation will have the combination of tags: [\"items\", \"custom\"] .\n\nAnd it will also have both responses in the documentation, one for 404 and one for 403 .",
+    "section_inline_code": [
+      "[\"items\", \"custom\"]",
+      "404",
+      "403"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0014::admonition-0010": {
+    "node_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+    "parent_id": "tutorial/bigger-applications::section-0014",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "The first version is a \"relative import\":",
+      "The second version is an \"absolute import\":",
+      "To learn more about Python Packages and Modules, read the official Python documentation about Modules ."
+    ],
+    "section_text": "The first version is a \"relative import\":\n\nThe second version is an \"absolute import\":\n\nTo learn more about Python Packages and Modules, read the official Python documentation about Modules .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "the official Python documentation about Modules",
+        "url": "https://docs.python.org/3/tutorial/modules.html",
+        "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "from .routers import items, users",
+        "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+      },
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "from app.routers import items, users",
+        "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+      }
+    ]
+  },
+  "tutorial/bigger-applications::section-0016::admonition-0011": {
+    "node_id": "tutorial/bigger-applications::section-0016::admonition-0011",
+    "parent_id": "tutorial/bigger-applications::section-0016",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "users.router contains the APIRouter inside of the file app/routers/users.py .",
+      "And items.router contains the APIRouter inside of the file app/routers/items.py ."
+    ],
+    "section_text": "users.router contains the APIRouter inside of the file app/routers/users.py .\n\nAnd items.router contains the APIRouter inside of the file app/routers/items.py .",
+    "section_inline_code": [
+      "users.router",
+      "APIRouter",
+      "app/routers/users.py",
+      "items.router",
+      "app/routers/items.py"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0016::admonition-0012": {
+    "node_id": "tutorial/bigger-applications::section-0016::admonition-0012",
+    "parent_id": "tutorial/bigger-applications::section-0016",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": "Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "It will actually internally create a path operation for each path operation that was declared in the APIRouter .",
+      "So, behind the scenes, it will actually work as if everything was the same single app."
+    ],
+    "section_text": "It will actually internally create a path operation for each path operation that was declared in the APIRouter .\n\nSo, behind the scenes, it will actually work as if everything was the same single app.",
+    "section_inline_code": [
+      "APIRouter"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0016::admonition-0013": {
+    "node_id": "tutorial/bigger-applications::section-0016::admonition-0013",
+    "parent_id": "tutorial/bigger-applications::section-0016",
+    "node_kind": "admonition",
+    "kind": "check",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You don't have to worry about performance when including routers.",
+      "This will take microseconds and will only happen at startup.",
+      "So it won't affect performance. ⚡"
+    ],
+    "section_text": "You don't have to worry about performance when including routers.\n\nThis will take microseconds and will only happen at startup.\n\nSo it won't affect performance. ⚡",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0018::admonition-0014": {
+    "node_id": "tutorial/bigger-applications::section-0018::admonition-0014",
+    "parent_id": "tutorial/bigger-applications::section-0018",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": "Very Technical Details",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Note : this is a very technical detail that you probably can just skip .",
+      "The APIRouter s are not \"mounted\", they are not isolated from the rest of the application.",
+      "This is because we want to include their path operations in the OpenAPI schema and the user interfaces.",
+      "As we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly."
+    ],
+    "section_text": "Note : this is a very technical detail that you probably can just skip .\n\nThe APIRouter s are not \"mounted\", they are not isolated from the rest of the application.\n\nThis is because we want to include their path operations in the OpenAPI schema and the user interfaces.\n\nAs we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly.",
+    "section_inline_code": [
+      "APIRouter"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/bigger-applications::section-0019::admonition-0015": {
+    "node_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+    "parent_id": "tutorial/bigger-applications::section-0019",
+    "node_kind": "admonition",
+    "kind": "Note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "You could also pass the path to the command, like:",
+      "But you would have to remember to pass the correct path every time you call the fastapi command.",
+      "Additionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml ."
+    ],
+    "section_text": "You could also pass the path to the command, like:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+    "section_inline_code": [
+      "fastapi",
+      "entrypoint",
+      "pyproject.toml"
+    ],
+    "section_links": [
+      {
+        "text": "VS Code Extension",
+        "url": "../editor-support.md",
+        "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+      },
+      {
+        "text": "FastAPI Cloud",
+        "url": "https://fastapicloud.com",
+        "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ fastapi dev app/main.py",
+        "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+      }
+    ]
+  }
+}

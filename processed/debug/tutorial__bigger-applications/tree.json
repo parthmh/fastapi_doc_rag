@@ -1,0 +1,3400 @@
+{
+  "page": {
+    "page_id": "tutorial/bigger-applications",
+    "page_uid": "630a03ec234df11608223c4d98520be927fde3ca",
+    "page_title": "Bigger Applications - Multiple Files",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+    "source_file": "tutorial/bigger-applications.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/bigger-applications::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Bigger Applications - Multiple Files",
+      "anchor_id": "bigger-applications-multiple-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+      "section_text_parts": [
+        "If you are building an application or a web API, it's rarely the case that you can put everything in a single file.",
+        "FastAPI provides a convenience tool to structure your application while keeping all the flexibility."
+      ],
+      "section_text": "If you are building an application or a web API, it's rarely the case that you can put everything in a single file.\n\nFastAPI provides a convenience tool to structure your application while keeping all the flexibility.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/bigger-applications::section-0002",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "An example file structure",
+          "anchor_id": "an-example-file-structure",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+          "section_text_parts": [
+            "Let's say you have a file structure like this:",
+            "- The app directory contains everything. And it has an empty file app/__init__.py , so it is a \"Python package\" (a collection of \"Python modules\"): app .",
+            "- It contains an app/main.py file. As it is inside a Python package (a directory with a file __init__.py ), it is a \"module\" of that package: app.main .",
+            "- There's also an app/dependencies.py file, just like app/main.py , it is a \"module\": app.dependencies .",
+            "- There's a subdirectory app/routers/ with another file __init__.py , so it's a \"Python subpackage\": app.routers .",
+            "- The file app/routers/items.py is inside a package, app/routers/ , so, it's a submodule: app.routers.items .",
+            "- The same with app/routers/users.py , it's another submodule: app.routers.users .",
+            "- There's also a subdirectory app/internal/ with another file __init__.py , so it's another \"Python subpackage\": app.internal .",
+            "- And the file app/internal/admin.py is another submodule: app.internal.admin .",
+            "The same file structure with comments:"
+          ],
+          "section_text": "Let's say you have a file structure like this:\n\n- The app directory contains everything. And it has an empty file app/__init__.py , so it is a \"Python package\" (a collection of \"Python modules\"): app .\n\n- It contains an app/main.py file. As it is inside a Python package (a directory with a file __init__.py ), it is a \"module\" of that package: app.main .\n\n- There's also an app/dependencies.py file, just like app/main.py , it is a \"module\": app.dependencies .\n\n- There's a subdirectory app/routers/ with another file __init__.py , so it's a \"Python subpackage\": app.routers .\n\n- The file app/routers/items.py is inside a package, app/routers/ , so, it's a submodule: app.routers.items .\n\n- The same with app/routers/users.py , it's another submodule: app.routers.users .\n\n- There's also a subdirectory app/internal/ with another file __init__.py , so it's another \"Python subpackage\": app.internal .\n\n- And the file app/internal/admin.py is another submodule: app.internal.admin .\n\nThe same file structure with comments:",
+          "section_inline_code": [
+            "app",
+            "app/__init__.py",
+            "app/main.py",
+            "__init__.py",
+            "app.main",
+            "app/dependencies.py",
+            "app.dependencies",
+            "app/routers/",
+            "app.routers",
+            "app/routers/items.py",
+            "app.routers.items",
+            "app/routers/users.py",
+            "app.routers.users",
+            "app/internal/",
+            "app.internal",
+            "app/internal/admin.py",
+            "app.internal.admin"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": null,
+              "text": ".\n├── app\n│   ├── __init__.py\n│   ├── main.py\n│   ├── dependencies.py\n│   └── routers\n│   │   ├── __init__.py\n│   │   ├── items.py\n│   │   └── users.py\n│   └── internal\n│       ├── __init__.py\n│       └── admin.py",
+              "section_id": "tutorial/bigger-applications::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+            },
+            {
+              "type": "code_block",
+              "language": "bash",
+              "text": ".\n├── app                  # \"app\" is a Python package\n│   ├── __init__.py      # this file makes \"app\" a \"Python package\"\n│   ├── main.py          # \"main\" module, e.g. import app.main\n│   ├── dependencies.py  # \"dependencies\" module, e.g. import app.dependencies\n│   └── routers          # \"routers\" is a \"Python subpackage\"\n│   │   ├── __init__.py  # makes \"routers\" a \"Python subpackage\"\n│   │   ├── items.py     # \"items\" submodule, e.g. import app.routers.items\n│   │   └── users.py     # \"users\" submodule, e.g. import app.routers.users\n│   └── internal         # \"internal\" is a \"Python subpackage\"\n│       ├── __init__.py  # makes \"internal\" a \"Python subpackage\"\n│       └── admin.py     # \"admin\" submodule, e.g. import app.internal.admin",
+              "section_id": "tutorial/bigger-applications::section-0002",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0003",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "APIRouter",
+          "anchor_id": "apirouter",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter",
+          "section_text_parts": [
+            "Let's say the file dedicated to handling just users is the submodule at /app/routers/users.py .",
+            "You want to have the path operations related to your users separated from the rest of the code, to keep it organized.",
+            "But it's still part of the same FastAPI application/web API (it's part of the same \"Python Package\").",
+            "You can create the path operations for that module using APIRouter ."
+          ],
+          "section_text": "Let's say the file dedicated to handling just users is the submodule at /app/routers/users.py .\n\nYou want to have the path operations related to your users separated from the rest of the code, to keep it organized.\n\nBut it's still part of the same FastAPI application/web API (it's part of the same \"Python Package\").\n\nYou can create the path operations for that module using APIRouter .",
+          "section_inline_code": [
+            "APIRouter",
+            "/app/routers/users.py"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/bigger-applications::section-0004",
+              "parent_id": "tutorial/bigger-applications::section-0003",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Import APIRouter",
+              "anchor_id": "import-apirouter",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter",
+              "section_text_parts": [
+                "You import it and create an \"instance\" the same way you would with the class FastAPI :"
+              ],
+              "section_text": "You import it and create an \"instance\" the same way you would with the class FastAPI :",
+              "section_inline_code": [
+                "APIRouter",
+                "FastAPI"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+                  "highlight_lines": [
+                    1,
+                    3
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[1,3] title[\"app/routers/users.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0004",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0005",
+              "parent_id": "tutorial/bigger-applications::section-0003",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Path operations with APIRouter",
+              "anchor_id": "path-operations-with-apirouter",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+              "section_text_parts": [
+                "And then you use it to declare your path operations .",
+                "Use it the same way you would use the FastAPI class:",
+                "You can think of APIRouter as a \"mini FastAPI \" class.",
+                "All the same options are supported.",
+                "All the same parameters , responses , dependencies , tags , etc.",
+                "We are going to include this APIRouter in the main FastAPI app, but first, let's check the dependencies and another APIRouter ."
+              ],
+              "section_text": "And then you use it to declare your path operations .\n\nUse it the same way you would use the FastAPI class:\n\nYou can think of APIRouter as a \"mini FastAPI \" class.\n\nAll the same options are supported.\n\nAll the same parameters , responses , dependencies , tags , etc.\n\nWe are going to include this APIRouter in the main FastAPI app, but first, let's check the dependencies and another APIRouter .",
+              "section_inline_code": [
+                "APIRouter",
+                "FastAPI",
+                "parameters",
+                "responses",
+                "dependencies",
+                "tags"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+                  "highlight_lines": [
+                    6,
+                    11,
+                    16
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[6,11,16] title[\"app/routers/users.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0005",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0006",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Dependencies",
+          "anchor_id": "dependencies",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+          "section_text_parts": [
+            "We see that we are going to need some dependencies used in several places of the application.",
+            "So we put them in their own dependencies module ( app/dependencies.py ).",
+            "We will now use a simple dependency to read a custom X-Token header:"
+          ],
+          "section_text": "We see that we are going to need some dependencies used in several places of the application.\n\nSo we put them in their own dependencies module ( app/dependencies.py ).\n\nWe will now use a simple dependency to read a custom X-Token header:",
+          "section_inline_code": [
+            "dependencies",
+            "app/dependencies.py",
+            "X-Token"
+          ],
+          "section_links": [],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/bigger_applications/app_an_py310/dependencies.py",
+              "highlight_lines": [
+                3,
+                6,
+                7,
+                8
+              ],
+              "raw": "{* ../../docs_src/bigger_applications/app_an_py310/dependencies.py hl[3,6:8] title[\"app/dependencies.py\"] *}",
+              "section_id": "tutorial/bigger-applications::section-0006",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+            }
+          ],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0007",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Another module with APIRouter",
+          "anchor_id": "another-module-with-apirouter",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+          "section_text_parts": [
+            "Let's say you also have the endpoints dedicated to handling \"items\" from your application in the module at app/routers/items.py .",
+            "You have path operations for:",
+            "- /items/",
+            "- /items/{item_id}",
+            "It's all the same structure as with app/routers/users.py .",
+            "But we want to be smarter and simplify the code a bit.",
+            "We know all the path operations in this module have the same:",
+            "- Path prefix : /items .",
+            "- tags : (just one tag: items ).",
+            "- Extra responses .",
+            "- dependencies : they all need that X-Token dependency we created.",
+            "So, instead of adding all that to each path operation , we can add it to the APIRouter .",
+            "As the path of each path operation has to start with / , like in:",
+            "...the prefix must not include a final / .",
+            "So, the prefix in this case is /items .",
+            "We can also add a list of tags and extra responses that will be applied to all the path operations included in this router.",
+            "And we can add a list of dependencies that will be added to all the path operations in the router and will be executed/solved for each request made to them.",
+            "The end result is that the item paths are now:",
+            "- /items/",
+            "- /items/{item_id}",
+            "...as we intended.",
+            "- These \"tags\" are especially useful for the automatic interactive documentation systems (using OpenAPI).",
+            "- If you also declare dependencies in a specific path operation , they will be executed too .",
+            "- The router dependencies are executed first, then the dependencies in the decorator , and then the normal parameter dependencies.",
+            "- You can also add Security dependencies with scopes ."
+          ],
+          "section_text": "Let's say you also have the endpoints dedicated to handling \"items\" from your application in the module at app/routers/items.py .\n\nYou have path operations for:\n\n- /items/\n\n- /items/{item_id}\n\nIt's all the same structure as with app/routers/users.py .\n\nBut we want to be smarter and simplify the code a bit.\n\nWe know all the path operations in this module have the same:\n\n- Path prefix : /items .\n\n- tags : (just one tag: items ).\n\n- Extra responses .\n\n- dependencies : they all need that X-Token dependency we created.\n\nSo, instead of adding all that to each path operation , we can add it to the APIRouter .\n\nAs the path of each path operation has to start with / , like in:\n\n...the prefix must not include a final / .\n\nSo, the prefix in this case is /items .\n\nWe can also add a list of tags and extra responses that will be applied to all the path operations included in this router.\n\nAnd we can add a list of dependencies that will be added to all the path operations in the router and will be executed/solved for each request made to them.\n\nThe end result is that the item paths are now:\n\n- /items/\n\n- /items/{item_id}\n\n...as we intended.\n\n- These \"tags\" are especially useful for the automatic interactive documentation systems (using OpenAPI).\n\n- If you also declare dependencies in a specific path operation , they will be executed too .\n\n- The router dependencies are executed first, then the dependencies in the decorator , and then the normal parameter dependencies.\n\n- You can also add Security dependencies with scopes .",
+          "section_inline_code": [
+            "APIRouter",
+            "app/routers/items.py",
+            "/items/",
+            "/items/{item_id}",
+            "app/routers/users.py",
+            "prefix",
+            "/items",
+            "tags",
+            "items",
+            "responses",
+            "dependencies",
+            "X-Token",
+            "/",
+            "Security",
+            "scopes"
+          ],
+          "section_links": [
+            {
+              "text": "in the decorator",
+              "url": "dependencies/dependencies-in-path-operation-decorators.md",
+              "section_id": "tutorial/bigger-applications::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+            },
+            {
+              "text": "dependencies with",
+              "url": "../advanced/security/oauth2-scopes.md",
+              "section_id": "tutorial/bigger-applications::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+            }
+          ],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+              "highlight_lines": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                16,
+                21
+              ],
+              "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[5:10,16,21] title[\"app/routers/items.py\"] *}",
+              "section_id": "tutorial/bigger-applications::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+            }
+          ],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "Python hl_lines=\"1\"",
+              "text": "@router.get(\"/{item_id}\")\nasync def read_item(item_id: str):\n    ...",
+              "section_id": "tutorial/bigger-applications::section-0007",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+            }
+          ],
+          "children": [
+            {
+              "node_id": "tutorial/bigger-applications::section-0008",
+              "parent_id": "tutorial/bigger-applications::section-0007",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Import the dependencies",
+              "anchor_id": "import-the-dependencies",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies",
+              "section_text_parts": [
+                "This code lives in the module app.routers.items , the file app/routers/items.py .",
+                "And we need to get the dependency function from the module app.dependencies , the file app/dependencies.py .",
+                "So we use a relative import with .. for the dependencies:"
+              ],
+              "section_text": "This code lives in the module app.routers.items , the file app/routers/items.py .\n\nAnd we need to get the dependency function from the module app.dependencies , the file app/dependencies.py .\n\nSo we use a relative import with .. for the dependencies:",
+              "section_inline_code": [
+                "app.routers.items",
+                "app/routers/items.py",
+                "app.dependencies",
+                "app/dependencies.py",
+                ".."
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+                  "highlight_lines": [
+                    3
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[3] title[\"app/routers/items.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0008",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies"
+                }
+              ],
+              "code_blocks": [],
+              "children": [
+                {
+                  "node_id": "tutorial/bigger-applications::section-0009",
+                  "parent_id": "tutorial/bigger-applications::section-0008",
+                  "level": 4,
+                  "node_kind": "heading",
+                  "heading_text": "How relative imports work",
+                  "anchor_id": "how-relative-imports-work",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+                  "section_text_parts": [
+                    "A single dot . , like in:",
+                    "would mean:",
+                    "- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...",
+                    "- find the module dependencies (an imaginary file at app/routers/dependencies.py )...",
+                    "- and from it, import the function get_token_header .",
+                    "But that file doesn't exist, our dependencies are in a file at app/dependencies.py .",
+                    "Remember how our app/file structure looks like:",
+                    "The two dots .. , like in:",
+                    "mean:",
+                    "- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...",
+                    "- go to the parent package (the directory app/ )...",
+                    "- and in there, find the module dependencies (the file at app/dependencies.py )...",
+                    "- and from it, import the function get_token_header .",
+                    "That works correctly! 🎉",
+                    "The same way, if we had used three dots ... , like in:",
+                    "that would mean:",
+                    "- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...",
+                    "- go to the parent package (the directory app/ )...",
+                    "- then go to the parent of that package (there's no parent package, app is the top level 😱)...",
+                    "- and in there, find the module dependencies (the file at app/dependencies.py )...",
+                    "- and from it, import the function get_token_header .",
+                    "That would refer to some package above app/ , with its own file __init__.py , etc. But we don't have that. So, that would throw an error in our example. 🚨",
+                    "But now you know how it works, so you can use relative imports in your own apps no matter how complex they are. 🤓"
+                  ],
+                  "section_text": "A single dot . , like in:\n\nwould mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- find the module dependencies (an imaginary file at app/routers/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nBut that file doesn't exist, our dependencies are in a file at app/dependencies.py .\n\nRemember how our app/file structure looks like:\n\nThe two dots .. , like in:\n\nmean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat works correctly! 🎉\n\nThe same way, if we had used three dots ... , like in:\n\nthat would mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- then go to the parent of that package (there's no parent package, app is the top level 😱)...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat would refer to some package above app/ , with its own file __init__.py , etc. But we don't have that. So, that would throw an error in our example. 🚨\n\nBut now you know how it works, so you can use relative imports in your own apps no matter how complex they are. 🤓",
+                  "section_inline_code": [
+                    ".",
+                    "app/routers/items.py",
+                    "app/routers/",
+                    "dependencies",
+                    "app/routers/dependencies.py",
+                    "get_token_header",
+                    "app/dependencies.py",
+                    "..",
+                    "app/",
+                    "...",
+                    "app",
+                    "__init__.py"
+                  ],
+                  "section_links": [],
+                  "code_refs": [],
+                  "code_blocks": [
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "from .dependencies import get_token_header",
+                      "section_id": "tutorial/bigger-applications::section-0009",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "from ..dependencies import get_token_header",
+                      "section_id": "tutorial/bigger-applications::section-0009",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+                    },
+                    {
+                      "type": "code_block",
+                      "language": "Python",
+                      "text": "from ...dependencies import get_token_header",
+                      "section_id": "tutorial/bigger-applications::section-0009",
+                      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0010",
+              "parent_id": "tutorial/bigger-applications::section-0007",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Add some custom tags, responses, and dependencies",
+              "anchor_id": "add-some-custom-tags-responses-and-dependencies",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+              "section_text_parts": [
+                "We are not adding the prefix /items nor the tags=[\"items\"] to each path operation because we added them to the APIRouter .",
+                "But we can still add more tags that will be applied to a specific path operation , and also some extra responses specific to that path operation :"
+              ],
+              "section_text": "We are not adding the prefix /items nor the tags=[\"items\"] to each path operation because we added them to the APIRouter .\n\nBut we can still add more tags that will be applied to a specific path operation , and also some extra responses specific to that path operation :",
+              "section_inline_code": [
+                "tags",
+                "responses",
+                "dependencies",
+                "/items",
+                "tags=[\"items\"]",
+                "APIRouter"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+                  "highlight_lines": [
+                    30,
+                    31
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[30:31] title[\"app/routers/items.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0010",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0011",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "The main FastAPI",
+          "anchor_id": "the-main-fastapi",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#the-main-fastapi",
+          "section_text_parts": [
+            "Now, let's see the module at app/main.py .",
+            "Here's where you import and use the class FastAPI .",
+            "This will be the main file in your application that ties everything together.",
+            "And as most of your logic will now live in its own specific module, the main file will be quite simple."
+          ],
+          "section_text": "Now, let's see the module at app/main.py .\n\nHere's where you import and use the class FastAPI .\n\nThis will be the main file in your application that ties everything together.\n\nAnd as most of your logic will now live in its own specific module, the main file will be quite simple.",
+          "section_inline_code": [
+            "FastAPI",
+            "app/main.py"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/bigger-applications::section-0012",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Import FastAPI",
+              "anchor_id": "import-fastapi",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi",
+              "section_text_parts": [
+                "You import and create a FastAPI class as normally.",
+                "And we can even declare global dependencies that will be combined with the dependencies for each APIRouter :"
+              ],
+              "section_text": "You import and create a FastAPI class as normally.\n\nAnd we can even declare global dependencies that will be combined with the dependencies for each APIRouter :",
+              "section_inline_code": [
+                "FastAPI",
+                "APIRouter"
+              ],
+              "section_links": [
+                {
+                  "text": "global dependencies",
+                  "url": "dependencies/global-dependencies.md",
+                  "section_id": "tutorial/bigger-applications::section-0012",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+                }
+              ],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    1,
+                    3,
+                    7
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[1,3,7] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0012",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0013",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Import the APIRouter",
+              "anchor_id": "import-the-apirouter",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter",
+              "section_text_parts": [
+                "Now we import the other submodules that have APIRouter s:",
+                "As the files app/routers/users.py and app/routers/items.py are submodules that are part of the same Python package app , we can use a single dot . to import them using \"relative imports\"."
+              ],
+              "section_text": "Now we import the other submodules that have APIRouter s:\n\nAs the files app/routers/users.py and app/routers/items.py are submodules that are part of the same Python package app , we can use a single dot . to import them using \"relative imports\".",
+              "section_inline_code": [
+                "APIRouter",
+                "app/routers/users.py",
+                "app/routers/items.py",
+                "app",
+                "."
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    4,
+                    5
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[4:5] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0013",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0014",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "How the importing works",
+              "anchor_id": "how-the-importing-works",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+              "section_text_parts": [
+                "The section:",
+                "means:",
+                "- Starting in the same package that this module (the file app/main.py ) lives in (the directory app/ )...",
+                "- look for the subpackage routers (the directory at app/routers/ )...",
+                "- and from it, import the submodule items (the file at app/routers/items.py ) and users (the file at app/routers/users.py )...",
+                "The module items will have a variable router ( items.router ). This is the same one we created in the file app/routers/items.py , it's an APIRouter object.",
+                "And then we do the same for the module users .",
+                "We could also import them like:"
+              ],
+              "section_text": "The section:\n\nmeans:\n\n- Starting in the same package that this module (the file app/main.py ) lives in (the directory app/ )...\n\n- look for the subpackage routers (the directory at app/routers/ )...\n\n- and from it, import the submodule items (the file at app/routers/items.py ) and users (the file at app/routers/users.py )...\n\nThe module items will have a variable router ( items.router ). This is the same one we created in the file app/routers/items.py , it's an APIRouter object.\n\nAnd then we do the same for the module users .\n\nWe could also import them like:",
+              "section_inline_code": [
+                "app/main.py",
+                "app/",
+                "routers",
+                "app/routers/",
+                "items",
+                "app/routers/items.py",
+                "users",
+                "app/routers/users.py",
+                "router",
+                "items.router",
+                "APIRouter"
+              ],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "from .routers import items, users",
+                  "section_id": "tutorial/bigger-applications::section-0014",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+                },
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "from app.routers import items, users",
+                  "section_id": "tutorial/bigger-applications::section-0014",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0015",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Avoid name collisions",
+              "anchor_id": "avoid-name-collisions",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions",
+              "section_text_parts": [
+                "We are importing the submodule items directly, instead of importing just its variable router .",
+                "This is because we also have another variable named router in the submodule users .",
+                "If we had imported one after the other, like:",
+                "the router from users would overwrite the one from items and we wouldn't be able to use them at the same time.",
+                "So, to be able to use both of them in the same file, we import the submodules directly:"
+              ],
+              "section_text": "We are importing the submodule items directly, instead of importing just its variable router .\n\nThis is because we also have another variable named router in the submodule users .\n\nIf we had imported one after the other, like:\n\nthe router from users would overwrite the one from items and we wouldn't be able to use them at the same time.\n\nSo, to be able to use both of them in the same file, we import the submodules directly:",
+              "section_inline_code": [
+                "items",
+                "router",
+                "users"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    5
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[5] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0015",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+                }
+              ],
+              "code_blocks": [
+                {
+                  "type": "code_block",
+                  "language": "Python",
+                  "text": "from .routers.items import router\nfrom .routers.users import router",
+                  "section_id": "tutorial/bigger-applications::section-0015",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0016",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Include the APIRouters for users and items",
+              "anchor_id": "include-the-apirouters-for-users-and-items",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+              "section_text_parts": [
+                "Now, let's include the router s from the submodules users and items :",
+                "With app.include_router() we can add each APIRouter to the main FastAPI application.",
+                "It will include all the routes from that router as part of it."
+              ],
+              "section_text": "Now, let's include the router s from the submodules users and items :\n\nWith app.include_router() we can add each APIRouter to the main FastAPI application.\n\nIt will include all the routes from that router as part of it.",
+              "section_inline_code": [
+                "APIRouter",
+                "users",
+                "items",
+                "router",
+                "app.include_router()",
+                "FastAPI"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    10,
+                    11
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[10:11] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0016",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0017",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Include an APIRouter with a custom prefix, tags, responses, and dependencies",
+              "anchor_id": "include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+              "section_text_parts": [
+                "Now, let's imagine your organization gave you the app/internal/admin.py file.",
+                "It contains an APIRouter with some admin path operations that your organization shares between several projects.",
+                "For this example it will be super simple. But let's say that because it is shared with other projects in the organization, we cannot modify it and add a prefix , dependencies , tags , etc. directly to the APIRouter :",
+                "But we still want to set a custom prefix when including the APIRouter so that all its path operations start with /admin , we want to secure it with the dependencies we already have for this project, and we want to include tags and responses .",
+                "We can declare all that without having to modify the original APIRouter by passing those parameters to app.include_router() :",
+                "That way, the original APIRouter will stay unmodified, so we can still share that same app/internal/admin.py file with other projects in the organization.",
+                "The result is that in our app, each of the path operations from the admin module will have:",
+                "- The prefix /admin .",
+                "- The tag admin .",
+                "- The dependency get_token_header .",
+                "- The response 418 . 🍵",
+                "But that will only affect that APIRouter in our app, not in any other code that uses it.",
+                "So, for example, other projects could use the same APIRouter with a different authentication method."
+              ],
+              "section_text": "Now, let's imagine your organization gave you the app/internal/admin.py file.\n\nIt contains an APIRouter with some admin path operations that your organization shares between several projects.\n\nFor this example it will be super simple. But let's say that because it is shared with other projects in the organization, we cannot modify it and add a prefix , dependencies , tags , etc. directly to the APIRouter :\n\nBut we still want to set a custom prefix when including the APIRouter so that all its path operations start with /admin , we want to secure it with the dependencies we already have for this project, and we want to include tags and responses .\n\nWe can declare all that without having to modify the original APIRouter by passing those parameters to app.include_router() :\n\nThat way, the original APIRouter will stay unmodified, so we can still share that same app/internal/admin.py file with other projects in the organization.\n\nThe result is that in our app, each of the path operations from the admin module will have:\n\n- The prefix /admin .\n\n- The tag admin .\n\n- The dependency get_token_header .\n\n- The response 418 . 🍵\n\nBut that will only affect that APIRouter in our app, not in any other code that uses it.\n\nSo, for example, other projects could use the same APIRouter with a different authentication method.",
+              "section_inline_code": [
+                "APIRouter",
+                "prefix",
+                "tags",
+                "responses",
+                "dependencies",
+                "app/internal/admin.py",
+                "/admin",
+                "app.include_router()",
+                "admin",
+                "get_token_header",
+                "418"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/internal/admin.py",
+                  "highlight_lines": [
+                    3
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/internal/admin.py hl[3] title[\"app/internal/admin.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0017",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+                },
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    14,
+                    15,
+                    16,
+                    17
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[14:17] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0017",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/bigger-applications::section-0018",
+              "parent_id": "tutorial/bigger-applications::section-0011",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Include a path operation",
+              "anchor_id": "include-a-path-operation",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+              "section_text_parts": [
+                "We can also add path operations directly to the FastAPI app.",
+                "Here we do it... just to show that we can 🤷:",
+                "and it will work correctly, together with all the other path operations added with app.include_router() ."
+              ],
+              "section_text": "We can also add path operations directly to the FastAPI app.\n\nHere we do it... just to show that we can 🤷:\n\nand it will work correctly, together with all the other path operations added with app.include_router() .",
+              "section_inline_code": [
+                "FastAPI",
+                "app.include_router()"
+              ],
+              "section_links": [],
+              "code_refs": [
+                {
+                  "type": "code_ref",
+                  "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+                  "highlight_lines": [
+                    21,
+                    22,
+                    23
+                  ],
+                  "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[21:23] title[\"app/main.py\"] *}",
+                  "section_id": "tutorial/bigger-applications::section-0018",
+                  "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation"
+                }
+              ],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0019",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Configure the entrypoint in pyproject.toml",
+          "anchor_id": "configure-the-entrypoint-in-pyproject-toml",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+          "section_text_parts": [
+            "As your FastAPI app object lives in app/main.py , you can configure the entrypoint in your pyproject.toml file like this:",
+            "that is equivalent to importing like:",
+            "That way the fastapi command will know where to find your app."
+          ],
+          "section_text": "As your FastAPI app object lives in app/main.py , you can configure the entrypoint in your pyproject.toml file like this:\n\nthat is equivalent to importing like:\n\nThat way the fastapi command will know where to find your app.",
+          "section_inline_code": [
+            "entrypoint",
+            "pyproject.toml",
+            "app",
+            "app/main.py",
+            "fastapi"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "toml",
+              "text": "[tool.fastapi]\nentrypoint = \"app.main:app\"",
+              "section_id": "tutorial/bigger-applications::section-0019",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+            },
+            {
+              "type": "code_block",
+              "language": "python",
+              "text": "from app.main import app",
+              "section_id": "tutorial/bigger-applications::section-0019",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0020",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Check the automatic API docs",
+          "anchor_id": "check-the-automatic-api-docs",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs",
+          "section_text_parts": [
+            "Now, run your app:",
+            "And open the docs at http://127.0.0.1:8000/docs .",
+            "You will see the automatic API docs, including the paths from all the submodules, using the correct paths (and prefixes) and the correct tags:"
+          ],
+          "section_text": "Now, run your app:\n\nAnd open the docs at http://127.0.0.1:8000/docs .\n\nYou will see the automatic API docs, including the paths from all the submodules, using the correct paths (and prefixes) and the correct tags:",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "http://127.0.0.1:8000/docs",
+              "url": "http://127.0.0.1:8000/docs",
+              "section_id": "tutorial/bigger-applications::section-0020",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "console",
+              "text": "$ fastapi dev\n\n<span style=\"color: green;\">INFO</span>:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+              "section_id": "tutorial/bigger-applications::section-0020",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0021",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Include the same router multiple times with different prefix",
+          "anchor_id": "include-the-same-router-multiple-times-with-different-prefix",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-same-router-multiple-times-with-different-prefix",
+          "section_text_parts": [
+            "You can also use .include_router() multiple times with the same router using different prefixes.",
+            "This could be useful, for example, to expose the same API under different prefixes, e.g. /api/v1 and /api/latest .",
+            "This is an advanced usage that you might not really need, but it's there in case you do."
+          ],
+          "section_text": "You can also use .include_router() multiple times with the same router using different prefixes.\n\nThis could be useful, for example, to expose the same API under different prefixes, e.g. /api/v1 and /api/latest .\n\nThis is an advanced usage that you might not really need, but it's there in case you do.",
+          "section_inline_code": [
+            "prefix",
+            ".include_router()",
+            "/api/v1",
+            "/api/latest"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/bigger-applications::section-0022",
+          "parent_id": "tutorial/bigger-applications::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Include an APIRouter in another",
+          "anchor_id": "include-an-apirouter-in-another",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another",
+          "section_text_parts": [
+            "The same way you can include an APIRouter in a FastAPI application, you can include an APIRouter in another APIRouter using:",
+            "Make sure you do it before including router in the FastAPI app, so that the path operations from other_router are also included."
+          ],
+          "section_text": "The same way you can include an APIRouter in a FastAPI application, you can include an APIRouter in another APIRouter using:\n\nMake sure you do it before including router in the FastAPI app, so that the path operations from other_router are also included.",
+          "section_inline_code": [
+            "APIRouter",
+            "FastAPI",
+            "router",
+            "other_router"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [
+            {
+              "type": "code_block",
+              "language": "Python",
+              "text": "router.include_router(other_router)",
+              "section_id": "tutorial/bigger-applications::section-0022",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another"
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/bigger-applications::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Bigger Applications - Multiple Files",
+      "anchor_id": "bigger-applications-multiple-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+      "section_text": "If you are building an application or a web API, it's rarely the case that you can put everything in a single file.\n\nFastAPI provides a convenience tool to structure your application while keeping all the flexibility.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0002",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "An example file structure",
+      "anchor_id": "an-example-file-structure",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+      "section_text": "Let's say you have a file structure like this:\n\n- The app directory contains everything. And it has an empty file app/__init__.py , so it is a \"Python package\" (a collection of \"Python modules\"): app .\n\n- It contains an app/main.py file. As it is inside a Python package (a directory with a file __init__.py ), it is a \"module\" of that package: app.main .\n\n- There's also an app/dependencies.py file, just like app/main.py , it is a \"module\": app.dependencies .\n\n- There's a subdirectory app/routers/ with another file __init__.py , so it's a \"Python subpackage\": app.routers .\n\n- The file app/routers/items.py is inside a package, app/routers/ , so, it's a submodule: app.routers.items .\n\n- The same with app/routers/users.py , it's another submodule: app.routers.users .\n\n- There's also a subdirectory app/internal/ with another file __init__.py , so it's another \"Python subpackage\": app.internal .\n\n- And the file app/internal/admin.py is another submodule: app.internal.admin .\n\nThe same file structure with comments:",
+      "section_inline_code": [
+        "app",
+        "app/__init__.py",
+        "app/main.py",
+        "__init__.py",
+        "app.main",
+        "app/dependencies.py",
+        "app.dependencies",
+        "app/routers/",
+        "app.routers",
+        "app/routers/items.py",
+        "app.routers.items",
+        "app/routers/users.py",
+        "app.routers.users",
+        "app/internal/",
+        "app.internal",
+        "app/internal/admin.py",
+        "app.internal.admin"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": ".\n├── app\n│   ├── __init__.py\n│   ├── main.py\n│   ├── dependencies.py\n│   └── routers\n│   │   ├── __init__.py\n│   │   ├── items.py\n│   │   └── users.py\n│   └── internal\n│       ├── __init__.py\n│       └── admin.py",
+          "section_id": "tutorial/bigger-applications::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        },
+        {
+          "type": "code_block",
+          "language": "bash",
+          "text": ".\n├── app                  # \"app\" is a Python package\n│   ├── __init__.py      # this file makes \"app\" a \"Python package\"\n│   ├── main.py          # \"main\" module, e.g. import app.main\n│   ├── dependencies.py  # \"dependencies\" module, e.g. import app.dependencies\n│   └── routers          # \"routers\" is a \"Python subpackage\"\n│   │   ├── __init__.py  # makes \"routers\" a \"Python subpackage\"\n│   │   ├── items.py     # \"items\" submodule, e.g. import app.routers.items\n│   │   └── users.py     # \"users\" submodule, e.g. import app.routers.users\n│   └── internal         # \"internal\" is a \"Python subpackage\"\n│       ├── __init__.py  # makes \"internal\" a \"Python subpackage\"\n│       └── admin.py     # \"admin\" submodule, e.g. import app.internal.admin",
+          "section_id": "tutorial/bigger-applications::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0003",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "APIRouter",
+      "anchor_id": "apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter",
+      "section_text": "Let's say the file dedicated to handling just users is the submodule at /app/routers/users.py .\n\nYou want to have the path operations related to your users separated from the rest of the code, to keep it organized.\n\nBut it's still part of the same FastAPI application/web API (it's part of the same \"Python Package\").\n\nYou can create the path operations for that module using APIRouter .",
+      "section_inline_code": [
+        "APIRouter",
+        "/app/routers/users.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0004",
+      "parent_id": "tutorial/bigger-applications::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import APIRouter",
+      "anchor_id": "import-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter",
+      "section_text": "You import it and create an \"instance\" the same way you would with the class FastAPI :",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+          "highlight_lines": [
+            1,
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[1,3] title[\"app/routers/users.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0005",
+      "parent_id": "tutorial/bigger-applications::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Path operations with APIRouter",
+      "anchor_id": "path-operations-with-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+      "section_text": "And then you use it to declare your path operations .\n\nUse it the same way you would use the FastAPI class:\n\nYou can think of APIRouter as a \"mini FastAPI \" class.\n\nAll the same options are supported.\n\nAll the same parameters , responses , dependencies , tags , etc.\n\nWe are going to include this APIRouter in the main FastAPI app, but first, let's check the dependencies and another APIRouter .",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI",
+        "parameters",
+        "responses",
+        "dependencies",
+        "tags"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+          "highlight_lines": [
+            6,
+            11,
+            16
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[6,11,16] title[\"app/routers/users.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0006",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Dependencies",
+      "anchor_id": "dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+      "section_text": "We see that we are going to need some dependencies used in several places of the application.\n\nSo we put them in their own dependencies module ( app/dependencies.py ).\n\nWe will now use a simple dependency to read a custom X-Token header:",
+      "section_inline_code": [
+        "dependencies",
+        "app/dependencies.py",
+        "X-Token"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/dependencies.py",
+          "highlight_lines": [
+            3,
+            6,
+            7,
+            8
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/dependencies.py hl[3,6:8] title[\"app/dependencies.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0007",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Another module with APIRouter",
+      "anchor_id": "another-module-with-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "section_text": "Let's say you also have the endpoints dedicated to handling \"items\" from your application in the module at app/routers/items.py .\n\nYou have path operations for:\n\n- /items/\n\n- /items/{item_id}\n\nIt's all the same structure as with app/routers/users.py .\n\nBut we want to be smarter and simplify the code a bit.\n\nWe know all the path operations in this module have the same:\n\n- Path prefix : /items .\n\n- tags : (just one tag: items ).\n\n- Extra responses .\n\n- dependencies : they all need that X-Token dependency we created.\n\nSo, instead of adding all that to each path operation , we can add it to the APIRouter .\n\nAs the path of each path operation has to start with / , like in:\n\n...the prefix must not include a final / .\n\nSo, the prefix in this case is /items .\n\nWe can also add a list of tags and extra responses that will be applied to all the path operations included in this router.\n\nAnd we can add a list of dependencies that will be added to all the path operations in the router and will be executed/solved for each request made to them.\n\nThe end result is that the item paths are now:\n\n- /items/\n\n- /items/{item_id}\n\n...as we intended.\n\n- These \"tags\" are especially useful for the automatic interactive documentation systems (using OpenAPI).\n\n- If you also declare dependencies in a specific path operation , they will be executed too .\n\n- The router dependencies are executed first, then the dependencies in the decorator , and then the normal parameter dependencies.\n\n- You can also add Security dependencies with scopes .",
+      "section_inline_code": [
+        "APIRouter",
+        "app/routers/items.py",
+        "/items/",
+        "/items/{item_id}",
+        "app/routers/users.py",
+        "prefix",
+        "/items",
+        "tags",
+        "items",
+        "responses",
+        "dependencies",
+        "X-Token",
+        "/",
+        "Security",
+        "scopes"
+      ],
+      "section_links": [
+        {
+          "text": "in the decorator",
+          "url": "dependencies/dependencies-in-path-operation-decorators.md",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        },
+        {
+          "text": "dependencies with",
+          "url": "../advanced/security/oauth2-scopes.md",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            16,
+            21
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[5:10,16,21] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "@router.get(\"/{item_id}\")\nasync def read_item(item_id: str):\n    ...",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0008",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import the dependencies",
+      "anchor_id": "import-the-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies",
+      "section_text": "This code lives in the module app.routers.items , the file app/routers/items.py .\n\nAnd we need to get the dependency function from the module app.dependencies , the file app/dependencies.py .\n\nSo we use a relative import with .. for the dependencies:",
+      "section_inline_code": [
+        "app.routers.items",
+        "app/routers/items.py",
+        "app.dependencies",
+        "app/dependencies.py",
+        ".."
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[3] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0009",
+      "parent_id": "tutorial/bigger-applications::section-0008",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "How relative imports work",
+      "anchor_id": "how-relative-imports-work",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+      "section_text": "A single dot . , like in:\n\nwould mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- find the module dependencies (an imaginary file at app/routers/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nBut that file doesn't exist, our dependencies are in a file at app/dependencies.py .\n\nRemember how our app/file structure looks like:\n\nThe two dots .. , like in:\n\nmean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat works correctly! 🎉\n\nThe same way, if we had used three dots ... , like in:\n\nthat would mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- then go to the parent of that package (there's no parent package, app is the top level 😱)...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat would refer to some package above app/ , with its own file __init__.py , etc. But we don't have that. So, that would throw an error in our example. 🚨\n\nBut now you know how it works, so you can use relative imports in your own apps no matter how complex they are. 🤓",
+      "section_inline_code": [
+        ".",
+        "app/routers/items.py",
+        "app/routers/",
+        "dependencies",
+        "app/routers/dependencies.py",
+        "get_token_header",
+        "app/dependencies.py",
+        "..",
+        "app/",
+        "...",
+        "app",
+        "__init__.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from ..dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from ...dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0010",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Add some custom tags, responses, and dependencies",
+      "anchor_id": "add-some-custom-tags-responses-and-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+      "section_text": "We are not adding the prefix /items nor the tags=[\"items\"] to each path operation because we added them to the APIRouter .\n\nBut we can still add more tags that will be applied to a specific path operation , and also some extra responses specific to that path operation :",
+      "section_inline_code": [
+        "tags",
+        "responses",
+        "dependencies",
+        "/items",
+        "tags=[\"items\"]",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            30,
+            31
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[30:31] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0011",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "The main FastAPI",
+      "anchor_id": "the-main-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#the-main-fastapi",
+      "section_text": "Now, let's see the module at app/main.py .\n\nHere's where you import and use the class FastAPI .\n\nThis will be the main file in your application that ties everything together.\n\nAnd as most of your logic will now live in its own specific module, the main file will be quite simple.",
+      "section_inline_code": [
+        "FastAPI",
+        "app/main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0012",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import FastAPI",
+      "anchor_id": "import-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi",
+      "section_text": "You import and create a FastAPI class as normally.\n\nAnd we can even declare global dependencies that will be combined with the dependencies for each APIRouter :",
+      "section_inline_code": [
+        "FastAPI",
+        "APIRouter"
+      ],
+      "section_links": [
+        {
+          "text": "global dependencies",
+          "url": "dependencies/global-dependencies.md",
+          "section_id": "tutorial/bigger-applications::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            1,
+            3,
+            7
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[1,3,7] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0013",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import the APIRouter",
+      "anchor_id": "import-the-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter",
+      "section_text": "Now we import the other submodules that have APIRouter s:\n\nAs the files app/routers/users.py and app/routers/items.py are submodules that are part of the same Python package app , we can use a single dot . to import them using \"relative imports\".",
+      "section_inline_code": [
+        "APIRouter",
+        "app/routers/users.py",
+        "app/routers/items.py",
+        "app",
+        "."
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            4,
+            5
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[4:5] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0014",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "How the importing works",
+      "anchor_id": "how-the-importing-works",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+      "section_text": "The section:\n\nmeans:\n\n- Starting in the same package that this module (the file app/main.py ) lives in (the directory app/ )...\n\n- look for the subpackage routers (the directory at app/routers/ )...\n\n- and from it, import the submodule items (the file at app/routers/items.py ) and users (the file at app/routers/users.py )...\n\nThe module items will have a variable router ( items.router ). This is the same one we created in the file app/routers/items.py , it's an APIRouter object.\n\nAnd then we do the same for the module users .\n\nWe could also import them like:",
+      "section_inline_code": [
+        "app/main.py",
+        "app/",
+        "routers",
+        "app/routers/",
+        "items",
+        "app/routers/items.py",
+        "users",
+        "app/routers/users.py",
+        "router",
+        "items.router",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from app.routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0015",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Avoid name collisions",
+      "anchor_id": "avoid-name-collisions",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions",
+      "section_text": "We are importing the submodule items directly, instead of importing just its variable router .\n\nThis is because we also have another variable named router in the submodule users .\n\nIf we had imported one after the other, like:\n\nthe router from users would overwrite the one from items and we wouldn't be able to use them at the same time.\n\nSo, to be able to use both of them in the same file, we import the submodules directly:",
+      "section_inline_code": [
+        "items",
+        "router",
+        "users"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            5
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[5] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers.items import router\nfrom .routers.users import router",
+          "section_id": "tutorial/bigger-applications::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0016",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include the APIRouters for users and items",
+      "anchor_id": "include-the-apirouters-for-users-and-items",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "section_text": "Now, let's include the router s from the submodules users and items :\n\nWith app.include_router() we can add each APIRouter to the main FastAPI application.\n\nIt will include all the routes from that router as part of it.",
+      "section_inline_code": [
+        "APIRouter",
+        "users",
+        "items",
+        "router",
+        "app.include_router()",
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            10,
+            11
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[10:11] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0017",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include an APIRouter with a custom prefix, tags, responses, and dependencies",
+      "anchor_id": "include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+      "section_text": "Now, let's imagine your organization gave you the app/internal/admin.py file.\n\nIt contains an APIRouter with some admin path operations that your organization shares between several projects.\n\nFor this example it will be super simple. But let's say that because it is shared with other projects in the organization, we cannot modify it and add a prefix , dependencies , tags , etc. directly to the APIRouter :\n\nBut we still want to set a custom prefix when including the APIRouter so that all its path operations start with /admin , we want to secure it with the dependencies we already have for this project, and we want to include tags and responses .\n\nWe can declare all that without having to modify the original APIRouter by passing those parameters to app.include_router() :\n\nThat way, the original APIRouter will stay unmodified, so we can still share that same app/internal/admin.py file with other projects in the organization.\n\nThe result is that in our app, each of the path operations from the admin module will have:\n\n- The prefix /admin .\n\n- The tag admin .\n\n- The dependency get_token_header .\n\n- The response 418 . 🍵\n\nBut that will only affect that APIRouter in our app, not in any other code that uses it.\n\nSo, for example, other projects could use the same APIRouter with a different authentication method.",
+      "section_inline_code": [
+        "APIRouter",
+        "prefix",
+        "tags",
+        "responses",
+        "dependencies",
+        "app/internal/admin.py",
+        "/admin",
+        "app.include_router()",
+        "admin",
+        "get_token_header",
+        "418"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/internal/admin.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/internal/admin.py hl[3] title[\"app/internal/admin.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[14:17] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0018",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include a path operation",
+      "anchor_id": "include-a-path-operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+      "section_text": "We can also add path operations directly to the FastAPI app.\n\nHere we do it... just to show that we can 🤷:\n\nand it will work correctly, together with all the other path operations added with app.include_router() .",
+      "section_inline_code": [
+        "FastAPI",
+        "app.include_router()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            21,
+            22,
+            23
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[21:23] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0018",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0019",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Configure the entrypoint in pyproject.toml",
+      "anchor_id": "configure-the-entrypoint-in-pyproject-toml",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+      "section_text": "As your FastAPI app object lives in app/main.py , you can configure the entrypoint in your pyproject.toml file like this:\n\nthat is equivalent to importing like:\n\nThat way the fastapi command will know where to find your app.",
+      "section_inline_code": [
+        "entrypoint",
+        "pyproject.toml",
+        "app",
+        "app/main.py",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"app.main:app\"",
+          "section_id": "tutorial/bigger-applications::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from app.main import app",
+          "section_id": "tutorial/bigger-applications::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0020",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Check the automatic API docs",
+      "anchor_id": "check-the-automatic-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs",
+      "section_text": "Now, run your app:\n\nAnd open the docs at http://127.0.0.1:8000/docs .\n\nYou will see the automatic API docs, including the paths from all the submodules, using the correct paths (and prefixes) and the correct tags:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/bigger-applications::section-0020",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev\n\n<span style=\"color: green;\">INFO</span>:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          "section_id": "tutorial/bigger-applications::section-0020",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0021",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Include the same router multiple times with different prefix",
+      "anchor_id": "include-the-same-router-multiple-times-with-different-prefix",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-same-router-multiple-times-with-different-prefix",
+      "section_text": "You can also use .include_router() multiple times with the same router using different prefixes.\n\nThis could be useful, for example, to expose the same API under different prefixes, e.g. /api/v1 and /api/latest .\n\nThis is an advanced usage that you might not really need, but it's there in case you do.",
+      "section_inline_code": [
+        "prefix",
+        ".include_router()",
+        "/api/v1",
+        "/api/latest"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0022",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Include an APIRouter in another",
+      "anchor_id": "include-an-apirouter-in-another",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another",
+      "section_text": "The same way you can include an APIRouter in a FastAPI application, you can include an APIRouter in another APIRouter using:\n\nMake sure you do it before including router in the FastAPI app, so that the path operations from other_router are also included.",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI",
+        "router",
+        "other_router"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "router.include_router(other_router)",
+          "section_id": "tutorial/bigger-applications::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another"
+        }
+      ]
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/bigger-applications::section-0001": {
+      "node_id": "tutorial/bigger-applications::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "Bigger Applications - Multiple Files",
+      "anchor_id": "bigger-applications-multiple-files",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+      "section_text": "If you are building an application or a web API, it's rarely the case that you can put everything in a single file.\n\nFastAPI provides a convenience tool to structure your application while keeping all the flexibility.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0002": {
+      "node_id": "tutorial/bigger-applications::section-0002",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "An example file structure",
+      "anchor_id": "an-example-file-structure",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+      "section_text": "Let's say you have a file structure like this:\n\n- The app directory contains everything. And it has an empty file app/__init__.py , so it is a \"Python package\" (a collection of \"Python modules\"): app .\n\n- It contains an app/main.py file. As it is inside a Python package (a directory with a file __init__.py ), it is a \"module\" of that package: app.main .\n\n- There's also an app/dependencies.py file, just like app/main.py , it is a \"module\": app.dependencies .\n\n- There's a subdirectory app/routers/ with another file __init__.py , so it's a \"Python subpackage\": app.routers .\n\n- The file app/routers/items.py is inside a package, app/routers/ , so, it's a submodule: app.routers.items .\n\n- The same with app/routers/users.py , it's another submodule: app.routers.users .\n\n- There's also a subdirectory app/internal/ with another file __init__.py , so it's another \"Python subpackage\": app.internal .\n\n- And the file app/internal/admin.py is another submodule: app.internal.admin .\n\nThe same file structure with comments:",
+      "section_inline_code": [
+        "app",
+        "app/__init__.py",
+        "app/main.py",
+        "__init__.py",
+        "app.main",
+        "app/dependencies.py",
+        "app.dependencies",
+        "app/routers/",
+        "app.routers",
+        "app/routers/items.py",
+        "app.routers.items",
+        "app/routers/users.py",
+        "app.routers.users",
+        "app/internal/",
+        "app.internal",
+        "app/internal/admin.py",
+        "app.internal.admin"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": ".\n├── app\n│   ├── __init__.py\n│   ├── main.py\n│   ├── dependencies.py\n│   └── routers\n│   │   ├── __init__.py\n│   │   ├── items.py\n│   │   └── users.py\n│   └── internal\n│       ├── __init__.py\n│       └── admin.py",
+          "section_id": "tutorial/bigger-applications::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        },
+        {
+          "type": "code_block",
+          "language": "bash",
+          "text": ".\n├── app                  # \"app\" is a Python package\n│   ├── __init__.py      # this file makes \"app\" a \"Python package\"\n│   ├── main.py          # \"main\" module, e.g. import app.main\n│   ├── dependencies.py  # \"dependencies\" module, e.g. import app.dependencies\n│   └── routers          # \"routers\" is a \"Python subpackage\"\n│   │   ├── __init__.py  # makes \"routers\" a \"Python subpackage\"\n│   │   ├── items.py     # \"items\" submodule, e.g. import app.routers.items\n│   │   └── users.py     # \"users\" submodule, e.g. import app.routers.users\n│   └── internal         # \"internal\" is a \"Python subpackage\"\n│       ├── __init__.py  # makes \"internal\" a \"Python subpackage\"\n│       └── admin.py     # \"admin\" submodule, e.g. import app.internal.admin",
+          "section_id": "tutorial/bigger-applications::section-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0003": {
+      "node_id": "tutorial/bigger-applications::section-0003",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "APIRouter",
+      "anchor_id": "apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter",
+      "section_text": "Let's say the file dedicated to handling just users is the submodule at /app/routers/users.py .\n\nYou want to have the path operations related to your users separated from the rest of the code, to keep it organized.\n\nBut it's still part of the same FastAPI application/web API (it's part of the same \"Python Package\").\n\nYou can create the path operations for that module using APIRouter .",
+      "section_inline_code": [
+        "APIRouter",
+        "/app/routers/users.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0004": {
+      "node_id": "tutorial/bigger-applications::section-0004",
+      "parent_id": "tutorial/bigger-applications::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import APIRouter",
+      "anchor_id": "import-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter",
+      "section_text": "You import it and create an \"instance\" the same way you would with the class FastAPI :",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+          "highlight_lines": [
+            1,
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[1,3] title[\"app/routers/users.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0005": {
+      "node_id": "tutorial/bigger-applications::section-0005",
+      "parent_id": "tutorial/bigger-applications::section-0003",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Path operations with APIRouter",
+      "anchor_id": "path-operations-with-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+      "section_text": "And then you use it to declare your path operations .\n\nUse it the same way you would use the FastAPI class:\n\nYou can think of APIRouter as a \"mini FastAPI \" class.\n\nAll the same options are supported.\n\nAll the same parameters , responses , dependencies , tags , etc.\n\nWe are going to include this APIRouter in the main FastAPI app, but first, let's check the dependencies and another APIRouter .",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI",
+        "parameters",
+        "responses",
+        "dependencies",
+        "tags"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/users.py",
+          "highlight_lines": [
+            6,
+            11,
+            16
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/users.py hl[6,11,16] title[\"app/routers/users.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0006": {
+      "node_id": "tutorial/bigger-applications::section-0006",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Dependencies",
+      "anchor_id": "dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+      "section_text": "We see that we are going to need some dependencies used in several places of the application.\n\nSo we put them in their own dependencies module ( app/dependencies.py ).\n\nWe will now use a simple dependency to read a custom X-Token header:",
+      "section_inline_code": [
+        "dependencies",
+        "app/dependencies.py",
+        "X-Token"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/dependencies.py",
+          "highlight_lines": [
+            3,
+            6,
+            7,
+            8
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/dependencies.py hl[3,6:8] title[\"app/dependencies.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0006",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0007": {
+      "node_id": "tutorial/bigger-applications::section-0007",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Another module with APIRouter",
+      "anchor_id": "another-module-with-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "section_text": "Let's say you also have the endpoints dedicated to handling \"items\" from your application in the module at app/routers/items.py .\n\nYou have path operations for:\n\n- /items/\n\n- /items/{item_id}\n\nIt's all the same structure as with app/routers/users.py .\n\nBut we want to be smarter and simplify the code a bit.\n\nWe know all the path operations in this module have the same:\n\n- Path prefix : /items .\n\n- tags : (just one tag: items ).\n\n- Extra responses .\n\n- dependencies : they all need that X-Token dependency we created.\n\nSo, instead of adding all that to each path operation , we can add it to the APIRouter .\n\nAs the path of each path operation has to start with / , like in:\n\n...the prefix must not include a final / .\n\nSo, the prefix in this case is /items .\n\nWe can also add a list of tags and extra responses that will be applied to all the path operations included in this router.\n\nAnd we can add a list of dependencies that will be added to all the path operations in the router and will be executed/solved for each request made to them.\n\nThe end result is that the item paths are now:\n\n- /items/\n\n- /items/{item_id}\n\n...as we intended.\n\n- These \"tags\" are especially useful for the automatic interactive documentation systems (using OpenAPI).\n\n- If you also declare dependencies in a specific path operation , they will be executed too .\n\n- The router dependencies are executed first, then the dependencies in the decorator , and then the normal parameter dependencies.\n\n- You can also add Security dependencies with scopes .",
+      "section_inline_code": [
+        "APIRouter",
+        "app/routers/items.py",
+        "/items/",
+        "/items/{item_id}",
+        "app/routers/users.py",
+        "prefix",
+        "/items",
+        "tags",
+        "items",
+        "responses",
+        "dependencies",
+        "X-Token",
+        "/",
+        "Security",
+        "scopes"
+      ],
+      "section_links": [
+        {
+          "text": "in the decorator",
+          "url": "dependencies/dependencies-in-path-operation-decorators.md",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        },
+        {
+          "text": "dependencies with",
+          "url": "../advanced/security/oauth2-scopes.md",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            16,
+            21
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[5:10,16,21] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python hl_lines=\"1\"",
+          "text": "@router.get(\"/{item_id}\")\nasync def read_item(item_id: str):\n    ...",
+          "section_id": "tutorial/bigger-applications::section-0007",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0008": {
+      "node_id": "tutorial/bigger-applications::section-0008",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import the dependencies",
+      "anchor_id": "import-the-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies",
+      "section_text": "This code lives in the module app.routers.items , the file app/routers/items.py .\n\nAnd we need to get the dependency function from the module app.dependencies , the file app/dependencies.py .\n\nSo we use a relative import with .. for the dependencies:",
+      "section_inline_code": [
+        "app.routers.items",
+        "app/routers/items.py",
+        "app.dependencies",
+        "app/dependencies.py",
+        ".."
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[3] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0009": {
+      "node_id": "tutorial/bigger-applications::section-0009",
+      "parent_id": "tutorial/bigger-applications::section-0008",
+      "level": 4,
+      "node_kind": "heading",
+      "heading_text": "How relative imports work",
+      "anchor_id": "how-relative-imports-work",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+      "section_text": "A single dot . , like in:\n\nwould mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- find the module dependencies (an imaginary file at app/routers/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nBut that file doesn't exist, our dependencies are in a file at app/dependencies.py .\n\nRemember how our app/file structure looks like:\n\nThe two dots .. , like in:\n\nmean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat works correctly! 🎉\n\nThe same way, if we had used three dots ... , like in:\n\nthat would mean:\n\n- Starting in the same package that this module (the file app/routers/items.py ) lives in (the directory app/routers/ )...\n\n- go to the parent package (the directory app/ )...\n\n- then go to the parent of that package (there's no parent package, app is the top level 😱)...\n\n- and in there, find the module dependencies (the file at app/dependencies.py )...\n\n- and from it, import the function get_token_header .\n\nThat would refer to some package above app/ , with its own file __init__.py , etc. But we don't have that. So, that would throw an error in our example. 🚨\n\nBut now you know how it works, so you can use relative imports in your own apps no matter how complex they are. 🤓",
+      "section_inline_code": [
+        ".",
+        "app/routers/items.py",
+        "app/routers/",
+        "dependencies",
+        "app/routers/dependencies.py",
+        "get_token_header",
+        "app/dependencies.py",
+        "..",
+        "app/",
+        "...",
+        "app",
+        "__init__.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from ..dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from ...dependencies import get_token_header",
+          "section_id": "tutorial/bigger-applications::section-0009",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0010": {
+      "node_id": "tutorial/bigger-applications::section-0010",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Add some custom tags, responses, and dependencies",
+      "anchor_id": "add-some-custom-tags-responses-and-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+      "section_text": "We are not adding the prefix /items nor the tags=[\"items\"] to each path operation because we added them to the APIRouter .\n\nBut we can still add more tags that will be applied to a specific path operation , and also some extra responses specific to that path operation :",
+      "section_inline_code": [
+        "tags",
+        "responses",
+        "dependencies",
+        "/items",
+        "tags=[\"items\"]",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/routers/items.py",
+          "highlight_lines": [
+            30,
+            31
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/routers/items.py hl[30:31] title[\"app/routers/items.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0011": {
+      "node_id": "tutorial/bigger-applications::section-0011",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "The main FastAPI",
+      "anchor_id": "the-main-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#the-main-fastapi",
+      "section_text": "Now, let's see the module at app/main.py .\n\nHere's where you import and use the class FastAPI .\n\nThis will be the main file in your application that ties everything together.\n\nAnd as most of your logic will now live in its own specific module, the main file will be quite simple.",
+      "section_inline_code": [
+        "FastAPI",
+        "app/main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0012": {
+      "node_id": "tutorial/bigger-applications::section-0012",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import FastAPI",
+      "anchor_id": "import-fastapi",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi",
+      "section_text": "You import and create a FastAPI class as normally.\n\nAnd we can even declare global dependencies that will be combined with the dependencies for each APIRouter :",
+      "section_inline_code": [
+        "FastAPI",
+        "APIRouter"
+      ],
+      "section_links": [
+        {
+          "text": "global dependencies",
+          "url": "dependencies/global-dependencies.md",
+          "section_id": "tutorial/bigger-applications::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            1,
+            3,
+            7
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[1,3,7] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0012",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-fastapi"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0013": {
+      "node_id": "tutorial/bigger-applications::section-0013",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Import the APIRouter",
+      "anchor_id": "import-the-apirouter",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter",
+      "section_text": "Now we import the other submodules that have APIRouter s:\n\nAs the files app/routers/users.py and app/routers/items.py are submodules that are part of the same Python package app , we can use a single dot . to import them using \"relative imports\".",
+      "section_inline_code": [
+        "APIRouter",
+        "app/routers/users.py",
+        "app/routers/items.py",
+        "app",
+        "."
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            4,
+            5
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[4:5] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0013",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#import-the-apirouter"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0014": {
+      "node_id": "tutorial/bigger-applications::section-0014",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "How the importing works",
+      "anchor_id": "how-the-importing-works",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+      "section_text": "The section:\n\nmeans:\n\n- Starting in the same package that this module (the file app/main.py ) lives in (the directory app/ )...\n\n- look for the subpackage routers (the directory at app/routers/ )...\n\n- and from it, import the submodule items (the file at app/routers/items.py ) and users (the file at app/routers/users.py )...\n\nThe module items will have a variable router ( items.router ). This is the same one we created in the file app/routers/items.py , it's an APIRouter object.\n\nAnd then we do the same for the module users .\n\nWe could also import them like:",
+      "section_inline_code": [
+        "app/main.py",
+        "app/",
+        "routers",
+        "app/routers/",
+        "items",
+        "app/routers/items.py",
+        "users",
+        "app/routers/users.py",
+        "router",
+        "items.router",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from app.routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0015": {
+      "node_id": "tutorial/bigger-applications::section-0015",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Avoid name collisions",
+      "anchor_id": "avoid-name-collisions",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions",
+      "section_text": "We are importing the submodule items directly, instead of importing just its variable router .\n\nThis is because we also have another variable named router in the submodule users .\n\nIf we had imported one after the other, like:\n\nthe router from users would overwrite the one from items and we wouldn't be able to use them at the same time.\n\nSo, to be able to use both of them in the same file, we import the submodules directly:",
+      "section_inline_code": [
+        "items",
+        "router",
+        "users"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            5
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[5] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+        }
+      ],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers.items import router\nfrom .routers.users import router",
+          "section_id": "tutorial/bigger-applications::section-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#avoid-name-collisions"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0016": {
+      "node_id": "tutorial/bigger-applications::section-0016",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include the APIRouters for users and items",
+      "anchor_id": "include-the-apirouters-for-users-and-items",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "section_text": "Now, let's include the router s from the submodules users and items :\n\nWith app.include_router() we can add each APIRouter to the main FastAPI application.\n\nIt will include all the routes from that router as part of it.",
+      "section_inline_code": [
+        "APIRouter",
+        "users",
+        "items",
+        "router",
+        "app.include_router()",
+        "FastAPI"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            10,
+            11
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[10:11] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0016",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0017": {
+      "node_id": "tutorial/bigger-applications::section-0017",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include an APIRouter with a custom prefix, tags, responses, and dependencies",
+      "anchor_id": "include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies",
+      "section_text": "Now, let's imagine your organization gave you the app/internal/admin.py file.\n\nIt contains an APIRouter with some admin path operations that your organization shares between several projects.\n\nFor this example it will be super simple. But let's say that because it is shared with other projects in the organization, we cannot modify it and add a prefix , dependencies , tags , etc. directly to the APIRouter :\n\nBut we still want to set a custom prefix when including the APIRouter so that all its path operations start with /admin , we want to secure it with the dependencies we already have for this project, and we want to include tags and responses .\n\nWe can declare all that without having to modify the original APIRouter by passing those parameters to app.include_router() :\n\nThat way, the original APIRouter will stay unmodified, so we can still share that same app/internal/admin.py file with other projects in the organization.\n\nThe result is that in our app, each of the path operations from the admin module will have:\n\n- The prefix /admin .\n\n- The tag admin .\n\n- The dependency get_token_header .\n\n- The response 418 . 🍵\n\nBut that will only affect that APIRouter in our app, not in any other code that uses it.\n\nSo, for example, other projects could use the same APIRouter with a different authentication method.",
+      "section_inline_code": [
+        "APIRouter",
+        "prefix",
+        "tags",
+        "responses",
+        "dependencies",
+        "app/internal/admin.py",
+        "/admin",
+        "app.include_router()",
+        "admin",
+        "get_token_header",
+        "418"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/internal/admin.py",
+          "highlight_lines": [
+            3
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/internal/admin.py hl[3] title[\"app/internal/admin.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+        },
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[14:17] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0017",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0018": {
+      "node_id": "tutorial/bigger-applications::section-0018",
+      "parent_id": "tutorial/bigger-applications::section-0011",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Include a path operation",
+      "anchor_id": "include-a-path-operation",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+      "section_text": "We can also add path operations directly to the FastAPI app.\n\nHere we do it... just to show that we can 🤷:\n\nand it will work correctly, together with all the other path operations added with app.include_router() .",
+      "section_inline_code": [
+        "FastAPI",
+        "app.include_router()"
+      ],
+      "section_links": [],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/bigger_applications/app_an_py310/main.py",
+          "highlight_lines": [
+            21,
+            22,
+            23
+          ],
+          "raw": "{* ../../docs_src/bigger_applications/app_an_py310/main.py hl[21:23] title[\"app/main.py\"] *}",
+          "section_id": "tutorial/bigger-applications::section-0018",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0019": {
+      "node_id": "tutorial/bigger-applications::section-0019",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Configure the entrypoint in pyproject.toml",
+      "anchor_id": "configure-the-entrypoint-in-pyproject-toml",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+      "section_text": "As your FastAPI app object lives in app/main.py , you can configure the entrypoint in your pyproject.toml file like this:\n\nthat is equivalent to importing like:\n\nThat way the fastapi command will know where to find your app.",
+      "section_inline_code": [
+        "entrypoint",
+        "pyproject.toml",
+        "app",
+        "app/main.py",
+        "fastapi"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "toml",
+          "text": "[tool.fastapi]\nentrypoint = \"app.main:app\"",
+          "section_id": "tutorial/bigger-applications::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        },
+        {
+          "type": "code_block",
+          "language": "python",
+          "text": "from app.main import app",
+          "section_id": "tutorial/bigger-applications::section-0019",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0020": {
+      "node_id": "tutorial/bigger-applications::section-0020",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Check the automatic API docs",
+      "anchor_id": "check-the-automatic-api-docs",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs",
+      "section_text": "Now, run your app:\n\nAnd open the docs at http://127.0.0.1:8000/docs .\n\nYou will see the automatic API docs, including the paths from all the submodules, using the correct paths (and prefixes) and the correct tags:",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "http://127.0.0.1:8000/docs",
+          "url": "http://127.0.0.1:8000/docs",
+          "section_id": "tutorial/bigger-applications::section-0020",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev\n\n<span style=\"color: green;\">INFO</span>:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          "section_id": "tutorial/bigger-applications::section-0020",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#check-the-automatic-api-docs"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0021": {
+      "node_id": "tutorial/bigger-applications::section-0021",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Include the same router multiple times with different prefix",
+      "anchor_id": "include-the-same-router-multiple-times-with-different-prefix",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-same-router-multiple-times-with-different-prefix",
+      "section_text": "You can also use .include_router() multiple times with the same router using different prefixes.\n\nThis could be useful, for example, to expose the same API under different prefixes, e.g. /api/v1 and /api/latest .\n\nThis is an advanced usage that you might not really need, but it's there in case you do.",
+      "section_inline_code": [
+        "prefix",
+        ".include_router()",
+        "/api/v1",
+        "/api/latest"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0022": {
+      "node_id": "tutorial/bigger-applications::section-0022",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Include an APIRouter in another",
+      "anchor_id": "include-an-apirouter-in-another",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another",
+      "section_text": "The same way you can include an APIRouter in a FastAPI application, you can include an APIRouter in another APIRouter using:\n\nMake sure you do it before including router in the FastAPI app, so that the path operations from other_router are also included.",
+      "section_inline_code": [
+        "APIRouter",
+        "FastAPI",
+        "router",
+        "other_router"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "router.include_router(other_router)",
+          "section_id": "tutorial/bigger-applications::section-0022",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-an-apirouter-in-another"
+        }
+      ]
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/bigger-applications::section-0001::admonition-0001",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you come from Flask, this would be the equivalent of Flask's Blueprints."
+      ],
+      "section_text": "If you come from Flask, this would be the equivalent of Flask's Blueprints.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+      "parent_id": "tutorial/bigger-applications::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "There are several __init__.py files: one in each directory or subdirectory.",
+        "This is what allows importing code from one file into another.",
+        "For example, in app/main.py you could have a line like:"
+      ],
+      "section_text": "There are several __init__.py files: one in each directory or subdirectory.\n\nThis is what allows importing code from one file into another.\n\nFor example, in app/main.py you could have a line like:",
+      "section_inline_code": [
+        "__init__.py",
+        "app/main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "from app.routers import items",
+          "section_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0005::admonition-0003",
+      "parent_id": "tutorial/bigger-applications::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "In this example, the variable is called router , but you can name it however you want."
+      ],
+      "section_text": "In this example, the variable is called router , but you can name it however you want.",
+      "section_inline_code": [
+        "router"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+      "parent_id": "tutorial/bigger-applications::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "We are using an invented header to simplify this example.",
+        "But in real cases you will get better results using the integrated Security utilities ."
+      ],
+      "section_text": "We are using an invented header to simplify this example.\n\nBut in real cases you will get better results using the integrated Security utilities .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Security utilities",
+          "url": "security/index.md",
+          "section_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function ."
+      ],
+      "section_text": "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "dependencies in path operation decorators",
+          "url": "dependencies/dependencies-in-path-operation-decorators.md",
+          "section_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0006",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them."
+      ],
+      "section_text": "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them.",
+      "section_inline_code": [
+        "dependencies",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0007",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication."
+      ],
+      "section_text": "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication.",
+      "section_inline_code": [
+        "prefix",
+        "tags",
+        "responses",
+        "dependencies"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0009::admonition-0008",
+      "parent_id": "tutorial/bigger-applications::section-0009",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you know perfectly how imports work, continue to the next section below."
+      ],
+      "section_text": "If you know perfectly how imports work, continue to the next section below.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0010::admonition-0009",
+      "parent_id": "tutorial/bigger-applications::section-0010",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This last path operation will have the combination of tags: [\"items\", \"custom\"] .",
+        "And it will also have both responses in the documentation, one for 404 and one for 403 ."
+      ],
+      "section_text": "This last path operation will have the combination of tags: [\"items\", \"custom\"] .\n\nAnd it will also have both responses in the documentation, one for 404 and one for 403 .",
+      "section_inline_code": [
+        "[\"items\", \"custom\"]",
+        "404",
+        "403"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+      "parent_id": "tutorial/bigger-applications::section-0014",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "The first version is a \"relative import\":",
+        "The second version is an \"absolute import\":",
+        "To learn more about Python Packages and Modules, read the official Python documentation about Modules ."
+      ],
+      "section_text": "The first version is a \"relative import\":\n\nThe second version is an \"absolute import\":\n\nTo learn more about Python Packages and Modules, read the official Python documentation about Modules .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "the official Python documentation about Modules",
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from app.routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ]
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0011",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "users.router contains the APIRouter inside of the file app/routers/users.py .",
+        "And items.router contains the APIRouter inside of the file app/routers/items.py ."
+      ],
+      "section_text": "users.router contains the APIRouter inside of the file app/routers/users.py .\n\nAnd items.router contains the APIRouter inside of the file app/routers/items.py .",
+      "section_inline_code": [
+        "users.router",
+        "APIRouter",
+        "app/routers/users.py",
+        "items.router",
+        "app/routers/items.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0012",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "It will actually internally create a path operation for each path operation that was declared in the APIRouter .",
+        "So, behind the scenes, it will actually work as if everything was the same single app."
+      ],
+      "section_text": "It will actually internally create a path operation for each path operation that was declared in the APIRouter .\n\nSo, behind the scenes, it will actually work as if everything was the same single app.",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0013",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You don't have to worry about performance when including routers.",
+        "This will take microseconds and will only happen at startup.",
+        "So it won't affect performance. ⚡"
+      ],
+      "section_text": "You don't have to worry about performance when including routers.\n\nThis will take microseconds and will only happen at startup.\n\nSo it won't affect performance. ⚡",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0018::admonition-0014",
+      "parent_id": "tutorial/bigger-applications::section-0018",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": "Very Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Note : this is a very technical detail that you probably can just skip .",
+        "The APIRouter s are not \"mounted\", they are not isolated from the rest of the application.",
+        "This is because we want to include their path operations in the OpenAPI schema and the user interfaces.",
+        "As we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly."
+      ],
+      "section_text": "Note : this is a very technical detail that you probably can just skip .\n\nThe APIRouter s are not \"mounted\", they are not isolated from the rest of the application.\n\nThis is because we want to include their path operations in the OpenAPI schema and the user interfaces.\n\nAs we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly.",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+      "parent_id": "tutorial/bigger-applications::section-0019",
+      "node_kind": "admonition",
+      "kind": "Note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also pass the path to the command, like:",
+        "But you would have to remember to pass the correct path every time you call the fastapi command.",
+        "Additionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml ."
+      ],
+      "section_text": "You could also pass the path to the command, like:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+      "section_inline_code": [
+        "fastapi",
+        "entrypoint",
+        "pyproject.toml"
+      ],
+      "section_links": [
+        {
+          "text": "VS Code Extension",
+          "url": "../editor-support.md",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        },
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev app/main.py",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ]
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/bigger-applications::section-0001::admonition-0001": {
+      "node_id": "tutorial/bigger-applications::section-0001::admonition-0001",
+      "parent_id": "tutorial/bigger-applications::section-0001",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#bigger-applications-multiple-files",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you come from Flask, this would be the equivalent of Flask's Blueprints."
+      ],
+      "section_text": "If you come from Flask, this would be the equivalent of Flask's Blueprints.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0002::admonition-0002": {
+      "node_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+      "parent_id": "tutorial/bigger-applications::section-0002",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "There are several __init__.py files: one in each directory or subdirectory.",
+        "This is what allows importing code from one file into another.",
+        "For example, in app/main.py you could have a line like:"
+      ],
+      "section_text": "There are several __init__.py files: one in each directory or subdirectory.\n\nThis is what allows importing code from one file into another.\n\nFor example, in app/main.py you could have a line like:",
+      "section_inline_code": [
+        "__init__.py",
+        "app/main.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": null,
+          "text": "from app.routers import items",
+          "section_id": "tutorial/bigger-applications::section-0002::admonition-0002",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0005::admonition-0003": {
+      "node_id": "tutorial/bigger-applications::section-0005::admonition-0003",
+      "parent_id": "tutorial/bigger-applications::section-0005",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#path-operations-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "In this example, the variable is called router , but you can name it however you want."
+      ],
+      "section_text": "In this example, the variable is called router , but you can name it however you want.",
+      "section_inline_code": [
+        "router"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0006::admonition-0004": {
+      "node_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+      "parent_id": "tutorial/bigger-applications::section-0006",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "We are using an invented header to simplify this example.",
+        "But in real cases you will get better results using the integrated Security utilities ."
+      ],
+      "section_text": "We are using an invented header to simplify this example.\n\nBut in real cases you will get better results using the integrated Security utilities .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Security utilities",
+          "url": "security/index.md",
+          "section_id": "tutorial/bigger-applications::section-0006::admonition-0004",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#dependencies"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0007::admonition-0005": {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function ."
+      ],
+      "section_text": "Note that, much like dependencies in path operation decorators , no value will be passed to your path operation function .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "dependencies in path operation decorators",
+          "url": "dependencies/dependencies-in-path-operation-decorators.md",
+          "section_id": "tutorial/bigger-applications::section-0007::admonition-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0007::admonition-0006": {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0006",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them."
+      ],
+      "section_text": "Having dependencies in the APIRouter can be used, for example, to require authentication for a whole group of path operations . Even if the dependencies are not added individually to each one of them.",
+      "section_inline_code": [
+        "dependencies",
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0007::admonition-0007": {
+      "node_id": "tutorial/bigger-applications::section-0007::admonition-0007",
+      "parent_id": "tutorial/bigger-applications::section-0007",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication."
+      ],
+      "section_text": "The prefix , tags , responses , and dependencies parameters are (as in many other cases) just a feature from FastAPI to help you avoid code duplication.",
+      "section_inline_code": [
+        "prefix",
+        "tags",
+        "responses",
+        "dependencies"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0009::admonition-0008": {
+      "node_id": "tutorial/bigger-applications::section-0009::admonition-0008",
+      "parent_id": "tutorial/bigger-applications::section-0009",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-relative-imports-work",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "If you know perfectly how imports work, continue to the next section below."
+      ],
+      "section_text": "If you know perfectly how imports work, continue to the next section below.",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0010::admonition-0009": {
+      "node_id": "tutorial/bigger-applications::section-0010::admonition-0009",
+      "parent_id": "tutorial/bigger-applications::section-0010",
+      "node_kind": "admonition",
+      "kind": "tip",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#add-some-custom-tags-responses-and-dependencies",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "This last path operation will have the combination of tags: [\"items\", \"custom\"] .",
+        "And it will also have both responses in the documentation, one for 404 and one for 403 ."
+      ],
+      "section_text": "This last path operation will have the combination of tags: [\"items\", \"custom\"] .\n\nAnd it will also have both responses in the documentation, one for 404 and one for 403 .",
+      "section_inline_code": [
+        "[\"items\", \"custom\"]",
+        "404",
+        "403"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0014::admonition-0010": {
+      "node_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+      "parent_id": "tutorial/bigger-applications::section-0014",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "The first version is a \"relative import\":",
+        "The second version is an \"absolute import\":",
+        "To learn more about Python Packages and Modules, read the official Python documentation about Modules ."
+      ],
+      "section_text": "The first version is a \"relative import\":\n\nThe second version is an \"absolute import\":\n\nTo learn more about Python Packages and Modules, read the official Python documentation about Modules .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "the official Python documentation about Modules",
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from .routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        },
+        {
+          "type": "code_block",
+          "language": "Python",
+          "text": "from app.routers import items, users",
+          "section_id": "tutorial/bigger-applications::section-0014::admonition-0010",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#how-the-importing-works"
+        }
+      ]
+    },
+    "tutorial/bigger-applications::section-0016::admonition-0011": {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0011",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "users.router contains the APIRouter inside of the file app/routers/users.py .",
+        "And items.router contains the APIRouter inside of the file app/routers/items.py ."
+      ],
+      "section_text": "users.router contains the APIRouter inside of the file app/routers/users.py .\n\nAnd items.router contains the APIRouter inside of the file app/routers/items.py .",
+      "section_inline_code": [
+        "users.router",
+        "APIRouter",
+        "app/routers/users.py",
+        "items.router",
+        "app/routers/items.py"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0016::admonition-0012": {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0012",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "It will actually internally create a path operation for each path operation that was declared in the APIRouter .",
+        "So, behind the scenes, it will actually work as if everything was the same single app."
+      ],
+      "section_text": "It will actually internally create a path operation for each path operation that was declared in the APIRouter .\n\nSo, behind the scenes, it will actually work as if everything was the same single app.",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0016::admonition-0013": {
+      "node_id": "tutorial/bigger-applications::section-0016::admonition-0013",
+      "parent_id": "tutorial/bigger-applications::section-0016",
+      "node_kind": "admonition",
+      "kind": "check",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-the-apirouters-for-users-and-items",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You don't have to worry about performance when including routers.",
+        "This will take microseconds and will only happen at startup.",
+        "So it won't affect performance. ⚡"
+      ],
+      "section_text": "You don't have to worry about performance when including routers.\n\nThis will take microseconds and will only happen at startup.\n\nSo it won't affect performance. ⚡",
+      "section_inline_code": [],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0018::admonition-0014": {
+      "node_id": "tutorial/bigger-applications::section-0018::admonition-0014",
+      "parent_id": "tutorial/bigger-applications::section-0018",
+      "node_kind": "admonition",
+      "kind": "info",
+      "title": "Very Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#include-a-path-operation",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "Note : this is a very technical detail that you probably can just skip .",
+        "The APIRouter s are not \"mounted\", they are not isolated from the rest of the application.",
+        "This is because we want to include their path operations in the OpenAPI schema and the user interfaces.",
+        "As we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly."
+      ],
+      "section_text": "Note : this is a very technical detail that you probably can just skip .\n\nThe APIRouter s are not \"mounted\", they are not isolated from the rest of the application.\n\nThis is because we want to include their path operations in the OpenAPI schema and the user interfaces.\n\nAs we cannot just isolate them and \"mount\" them independently of the rest, the path operations are \"cloned\" (re-created), not included directly.",
+      "section_inline_code": [
+        "APIRouter"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/bigger-applications::section-0019::admonition-0015": {
+      "node_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+      "parent_id": "tutorial/bigger-applications::section-0019",
+      "node_kind": "admonition",
+      "kind": "Note",
+      "title": null,
+      "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also pass the path to the command, like:",
+        "But you would have to remember to pass the correct path every time you call the fastapi command.",
+        "Additionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml ."
+      ],
+      "section_text": "You could also pass the path to the command, like:\n\nBut you would have to remember to pass the correct path every time you call the fastapi command.\n\nAdditionally, other tools might not be able to find it, for example the VS Code Extension or FastAPI Cloud , so it is recommended to use the entrypoint in pyproject.toml .",
+      "section_inline_code": [
+        "fastapi",
+        "entrypoint",
+        "pyproject.toml"
+      ],
+      "section_links": [
+        {
+          "text": "VS Code Extension",
+          "url": "../editor-support.md",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        },
+        {
+          "text": "FastAPI Cloud",
+          "url": "https://fastapicloud.com",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [
+        {
+          "type": "code_block",
+          "language": "console",
+          "text": "$ fastapi dev app/main.py",
+          "section_id": "tutorial/bigger-applications::section-0019::admonition-0015",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/#configure-the-entrypoint-in-pyproject-toml"
+        }
+      ]
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/bigger-applications::section-0001",
+      "seconds": 4.6553001084248535e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0002",
+      "seconds": 0.00020710200078610796,
+      "paragraphs": 5,
+      "list_items": 8,
+      "code_blocks": 3,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0003",
+      "seconds": 4.6769000618951395e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0004",
+      "seconds": 2.4424000002909452e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0005",
+      "seconds": 7.425699914165307e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0006",
+      "seconds": 5.1168999561923556e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0007",
+      "seconds": 0.0004655779994209297,
+      "paragraphs": 16,
+      "list_items": 12,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 3,
+      "admonitions": 3
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0008",
+      "seconds": 3.23389995173784e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0009",
+      "seconds": 0.0002660849986568792,
+      "paragraphs": 12,
+      "list_items": 12,
+      "code_blocks": 3,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0010",
+      "seconds": 8.303399954456836e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0011",
+      "seconds": 2.4400000256719068e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0012",
+      "seconds": 2.7989000955130905e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0013",
+      "seconds": 2.7758000214817002e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0014",
+      "seconds": 0.0001428479990863707,
+      "paragraphs": 8,
+      "list_items": 3,
+      "code_blocks": 4,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0015",
+      "seconds": 7.238399848574772e-05,
+      "paragraphs": 5,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0016",
+      "seconds": 0.00011397900016163476,
+      "paragraphs": 10,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 3
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0017",
+      "seconds": 0.00015642200014553964,
+      "paragraphs": 9,
+      "list_items": 4,
+      "code_blocks": 0,
+      "code_refs": 2,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0018",
+      "seconds": 9.613400106900372e-05,
+      "paragraphs": 7,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 0,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0019",
+      "seconds": 8.761000026424881e-05,
+      "paragraphs": 6,
+      "list_items": 0,
+      "code_blocks": 3,
+      "code_refs": 0,
+      "links": 2,
+      "admonitions": 1
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0020",
+      "seconds": 5.3285000831237994e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0021",
+      "seconds": 2.8725999072776176e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/bigger-applications::section-0022",
+      "seconds": 7.089300015650224e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 1,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    }
+  ]
+}

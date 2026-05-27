@@ -1,0 +1,69 @@
+{
+  "tutorial/extra-models::section-0001::admonition-0001": {
+    "node_id": "tutorial/extra-models::section-0001::admonition-0001",
+    "parent_id": "tutorial/extra-models::section-0001",
+    "node_kind": "admonition",
+    "kind": "danger",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/extra-models/#extra-models",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Never store user's plaintext passwords. Always store a \"secure hash\" that you can then verify.",
+      "If you don't know, you will learn what a \"password hash\" is in the security chapters ."
+    ],
+    "section_text": "Never store user's plaintext passwords. Always store a \"secure hash\" that you can then verify.\n\nIf you don't know, you will learn what a \"password hash\" is in the security chapters .",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "security chapters",
+        "url": "security/simple-oauth2.md#password-hashing",
+        "section_id": "tutorial/extra-models::section-0001::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/extra-models/#extra-models"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/extra-models::section-0007::admonition-0002": {
+    "node_id": "tutorial/extra-models::section-0007::admonition-0002",
+    "parent_id": "tutorial/extra-models::section-0007",
+    "node_kind": "admonition",
+    "kind": "warning",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/extra-models/#unpacking-a-dict-and-extra-keywords",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "The supporting additional functions fake_password_hasher and fake_save_user are just to demo a possible flow of the data, but they of course are not providing any real security."
+    ],
+    "section_text": "The supporting additional functions fake_password_hasher and fake_save_user are just to demo a possible flow of the data, but they of course are not providing any real security.",
+    "section_inline_code": [
+      "fake_password_hasher",
+      "fake_save_user"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/extra-models::section-0009::admonition-0003": {
+    "node_id": "tutorial/extra-models::section-0009::admonition-0003",
+    "parent_id": "tutorial/extra-models::section-0009",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/extra-models/#union-or-anyof",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "When defining a Union , include the most specific type first, followed by the less specific type. In the example below, the more specific PlaneItem comes before CarItem in Union[PlaneItem, CarItem] ."
+    ],
+    "section_text": "When defining a Union , include the most specific type first, followed by the less specific type. In the example below, the more specific PlaneItem comes before CarItem in Union[PlaneItem, CarItem] .",
+    "section_inline_code": [
+      "Union",
+      "PlaneItem",
+      "CarItem",
+      "Union[PlaneItem, CarItem]"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

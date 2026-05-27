@@ -1,0 +1,52 @@
+[
+  {
+    "node_id": "tutorial/middleware::section-0001",
+    "seconds": 0.00022259400066104718,
+    "paragraphs": 4,
+    "list_items": 6,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/middleware::section-0002",
+    "seconds": 0.000168914000823861,
+    "paragraphs": 6,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 3,
+    "admonitions": 2
+  },
+  {
+    "node_id": "tutorial/middleware::section-0003",
+    "seconds": 5.814100040879566e-05,
+    "paragraphs": 4,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/middleware::section-0004",
+    "seconds": 9.572300041327253e-05,
+    "paragraphs": 8,
+    "list_items": 0,
+    "code_blocks": 1,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/middleware::section-0005",
+    "seconds": 3.770200055441819e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

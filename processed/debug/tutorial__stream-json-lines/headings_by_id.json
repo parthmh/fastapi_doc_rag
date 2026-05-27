@@ -1,0 +1,200 @@
+{
+  "tutorial/stream-json-lines::section-0001": {
+    "node_id": "tutorial/stream-json-lines::section-0001",
+    "parent_id": null,
+    "level": 1,
+    "node_kind": "heading",
+    "heading_text": "Stream JSON Lines",
+    "anchor_id": "stream-json-lines",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#stream-json-lines",
+    "section_text": "You could have a sequence of data that you would like to send in a \" stream \", you could do it with JSON Lines .",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/stream-json-lines::section-0002": {
+    "node_id": "tutorial/stream-json-lines::section-0002",
+    "parent_id": "tutorial/stream-json-lines::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "What is a Stream?",
+    "anchor_id": "what-is-a-stream",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#what-is-a-stream",
+    "section_text": "\" Streaming \" data means that your app will start sending data items to the client without waiting for the entire sequence of items to be ready.\n\nSo, it will send the first item, the client will receive and start processing it, and you might still be producing the next item.\n\nIt could even be an infinite stream, where you keep sending data.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "mermaid",
+        "text": "sequenceDiagram\n    participant App\n    participant Client\n\n    App->>App: Produce Item 1\n    App->>Client: Send Item 1\n    App->>App: Produce Item 2\n    Client->>Client: Process Item 1\n    App->>Client: Send Item 2\n    App->>App: Produce Item 3\n    Client->>Client: Process Item 2\n    App->>Client: Send Item 3\n    Client->>Client: Process Item 3\n    Note over App: Keeps producing...\n    Note over Client: Keeps consuming...",
+        "section_id": "tutorial/stream-json-lines::section-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#what-is-a-stream"
+      }
+    ]
+  },
+  "tutorial/stream-json-lines::section-0003": {
+    "node_id": "tutorial/stream-json-lines::section-0003",
+    "parent_id": "tutorial/stream-json-lines::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "JSON Lines",
+    "anchor_id": "json-lines",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#json-lines",
+    "section_text": "In these cases, it's common to send \" JSON Lines \", which is a format where you send one JSON object per line.\n\nA response would have a content type of application/jsonl (instead of application/json ) and the body would be something like:\n\nIt's very similar to a JSON array (equivalent of a Python list), but instead of being wrapped in [] and having , between the items, it has one JSON object per line , they are separated by a new line character.",
+    "section_inline_code": [
+      "application/jsonl",
+      "application/json",
+      "[]",
+      ","
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "json",
+        "text": "{\"name\": \"Plumbus\", \"description\": \"A multi-purpose household device.\"}\n{\"name\": \"Portal Gun\", \"description\": \"A portal opening device.\"}\n{\"name\": \"Meeseeks Box\", \"description\": \"A box that summons a Meeseeks.\"}",
+        "section_id": "tutorial/stream-json-lines::section-0003",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#json-lines"
+      }
+    ]
+  },
+  "tutorial/stream-json-lines::section-0004": {
+    "node_id": "tutorial/stream-json-lines::section-0004",
+    "parent_id": "tutorial/stream-json-lines::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Use Cases",
+    "anchor_id": "use-cases",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#use-cases",
+    "section_text": "You could use this to stream data from an AI LLM service, from logs or telemetry , or from other types of data that can be structured in JSON items.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/stream-json-lines::section-0005": {
+    "node_id": "tutorial/stream-json-lines::section-0005",
+    "parent_id": "tutorial/stream-json-lines::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Stream JSON Lines with FastAPI",
+    "anchor_id": "stream-json-lines-with-fastapi",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#stream-json-lines-with-fastapi",
+    "section_text": "To stream JSON Lines with FastAPI you can, instead of using return in your path operation function , use yield to produce each item in turn.\n\nIf each JSON item you want to send back is of type Item (a Pydantic model) and it's an async function, you can declare the return type as AsyncIterable[Item] :\n\nIf you declare the return type, FastAPI will use it to validate the data, document it in OpenAPI, filter it, and serialize it using Pydantic.",
+    "section_inline_code": [
+      "return",
+      "yield",
+      "Item",
+      "AsyncIterable[Item]"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/stream_json_lines/tutorial001_py310.py",
+        "highlight_lines": [
+          24
+        ],
+        "raw": "{* ../../docs_src/stream_json_lines/tutorial001_py310.py ln[1:24] hl[24] *}",
+        "section_id": "tutorial/stream-json-lines::section-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#stream-json-lines-with-fastapi"
+      },
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/stream_json_lines/tutorial001_py310.py",
+        "highlight_lines": [
+          9,
+          10,
+          11,
+          22
+        ],
+        "raw": "{* ../../docs_src/stream_json_lines/tutorial001_py310.py ln[1:24] hl[9:11,22] *}",
+        "section_id": "tutorial/stream-json-lines::section-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#stream-json-lines-with-fastapi"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/stream-json-lines::section-0006": {
+    "node_id": "tutorial/stream-json-lines::section-0006",
+    "parent_id": "tutorial/stream-json-lines::section-0005",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "Non-async path operation functions",
+    "anchor_id": "non-async-path-operation-functions",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#non-async-path-operation-functions",
+    "section_text": "You can also use regular def functions (without async ), and use yield the same way.\n\nFastAPI will make sure it's run correctly so that it doesn't block the event loop.\n\nAs in this case the function is not async, the right return type would be Iterable[Item] :",
+    "section_inline_code": [
+      "def",
+      "async",
+      "yield",
+      "Iterable[Item]"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/stream_json_lines/tutorial001_py310.py",
+        "highlight_lines": [
+          28
+        ],
+        "raw": "{* ../../docs_src/stream_json_lines/tutorial001_py310.py ln[27:30] hl[28] *}",
+        "section_id": "tutorial/stream-json-lines::section-0006",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#non-async-path-operation-functions"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/stream-json-lines::section-0007": {
+    "node_id": "tutorial/stream-json-lines::section-0007",
+    "parent_id": "tutorial/stream-json-lines::section-0005",
+    "level": 3,
+    "node_kind": "heading",
+    "heading_text": "No Return Type",
+    "anchor_id": "no-return-type",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#no-return-type",
+    "section_text": "You can also omit the return type. FastAPI will then use the jsonable_encoder to convert the data to something that can be serialized to JSON and then send it as JSON Lines.",
+    "section_inline_code": [
+      "jsonable_encoder"
+    ],
+    "section_links": [],
+    "code_refs": [
+      {
+        "type": "code_ref",
+        "path": "../../docs_src/stream_json_lines/tutorial001_py310.py",
+        "highlight_lines": [
+          34
+        ],
+        "raw": "{* ../../docs_src/stream_json_lines/tutorial001_py310.py ln[33:36] hl[34] *}",
+        "section_id": "tutorial/stream-json-lines::section-0007",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#no-return-type"
+      }
+    ],
+    "code_blocks": []
+  },
+  "tutorial/stream-json-lines::section-0008": {
+    "node_id": "tutorial/stream-json-lines::section-0008",
+    "parent_id": "tutorial/stream-json-lines::section-0001",
+    "level": 2,
+    "node_kind": "heading",
+    "heading_text": "Server-Sent Events (SSE)",
+    "anchor_id": "server-sent-events-sse",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#server-sent-events-sse",
+    "section_text": "FastAPI also has first-class support for Server-Sent Events (SSE), which are quite similar but with a couple of extra details. You can learn about them in the next chapter: Server-Sent Events (SSE) . 🤓",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "Server-Sent Events (SSE)",
+        "url": "server-sent-events.md",
+        "section_id": "tutorial/stream-json-lines::section-0008",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/#server-sent-events-sse"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

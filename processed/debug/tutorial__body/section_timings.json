@@ -1,0 +1,112 @@
+[
+  {
+    "node_id": "tutorial/body::section-0001",
+    "seconds": 0.00012735499876725953,
+    "paragraphs": 7,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/body::section-0002",
+    "seconds": 2.1613001081277616e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0003",
+    "seconds": 6.54560008115368e-05,
+    "paragraphs": 5,
+    "list_items": 0,
+    "code_blocks": 2,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0004",
+    "seconds": 2.8200998713145964e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0005",
+    "seconds": 0.00011551600073289592,
+    "paragraphs": 1,
+    "list_items": 4,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0006",
+    "seconds": 4.24939989898121e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0007",
+    "seconds": 0.00012397200043778867,
+    "paragraphs": 9,
+    "list_items": 5,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 4,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/body::section-0008",
+    "seconds": 1.3336000847630203e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0009",
+    "seconds": 3.815099989878945e-05,
+    "paragraphs": 2,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 0
+  },
+  {
+    "node_id": "tutorial/body::section-0010",
+    "seconds": 0.00015038899982755538,
+    "paragraphs": 6,
+    "list_items": 3,
+    "code_blocks": 0,
+    "code_refs": 1,
+    "links": 0,
+    "admonitions": 1
+  },
+  {
+    "node_id": "tutorial/body::section-0011",
+    "seconds": 2.937399949587416e-05,
+    "paragraphs": 1,
+    "list_items": 0,
+    "code_blocks": 0,
+    "code_refs": 0,
+    "links": 1,
+    "admonitions": 0
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "tutorial/body::section-0001::admonition-0001": {
+    "node_id": "tutorial/body::section-0001::admonition-0001",
+    "parent_id": "tutorial/body::section-0001",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body/#request-body",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To send data, you should use one of: POST (the more common), PUT , DELETE or PATCH .",
+      "Sending a body with a GET request has an undefined behavior in the specifications, nevertheless, it is supported by FastAPI, only for very complex/extreme use cases.",
+      "As it is discouraged, the interactive docs with Swagger UI won't show the documentation for the body when using GET , and proxies in the middle might not support it."
+    ],
+    "section_text": "To send data, you should use one of: POST (the more common), PUT , DELETE or PATCH .\n\nSending a body with a GET request has an undefined behavior in the specifications, nevertheless, it is supported by FastAPI, only for very complex/extreme use cases.\n\nAs it is discouraged, the interactive docs with Swagger UI won't show the documentation for the body when using GET , and proxies in the middle might not support it.",
+    "section_inline_code": [
+      "POST",
+      "PUT",
+      "DELETE",
+      "PATCH",
+      "GET"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body::section-0007::admonition-0002": {
+    "node_id": "tutorial/body::section-0007::admonition-0002",
+    "parent_id": "tutorial/body::section-0007",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body/#editor-support",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If you use PyCharm as your editor, you can use the Pydantic PyCharm Plugin .",
+      "It improves editor support for Pydantic models, with:",
+      "- auto-completion",
+      "- type checks",
+      "- refactoring",
+      "- searching",
+      "- inspections"
+    ],
+    "section_text": "If you use PyCharm as your editor, you can use the Pydantic PyCharm Plugin .\n\nIt improves editor support for Pydantic models, with:\n\n- auto-completion\n\n- type checks\n\n- refactoring\n\n- searching\n\n- inspections",
+    "section_inline_code": [],
+    "section_links": [
+      {
+        "text": "PyCharm",
+        "url": "https://www.jetbrains.com/pycharm/",
+        "section_id": "tutorial/body::section-0007::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body/#editor-support"
+      },
+      {
+        "text": "Pydantic PyCharm Plugin",
+        "url": "https://github.com/koxudaxi/pydantic-pycharm-plugin/",
+        "section_id": "tutorial/body::section-0007::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/body/#editor-support"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/body::section-0010::admonition-0003": {
+    "node_id": "tutorial/body::section-0010::admonition-0003",
+    "parent_id": "tutorial/body::section-0010",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/body/#request-body-path-query-parameters",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "FastAPI will know that the value of q is not required because of the default value = None .",
+      "The str | None is not used by FastAPI to determine that the value is not required, it will know it's not required because it has a default value of = None .",
+      "But adding the type annotations will allow your editor to give you better support and detect errors."
+    ],
+    "section_text": "FastAPI will know that the value of q is not required because of the default value = None .\n\nThe str | None is not used by FastAPI to determine that the value is not required, it will know it's not required because it has a default value of = None .\n\nBut adding the type annotations will allow your editor to give you better support and detect errors.",
+    "section_inline_code": [
+      "q",
+      "= None",
+      "str | None"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

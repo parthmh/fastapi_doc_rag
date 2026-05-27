@@ -1,0 +1,51 @@
+{
+  "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002::admonition-0001": {
+    "node_id": "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002::admonition-0001",
+    "parent_id": "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Some editors check for unused function parameters, and show them as errors.",
+      "Using these dependencies in the path operation decorator you can make sure they are executed while avoiding editor/tooling errors.",
+      "It might also help avoid confusion for new developers that see an unused parameter in your code and could think it's unnecessary."
+    ],
+    "section_text": "Some editors check for unused function parameters, and show them as errors.\n\nUsing these dependencies in the path operation decorator you can make sure they are executed while avoiding editor/tooling errors.\n\nIt might also help avoid confusion for new developers that see an unused parameter in your code and could think it's unnecessary.",
+    "section_inline_code": [
+      "dependencies"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002::admonition-0002": {
+    "node_id": "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002::admonition-0002",
+    "parent_id": "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "In this example we use invented custom headers X-Key and X-Token .",
+      "But in real cases, when implementing security, you would get more benefits from using the integrated Security utilities (the next chapter) ."
+    ],
+    "section_text": "In this example we use invented custom headers X-Key and X-Token .\n\nBut in real cases, when implementing security, you would get more benefits from using the integrated Security utilities (the next chapter) .",
+    "section_inline_code": [
+      "X-Key",
+      "X-Token"
+    ],
+    "section_links": [
+      {
+        "text": "Security utilities (the next chapter)",
+        "url": "../security/index.md",
+        "section_id": "tutorial/dependencies/dependencies-in-path-operation-decorators::section-0002::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

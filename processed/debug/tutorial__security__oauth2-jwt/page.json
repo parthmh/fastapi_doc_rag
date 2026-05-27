@@ -1,0 +1,7 @@
+{
+  "page_id": "tutorial/security/oauth2-jwt",
+  "page_uid": "c113f8fb39b792c47f5c2b4bab21690d0f54b417",
+  "page_title": "OAuth2 with Password (and hashing), Bearer with JWT tokens",
+  "page_url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+  "source_file": "tutorial/security/oauth2-jwt.md"
+}

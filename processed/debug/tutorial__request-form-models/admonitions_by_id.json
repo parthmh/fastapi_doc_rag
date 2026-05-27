@@ -1,0 +1,75 @@
+{
+  "tutorial/request-form-models::section-0001::admonition-0001": {
+    "node_id": "tutorial/request-form-models::section-0001::admonition-0001",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "node_kind": "admonition",
+    "kind": "info",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#form-models",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "To use forms, first install python-multipart .",
+      "Make sure you create a virtual environment , activate it, and then install it, for example:"
+    ],
+    "section_text": "To use forms, first install python-multipart .\n\nMake sure you create a virtual environment , activate it, and then install it, for example:",
+    "section_inline_code": [
+      "python-multipart"
+    ],
+    "section_links": [
+      {
+        "text": "virtual environment",
+        "url": "../virtual-environments.md",
+        "section_id": "tutorial/request-form-models::section-0001::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#form-models"
+      }
+    ],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "console",
+        "text": "$ pip install python-multipart",
+        "section_id": "tutorial/request-form-models::section-0001::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#form-models"
+      }
+    ]
+  },
+  "tutorial/request-form-models::section-0001::admonition-0002": {
+    "node_id": "tutorial/request-form-models::section-0001::admonition-0002",
+    "parent_id": "tutorial/request-form-models::section-0001",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#form-models",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is supported since FastAPI version 0.113.0 . 🤓"
+    ],
+    "section_text": "This is supported since FastAPI version 0.113.0 . 🤓",
+    "section_inline_code": [
+      "0.113.0"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/request-form-models::section-0004::admonition-0003": {
+    "node_id": "tutorial/request-form-models::section-0004::admonition-0003",
+    "parent_id": "tutorial/request-form-models::section-0004",
+    "node_kind": "admonition",
+    "kind": "note",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/#forbid-extra-form-fields",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "This is supported since FastAPI version 0.114.0 . 🤓"
+    ],
+    "section_text": "This is supported since FastAPI version 0.114.0 . 🤓",
+    "section_inline_code": [
+      "0.114.0"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}

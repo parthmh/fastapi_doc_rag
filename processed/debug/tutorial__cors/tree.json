@@ -1,0 +1,854 @@
+{
+  "page": {
+    "page_id": "tutorial/cors",
+    "page_uid": "5e40a514a934c28dd0ba5ed9798d0c9c7dd60afb",
+    "page_title": "CORS (Cross-Origin Resource Sharing)",
+    "page_url": "https://fastapi.tiangolo.com/tutorial/cors/",
+    "source_file": "tutorial/cors.md"
+  },
+  "roots": [
+    {
+      "node_id": "tutorial/cors::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "CORS (Cross-Origin Resource Sharing)",
+      "anchor_id": "cors-cross-origin-resource-sharing",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing",
+      "section_text_parts": [
+        "CORS or \"Cross-Origin Resource Sharing\" refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend."
+      ],
+      "section_text": "CORS or \"Cross-Origin Resource Sharing\" refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "CORS or \"Cross-Origin Resource Sharing\"",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "section_id": "tutorial/cors::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": [],
+      "children": [
+        {
+          "node_id": "tutorial/cors::section-0002",
+          "parent_id": "tutorial/cors::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Origin",
+          "anchor_id": "origin",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#origin",
+          "section_text_parts": [
+            "An origin is the combination of protocol ( http , https ), domain ( myapp.com , localhost , localhost.tiangolo.com ), and port ( 80 , 443 , 8080 ).",
+            "So, all these are different origins:",
+            "- http://localhost",
+            "- https://localhost",
+            "- http://localhost:8080",
+            "Even if they are all in localhost , they use different protocols or ports, so, they are different \"origins\"."
+          ],
+          "section_text": "An origin is the combination of protocol ( http , https ), domain ( myapp.com , localhost , localhost.tiangolo.com ), and port ( 80 , 443 , 8080 ).\n\nSo, all these are different origins:\n\n- http://localhost\n\n- https://localhost\n\n- http://localhost:8080\n\nEven if they are all in localhost , they use different protocols or ports, so, they are different \"origins\".",
+          "section_inline_code": [
+            "http",
+            "https",
+            "myapp.com",
+            "localhost",
+            "localhost.tiangolo.com",
+            "80",
+            "443",
+            "8080",
+            "http://localhost",
+            "https://localhost",
+            "http://localhost:8080"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/cors::section-0003",
+          "parent_id": "tutorial/cors::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Steps",
+          "anchor_id": "steps",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#steps",
+          "section_text_parts": [
+            "So, let's say you have a frontend running in your browser at http://localhost:8080 , and its JavaScript is trying to communicate with a backend running at http://localhost (because we don't specify a port, the browser will assume the default port 80 ).",
+            "Then, the browser will send an HTTP OPTIONS request to the :80 -backend, and if the backend sends the appropriate headers authorizing the communication from this different origin ( http://localhost:8080 ) then the :8080 -browser will let the JavaScript in the frontend send its request to the :80 -backend.",
+            "To achieve this, the :80 -backend must have a list of \"allowed origins\".",
+            "In this case, the list would have to include http://localhost:8080 for the :8080 -frontend to work correctly."
+          ],
+          "section_text": "So, let's say you have a frontend running in your browser at http://localhost:8080 , and its JavaScript is trying to communicate with a backend running at http://localhost (because we don't specify a port, the browser will assume the default port 80 ).\n\nThen, the browser will send an HTTP OPTIONS request to the :80 -backend, and if the backend sends the appropriate headers authorizing the communication from this different origin ( http://localhost:8080 ) then the :8080 -browser will let the JavaScript in the frontend send its request to the :80 -backend.\n\nTo achieve this, the :80 -backend must have a list of \"allowed origins\".\n\nIn this case, the list would have to include http://localhost:8080 for the :8080 -frontend to work correctly.",
+          "section_inline_code": [
+            "http://localhost:8080",
+            "http://localhost",
+            "80",
+            "OPTIONS",
+            ":80",
+            ":8080"
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/cors::section-0004",
+          "parent_id": "tutorial/cors::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Wildcards",
+          "anchor_id": "wildcards",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#wildcards",
+          "section_text_parts": [
+            "It's also possible to declare the list as \"*\" (a \"wildcard\") to say that all are allowed.",
+            "But that will only allow certain types of communication, excluding everything that involves credentials: Cookies, Authorization headers like those used with Bearer Tokens, etc.",
+            "So, for everything to work correctly, it's better to specify explicitly the allowed origins."
+          ],
+          "section_text": "It's also possible to declare the list as \"*\" (a \"wildcard\") to say that all are allowed.\n\nBut that will only allow certain types of communication, excluding everything that involves credentials: Cookies, Authorization headers like those used with Bearer Tokens, etc.\n\nSo, for everything to work correctly, it's better to specify explicitly the allowed origins.",
+          "section_inline_code": [
+            "\"*\""
+          ],
+          "section_links": [],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        },
+        {
+          "node_id": "tutorial/cors::section-0005",
+          "parent_id": "tutorial/cors::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "Use CORSMiddleware",
+          "anchor_id": "use-corsmiddleware",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware",
+          "section_text_parts": [
+            "You can configure it in your FastAPI application using the CORSMiddleware .",
+            "- Import CORSMiddleware .",
+            "- Create a list of allowed origins (as strings).",
+            "- Add it as a \"middleware\" to your FastAPI application.",
+            "You can also specify whether your backend allows:",
+            "- Credentials (Authorization headers, Cookies, etc).",
+            "- Specific HTTP methods ( POST , PUT ) or all of them with the wildcard \"*\" .",
+            "- Specific HTTP headers or all of them with the wildcard \"*\" .",
+            "The default parameters used by the CORSMiddleware implementation are restrictive by default, so you'll need to explicitly enable particular origins, methods, or headers, in order for browsers to be permitted to use them in a Cross-Domain context.",
+            "The following arguments are supported:",
+            "allow_origins - A list of origins that should be permitted to make cross-origin requests. E.g. ['https://example.org', 'https://www.example.org'] . You can use ['*'] to allow any origin.",
+            "allow_origin_regex - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. 'https://.*\\.example\\.org' .",
+            "allow_methods - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to ['GET'] . You can use ['*'] to allow all standard methods.",
+            "allow_headers - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to [] . You can use ['*'] to allow all headers. The Accept , Accept-Language , Content-Language and Content-Type headers are always allowed for simple CORS requests .",
+            "allow_credentials - Indicate that cookies should be supported for cross-origin requests. Defaults to False .",
+            "None of allow_origins , allow_methods and allow_headers can be set to ['*'] if allow_credentials is set to True . All of them must be explicitly specified .",
+            "expose_headers - Indicate any response headers that should be made accessible to the browser. Defaults to [] .",
+            "max_age - Sets a maximum time in seconds for browsers to cache CORS responses. Defaults to 600 .",
+            "The middleware responds to two particular types of HTTP request..."
+          ],
+          "section_text": "You can configure it in your FastAPI application using the CORSMiddleware .\n\n- Import CORSMiddleware .\n\n- Create a list of allowed origins (as strings).\n\n- Add it as a \"middleware\" to your FastAPI application.\n\nYou can also specify whether your backend allows:\n\n- Credentials (Authorization headers, Cookies, etc).\n\n- Specific HTTP methods ( POST , PUT ) or all of them with the wildcard \"*\" .\n\n- Specific HTTP headers or all of them with the wildcard \"*\" .\n\nThe default parameters used by the CORSMiddleware implementation are restrictive by default, so you'll need to explicitly enable particular origins, methods, or headers, in order for browsers to be permitted to use them in a Cross-Domain context.\n\nThe following arguments are supported:\n\nallow_origins - A list of origins that should be permitted to make cross-origin requests. E.g. ['https://example.org', 'https://www.example.org'] . You can use ['*'] to allow any origin.\n\nallow_origin_regex - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. 'https://.*\\.example\\.org' .\n\nallow_methods - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to ['GET'] . You can use ['*'] to allow all standard methods.\n\nallow_headers - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to [] . You can use ['*'] to allow all headers. The Accept , Accept-Language , Content-Language and Content-Type headers are always allowed for simple CORS requests .\n\nallow_credentials - Indicate that cookies should be supported for cross-origin requests. Defaults to False .\n\nNone of allow_origins , allow_methods and allow_headers can be set to ['*'] if allow_credentials is set to True . All of them must be explicitly specified .\n\nexpose_headers - Indicate any response headers that should be made accessible to the browser. Defaults to [] .\n\nmax_age - Sets a maximum time in seconds for browsers to cache CORS responses. Defaults to 600 .\n\nThe middleware responds to two particular types of HTTP request...",
+          "section_inline_code": [
+            "CORSMiddleware",
+            "POST",
+            "PUT",
+            "\"*\"",
+            "allow_origins",
+            "['https://example.org', 'https://www.example.org']",
+            "['*']",
+            "allow_origin_regex",
+            "'https://.*\\.example\\.org'",
+            "allow_methods",
+            "['GET']",
+            "allow_headers",
+            "[]",
+            "Accept",
+            "Accept-Language",
+            "Content-Language",
+            "Content-Type",
+            "allow_credentials",
+            "False",
+            "True",
+            "expose_headers",
+            "max_age",
+            "600"
+          ],
+          "section_links": [
+            {
+              "text": "simple CORS requests",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests",
+              "section_id": "tutorial/cors::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+            },
+            {
+              "text": "explicitly specified",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards",
+              "section_id": "tutorial/cors::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+            }
+          ],
+          "code_refs": [
+            {
+              "type": "code_ref",
+              "path": "../../docs_src/cors/tutorial001_py310.py",
+              "highlight_lines": [
+                2,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ],
+              "raw": "{* ../../docs_src/cors/tutorial001_py310.py hl[2,6:11,13:19] *}",
+              "section_id": "tutorial/cors::section-0005",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+            }
+          ],
+          "code_blocks": [],
+          "children": [
+            {
+              "node_id": "tutorial/cors::section-0006",
+              "parent_id": "tutorial/cors::section-0005",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "CORS preflight requests",
+              "anchor_id": "cors-preflight-requests",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-preflight-requests",
+              "section_text_parts": [
+                "These are any OPTIONS request with Origin and Access-Control-Request-Method headers.",
+                "In this case the middleware will intercept the incoming request and respond with appropriate CORS headers, and either a 200 or 400 response for informational purposes."
+              ],
+              "section_text": "These are any OPTIONS request with Origin and Access-Control-Request-Method headers.\n\nIn this case the middleware will intercept the incoming request and respond with appropriate CORS headers, and either a 200 or 400 response for informational purposes.",
+              "section_inline_code": [
+                "OPTIONS",
+                "Origin",
+                "Access-Control-Request-Method",
+                "200",
+                "400"
+              ],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            },
+            {
+              "node_id": "tutorial/cors::section-0007",
+              "parent_id": "tutorial/cors::section-0005",
+              "level": 3,
+              "node_kind": "heading",
+              "heading_text": "Simple requests",
+              "anchor_id": "simple-requests",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#simple-requests",
+              "section_text_parts": [
+                "Any request with an Origin header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response."
+              ],
+              "section_text": "Any request with an Origin header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response.",
+              "section_inline_code": [
+                "Origin"
+              ],
+              "section_links": [],
+              "code_refs": [],
+              "code_blocks": [],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tutorial/cors::section-0008",
+          "parent_id": "tutorial/cors::section-0001",
+          "level": 2,
+          "node_kind": "heading",
+          "heading_text": "More info",
+          "anchor_id": "more-info",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+          "section_text_parts": [
+            "For more info about CORS , check the Mozilla CORS documentation ."
+          ],
+          "section_text": "For more info about CORS , check the Mozilla CORS documentation .",
+          "section_inline_code": [],
+          "section_links": [
+            {
+              "text": "Mozilla CORS documentation",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+              "section_id": "tutorial/cors::section-0008",
+              "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info"
+            }
+          ],
+          "code_refs": [],
+          "code_blocks": [],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "flat_nodes": [
+    {
+      "node_id": "tutorial/cors::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "CORS (Cross-Origin Resource Sharing)",
+      "anchor_id": "cors-cross-origin-resource-sharing",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing",
+      "section_text": "CORS or \"Cross-Origin Resource Sharing\" refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "CORS or \"Cross-Origin Resource Sharing\"",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "section_id": "tutorial/cors::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0002",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Origin",
+      "anchor_id": "origin",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#origin",
+      "section_text": "An origin is the combination of protocol ( http , https ), domain ( myapp.com , localhost , localhost.tiangolo.com ), and port ( 80 , 443 , 8080 ).\n\nSo, all these are different origins:\n\n- http://localhost\n\n- https://localhost\n\n- http://localhost:8080\n\nEven if they are all in localhost , they use different protocols or ports, so, they are different \"origins\".",
+      "section_inline_code": [
+        "http",
+        "https",
+        "myapp.com",
+        "localhost",
+        "localhost.tiangolo.com",
+        "80",
+        "443",
+        "8080",
+        "http://localhost",
+        "https://localhost",
+        "http://localhost:8080"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0003",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Steps",
+      "anchor_id": "steps",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#steps",
+      "section_text": "So, let's say you have a frontend running in your browser at http://localhost:8080 , and its JavaScript is trying to communicate with a backend running at http://localhost (because we don't specify a port, the browser will assume the default port 80 ).\n\nThen, the browser will send an HTTP OPTIONS request to the :80 -backend, and if the backend sends the appropriate headers authorizing the communication from this different origin ( http://localhost:8080 ) then the :8080 -browser will let the JavaScript in the frontend send its request to the :80 -backend.\n\nTo achieve this, the :80 -backend must have a list of \"allowed origins\".\n\nIn this case, the list would have to include http://localhost:8080 for the :8080 -frontend to work correctly.",
+      "section_inline_code": [
+        "http://localhost:8080",
+        "http://localhost",
+        "80",
+        "OPTIONS",
+        ":80",
+        ":8080"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0004",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Wildcards",
+      "anchor_id": "wildcards",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#wildcards",
+      "section_text": "It's also possible to declare the list as \"*\" (a \"wildcard\") to say that all are allowed.\n\nBut that will only allow certain types of communication, excluding everything that involves credentials: Cookies, Authorization headers like those used with Bearer Tokens, etc.\n\nSo, for everything to work correctly, it's better to specify explicitly the allowed origins.",
+      "section_inline_code": [
+        "\"*\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0005",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use CORSMiddleware",
+      "anchor_id": "use-corsmiddleware",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware",
+      "section_text": "You can configure it in your FastAPI application using the CORSMiddleware .\n\n- Import CORSMiddleware .\n\n- Create a list of allowed origins (as strings).\n\n- Add it as a \"middleware\" to your FastAPI application.\n\nYou can also specify whether your backend allows:\n\n- Credentials (Authorization headers, Cookies, etc).\n\n- Specific HTTP methods ( POST , PUT ) or all of them with the wildcard \"*\" .\n\n- Specific HTTP headers or all of them with the wildcard \"*\" .\n\nThe default parameters used by the CORSMiddleware implementation are restrictive by default, so you'll need to explicitly enable particular origins, methods, or headers, in order for browsers to be permitted to use them in a Cross-Domain context.\n\nThe following arguments are supported:\n\nallow_origins - A list of origins that should be permitted to make cross-origin requests. E.g. ['https://example.org', 'https://www.example.org'] . You can use ['*'] to allow any origin.\n\nallow_origin_regex - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. 'https://.*\\.example\\.org' .\n\nallow_methods - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to ['GET'] . You can use ['*'] to allow all standard methods.\n\nallow_headers - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to [] . You can use ['*'] to allow all headers. The Accept , Accept-Language , Content-Language and Content-Type headers are always allowed for simple CORS requests .\n\nallow_credentials - Indicate that cookies should be supported for cross-origin requests. Defaults to False .\n\nNone of allow_origins , allow_methods and allow_headers can be set to ['*'] if allow_credentials is set to True . All of them must be explicitly specified .\n\nexpose_headers - Indicate any response headers that should be made accessible to the browser. Defaults to [] .\n\nmax_age - Sets a maximum time in seconds for browsers to cache CORS responses. Defaults to 600 .\n\nThe middleware responds to two particular types of HTTP request...",
+      "section_inline_code": [
+        "CORSMiddleware",
+        "POST",
+        "PUT",
+        "\"*\"",
+        "allow_origins",
+        "['https://example.org', 'https://www.example.org']",
+        "['*']",
+        "allow_origin_regex",
+        "'https://.*\\.example\\.org'",
+        "allow_methods",
+        "['GET']",
+        "allow_headers",
+        "[]",
+        "Accept",
+        "Accept-Language",
+        "Content-Language",
+        "Content-Type",
+        "allow_credentials",
+        "False",
+        "True",
+        "expose_headers",
+        "max_age",
+        "600"
+      ],
+      "section_links": [
+        {
+          "text": "simple CORS requests",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        },
+        {
+          "text": "explicitly specified",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/cors/tutorial001_py310.py",
+          "highlight_lines": [
+            2,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "raw": "{* ../../docs_src/cors/tutorial001_py310.py hl[2,6:11,13:19] *}",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0006",
+      "parent_id": "tutorial/cors::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "CORS preflight requests",
+      "anchor_id": "cors-preflight-requests",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-preflight-requests",
+      "section_text": "These are any OPTIONS request with Origin and Access-Control-Request-Method headers.\n\nIn this case the middleware will intercept the incoming request and respond with appropriate CORS headers, and either a 200 or 400 response for informational purposes.",
+      "section_inline_code": [
+        "OPTIONS",
+        "Origin",
+        "Access-Control-Request-Method",
+        "200",
+        "400"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0007",
+      "parent_id": "tutorial/cors::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Simple requests",
+      "anchor_id": "simple-requests",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#simple-requests",
+      "section_text": "Any request with an Origin header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response.",
+      "section_inline_code": [
+        "Origin"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    {
+      "node_id": "tutorial/cors::section-0008",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "More info",
+      "anchor_id": "more-info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+      "section_text": "For more info about CORS , check the Mozilla CORS documentation .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Mozilla CORS documentation",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "section_id": "tutorial/cors::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "nodes_by_id": {
+    "tutorial/cors::section-0001": {
+      "node_id": "tutorial/cors::section-0001",
+      "parent_id": null,
+      "level": 1,
+      "node_kind": "heading",
+      "heading_text": "CORS (Cross-Origin Resource Sharing)",
+      "anchor_id": "cors-cross-origin-resource-sharing",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing",
+      "section_text": "CORS or \"Cross-Origin Resource Sharing\" refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "CORS or \"Cross-Origin Resource Sharing\"",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "section_id": "tutorial/cors::section-0001",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0002": {
+      "node_id": "tutorial/cors::section-0002",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Origin",
+      "anchor_id": "origin",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#origin",
+      "section_text": "An origin is the combination of protocol ( http , https ), domain ( myapp.com , localhost , localhost.tiangolo.com ), and port ( 80 , 443 , 8080 ).\n\nSo, all these are different origins:\n\n- http://localhost\n\n- https://localhost\n\n- http://localhost:8080\n\nEven if they are all in localhost , they use different protocols or ports, so, they are different \"origins\".",
+      "section_inline_code": [
+        "http",
+        "https",
+        "myapp.com",
+        "localhost",
+        "localhost.tiangolo.com",
+        "80",
+        "443",
+        "8080",
+        "http://localhost",
+        "https://localhost",
+        "http://localhost:8080"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0003": {
+      "node_id": "tutorial/cors::section-0003",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Steps",
+      "anchor_id": "steps",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#steps",
+      "section_text": "So, let's say you have a frontend running in your browser at http://localhost:8080 , and its JavaScript is trying to communicate with a backend running at http://localhost (because we don't specify a port, the browser will assume the default port 80 ).\n\nThen, the browser will send an HTTP OPTIONS request to the :80 -backend, and if the backend sends the appropriate headers authorizing the communication from this different origin ( http://localhost:8080 ) then the :8080 -browser will let the JavaScript in the frontend send its request to the :80 -backend.\n\nTo achieve this, the :80 -backend must have a list of \"allowed origins\".\n\nIn this case, the list would have to include http://localhost:8080 for the :8080 -frontend to work correctly.",
+      "section_inline_code": [
+        "http://localhost:8080",
+        "http://localhost",
+        "80",
+        "OPTIONS",
+        ":80",
+        ":8080"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0004": {
+      "node_id": "tutorial/cors::section-0004",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Wildcards",
+      "anchor_id": "wildcards",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#wildcards",
+      "section_text": "It's also possible to declare the list as \"*\" (a \"wildcard\") to say that all are allowed.\n\nBut that will only allow certain types of communication, excluding everything that involves credentials: Cookies, Authorization headers like those used with Bearer Tokens, etc.\n\nSo, for everything to work correctly, it's better to specify explicitly the allowed origins.",
+      "section_inline_code": [
+        "\"*\""
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0005": {
+      "node_id": "tutorial/cors::section-0005",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "Use CORSMiddleware",
+      "anchor_id": "use-corsmiddleware",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware",
+      "section_text": "You can configure it in your FastAPI application using the CORSMiddleware .\n\n- Import CORSMiddleware .\n\n- Create a list of allowed origins (as strings).\n\n- Add it as a \"middleware\" to your FastAPI application.\n\nYou can also specify whether your backend allows:\n\n- Credentials (Authorization headers, Cookies, etc).\n\n- Specific HTTP methods ( POST , PUT ) or all of them with the wildcard \"*\" .\n\n- Specific HTTP headers or all of them with the wildcard \"*\" .\n\nThe default parameters used by the CORSMiddleware implementation are restrictive by default, so you'll need to explicitly enable particular origins, methods, or headers, in order for browsers to be permitted to use them in a Cross-Domain context.\n\nThe following arguments are supported:\n\nallow_origins - A list of origins that should be permitted to make cross-origin requests. E.g. ['https://example.org', 'https://www.example.org'] . You can use ['*'] to allow any origin.\n\nallow_origin_regex - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. 'https://.*\\.example\\.org' .\n\nallow_methods - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to ['GET'] . You can use ['*'] to allow all standard methods.\n\nallow_headers - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to [] . You can use ['*'] to allow all headers. The Accept , Accept-Language , Content-Language and Content-Type headers are always allowed for simple CORS requests .\n\nallow_credentials - Indicate that cookies should be supported for cross-origin requests. Defaults to False .\n\nNone of allow_origins , allow_methods and allow_headers can be set to ['*'] if allow_credentials is set to True . All of them must be explicitly specified .\n\nexpose_headers - Indicate any response headers that should be made accessible to the browser. Defaults to [] .\n\nmax_age - Sets a maximum time in seconds for browsers to cache CORS responses. Defaults to 600 .\n\nThe middleware responds to two particular types of HTTP request...",
+      "section_inline_code": [
+        "CORSMiddleware",
+        "POST",
+        "PUT",
+        "\"*\"",
+        "allow_origins",
+        "['https://example.org', 'https://www.example.org']",
+        "['*']",
+        "allow_origin_regex",
+        "'https://.*\\.example\\.org'",
+        "allow_methods",
+        "['GET']",
+        "allow_headers",
+        "[]",
+        "Accept",
+        "Accept-Language",
+        "Content-Language",
+        "Content-Type",
+        "allow_credentials",
+        "False",
+        "True",
+        "expose_headers",
+        "max_age",
+        "600"
+      ],
+      "section_links": [
+        {
+          "text": "simple CORS requests",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        },
+        {
+          "text": "explicitly specified",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        }
+      ],
+      "code_refs": [
+        {
+          "type": "code_ref",
+          "path": "../../docs_src/cors/tutorial001_py310.py",
+          "highlight_lines": [
+            2,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "raw": "{* ../../docs_src/cors/tutorial001_py310.py hl[2,6:11,13:19] *}",
+          "section_id": "tutorial/cors::section-0005",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware"
+        }
+      ],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0006": {
+      "node_id": "tutorial/cors::section-0006",
+      "parent_id": "tutorial/cors::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "CORS preflight requests",
+      "anchor_id": "cors-preflight-requests",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#cors-preflight-requests",
+      "section_text": "These are any OPTIONS request with Origin and Access-Control-Request-Method headers.\n\nIn this case the middleware will intercept the incoming request and respond with appropriate CORS headers, and either a 200 or 400 response for informational purposes.",
+      "section_inline_code": [
+        "OPTIONS",
+        "Origin",
+        "Access-Control-Request-Method",
+        "200",
+        "400"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0007": {
+      "node_id": "tutorial/cors::section-0007",
+      "parent_id": "tutorial/cors::section-0005",
+      "level": 3,
+      "node_kind": "heading",
+      "heading_text": "Simple requests",
+      "anchor_id": "simple-requests",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#simple-requests",
+      "section_text": "Any request with an Origin header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response.",
+      "section_inline_code": [
+        "Origin"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    },
+    "tutorial/cors::section-0008": {
+      "node_id": "tutorial/cors::section-0008",
+      "parent_id": "tutorial/cors::section-0001",
+      "level": 2,
+      "node_kind": "heading",
+      "heading_text": "More info",
+      "anchor_id": "more-info",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+      "section_text": "For more info about CORS , check the Mozilla CORS documentation .",
+      "section_inline_code": [],
+      "section_links": [
+        {
+          "text": "Mozilla CORS documentation",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "section_id": "tutorial/cors::section-0008",
+          "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info"
+        }
+      ],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "admonition_nodes": [
+    {
+      "node_id": "tutorial/cors::section-0008::admonition-0001",
+      "parent_id": "tutorial/cors::section-0008",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.middleware.cors import CORSMiddleware .",
+        "FastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.middleware.cors import CORSMiddleware .\n\nFastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.middleware.cors import CORSMiddleware",
+        "fastapi.middleware"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  ],
+  "admonition_nodes_by_id": {
+    "tutorial/cors::section-0008::admonition-0001": {
+      "node_id": "tutorial/cors::section-0008::admonition-0001",
+      "parent_id": "tutorial/cors::section-0008",
+      "node_kind": "admonition",
+      "kind": "note",
+      "title": "Technical Details",
+      "section_url": "https://fastapi.tiangolo.com/tutorial/cors/#more-info",
+      "fence_depth": 3,
+      "section_text_parts": [
+        "You could also use from starlette.middleware.cors import CORSMiddleware .",
+        "FastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette."
+      ],
+      "section_text": "You could also use from starlette.middleware.cors import CORSMiddleware .\n\nFastAPI provides several middlewares in fastapi.middleware just as a convenience for you, the developer. But most of the available middlewares come directly from Starlette.",
+      "section_inline_code": [
+        "from starlette.middleware.cors import CORSMiddleware",
+        "fastapi.middleware"
+      ],
+      "section_links": [],
+      "code_refs": [],
+      "code_blocks": []
+    }
+  },
+  "section_timings": [
+    {
+      "node_id": "tutorial/cors::section-0001",
+      "seconds": 3.171599928464275e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0002",
+      "seconds": 0.00010470000052009709,
+      "paragraphs": 3,
+      "list_items": 3,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0003",
+      "seconds": 6.933700024092104e-05,
+      "paragraphs": 4,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0004",
+      "seconds": 3.226099943276495e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0005",
+      "seconds": 0.0003164410009048879,
+      "paragraphs": 13,
+      "list_items": 6,
+      "code_blocks": 0,
+      "code_refs": 1,
+      "links": 2,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0006",
+      "seconds": 2.2621999960392714e-05,
+      "paragraphs": 2,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0007",
+      "seconds": 1.135200000135228e-05,
+      "paragraphs": 1,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 0,
+      "admonitions": 0
+    },
+    {
+      "node_id": "tutorial/cors::section-0008",
+      "seconds": 5.810000038763974e-05,
+      "paragraphs": 3,
+      "list_items": 0,
+      "code_blocks": 0,
+      "code_refs": 0,
+      "links": 1,
+      "admonitions": 1
+    }
+  ]
+}

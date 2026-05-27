@@ -1,0 +1,410 @@
+{
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0001": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0001",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0001",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: CommonQueryParams = Depends(CommonQueryParams)",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002::admonition-0003": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002::admonition-0003",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0002",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0004": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0004",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[CommonQueryParams, ...",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0004",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: CommonQueryParams ...",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005::admonition-0006": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005::admonition-0006",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0005",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0007": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0007",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[Any, Depends(CommonQueryParams)]",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0007",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons = Depends(CommonQueryParams)",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008::admonition-0009": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008::admonition-0009",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0006::admonition-0008",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0010": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0010",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0010",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: CommonQueryParams = Depends(CommonQueryParams)",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011::admonition-0012": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011::admonition-0012",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0011",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0013": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0013",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0013",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: CommonQueryParams = Depends(CommonQueryParams)",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014::admonition-0015": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014::admonition-0015",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0014",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0016": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0016",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: Annotated[CommonQueryParams, Depends()]",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0016",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tab",
+    "title": "Python 3.10+ non-Annotated",
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 4,
+    "section_text_parts": [],
+    "section_text": "",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": [
+      {
+        "type": "code_block",
+        "language": "Python",
+        "text": "commons: CommonQueryParams = Depends()",
+        "section_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017",
+        "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut"
+      }
+    ]
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017::admonition-0018": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017::admonition-0018",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0017",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "Prefer to use the Annotated version if possible."
+    ],
+    "section_text": "Prefer to use the Annotated version if possible.",
+    "section_inline_code": [
+      "Annotated"
+    ],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  },
+  "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0019": {
+    "node_id": "tutorial/dependencies/classes-as-dependencies::section-0007::admonition-0019",
+    "parent_id": "tutorial/dependencies/classes-as-dependencies::section-0007",
+    "node_kind": "admonition",
+    "kind": "tip",
+    "title": null,
+    "section_url": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/#shortcut",
+    "fence_depth": 3,
+    "section_text_parts": [
+      "If that seems more confusing than helpful, disregard it, you don't need it.",
+      "It is just a shortcut. Because FastAPI cares about helping you minimize code repetition."
+    ],
+    "section_text": "If that seems more confusing than helpful, disregard it, you don't need it.\n\nIt is just a shortcut. Because FastAPI cares about helping you minimize code repetition.",
+    "section_inline_code": [],
+    "section_links": [],
+    "code_refs": [],
+    "code_blocks": []
+  }
+}
