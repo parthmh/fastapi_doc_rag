@@ -6,11 +6,7 @@ from typing import Any
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
-from ingestion.embed_core import (
-    DEFAULT_COLLECTION_NAME,
-    MODEL_NAME,
-    QDRANT_URL,
-)
+from ingestion.embed_core import COLLECTION_NAME, MODEL_NAME, QDRANT_URL
 
 
 @dataclass(slots=True)
@@ -23,11 +19,9 @@ class RetrievedChunk:
 class Retriever:
     def __init__(
         self,
-        collection_name: str = DEFAULT_COLLECTION_NAME,
         client: QdrantClient | None = None,
         model: SentenceTransformer | None = None,
     ) -> None:
-        self.collection_name = collection_name
         self.client = client or QdrantClient(url=QDRANT_URL)
         self.model = model or SentenceTransformer(MODEL_NAME, device="cpu")
 
@@ -54,7 +48,7 @@ class Retriever:
         query_vector = self.encode_query(query)
 
         results = self.client.query_points(
-            collection_name=self.collection_name,
+            collection_name=COLLECTION_NAME,
             query=query_vector,
             limit=limit,
             with_payload=True,
@@ -66,7 +60,7 @@ class Retriever:
         query_vector = self.encode_query(query)
 
         results = self.client.query_points(
-            collection_name=self.collection_name,
+            collection_name=COLLECTION_NAME,
             prefetch=models.Prefetch(
                 query=query_vector,
                 limit=100,
@@ -101,25 +95,3 @@ class Retriever:
         )
 
         return self._to_results(results.points)
-
-    def print_search(self, query: str, limit: int = 5) -> None:
-        results = self.search(query=query, limit=limit)
-
-        print()
-        print("=" * 100)
-        print(f"QUERY: {query}")
-        print(f"COLLECTION: {self.collection_name}")
-        print("=" * 100)
-
-        for idx, item in enumerate(results, start=1):
-            payload = item.payload
-            print()
-            print(f"{idx}. score={item.score:.4f}")
-            print(f"   chunk_id={item.chunk_id}")
-            print(f"   page_id={payload.get('page_id')}")
-            print(f"   heading={payload.get('heading_text')}")
-            print(f"   tokens={payload.get('token_count')}")
-            print(f"   kind={payload.get('kind')}")
-            print(f"   title={payload.get('title')}")
-            print()
-            print(str(payload.get("chunk_text", ""))[:500])

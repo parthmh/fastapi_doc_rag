@@ -6,7 +6,7 @@ import json
 import time
 from typing import Iterable
 
-from parse_markdown import PageTree, build_page
+from .parse_markdown import PageTree, build_page
 
 
 CORPUS_ROOT = Path("corpus")

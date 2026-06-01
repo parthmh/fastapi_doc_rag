@@ -6,7 +6,7 @@ import re
 from chonkie import SentenceChunker
 from transformers import AutoTokenizer
 
-from parse_markdown import AdmonitionNode, FlatNode, Node, PageTree
+from .parse_markdown import AdmonitionNode, FlatNode, Node, PageTree
 
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
