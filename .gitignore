@@ -26,4 +26,5 @@ analysis/output/
 analysis/*.png
 
 # Qdrant persistent data
-qdrant/storage_qdrant/
+qdrant/storage_qdrant/snapshots
+qdrant/storage_qdrant/storage
