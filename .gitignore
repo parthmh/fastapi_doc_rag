@@ -8,3 +8,22 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Generated parser output
+processed/debug/
+
+# Generated chunk output
+processed/debug_chunks_section/
+processed/debug_chunks_h2_subtree/
+processed/debug_chunks
+
+# Any generated json artifacts
+processed/**/*.json
+
+# Optional analysis output
+analysis/output/
+analysis/*.png
+
+# Qdrant persistent data
+qdrant/storage/
+qdrant/snapshots/
