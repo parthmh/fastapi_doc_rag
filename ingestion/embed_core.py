@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-from pathlib import Path
 import uuid
-from typing import Any, Iterable
+from typing import Any
 
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
 
-COLLECTION_NAME = "fastapi_doc_rag"
+DEFAULT_COLLECTION_NAME = "fastapi_doc_rag"
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 VECTOR_SIZE = 384
 BATCH_SIZE = 32
@@ -19,22 +18,21 @@ def stable_point_id(chunk_id: str) -> str:
     return str(uuid.uuid5(uuid.NAMESPACE_URL, chunk_id))
 
 
-def ensure_collection(client: QdrantClient) -> None:
-    if client.collection_exists(COLLECTION_NAME):
+def ensure_collection(client: QdrantClient, collection_name: str = DEFAULT_COLLECTION_NAME) -> None:
+    if client.collection_exists(collection_name):
         return
 
     client.create_collection(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         vectors_config=models.VectorParams(
             size=VECTOR_SIZE,
             distance=models.Distance.COSINE,
         ),
     )
 
-    # Useful for later filtering / debugging.
     for field_name in ("page_id", "node_kind", "chunk_kind"):
         client.create_payload_index(
-            collection_name=COLLECTION_NAME,
+            collection_name=collection_name,
             field_name=field_name,
             field_schema=models.PayloadSchemaType.KEYWORD,
         )
@@ -64,6 +62,7 @@ def upsert_chunks(
     client: QdrantClient,
     model: SentenceTransformer,
     chunks: list[dict[str, Any]],
+    collection_name: str = DEFAULT_COLLECTION_NAME,
 ) -> None:
     for start in range(0, len(chunks), BATCH_SIZE):
         batch = chunks[start : start + BATCH_SIZE]
@@ -80,7 +79,7 @@ def upsert_chunks(
         ]
 
         client.upsert(
-            collection_name=COLLECTION_NAME,
+            collection_name=collection_name,
             points=points,
         )
 
@@ -90,20 +89,21 @@ def embed_and_upsert(
     *,
     client: QdrantClient | None = None,
     model: SentenceTransformer | None = None,
+    collection_name: str = DEFAULT_COLLECTION_NAME,
 ) -> QdrantClient:
-    """Embed chunks and upsert them into Qdrant.
-
-    This is the core embedding stage. A future runner script can call this
-    directly with chunks produced by the chunking pipeline.
-    """
     if not chunks:
         return client or QdrantClient(url=QDRANT_URL)
 
     local_client = client or QdrantClient(url=QDRANT_URL)
-    ensure_collection(local_client)
+    ensure_collection(local_client, collection_name=collection_name)
 
     local_model = model or SentenceTransformer(MODEL_NAME, device="cpu")
-    upsert_chunks(local_client, local_model, chunks)
+    upsert_chunks(
+        local_client,
+        local_model,
+        chunks,
+        collection_name=collection_name,
+    )
 
     return local_client
 
@@ -113,6 +113,7 @@ def run_query(
     model: SentenceTransformer,
     query: str,
     limit: int = 5,
+    collection_name: str = DEFAULT_COLLECTION_NAME,
 ) -> None:
     query_vector = model.encode(
         query,
@@ -120,7 +121,7 @@ def run_query(
     ).tolist()
 
     results = client.query_points(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         query=query_vector,
         limit=limit,
         with_payload=True,
