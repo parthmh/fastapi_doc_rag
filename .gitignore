@@ -16,6 +16,7 @@ processed/debug/
 processed/debug_chunks_section/
 processed/debug_chunks_h2_subtree/
 processed/debug_chunks
+processed
 
 # Any generated json artifacts
 processed/**/*.json
@@ -25,5 +26,4 @@ analysis/output/
 analysis/*.png
 
 # Qdrant persistent data
-qdrant/storage/
-qdrant/snapshots/
+qdrant/storage_qdrant/
