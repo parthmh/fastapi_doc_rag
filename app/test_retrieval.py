@@ -1,192 +1,120 @@
 from __future__ import annotations
 
-from qdrant_client import QdrantClient
-
-from retriever_first_steps import (
-    build_retriever,
-    RetrievedChunk,
-)
+from app.retriever import Retriever
 
 
 QUERIES = [
-    "What is the instance of the class FastAPI?",
-    "how to create a path operation",
-    "how do endpoints work",
-    "what is openapi schema",
-    "what does decorator info mean",
-    "how to declare a get endpoint",
-    "how to return json",
-    "how to use async endpoint",
-    "what are path parameters",
-    "endpoint function",
-    "api operation",
-    "route handler",
+    "give me an example of Dependency Injection",
+    "how to implement CORS?",
+    "what are Multiple Models in FastAPI?",
+    "how to use pydantic's .model_dump() method",
+    "give me an example of application structure",
 ]
 
 
-SEPARATOR = "=" * 140
-SUB_SEPARATOR = "-" * 140
-
-
-def compact_preview(text: str, limit: int = 140) -> str:
-    text = text.replace("\n", " ").strip()
-
+def short(text: str, limit: int = 180) -> str:
+    text = " ".join(text.split())
     if len(text) <= limit:
         return text
+    return text[: limit - 3] + "..."
 
-    return text[:limit] + "..."
 
-
-def print_hit(
-    label: str,
-    rank: int,
-    hit: RetrievedChunk,
+def print_result_block(
+    title: str,
+    results,
 ) -> None:
-    payload = hit.payload
-
-    heading = payload.get("heading_text") or payload.get("title") or ""
-    chunk_kind = payload.get("chunk_kind")
-    node_kind = payload.get("node_kind")
-    level = payload.get("level")
-    token_count = payload.get("token_count")
-
-    preview = compact_preview(
-        payload.get("chunk_text", "")
-    )
-
-    raw_score = (
-        f"{hit.raw_score:.4f}"
-        if hit.raw_score is not None
-        else "-"
-    )
-
-    boost = (
-        f"{hit.boost:.4f}"
-        if hit.boost is not None
-        else "-"
-    )
-
-    print(
-        f"{label:<10}"
-        f"#{rank:<2} "
-        f"score={hit.score:.4f} "
-        f"raw={raw_score} "
-        f"boost={boost}"
-    )
-
-    print(
-        f"{'':<10}"
-        f"kind={chunk_kind:<12} "
-        f"node={node_kind:<12} "
-        f"level={str(level):<3} "
-        f"tokens={token_count:<4}"
-    )
-
-    print(
-        f"{'':<10}"
-        f"heading={heading}"
-    )
-
-    print(
-        f"{'':<10}"
-        f"{preview}"
-    )
-
     print()
+    print("=" * 120)
+    print(title)
+    print("=" * 120)
+
+    for idx, item in enumerate(results, start=1):
+        payload = item.payload
+
+        print()
+        print(
+            f"[{idx}] "
+            f"score={item.score:.4f} | "
+            f"kind={payload.get('chunk_kind')} | "
+            f"node_kind={payload.get('node_kind')} | "
+            f"admonition_kind={payload.get('kind')}"
+        )
+
+        print(f"page_id      : {payload.get('page_id')}")
+        print(f"heading      : {payload.get('heading_text')}")
+        print(f"section_url  : {payload.get('section_url')}")
+        print(f"chunk_id     : {payload.get('chunk_id')}")
+
+        print()
+        print(short(str(payload.get("chunk_text", ""))))
+        print()
+
+
+def compare_results(
+    baseline,
+    weighted,
+) -> None:
+    print()
+    print("-" * 120)
+    print("RANK COMPARISON")
+    print("-" * 120)
+
+    max_len = max(len(baseline), len(weighted))
+
+    for idx in range(max_len):
+        left = baseline[idx] if idx < len(baseline) else None
+        right = weighted[idx] if idx < len(weighted) else None
+
+        print()
+
+        print(f"RANK {idx + 1}")
+
+        if left:
+            left_payload = left.payload
+            print(
+                f"BASELINE | "
+                f"{left.score:.4f} | "
+                f"{left_payload.get('chunk_kind')} | "
+                f"{left_payload.get('heading_text')}"
+            )
+
+        if right:
+            right_payload = right.payload
+            print(
+                f"WEIGHTED | "
+                f"{right.score:.4f} | "
+                f"{right_payload.get('chunk_kind')} | "
+                f"{right_payload.get('heading_text')}"
+            )
 
 
 def main() -> None:
-    client = QdrantClient(
-        url="http://localhost:6333"
-    )
-
-    retriever = build_retriever(client)
+    retriever = Retriever()
 
     for query in QUERIES:
         print()
-        print(SEPARATOR)
-        print("QUERY:", query)
-        print(SEPARATOR)
         print()
+        print("#" * 140)
+        print("QUERY:", query)
+        print("#" * 140)
 
-        result = retriever.compare(
-            query=query,
-            limit=5,
-            debug=False,
+        baseline = retriever.search(query=query, limit=5)
+        weighted = retriever.search_weighted(query=query, limit=5)
+
+        print_result_block(
+            "BASELINE RESULTS",
+            baseline,
         )
 
-        baseline_ids = [
-            hit.chunk_id
-            for hit in result.baseline
-        ]
+        print_result_block(
+            "WEIGHTED RESULTS",
+            weighted,
+        )
 
-        weighted_ids = [
-            hit.chunk_id
-            for hit in result.weighted
-        ]
-
-        print("BASELINE vs WEIGHTED")
-        print(SUB_SEPARATOR)
-        print()
-
-        for idx in range(5):
-            baseline_hit = (
-                result.baseline[idx]
-                if idx < len(result.baseline)
-                else None
-            )
-
-            weighted_hit = (
-                result.weighted[idx]
-                if idx < len(result.weighted)
-                else None
-            )
-
-            if baseline_hit:
-                print_hit(
-                    "BASELINE",
-                    idx + 1,
-                    baseline_hit,
-                )
-
-            if weighted_hit:
-                print_hit(
-                    "WEIGHTED",
-                    idx + 1,
-                    weighted_hit,
-                )
-
-            print(SUB_SEPARATOR)
-
-        moved_in = [
-            cid
-            for cid in weighted_ids
-            if cid not in baseline_ids
-        ]
-
-        moved_out = [
-            cid
-            for cid in baseline_ids
-            if cid not in weighted_ids
-        ]
-
-        print()
-        print("RANKING CHANGES")
-        print(SUB_SEPARATOR)
-
-        print("NEW IN WEIGHTED:")
-        for cid in moved_in:
-            print("  ", cid)
-
-        print()
-
-        print("REMOVED FROM WEIGHTED:")
-        for cid in moved_out:
-            print("  ", cid)
-
-        print()
-        print(SEPARATOR)
-        print()
+        compare_results(
+            baseline,
+            weighted,
+        )
 
 
 if __name__ == "__main__":
