@@ -1,3 +1,5 @@
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -5,11 +7,19 @@ from pathlib import Path
 import time
 from typing import Iterable
 
+from fastembed import LateInteractionTextEmbedding, SparseTextEmbedding
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
 from .chunk_markdown import build_chunks_from_page_tree
-from .embed_core import COLLECTION_NAME, MODEL_NAME, QDRANT_URL, embed_and_upsert
+from .embed_core import (
+    COLLECTION_NAME,
+    COLBERT_MODEL_NAME,
+    DENSE_MODEL_NAME,
+    QDRANT_URL,
+    SPARSE_MODEL_NAME,
+    embed_and_upsert,
+)
 from .parse_markdown import PageTree, build_page
 
 
@@ -20,7 +30,9 @@ TUTORIAL_ROOT = CORPUS_ROOT / "tutorial"
 @dataclass(slots=True)
 class PipelineContext:
     client: QdrantClient
-    model: SentenceTransformer
+    dense_model: SentenceTransformer
+    sparse_model: SparseTextEmbedding
+    colbert_model: LateInteractionTextEmbedding
 
 
 @dataclass(slots=True)
@@ -45,9 +57,26 @@ def build_page_chunks(page_tree: PageTree) -> list[dict[str, object]]:
 
 
 def make_context() -> PipelineContext:
+    print("Loading dense model...")
+    
+    dense_model = SentenceTransformer(DENSE_MODEL_NAME, device="cpu")
+
+    print("Loading sparse model...")
+    
+    sparse_model = SparseTextEmbedding(model_name=SPARSE_MODEL_NAME)
+
+    print("Loading ColBERT model...")
+    
+    colbert_model = LateInteractionTextEmbedding(
+        model_name=COLBERT_MODEL_NAME 
+    )
+
+    print("All models loaded.")
     return PipelineContext(
         client=QdrantClient(url=QDRANT_URL),
-        model=SentenceTransformer(MODEL_NAME, device="cpu"),
+        dense_model=dense_model,
+        sparse_model=sparse_model,
+        colbert_model=colbert_model,
     )
 
 
@@ -64,7 +93,9 @@ def ingest_page(
         embed_and_upsert(
             chunks,
             client=context.client,
-            model=context.model,
+            dense_model=context.dense_model,
+            sparse_model=context.sparse_model,
+            colbert_model=context.colbert_model,
         )
         print(
             f"DONE  {page_tree.page.source_file} | "
@@ -96,8 +127,11 @@ def main() -> None:
 
     print("=" * 100)
     print(f"INGEST START | collection={COLLECTION_NAME} | qdrant={QDRANT_URL}")
-    print(f"TUTORIAL ROOT: {TUTORIAL_ROOT}")
-    print(f"PAGES FOUND: {len(markdown_files)}")
+    print(f"DENSE MODEL   : {DENSE_MODEL_NAME}")
+    print(f"SPARSE MODEL  : {SPARSE_MODEL_NAME}")
+    print(f"COLBERT MODEL : {COLBERT_MODEL_NAME}")
+    print(f"TUTORIAL ROOT : {TUTORIAL_ROOT}")
+    print(f"PAGES FOUND   : {len(markdown_files)}")
     print("=" * 100)
 
     results: list[PageIngestResult] = []
