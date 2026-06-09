@@ -17,10 +17,10 @@ uv sync
 ### 2. Configure Environment Variables
 Create a `.env` file in the root of the project:
 ```ini
-RAG_MODEL_TIER=minilm                     # Options: minilm, granite
-LLM_PROVIDER=openai                       # Options: openai, gemini
-LLM_MODEL=mistral-small-2506              # Model name
-LLM_BASE_URL=https://api.mistral.ai/v1     # Base URL for API requests
+RAG_MODEL_TIER=granite                    # Options: minilm, granite (Default: granite)
+LLM_PROVIDER=openai                       # Options: openai, gemini (Default: openai)
+LLM_MODEL=mistral-small-2506              # Model name (Default: mistral-small-2506)
+LLM_BASE_URL=https://api.mistral.ai/v1     # Base URL (Default: https://api.mistral.ai/v1)
 OPENAI_API_KEY=your_key                   # API key (for Mistral/OpenAI provider)
 GEMINI_API_KEY=your_key                   # API key (for Gemini provider)
 QDRANT_URL=http://localhost:6333           # Qdrant DB connection
