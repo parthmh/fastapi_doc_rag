@@ -29,15 +29,21 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: halverneus/static-file-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
     container_name: rag_frontend
     ports:
       - "8080:8080"
-    volumes:
-      - ./frontend:/web
-    environment:
-      - PORT=8080
-      - FOLDER=/web
+    restart: unless-stopped
+
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile.docs
+    container_name: rag_docs
+    ports:
+      - "8001:8000"
     restart: unless-stopped
 
 volumes:

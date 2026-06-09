@@ -1,0 +1,22 @@
+# Stage 1: Build virtual environment using uv
+FROM python:3.12-slim AS builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
+WORKDIR /app
+
+# Sync dependencies
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-install-project --no-dev
+
+# Build static documentation site using uv
+COPY docs/ /app/docs/
+COPY mkdocs.yml /app/mkdocs.yml
+RUN uv run mkdocs build
+
+# Stage 2: Clean, small static file server runtime
+FROM halverneus/static-file-server:latest
+COPY --from=builder /app/site /web
+ENV PORT=8000
+ENV FOLDER=/web
+EXPOSE 8000

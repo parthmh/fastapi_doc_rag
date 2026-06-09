@@ -1,0 +1,10 @@
+# Dockerfile.frontend
+FROM halverneus/static-file-server:latest
+
+# Copy frontend source files to the static server directory
+COPY frontend/ /web/
+
+ENV PORT=8080
+ENV FOLDER=/web
+
+EXPOSE 8080
