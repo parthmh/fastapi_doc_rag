@@ -27,10 +27,15 @@ QDRANT_URL=http://localhost:6333           # Qdrant DB connection
 ```
 
 ### 3. Initialize/Ingest Database
-Run the ingestion script locally to parse the markdown pages, compute embeddings, and populate Qdrant:
+Run the ingestion script locally to parse the markdown pages, compute embeddings, and populate Qdrant. You can speed it up using parallel workers:
 ```bash
-PYTHONPATH=. .venv/bin/python ingestion/ingest.py
+# Ingest using 4 parallel workers on the minilm tier
+PYTHONPATH=. .venv/bin/python ingestion/ingest.py --workers 4 --tier minilm
 ```
+Available arguments:
+*   `--workers`, `-w`: Number of parallel thread workers (default: `1`).
+*   `--tier`, `-t`: Model configuration tier override (`minilm` or `granite`).
+
 
 ### 4. Run the Servers
 *   **FastAPI Backend Server**:
@@ -84,9 +89,10 @@ This starts:
 3.  **`frontend`**: Static web server playing dashboard playground on `http://localhost:8080`.
 
 ### 2. Populate the Database (One-time Ingestion)
-Since the Docker Compose volume is initially empty, you must run the ingestion pipeline inside the running backend container to compute embeddings and populate the database collections:
+Since the Docker Compose volume is initially empty, you must run the ingestion pipeline inside the running backend container. You can run it concurrently to speed up the process:
 ```bash
-docker compose exec backend python -m ingestion.ingest
+# Run multi-threaded ingestion inside the container (e.g. 4 workers on the granite tier)
+docker compose exec backend python -m ingestion.ingest --workers 4 --tier granite
 ```
 
 ---

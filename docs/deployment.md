@@ -108,8 +108,9 @@ docker compose up -d
 The RAG backend will start on port `8000`, Qdrant on `6333`, and the playground dashboard will be accessible at **`http://localhost:8080`**.
 
 ### 3. Initialize & Ingest Vector Data
-Since the Qdrant database service starts empty, you must run the ingestion script inside the running backend container to generate embeddings and populate the collection:
+Since the Qdrant database service starts empty, you must run the ingestion script inside the running backend container to generate embeddings and populate the collection. You can speed it up using parallel worker threads:
 ```bash
-docker compose exec backend python -m ingestion.ingest
+# Run multi-threaded ingestion inside the container (e.g. 4 workers on the granite tier)
+docker compose exec backend python -m ingestion.ingest --workers 4 --tier granite
 ```
-This will parse the markdown files in `corpus/tutorial`, generate embeddings using the configured active model tier, and upsert them to Qdrant.
+This will parse the markdown files in `corpus/tutorial`, generate embeddings concurrently using the active model tier, and upsert them to Qdrant.

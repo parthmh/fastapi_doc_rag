@@ -41,7 +41,13 @@ OPENAI_API_KEY=your-api-key-here
 QDRANT_URL=http://localhost:6333
 ```
 
-### 4. Running the Servers
+### 4. Initialize & Ingest Database
+Run the ingestion script locally to compute embeddings and populate Qdrant (using `--workers` or `-w` to enable parallel threads):
+```bash
+PYTHONPATH=. .venv/bin/python ingestion/ingest.py --workers 4 --tier minilm
+```
+
+### 5. Running the Servers
 *   **FastAPI Backend Server:**
     ```bash
     PYTHONPATH=. .venv/bin/uvicorn app.main:app --reload

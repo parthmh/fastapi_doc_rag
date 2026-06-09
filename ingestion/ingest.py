@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 import time
@@ -13,9 +15,8 @@ from sentence_transformers import SentenceTransformer
 
 from .chunk_markdown import build_chunks_from_page_tree
 from app.config import settings
-from .embed_core import embed_and_upsert
+from .embed_core import embed_and_upsert, ensure_collection
 from .parse_markdown import PageTree, build_page
-
 
 CORPUS_ROOT = Path("corpus")
 TUTORIAL_ROOT = CORPUS_ROOT / "tutorial"
@@ -108,6 +109,14 @@ def ingest_page(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Ingest markdown documentation into Qdrant.")
+    parser.add_argument("--workers", "-w", type=int, default=1, help="Number of parallel worker threads.")
+    parser.add_argument("--tier", "-t", type=str, choices=["minilm", "granite"], help="Model configuration tier override.")
+    args = parser.parse_args()
+
+    if args.tier:
+        settings.rag_model_tier = args.tier
+
     if not TUTORIAL_ROOT.exists():
         raise FileNotFoundError(f"Tutorial root not found: {TUTORIAL_ROOT}")
 
@@ -120,7 +129,7 @@ def main() -> None:
     context = make_context()
 
     print("=" * 100)
-    print(f"INGEST START | collection={settings.collection_name} | qdrant={settings.qdrant_url}")
+    print(f"INGEST START | collection={settings.collection_name} | qdrant={settings.qdrant_url} | workers={args.workers}")
     print(f"DENSE MODEL   : {settings.dense_model_name}")
     print(f"SPARSE MODEL  : {settings.sparse_model_name}")
     print(f"COLBERT MODEL : {settings.colbert_model_name}")
@@ -128,14 +137,44 @@ def main() -> None:
     print(f"PAGES FOUND   : {len(markdown_files)}")
     print("=" * 100)
 
+    # Pre-create collection in main thread to avoid concurrent thread creation race conditions
+    print(f"Ensuring Qdrant collection '{settings.collection_name}' is initialized...")
+    ensure_collection(
+        client=context.client,
+        collection_name=settings.collection_name,
+        dense_size=settings.dense_vector_size,
+        colbert_size=128,  # colbertv2.0 generates 128-dimensional multivectors
+    )
+
     results: list[PageIngestResult] = []
     total_chunks = 0
 
-    for markdown_path in markdown_files:
-        result = ingest_page(markdown_path, context)
-        results.append(result)
-        total_chunks += result.chunks
-        print(f"TIME  {markdown_path.relative_to(CORPUS_ROOT)} | {result.seconds:.4f}s")
+    if args.workers > 1:
+        print(f"Running parallel ingestion with {args.workers} worker threads...")
+        with ThreadPoolExecutor(max_workers=args.workers) as executor:
+            future_to_file = {
+                executor.submit(ingest_page, path, context): path
+                for path in markdown_files
+            }
+            for future in as_completed(future_to_file):
+                markdown_path = future_to_file[future]
+                try:
+                    result = future.result()
+                    results.append(result)
+                    total_chunks += result.chunks
+                    print(f"TIME  {markdown_path.relative_to(CORPUS_ROOT)} | {result.seconds:.4f}s (worker)")
+                except Exception as e:
+                    print(f"ERROR {markdown_path.relative_to(CORPUS_ROOT)} | failed: {e}")
+    else:
+        print("Running sequential ingestion...")
+        for markdown_path in markdown_files:
+            try:
+                result = ingest_page(markdown_path, context)
+                results.append(result)
+                total_chunks += result.chunks
+                print(f"TIME  {markdown_path.relative_to(CORPUS_ROOT)} | {result.seconds:.4f}s")
+            except Exception as e:
+                print(f"ERROR {markdown_path.relative_to(CORPUS_ROOT)} | failed: {e}")
 
     total_elapsed = time.perf_counter() - run_start
     print()
