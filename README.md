@@ -78,15 +78,35 @@ The static site documentation is managed by MkDocs. You don't need to install it
 
 Standard practice for containerized RAG services is to spin up the database (Qdrant) and application backend together, and then run a one-time database schema creation and data ingestion job.
 
-### 1. Build and Run Cluster
+### 1. Build & Launch the Services
+
+#### A. If building for the first time (or after changing code/dependencies):
+Build the images and run the services in the background:
 ```bash
-# Ensure local conflicting database instances are stopped, then build/run services
+# Build backend image and run the cluster
 docker compose up --build -d
 ```
-This starts:
+Alternatively, you can build first, then launch:
+```bash
+docker compose build
+docker compose up -d
+```
+
+#### B. If the build is already completed:
+To start the services quickly using the already built image, bypass the build step:
+```bash
+# Starts the cluster using existing cached images
+docker compose up -d
+```
+This launches:
 1.  **`qdrant`**: Qdrant DB listening on `http://localhost:6333`.
 2.  **`backend`**: FastAPI application on `http://localhost:8000`.
 3.  **`frontend`**: Static web server playing dashboard playground on `http://localhost:8080`.
+
+#### C. Stopping the cluster:
+```bash
+docker compose down
+```
 
 ### 2. Populate the Database (One-time Ingestion)
 Since the Docker Compose volume is initially empty, you must run the ingestion pipeline inside the running backend container. To run this in the most efficient way, use parallel threads to overlap network roundtrips to Qdrant:

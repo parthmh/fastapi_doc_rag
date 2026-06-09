@@ -101,11 +101,38 @@ volumes:
   qdrant_data:
 ```
 
-Launch the cluster in the background:
+### 2. Build & Launch the Services
+
+Follow these step-by-step instructions to build the images and run the cluster:
+
+#### A. If building for the first time (or after changing dependencies/code):
+Build the backend Docker image and start the container cluster:
 ```bash
+# Rebuilds the backend and starts all services in the background
+docker compose up --build -d
+```
+Alternatively, you can separate the build and launch steps:
+```bash
+# 1. Build the backend image explicitly
+docker compose build
+
+# 2. Launch the services in the background
 docker compose up -d
 ```
-The RAG backend will start on port `8000`, Qdrant on `6333`, and the playground dashboard will be accessible at **`http://localhost:8080`**.
+
+#### B. If the build is already completed:
+If you have already built the Docker images and just want to start the cluster, you can skip the build phase entirely to save time:
+```bash
+# Starts the cluster instantly using the existing cached images
+docker compose up -d
+```
+*(This starts the backend on port `8000`, Qdrant on `6333`, and the frontend dashboard on `8080`)*
+
+#### C. Stopping the cluster:
+To stop and clean up all running containers:
+```bash
+docker compose down
+```
 
 ### 3. Initialize & Ingest Vector Data
 Since the Qdrant database service starts empty, you must run the ingestion script inside the running backend container to generate embeddings and populate the collection. 
