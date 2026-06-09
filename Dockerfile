@@ -1,5 +1,6 @@
 # Stage 1: Build virtual environment using uv
-FROM ghcr.io/astral-sh/uv:python3.12-alpine AS builder
+FROM python:3.12-slim AS builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 WORKDIR /app
 
@@ -10,7 +11,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-install-project --no-dev
 
 # Stage 2: Clean, small runtime image
-FROM python:3.12-alpine
+FROM python:3.12-slim
 WORKDIR /app
 
 # Copy virtual environment and source folders

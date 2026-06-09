@@ -52,3 +52,24 @@ QDRANT_URL=http://localhost:6333
     ```
 
 Once started, navigate to **`http://localhost:8080`** to test your queries.
+
+---
+
+## 📖 Accessing Interactive & Project Docs
+
+### FastAPI Auto-Generated API Docs
+When the FastAPI backend is running, the interactive OpenAPI specifications are automatically served at:
+*   **Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
+*   **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+### MkDocs Documentation (This Site)
+To run or build this technical documentation site locally using `uv`:
+*   **Serve locally**:
+    ```bash
+    uv run --with mkdocs --with mkdocs-material mkdocs serve -a 127.0.0.1:8001
+    ```
+*   **Build static files**:
+    ```bash
+    uv run --with mkdocs --with mkdocs-material mkdocs build
+    ```
+

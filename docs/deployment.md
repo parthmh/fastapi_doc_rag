@@ -33,7 +33,8 @@ The backend uses a multi-stage Docker build to compile virtual environments usin
 
 ```dockerfile
 # Stage 1: Build virtual environment
-FROM ghcr.io/astral-sh/uv:python3.12-alpine AS builder
+FROM python:3.12-slim AS builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -42,7 +43,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-install-project --no-dev
 
 # Stage 2: Final runtime image
-FROM python:3.12-alpine
+FROM python:3.12-slim
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY app/ /app/app/
@@ -102,3 +103,10 @@ Launch the cluster in the background:
 docker compose up -d
 ```
 The RAG backend will start on port `8000`, Qdrant on `6333`, and the playground dashboard will be accessible at **`http://localhost:8080`**.
+
+### 3. Initialize & Ingest Vector Data
+Since the Qdrant database service starts empty, you must run the ingestion script inside the running backend container to generate embeddings and populate the collection:
+```bash
+docker compose exec backend python -m ingestion.ingest
+```
+This will parse the markdown files in `corpus/tutorial`, generate embeddings using the configured active model tier, and upsert them to Qdrant.
