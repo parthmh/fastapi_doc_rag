@@ -89,10 +89,13 @@ This starts:
 3.  **`frontend`**: Static web server playing dashboard playground on `http://localhost:8080`.
 
 ### 2. Populate the Database (One-time Ingestion)
-Since the Docker Compose volume is initially empty, you must run the ingestion pipeline inside the running backend container. You can run it concurrently to speed up the process:
+Since the Docker Compose volume is initially empty, you must run the ingestion pipeline inside the running backend container. To run this in the most efficient way, use parallel threads to overlap network roundtrips to Qdrant:
 ```bash
-# Run multi-threaded ingestion inside the container (e.g. 4 workers on the granite tier)
-docker compose exec backend python -m ingestion.ingest --workers 4 --tier granite
+# Recommended for MiniLM tier (4 threads)
+docker compose exec backend python -m ingestion.ingest --workers 4 --tier minilm
+
+# Recommended for Granite tier (12 threads)
+docker compose exec backend python -m ingestion.ingest --workers 12 --tier granite
 ```
 
 ---
