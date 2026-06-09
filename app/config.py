@@ -9,14 +9,14 @@ class Settings(BaseSettings):
     )
     
     # Active model configuration tier: 'minilm' or 'granite'
-    rag_model_tier: Literal["minilm", "granite"] = "minilm"
+    rag_model_tier: Literal["minilm", "granite"] = "granite"
     
     # LLM configurations
-    llm_provider: Literal["gemini", "openai"] = "gemini"
-    llm_model: str = "gemini-1.5-flash"
+    llm_provider: Literal["gemini", "openai"] = "openai"
+    llm_model: str = "mistral-small-2506"
     gemini_api_key: str | None = None
     openai_api_key: str | None = None
-    llm_base_url: str | None = None
+    llm_base_url: str | None = "https://api.mistral.ai/v1"
     
     # Qdrant configuration
     qdrant_url: str = "http://localhost:6333"
