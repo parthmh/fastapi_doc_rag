@@ -28,7 +28,11 @@ Run a headless benchmark from your terminal:
 
 To deploy the entire RAG pipeline in production, we containerize all services using Docker.
 
-### Dockerfile
+### Dockerfiles
+
+We utilize three distinct Dockerfiles to compile and isolate our services:
+
+#### A. Backend Application (`Dockerfile`)
 The backend uses a multi-stage Docker build to compile virtual environments using `uv`, producing a lightweight final image:
 
 ```dockerfile
@@ -60,8 +64,47 @@ EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
+#### B. Documentation Server (`Dockerfile.docs`)
+A dedicated documentation container that compiles the docs during the build stage and serves them using a lightweight static file server:
+
+```dockerfile
+# Stage 1: Build virtual environment using uv
+FROM python:3.12-slim AS builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
+WORKDIR /app
+
+# Sync dependencies
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-install-project --no-dev
+
+# Build static documentation site using uv
+COPY docs/ /app/docs/
+COPY mkdocs.yml /app/mkdocs.yml
+RUN uv run mkdocs build
+
+# Stage 2: Clean, small static file server runtime
+FROM halverneus/static-file-server:latest
+COPY --from=builder /app/site /web
+ENV PORT=8000
+ENV FOLDER=/web
+EXPOSE 8000
+```
+
+#### C. Frontend Playground (`Dockerfile.frontend`)
+Packages the HTML/JS frontend assets into a static file server:
+
+```dockerfile
+FROM halverneus/static-file-server:latest
+COPY frontend/ /web/
+ENV PORT=8080
+ENV FOLDER=/web
+EXPOSE 8080
+```
+
 ### Docker Compose
-Use a Docker Compose configuration to orchestrate the backend, Qdrant database, and static file server hosting the frontend playground:
+Use a Docker Compose configuration to orchestrate all services as fully self-contained containers (no host directory mount dependencies except database volume persistence and local Hugging Face/FastEmbed weights cache downloads):
 
 ```yaml
 services:
@@ -72,6 +115,7 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_data:/qdrant/storage
+    restart: unless-stopped
 
   backend:
     build: .
@@ -91,17 +135,25 @@ services:
       - /tmp/fastembed_cache:/tmp/fastembed_cache
     depends_on:
       - qdrant
+    restart: unless-stopped
 
   frontend:
-    image: halverneus/static-file-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
     container_name: rag_frontend
     ports:
       - "8080:8080"
-    volumes:
-      - ./frontend:/web
-    environment:
-      - PORT=8080
-      - FOLDER=/web
+    restart: unless-stopped
+
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile.docs
+    container_name: rag_docs
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
 
 volumes:
   qdrant_data:

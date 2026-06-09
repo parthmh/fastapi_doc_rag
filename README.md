@@ -100,8 +100,9 @@ docker compose up -d
 ```
 This launches:
 1.  **`qdrant`**: Qdrant DB listening on `http://localhost:6333`.
-2.  **`backend`**: FastAPI application on `http://localhost:8000`.
+2.  **`backend`**: FastAPI application on `http://localhost:8000` (serving API and project documentation statically at `/docs/project/`).
 3.  **`frontend`**: Static web server playing dashboard playground on `http://localhost:8080`.
+4.  **`docs`**: Independent documentation server listening on `http://localhost:8001`.
 
 #### C. Stopping the cluster:
 ```bash
