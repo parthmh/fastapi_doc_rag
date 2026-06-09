@@ -47,6 +47,7 @@ WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY app/ /app/app/
 COPY corpus/ /app/corpus/
+COPY ingestion/ /app/ingestion/
 ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
@@ -77,6 +78,7 @@ services:
       - LLM_MODEL=mistral-small-2506
       - LLM_BASE_URL=https://api.mistral.ai/v1
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     depends_on:
       - qdrant
 

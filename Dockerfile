@@ -17,6 +17,7 @@ WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY app/ /app/app/
 COPY corpus/ /app/corpus/
+COPY ingestion/ /app/ingestion/
 
 # Ensure virtual env binaries are in PATH
 ENV PATH="/app/.venv/bin:$PATH"
