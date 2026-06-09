@@ -40,3 +40,11 @@ site/
 *.html
 *.csv
 repomix-output.xml
+
+# Local project stages and agent guidelines
+STAGE.md
+stage_1_ingestion.md
+stage_2_retrieval.md
+stage_3_llm_injection.md
+AGENTS.md
+
