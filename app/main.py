@@ -1,6 +1,8 @@
 from typing import Annotated
 import time
+import os
 from fastapi import FastAPI, HTTPException, status, Body, Response
+from fastapi.staticfiles import StaticFiles
 from anyio.to_thread import run_sync
 
 from app.config import settings
@@ -223,3 +225,12 @@ async def chat_endpoint(
         retrieved_documents=retrieved_docs_meta,
         metadata=metadata
     )
+
+
+# Serve project documentation site if it was built
+docs_path = "/app/site"
+if os.path.exists(docs_path):
+    app.mount("/docs/project", StaticFiles(directory=docs_path, html=True), name="project-docs")
+elif os.path.exists("site"):
+    app.mount("/docs/project", StaticFiles(directory="site", html=True), name="project-docs")
+

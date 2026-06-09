@@ -60,15 +60,15 @@ When the FastAPI backend is running locally on port `8000`, you can access inter
 *   **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ### B. MkDocs Project Documentation
-The static site documentation is managed by MkDocs. You don't need to install it locally in your virtualenv; you can run it dynamically with `uv`:
+The static site documentation is managed by MkDocs. You can run or build it locally using `uv`:
 *   **Serve Documentation Locally**:
     ```bash
-    uv run --with mkdocs --with mkdocs-material mkdocs serve -a 127.0.0.1:8001
+    uv run mkdocs serve -a 127.0.0.1:8001
     ```
     Open your browser and visit **[http://127.0.0.1:8001](http://127.0.0.1:8001)**.
 *   **Build Static Site**:
     ```bash
-    uv run --with mkdocs --with mkdocs-material mkdocs build
+    uv run mkdocs build
     ```
     This builds the production-ready static site inside the `site/` folder.
 

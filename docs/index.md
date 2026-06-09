@@ -72,10 +72,10 @@ When the FastAPI backend is running, the interactive OpenAPI specifications are 
 To run or build this technical documentation site locally using `uv`:
 *   **Serve locally**:
     ```bash
-    uv run --with mkdocs --with mkdocs-material mkdocs serve -a 127.0.0.1:8001
+    uv run mkdocs serve -a 127.0.0.1:8001
     ```
 *   **Build static files**:
     ```bash
-    uv run --with mkdocs --with mkdocs-material mkdocs build
+    uv run mkdocs build
     ```
 

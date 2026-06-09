@@ -10,6 +10,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev
 
+# Build static documentation site using uv
+COPY docs/ /app/docs/
+COPY mkdocs.yml /app/mkdocs.yml
+RUN uv run mkdocs build
+
+
 # Stage 2: Clean, small runtime image
 FROM python:3.12-slim
 WORKDIR /app
@@ -19,6 +25,7 @@ COPY --from=builder /app/.venv /app/.venv
 COPY app/ /app/app/
 COPY corpus/ /app/corpus/
 COPY ingestion/ /app/ingestion/
+COPY --from=builder /app/site /app/site
 
 # Ensure virtual env binaries are in PATH
 ENV PATH="/app/.venv/bin:$PATH"
