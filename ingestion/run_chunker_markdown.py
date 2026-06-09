@@ -91,6 +91,11 @@ def main() -> None:
             f"Run run_parse_markdown.py first."
         )
 
+    from app.config import settings
+    print("=" * 100)
+    print(f"RUNNING CHUNKER | tier={settings.rag_model_tier} | model={settings.dense_model_name} | chunking_enabled={settings.chunking_enabled}")
+    print("=" * 100)
+
     run_start = time.perf_counter()
     total_pages = 0
     total_chunks = 0

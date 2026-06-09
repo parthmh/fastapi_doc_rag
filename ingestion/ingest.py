@@ -12,14 +12,8 @@ from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
 from .chunk_markdown import build_chunks_from_page_tree
-from .embed_core import (
-    COLLECTION_NAME,
-    COLBERT_MODEL_NAME,
-    DENSE_MODEL_NAME,
-    QDRANT_URL,
-    SPARSE_MODEL_NAME,
-    embed_and_upsert,
-)
+from app.config import settings
+from .embed_core import embed_and_upsert
 from .parse_markdown import PageTree, build_page
 
 
@@ -57,23 +51,23 @@ def build_page_chunks(page_tree: PageTree) -> list[dict[str, object]]:
 
 
 def make_context() -> PipelineContext:
-    print("Loading dense model...")
+    print(f"Loading dense model {settings.dense_model_name}...")
     
-    dense_model = SentenceTransformer(DENSE_MODEL_NAME, device="cpu")
+    dense_model = SentenceTransformer(settings.dense_model_name, device="cpu")
 
-    print("Loading sparse model...")
+    print(f"Loading sparse model {settings.sparse_model_name}...")
     
-    sparse_model = SparseTextEmbedding(model_name=SPARSE_MODEL_NAME)
+    sparse_model = SparseTextEmbedding(model_name=settings.sparse_model_name)
 
-    print("Loading ColBERT model...")
+    print(f"Loading ColBERT model {settings.colbert_model_name}...")
     
     colbert_model = LateInteractionTextEmbedding(
-        model_name=COLBERT_MODEL_NAME 
+        model_name=settings.colbert_model_name 
     )
 
     print("All models loaded.")
     return PipelineContext(
-        client=QdrantClient(url=QDRANT_URL),
+        client=QdrantClient(url=settings.qdrant_url),
         dense_model=dense_model,
         sparse_model=sparse_model,
         colbert_model=colbert_model,
@@ -126,10 +120,10 @@ def main() -> None:
     context = make_context()
 
     print("=" * 100)
-    print(f"INGEST START | collection={COLLECTION_NAME} | qdrant={QDRANT_URL}")
-    print(f"DENSE MODEL   : {DENSE_MODEL_NAME}")
-    print(f"SPARSE MODEL  : {SPARSE_MODEL_NAME}")
-    print(f"COLBERT MODEL : {COLBERT_MODEL_NAME}")
+    print(f"INGEST START | collection={settings.collection_name} | qdrant={settings.qdrant_url}")
+    print(f"DENSE MODEL   : {settings.dense_model_name}")
+    print(f"SPARSE MODEL  : {settings.sparse_model_name}")
+    print(f"COLBERT MODEL : {settings.colbert_model_name}")
     print(f"TUTORIAL ROOT : {TUTORIAL_ROOT}")
     print(f"PAGES FOUND   : {len(markdown_files)}")
     print("=" * 100)

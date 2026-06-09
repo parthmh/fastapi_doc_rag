@@ -1,0 +1,40 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant_db
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  backend:
+    build: .
+    container_name: rag_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - QDRANT_URL=http://qdrant:6333
+      - RAG_MODEL_TIER=granite
+      - LLM_PROVIDER=openai
+      - LLM_MODEL=mistral-small-2506
+      - LLM_BASE_URL=https://api.mistral.ai/v1
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+
+  frontend:
+    image: halverneus/static-file-server:latest
+    container_name: rag_frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/web
+    environment:
+      - PORT=8080
+      - FOLDER=/web
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:

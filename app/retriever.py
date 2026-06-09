@@ -1,30 +1,19 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Literal
+from typing import Any
 
 from fastembed import LateInteractionTextEmbedding, SparseTextEmbedding
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
+from app.config import Settings, settings as global_settings
+from app.schemas import SearchMode
 from ingestion.embed_core import (
-    COLLECTION_NAME,
-    COLBERT_MODEL_NAME,
     COLBERT_VECTOR_NAME,
-    DENSE_MODEL_NAME,
     DENSE_VECTOR_NAME,
-    QDRANT_URL,
-    SPARSE_MODEL_NAME,
     SPARSE_VECTOR_NAME,
 )
-
-
-SearchMode = Literal[
-    "dense",
-    "sparse",
-    "hybrid",
-    "hybrid_rerank",
-]
 
 
 @dataclass(slots=True)
@@ -41,20 +30,22 @@ class Retriever:
         dense_model: SentenceTransformer | None = None,
         sparse_model: SparseTextEmbedding | None = None,
         colbert_model: LateInteractionTextEmbedding | None = None,
+        settings: Settings | None = None,
     ) -> None:
-        self.client = client or QdrantClient(url=QDRANT_URL)
+        self.settings = settings or global_settings
+        self.client = client or QdrantClient(url=self.settings.qdrant_url)
 
         self.dense_model = dense_model or SentenceTransformer(
-            DENSE_MODEL_NAME,
+            self.settings.dense_model_name,
             device="cpu",
         )
 
         self.sparse_model = sparse_model or SparseTextEmbedding(
-            model_name=SPARSE_MODEL_NAME,
+            model_name=self.settings.sparse_model_name,
         )
 
         self.colbert_model = colbert_model or LateInteractionTextEmbedding(
-            model_name=COLBERT_MODEL_NAME,
+            model_name=self.settings.colbert_model_name,
         )
 
     def encode_dense_query(self, query: str) -> list[float]:
@@ -135,7 +126,7 @@ class Retriever:
         query_vector = self.encode_dense_query(query)
 
         results = self.client.query_points(
-            collection_name=COLLECTION_NAME,
+            collection_name=self.settings.collection_name,
             query=query_vector,
             using=DENSE_VECTOR_NAME,
             limit=fetch_limit,
@@ -155,7 +146,7 @@ class Retriever:
         sparse_query = self.encode_sparse_query(query)
 
         results = self.client.query_points(
-            collection_name=COLLECTION_NAME,
+            collection_name=self.settings.collection_name,
             query=self._to_sparse_vector(sparse_query),
             using=SPARSE_VECTOR_NAME,
             limit=fetch_limit,
@@ -176,7 +167,7 @@ class Retriever:
         sparse_query = self.encode_sparse_query(query)
 
         results = self.client.query_points(
-            collection_name=COLLECTION_NAME,
+            collection_name=self.settings.collection_name,
             prefetch=[
                 models.Prefetch(
                     query=dense_query,
@@ -212,7 +203,7 @@ class Retriever:
         colbert_query = self.encode_colbert_query(query)
 
         results = self.client.query_points(
-            collection_name=COLLECTION_NAME,
+            collection_name=self.settings.collection_name,
             prefetch=[
                 models.Prefetch(
                     query=dense_query,

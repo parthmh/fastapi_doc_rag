@@ -102,8 +102,43 @@ def compare_rankings(dense, sparse, hybrid, hybrid_rerank) -> None:
             )
 
 
+def compare_tiers(query: str, minilm_results: list, granite_results: list) -> None:
+    print()
+    print("-" * 140)
+    print(f"TIER COMPARISON FOR QUERY: {query}")
+    print("-" * 140)
+    
+    max_len = max(len(minilm_results), len(granite_results))
+    print(f"{'Rank':<5} | {'MINILM (score | chunk_id | heading)':<65} | {'GRANITE (score | chunk_id | heading)':<65}")
+    print("-" * 140)
+    
+    for idx in range(max_len):
+        minilm_str = ""
+        granite_str = ""
+        
+        if idx < len(minilm_results):
+            r = minilm_results[idx]
+            payload = r.payload
+            heading = payload.get("heading_text") or payload.get("title") or ""
+            heading_trunc = heading[:30] + "..." if len(heading) > 33 else heading
+            minilm_str = f"{r.score:.4f} | {r.chunk_id[-12:]} | {heading_trunc}"
+            
+        if idx < len(granite_results):
+            r = granite_results[idx]
+            payload = r.payload
+            heading = payload.get("heading_text") or payload.get("title") or ""
+            heading_trunc = heading[:30] + "..." if len(heading) > 33 else heading
+            granite_str = f"{r.score:.4f} | {r.chunk_id[-12:]} | {heading_trunc}"
+            
+        print(f"{idx+1:<5} | {minilm_str:<65} | {granite_str:<65}")
+
+
 def main() -> None:
-    retriever = Retriever()
+    from app.config import Settings
+    
+    # Instantiate retrievers for both tiers
+    retriever_minilm = Retriever(settings=Settings(rag_model_tier="minilm"))
+    retriever_granite = Retriever(settings=Settings(rag_model_tier="granite"))
 
     for query in QUERIES:
         print()
@@ -112,28 +147,7 @@ def main() -> None:
         print("QUERY:", query)
         print("#" * 140)
 
-        dense_results = retriever.search(
-            query=query,
-            mode="dense",
-            limit=5,
-            prefetch_limit=20,
-        )
-
-        sparse_results = retriever.search(
-            query=query,
-            mode="sparse",
-            limit=5,
-            prefetch_limit=20,
-        )
-
-        hybrid_results = retriever.search(
-            query=query,
-            mode="hybrid",
-            limit=5,
-            prefetch_limit=20,
-        )
-
-        hybrid_rerank_results = retriever.search(
+        minilm_results = retriever_minilm.search(
             query=query,
             mode="hybrid_rerank",
             limit=5,
@@ -141,17 +155,15 @@ def main() -> None:
             rerank_limit=10,
         )
 
-        print_result_block("DENSE RESULTS", dense_results)
-        print_result_block("SPARSE RESULTS", sparse_results)
-        print_result_block("HYBRID RESULTS", hybrid_results)
-        print_result_block("HYBRID + COLBERT RERANK RESULTS", hybrid_rerank_results)
-
-        compare_rankings(
-            dense_results,
-            sparse_results,
-            hybrid_results,
-            hybrid_rerank_results,
+        granite_results = retriever_granite.search(
+            query=query,
+            mode="hybrid_rerank",
+            limit=5,
+            prefetch_limit=20,
+            rerank_limit=10,
         )
+
+        compare_tiers(query, minilm_results, granite_results)
 
 
 if __name__ == "__main__":

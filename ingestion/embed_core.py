@@ -8,18 +8,20 @@ from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
 
-COLLECTION_NAME = "fastapi_doc_rag"
+from app.config import settings
 
-DENSE_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-SPARSE_MODEL_NAME = "qdrant/bm25"
-COLBERT_MODEL_NAME = "colbert-ir/colbertv2.0"
+COLLECTION_NAME = settings.collection_name
+
+DENSE_MODEL_NAME = settings.dense_model_name
+SPARSE_MODEL_NAME = settings.sparse_model_name
+COLBERT_MODEL_NAME = settings.colbert_model_name
 
 DENSE_VECTOR_NAME = "dense"
 SPARSE_VECTOR_NAME = "bm25"
 COLBERT_VECTOR_NAME = "colbert"
 
 BATCH_SIZE = 32
-QDRANT_URL = "http://localhost:6333"
+QDRANT_URL = settings.qdrant_url
 
 
 def stable_point_id(chunk_id: str) -> str:
@@ -34,15 +36,16 @@ def make_payload(chunk: dict[str, Any]) -> dict[str, Any]:
 
 def ensure_collection(
     client: QdrantClient,
+    collection_name: str,
     *,
     dense_size: int,
     colbert_size: int,
 ) -> None:
-    if client.collection_exists(COLLECTION_NAME):
+    if client.collection_exists(collection_name):
         return
 
     client.create_collection(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         vectors_config={
             DENSE_VECTOR_NAME: models.VectorParams(
                 size=dense_size,
@@ -66,7 +69,7 @@ def ensure_collection(
 
     for field_name in ("page_id", "node_kind", "chunk_kind"):
         client.create_payload_index(
-            collection_name=COLLECTION_NAME,
+            collection_name=collection_name,
             field_name=field_name,
             field_schema=models.PayloadSchemaType.KEYWORD,
         )
@@ -156,7 +159,8 @@ def upsert_chunks(
     if not chunks:
         return
 
-    collection_ready = client.collection_exists(COLLECTION_NAME)
+    collection_name = settings.collection_name
+    collection_ready = client.collection_exists(collection_name)
 
     for start in range(0, len(chunks), BATCH_SIZE):
         batch = chunks[start : start + BATCH_SIZE]
@@ -169,6 +173,7 @@ def upsert_chunks(
         if not collection_ready:
             ensure_collection(
                 client,
+                collection_name=collection_name,
                 dense_size=len(dense_vectors[0]),
                 colbert_size=len(colbert_vectors[0][0]),
             )
@@ -195,7 +200,7 @@ def upsert_chunks(
             )
 
         client.upsert(
-            collection_name=COLLECTION_NAME,
+            collection_name=collection_name,
             points=points,
         )
 
@@ -212,9 +217,9 @@ def embed_and_upsert(
         return client or QdrantClient(url=QDRANT_URL)
 
     local_client = client or QdrantClient(url=QDRANT_URL)
-    local_dense_model = dense_model or SentenceTransformer(DENSE_MODEL_NAME, device="cpu")
-    local_sparse_model = sparse_model or SparseTextEmbedding(SPARSE_MODEL_NAME)
-    local_colbert_model = colbert_model or LateInteractionTextEmbedding(COLBERT_MODEL_NAME)
+    local_dense_model = dense_model or SentenceTransformer(settings.dense_model_name, device="cpu")
+    local_sparse_model = sparse_model or SparseTextEmbedding(settings.sparse_model_name)
+    local_colbert_model = colbert_model or LateInteractionTextEmbedding(settings.colbert_model_name)
 
     upsert_chunks(
         local_client,

@@ -9,6 +9,7 @@ dependencies = [
     "chonkie>=1.6.7",
     "fastapi[standard]>=0.136.1",
     "jsonschema>=4.26.0",
+    "locust>=2.44.1",
     "markdown-it-py>=4.2.0",
     "matplotlib>=3.10.9",
     "mdit-py-plugins>=0.6.1",

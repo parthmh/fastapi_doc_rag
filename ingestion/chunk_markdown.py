@@ -9,19 +9,26 @@ from transformers import AutoTokenizer
 from .parse_markdown import AdmonitionNode, FlatNode, Node, PageTree
 
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-CHUNK_SIZE = 230
+from functools import lru_cache
+from app.config import settings
+
 CHUNK_OVERLAP = 24
 
 SECTION_SEPARATOR = "\n\n"
 
-TOKENIZER = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=True)
-CHUNKER = SentenceChunker(
-    tokenizer=TOKENIZER,
-    chunk_size=CHUNK_SIZE,
-    chunk_overlap=CHUNK_OVERLAP,
-    min_sentences_per_chunk=1,
-)
+@lru_cache(maxsize=2)
+def get_tokenizer(model_name: str):
+    return AutoTokenizer.from_pretrained(model_name, use_fast=True)
+
+@lru_cache(maxsize=2)
+def get_chunker(model_name: str, chunk_size: int, chunk_overlap: int):
+    tokenizer = get_tokenizer(model_name)
+    return SentenceChunker(
+        tokenizer=tokenizer,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        min_sentences_per_chunk=1,
+    )
 
 
 def clean_text(text: str) -> str:
@@ -79,14 +86,16 @@ def chunk_heading_node(
     chunk_kind: str,
     text: str,
 ) -> list[dict[str, Any]]:
-    chunks = CHUNKER.chunk(text)
+    tokenizer = get_tokenizer(settings.dense_model_name)
+    chunker = get_chunker(settings.dense_model_name, settings.chunk_size, CHUNK_OVERLAP)
+    chunks = chunker.chunk(text)
     output: list[dict[str, Any]] = []
 
     for idx, chunk in enumerate(chunks):
         chunk_text = clean_text(getattr(chunk, "text", str(chunk)))
         token_count = int(
             getattr(chunk, "token_count", 0)
-            or len(TOKENIZER.encode(chunk_text, add_special_tokens=False))
+            or len(tokenizer.encode(chunk_text, add_special_tokens=False))
         )
 
         output.append(
@@ -116,14 +125,16 @@ def chunk_admonition_node(
     page_id: str,
     text: str,
 ) -> list[dict[str, Any]]:
-    chunks = CHUNKER.chunk(text)
+    tokenizer = get_tokenizer(settings.dense_model_name)
+    chunker = get_chunker(settings.dense_model_name, settings.chunk_size, CHUNK_OVERLAP)
+    chunks = chunker.chunk(text)
     output: list[dict[str, Any]] = []
 
     for idx, chunk in enumerate(chunks):
         chunk_text = clean_text(getattr(chunk, "text", str(chunk)))
         token_count = int(
             getattr(chunk, "token_count", 0)
-            or len(TOKENIZER.encode(chunk_text, add_special_tokens=False))
+            or len(tokenizer.encode(chunk_text, add_special_tokens=False))
         )
 
         output.append(
@@ -221,10 +232,64 @@ def build_h2_subtree_chunks(page_tree: PageTree) -> list[dict[str, Any]]:
     return chunks
 
 
+def bypass_chunk_node(
+    node: Node | FlatNode | AdmonitionNode,
+    page_id: str,
+    chunk_kind: str,
+    text: str,
+) -> list[dict[str, Any]]:
+    tokenizer = get_tokenizer(settings.dense_model_name)
+    chunk_text = clean_text(text)
+    token_count = len(tokenizer.encode(chunk_text, add_special_tokens=False))
+    
+    if isinstance(node, AdmonitionNode):
+        level = int(node.fence_depth)
+        heading_text_val = node.title or ""
+        kind_val = node.kind
+        title_val = node.title
+    else:
+        level = int(getattr(node, "level", 0))
+        heading_text_val = getattr(node, "heading_text", "")
+        kind_val = getattr(node, "kind", None)
+        title_val = getattr(node, "title", None)
+        
+    return [
+        {
+            "chunk_id": f"{node.node_id}::chunk-0000",
+            "chunk_kind": chunk_kind,
+            "source_node_id": node.node_id,
+            "parent_id": node.parent_id,
+            "page_id": page_id,
+            "node_kind": node.node_kind,
+            "level": level,
+            "heading_text": heading_text_val,
+            "section_url": node.section_url,
+            "chunk_index": 0,
+            "chunk_text": chunk_text,
+            "token_count": token_count,
+            "kind": kind_val,
+            "title": title_val,
+        }
+    ]
+
+
 def build_chunks_from_page_tree(
     page_tree: PageTree,
     strategy: str = "section",
 ) -> list[dict[str, Any]]:
+    if not settings.chunking_enabled:
+        page_id = page_tree.page.page_id
+        chunks: list[dict[str, Any]] = []
+        for node in page_tree.flat_nodes:
+            text = heading_text(node)
+            if text:
+                chunks.extend(bypass_chunk_node(node, page_id, "heading", text))
+        for node in page_tree.admonition_nodes:
+            text = admonition_text(node)
+            if text:
+                chunks.extend(bypass_chunk_node(node, page_id, "admonition", text))
+        return chunks
+
     if strategy == "section":
         page_id = page_tree.page.page_id
         chunks: list[dict[str, Any]] = []

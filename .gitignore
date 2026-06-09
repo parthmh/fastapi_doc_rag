@@ -28,3 +28,15 @@ analysis/*.png
 # Qdrant persistent data
 qdrant/storage_qdrant/snapshots
 qdrant/storage_qdrant/storage
+
+.env
+
+# MkDocs generated site folder
+site/
+
+# Agent conversation artifacts, tasks logs and scratch scripts
+.gemini/
+*.log
+*.html
+*.csv
+repomix-output.xml
