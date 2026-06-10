@@ -1,7 +1,7 @@
 from typing import Annotated
 import time
 import os
-from fastapi import FastAPI, HTTPException, status, Body, Response
+from fastapi import FastAPI, HTTPException, status, Body, Response, Depends
 from fastapi.staticfiles import StaticFiles
 from anyio.to_thread import run_sync
 
@@ -56,7 +56,10 @@ app.add_middleware(
 )
 
 # Instantiate Retriever using the global settings
-retriever = Retriever()
+_retriever = Retriever()
+
+def get_retriever() -> Retriever:
+    return _retriever
 
 @app.get(
     "/health", 
@@ -72,7 +75,10 @@ retriever = Retriever()
     description="Validates the connection to the active Qdrant database instance and checks if the configured active collection is present.",
     tags=["Diagnostics"]
 )
-async def health_check(response: Response) -> HealthResponse:
+async def health_check(
+    response: Response,
+    retriever: Annotated[Retriever, Depends(get_retriever)]
+) -> HealthResponse:
     """
     Check the health of the service, verifying the Qdrant connection
     and validating that the active collection is accessible.
@@ -141,7 +147,8 @@ async def chat_endpoint(
                 }
             ]
         )
-    ]
+    ],
+    retriever: Annotated[Retriever, Depends(get_retriever)]
 ) -> ChatResponse:
     """
     Executes the full RAG pipeline:
