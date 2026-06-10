@@ -105,8 +105,8 @@ docker compose up -d
 
 To verify that requests are being handled concurrently by the ASGI event loop, high-precision UTC timestamps (ISO format with microsecond resolution) have been prefixed to the server's stdout prints. You can inspect the full server outputs for both runs at:
 
-*   📂 **Batch Mode Timestamped Logs**: [batch_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/batch_mode_server_with_timestamps.log)
-*   📂 **1-by-1 Mode Timestamped Logs**: [single_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/single_mode_server_with_timestamps.log)
+*   **Batch Mode Timestamped Logs**: [batch_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/batch_mode_server_with_timestamps.log)
+*   **1-by-1 Mode Timestamped Logs**: [single_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/single_mode_server_with_timestamps.log)
 
 You will see multiple requests accepted within fractions of a single millisecond (e.g. `[2026-06-10T13:55:45.698238]`), proving high-concurrency event-loop multiplexing.
 
