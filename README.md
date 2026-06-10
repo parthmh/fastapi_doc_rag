@@ -4,7 +4,7 @@ A configuration-driven Retrieval-Augmented Generation (RAG) service designed to 
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ### 1. Setup Local Environment
 This project uses **`uv`** for Python package management.
@@ -50,7 +50,7 @@ Available arguments:
 
 ---
 
-## 📖 Accessing Documentation
+## Accessing Documentation
 
 This project provides comprehensive documentation for API routes, system architecture, dataflows, and load test results.
 
@@ -74,7 +74,7 @@ The static site documentation is managed by MkDocs. You can run or build it loca
 
 ---
 
-## 🐳 Dockerized Deployment & Database Initialization
+## Dockerized Deployment & Database Initialization
 
 Standard practice for containerized RAG services is to spin up the database (Qdrant) and application backend together, and then run a one-time database schema creation and data ingestion job.
 
@@ -121,7 +121,7 @@ docker compose exec backend python -m ingestion.ingest --workers 12 --tier grani
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 *   **FastAPI Backend**: Organized type-safe endpoint schemas, OpenAPI details, and health-checks.
 *   **Qdrant Vector Database**: Houses dense vector fields, BM25 sparse indexes, and payload metadata.

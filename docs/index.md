@@ -61,7 +61,7 @@ Once started, navigate to **`http://localhost:8080`** to test your queries.
 
 ---
 
-## 📖 Accessing Interactive & Project Docs
+## Accessing Interactive & Project Docs
 
 ### FastAPI Auto-Generated API Docs
 When the FastAPI backend is running, the interactive OpenAPI specifications are automatically served at:
