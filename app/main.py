@@ -1,7 +1,10 @@
 from typing import Annotated
 import time
 import os
-from fastapi import FastAPI, HTTPException, status, Body, Response, Depends
+import asyncio
+import uuid
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, HTTPException, status, Body, Response, Depends, Request
 from fastapi.staticfiles import StaticFiles
 from anyio.to_thread import run_sync
 
@@ -17,7 +20,10 @@ from app.schemas import (
     ChatResponseMetadata,
     TokenUsage,
     ErrorResponse,
+    IngestRequest,
+    IngestResponse,
 )
+from app.ingest_worker import ensure_ingest_collection_initialized, ingest_worker_loop
 
 tags_metadata = [
     {
@@ -28,9 +34,42 @@ tags_metadata = [
         "name": "Chat",
         "description": "Core RAG chat operations utilizing semantic search and LLM context injection.",
     },
+    {
+        "name": "Ingestion",
+        "description": "High-throughput asynchronous bulk ingestion endpoints.",
+    },
 ]
 
 from fastapi.middleware.cors import CORSMiddleware
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Ensure ingestion collection is initialized on startup
+    try:
+        await run_sync(ensure_ingest_collection_initialized, _retriever)
+        print(f"Ingest collection '{settings.ingest_collection_name}' is initialized.")
+    except Exception as e:
+        print(f"Warning: Failed to ensure ingest collection on boot: {e}")
+
+    # Set up background queue and start worker task
+    app.state.ingest_queue = asyncio.Queue(maxsize=1200000)
+    app.state.ingest_worker_task = asyncio.create_task(
+        ingest_worker_loop(app.state.ingest_queue, _retriever)
+    )
+
+    yield
+
+    # Graceful shutdown: wait for the queue to drain
+    print("Shutting down ingest worker task...")
+    if hasattr(app.state, "ingest_queue"):
+        await app.state.ingest_queue.join()
+    if hasattr(app.state, "ingest_worker_task"):
+        app.state.ingest_worker_task.cancel()
+        try:
+            await app.state.ingest_worker_task
+        except asyncio.CancelledError:
+            pass
+    print("Ingest worker task stopped.")
 
 app = FastAPI(
     title="FastAPI RAG Service",
@@ -44,6 +83,7 @@ This service implements a configuration-driven Retrieval-Augmented Generation (R
     """,
     version="0.1.0",
     openapi_tags=tags_metadata,
+    lifespan=lifespan,
 )
 
 # Enable CORS for frontend clients
@@ -231,6 +271,66 @@ async def chat_endpoint(
         reasoning=reasoning,
         retrieved_documents=retrieved_docs_meta,
         metadata=metadata
+    )
+
+
+@app.post(
+    "/api/v1/ingest",
+    response_model=IngestResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+    responses={
+        status.HTTP_422_UNPROCESSABLE_CONTENT: {
+            "model": ErrorResponse,
+            "description": "Validation Error in request items"
+        },
+        status.HTTP_503_SERVICE_UNAVAILABLE: {
+            "model": ErrorResponse,
+            "description": "Queue full or worker unhealthy"
+        }
+    },
+    summary="Asynchronously ingest document chunks",
+    description="Enqueue a list of document chunks for async processing. Returns status 202 Accepted immediately.",
+    tags=["Ingestion"]
+)
+async def ingest_endpoint(
+    request: IngestRequest,
+    fastapi_request: Request
+) -> IngestResponse:
+    """
+    Asynchronously queues items for embedding and Qdrant upserts.
+    Calculates stable identifiers and enqueues items into the in-memory queue.
+    """
+    start_time = time.perf_counter()
+    task_id = str(uuid.uuid4())
+    queue: asyncio.Queue = fastapi_request.app.state.ingest_queue
+
+    # Check if there is enough space in the queue
+    if queue.full() or (queue.qsize() + len(request.items) > queue.maxsize):
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Ingestion queue is full. Please try again later."
+        )
+
+    for item in request.items:
+        try:
+            queue.put_nowait(item)
+        except asyncio.QueueFull:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Ingestion queue is full. Please try again later."
+            )
+
+    request_latency_ms = (time.perf_counter() - start_time) * 1000
+    print(
+        f"[API Ingest] Accepted batch of {len(request.items)} items | "
+        f"Queue Size: {queue.qsize()} | "
+        f"Enqueuing Latency: {request_latency_ms:.3f}ms"
+    )
+
+    return IngestResponse(
+        status="accepted",
+        task_id=task_id,
+        queued_count=len(request.items)
     )
 
 

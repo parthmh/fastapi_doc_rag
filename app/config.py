@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     # Qdrant configuration
     qdrant_url: str = "http://localhost:6333"
     base_collection_name: str = "fastapi_doc_rag"
+    base_ingest_collection_name: str = "fastapi_doc_ingest"
+    mock_ingest_embeddings: bool = False
     
     # Shared models
     sparse_model_name: str = "qdrant/bm25"
@@ -29,6 +31,10 @@ class Settings(BaseSettings):
     @property
     def collection_name(self) -> str:
         return f"{self.base_collection_name}_{self.rag_model_tier}"
+
+    @property
+    def ingest_collection_name(self) -> str:
+        return f"{self.base_ingest_collection_name}_minilm"
     
     @property
     def dense_model_name(self) -> str:

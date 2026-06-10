@@ -165,3 +165,34 @@ class ErrorResponse(BaseModel):
             examples=["Qdrant retrieval error: Connection refused"]
         )
     ]
+
+
+class IngestItem(BaseModel):
+    """
+    Represents a single document chunk metadata payload to be ingested.
+    """
+    chunk_text: str = Field(..., description="The main text body of the document chunk.")
+    heading_text: str = Field(..., description="The heading/title of the section.")
+    page_id: str = Field(..., description="The relative path identifier of the page.")
+    section_url: str = Field(..., description="The URL pointing to the section.")
+    chunk_id: str | None = Field(default=None, description="Optional custom unique identifier for the chunk.")
+    node_kind: str | None = Field(default="section", description="Kind of markdown node.")
+    chunk_kind: str | None = Field(default="content", description="Kind of chunk.")
+    token_count: int | None = Field(default=None, description="Token metric count.")
+
+
+class IngestRequest(BaseModel):
+    """
+    Request body wrapper containing multiple items for batch concurrent ingestion.
+    """
+    items: list[IngestItem] = Field(..., description="List of items to ingest.")
+
+
+class IngestResponse(BaseModel):
+    """
+    Response schema returning ingestion task acceptance status.
+    """
+    status: str = Field(default="accepted", description="Status of the ingestion request.")
+    task_id: str = Field(..., description="The unique request tracking identifier.")
+    queued_count: int = Field(..., description="Number of items added to the async queue.")
+

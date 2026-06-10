@@ -39,3 +39,4 @@ nav:
   - System Architecture: architecture.md
   - RAG Pipeline Dataflow: dataflow.md
   - Load Testing & Deployment: deployment.md
+  - Concurrent Ingestion Design: concurrent_ingestion.md
