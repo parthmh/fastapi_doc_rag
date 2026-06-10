@@ -27,14 +27,14 @@ _minilm_model: SentenceTransformer | None = None
 
 def get_minilm_model() -> SentenceTransformer:
     """
-    Retrieves or loads the sentence-transformers/all-MiniLM-L6-v2 model.
+    Retrieves or loads the sentence-transformers/multi-qa-MiniLM-L6-cos-v1 model.
     Enforces MiniLM only for ingestion to keep indexing fast.
     """
     global _minilm_model
     if _minilm_model is None:
-        print("Loading MiniLM model ('sentence-transformers/all-MiniLM-L6-v2') on CPU for ingestion worker...")
+        print("Loading MiniLM model ('sentence-transformers/multi-qa-MiniLM-L6-cos-v1') on CPU for ingestion worker...")
         _minilm_model = SentenceTransformer(
-            "sentence-transformers/all-MiniLM-L6-v2",
+            "sentence-transformers/multi-qa-MiniLM-L6-cos-v1",
             device="cpu"
         )
     return _minilm_model
@@ -42,14 +42,27 @@ def get_minilm_model() -> SentenceTransformer:
 def ensure_ingest_collection_initialized(retriever: Retriever) -> None:
     """
     Checks if the isolated ingestion collection exists in Qdrant; if not, creates it.
-    Uses 384 dimensions for MiniLM.
+    Uses ONLY dense vector configuration with 384 dimensions for MiniLM.
     """
-    ensure_collection(
-        client=retriever.client,
-        collection_name=settings.ingest_collection_name,
-        dense_size=384,  # Force MiniLM size
-        colbert_size=128,  # colbertv2.0 outputs 128-dimensional vectors
+    collection_name = settings.ingest_collection_name
+    if retriever.client.collection_exists(collection_name):
+        return
+
+    retriever.client.create_collection(
+        collection_name=collection_name,
+        vectors_config={
+            DENSE_VECTOR_NAME: models.VectorParams(
+                size=384,
+                distance=models.Distance.COSINE,
+            )
+        }
     )
+    for field_name in ("page_id", "node_kind", "chunk_kind"):
+        retriever.client.create_payload_index(
+            collection_name=collection_name,
+            field_name=field_name,
+            field_schema=models.PayloadSchemaType.KEYWORD,
+        )
 
 def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     """
@@ -66,8 +79,6 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     start_embed = time.perf_counter()
     
     dense_vectors = embed_dense_texts(minilm_model, texts)
-    sparse_vectors = embed_sparse_texts(retriever.sparse_model, texts)
-    colbert_vectors = embed_colbert_texts(retriever.colbert_model, texts)
     
     embed_latency = time.perf_counter() - start_embed
 
@@ -76,8 +87,8 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     collection_name = settings.ingest_collection_name
     points = []
     
-    for item, dense, sparse, colbert in zip(
-        batch, dense_vectors, sparse_vectors, colbert_vectors, strict=True
+    for item, dense in zip(
+        batch, dense_vectors, strict=True
     ):
         # 1. Token Metric Extraction (Calculated using MiniLM model tokenizer)
         token_count = item.token_count
@@ -108,8 +119,6 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
                 id=stable_point_id(chunk_id),
                 vector={
                     DENSE_VECTOR_NAME: dense,
-                    SPARSE_VECTOR_NAME: sparse,
-                    COLBERT_VECTOR_NAME: colbert,
                 },
                 payload=payload,
             )
@@ -126,16 +135,12 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     )
     
     qdrant_latency = time.perf_counter() - start_qdrant
-    total_latency = embed_latency + prep_latency + qdrant_latency
     
-    # Log detailed timing statistics for performance isolation
-    print(
-        f"[Worker Batch] Processed {len(batch)} items | "
-        f"Embedding: {embed_latency:.3f}s ({embed_latency/total_latency*100:.1f}%) | "
-        f"Prep: {prep_latency:.3f}s ({prep_latency/total_latency*100:.1f}%) | "
-        f"Qdrant Upsert: {qdrant_latency:.3f}s ({qdrant_latency/total_latency*100:.1f}%) | "
-        f"Total: {total_latency:.3f}s"
-    )
+    # Log detailed timing statistics for performance isolation in the exact user-specified format
+    model_ms = embed_latency * 1000
+    io_ms = qdrant_latency * 1000
+    print(f"Model  : {model_ms:.0f}ms")
+    print(f"io task: {io_ms:.0f}ms")
 
 async def ingest_worker_loop(
     queue: asyncio.Queue,
@@ -148,28 +153,18 @@ async def ingest_worker_loop(
     batching them, and executing parallel ingestion.
     """
     print("Background Ingestion Worker initialized.")
-    # Warm up MiniLM model on startup
-    try:
-        await run_sync(get_minilm_model)
-    except Exception as e:
-        print(f"Warning: Failed to pre-load MiniLM model: {e}")
+    # Warm up MiniLM model is now handled synchronously in the main thread during lifespan startup.
 
     while True:
         try:
             item = await queue.get()
             batch = [item]
-            start_time = asyncio.get_running_loop().time()
 
-            # Batch aggregation logic
+            # Drain the queue up to batch_size as quickly as possible without yielding
             while len(batch) < batch_size:
-                elapsed = asyncio.get_running_loop().time() - start_time
-                remaining = timeout_sec - elapsed
-                if remaining <= 0:
-                    break
                 try:
-                    next_item = await asyncio.wait_for(queue.get(), timeout=remaining)
-                    batch.append(next_item)
-                except asyncio.TimeoutError:
+                    batch.append(queue.get_nowait())
+                except asyncio.QueueEmpty:
                     break
 
             try:

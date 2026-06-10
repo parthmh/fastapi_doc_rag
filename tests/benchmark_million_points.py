@@ -15,7 +15,7 @@ def generate_mock_batch(batch_index: int, batch_size: int) -> dict:
     for i in range(batch_size):
         idx = batch_index * batch_size + i
         items.append({
-            "chunk_text": f"This is mock paragraph number {idx} for benchmarking high concurrency ingestion.",
+            "chunk_text": f"{idx}: This is mock paragraph number {idx} for benchmarking high concurrency ingestion.",
             "heading_text": f"Benchmark Section {idx // 10}",
             "page_id": f"benchmark/page_{idx // 100}",
             "section_url": f"https://example.com/benchmark/page_{idx // 100}#section-{idx}"

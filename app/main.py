@@ -51,6 +51,13 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"Warning: Failed to ensure ingest collection on boot: {e}")
 
+    # Warm up MiniLM model synchronously on the main thread to prevent thread deadlocks
+    try:
+        from app.ingest_worker import get_minilm_model
+        get_minilm_model()
+    except Exception as e:
+        print(f"Warning: Failed to pre-load MiniLM model: {e}")
+
     # Set up background queue and start worker task
     app.state.ingest_queue = asyncio.Queue(maxsize=1200000)
     app.state.ingest_worker_task = asyncio.create_task(
