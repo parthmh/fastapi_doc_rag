@@ -51,6 +51,8 @@ async def request_with_retry(client: httpx.AsyncClient, method: str, url: str, *
                 f"Retrying in {delay:.2f}s (attempt {attempt + 1}/{max_retries})..."
             )
             await asyncio.sleep(delay)
+            
+    raise RuntimeError("Unreachable: request_with_retry exceeded max retries without returning a response.")
 
 SYSTEM_PROMPT = (
     "You are a helpful, expert FastAPI documentation assistant.\n"
