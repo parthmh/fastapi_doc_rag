@@ -21,6 +21,7 @@ services:
       - LLM_BASE_URL=https://api.mistral.ai/v1
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - INGEST_BATCH_SIZE=64
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
       - /tmp/fastembed_cache:/tmp/fastembed_cache

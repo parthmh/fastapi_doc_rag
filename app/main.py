@@ -61,7 +61,11 @@ async def lifespan(app: FastAPI):
     # Set up background queue and start worker task
     app.state.ingest_queue = asyncio.Queue(maxsize=1200000)
     app.state.ingest_worker_task = asyncio.create_task(
-        ingest_worker_loop(app.state.ingest_queue, _retriever)
+        ingest_worker_loop(
+            app.state.ingest_queue, 
+            _retriever, 
+            batch_size=settings.ingest_batch_size
+        )
     )
 
     yield

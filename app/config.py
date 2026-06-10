@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     base_collection_name: str = "fastapi_doc_rag"
     base_ingest_collection_name: str = "fastapi_doc_ingest"
     mock_ingest_embeddings: bool = False
+    ingest_batch_size: int = 64
     
     # Shared models
     sparse_model_name: str = "qdrant/bm25"
