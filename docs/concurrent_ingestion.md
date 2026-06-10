@@ -98,3 +98,15 @@ docker compose up -d
 # Run benchmark with 1 chunk per API request
 .venv/bin/python tests/benchmark_million_points.py --count 10000 --batch 1 --concurrency 10
 ```
+
+---
+
+## 6. Proving Concurrency: Server Logs with High-Precision Timestamps
+
+To verify that requests are being handled concurrently by the ASGI event loop, high-precision UTC timestamps (ISO format with microsecond resolution) have been prefixed to the server's stdout prints. You can inspect the full server outputs for both runs at:
+
+*   📂 **Batch Mode Timestamped Logs**: [batch_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/batch_mode_server_with_timestamps.log)
+*   📂 **1-by-1 Mode Timestamped Logs**: [single_mode_server_with_timestamps.log](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/processed/single_mode_server_with_timestamps.log)
+
+You will see multiple requests accepted within fractions of a single millisecond (e.g. `[2026-06-10T13:55:45.698238]`), proving high-concurrency event-loop multiplexing.
+
