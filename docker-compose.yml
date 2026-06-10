@@ -22,6 +22,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - INGEST_BATCH_SIZE=64
+      - PYTHONUNBUFFERED=1
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
       - /tmp/fastembed_cache:/tmp/fastembed_cache

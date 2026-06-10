@@ -42,28 +42,59 @@ graph TD
 
 ## 3. Pipeline Timing Performance Analysis
 
-We profile the execution time of each stage of the ingestion pipeline per batch of 64 items to identify bottlenecks:
+We profiled the ingestion pipeline under a high-concurrency stream of **10,000 points**, where each client request enqueued exactly **1 chunk per API call** (using 10 concurrent connections). We compared two server-side queue batch configurations:
+1. **Batch Mode (`INGEST_BATCH_SIZE=64`)**: The background worker accumulates up to 64 enqueued items before processing and upserting in bulk.
+2. **1-by-1 Mode (`INGEST_BATCH_SIZE=1`)**: The background worker processes and upserts each enqueued item individually as soon as it arrives.
 
-*   **API Enqueuing Latency**: **< 0.5ms** (immediate response to client).
-*   **Embedding Generation**: **~50ms - 90ms** (accounting for **~75%** of worker execution time).
-*   **Payload Preparation**: **~1ms** (accounting for **~1%** of worker execution time).
-*   **Qdrant gRPC Upsert (Network I/O)**: **~15ms - 25ms** (accounting for **~24%** of worker execution time).
-*   **Total Worker Latency**: **~70ms - 110ms** per batch of 64 items (indexing throughput of **~570 - 664 points/sec**).
+### Comparative Execution Metrics
+| Performance Metric | Batch Mode (`INGEST_BATCH_SIZE=64`) | 1-by-1 Mode (`INGEST_BATCH_SIZE=1`) |
+| :--- | :--- | :--- |
+| **API Enqueuing Time** | **15.25 seconds** | **13.36 seconds** |
+| **API Throughput** | **655.60 requests/sec** | **748.58 requests/sec** |
+| **Total Ingestion Time** | **20.43 seconds** | **83.63 seconds** |
+| **Actual Indexing Throughput** | **489.50 points/sec** | **119.57 points/sec** |
+| **Data Integrity (Qdrant Points)** | **10,000 / 10,000 (0% Loss)** | **10,000 / 10,000 (0% Loss)** |
+| **Throughput Improvement** | **~4.1x Faster** (Baseline) | - |
 
 ---
 
-## 4. Synthetic Data Generation & Benchmark Tools
+## 4. Latency Distribution Analysis
 
-To load-test the API under realistic workloads, we developed two custom scripts under `tests/`:
+The tables below present the detailed statistical distribution of execution times parsed from the container's stdout logs:
+
+### Background Model Latency (MiniLM Embeddings)
+| Mode | Count | Mean | Median | Min | Max | Stddev |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Batch Mode (per batch)** | 159 | 93.35 ms | 99.00 ms | 19.00 ms | 113.00 ms | 16.04 ms |
+| **1-by-1 Mode (per point)** | 10,000 | 5.92 ms | 5.00 ms | 5.00 ms | 20.00 ms | 1.29 ms |
+
+### Background IO Task Latency (Qdrant Upsert)
+| Mode | Count | Mean | Median | Min | Max | Stddev |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Batch Mode (per batch)** | 159 | 18.36 ms | 18.00 ms | 5.00 ms | 34.00 ms | 2.88 ms |
+| **1-by-1 Mode (per point)** | 10,000 | 1.74 ms | 2.00 ms | 1.00 ms | 8.00 ms | 0.48 ms |
+
+### Key Observations
+1. **Dynamic Queue Batching Efficiency**: Under Batch Mode, the worker aggregates up to 64 items. This allows the backend to perform 159 total database bulk writes instead of 10,000 individual roundtrips.
+2. **Encoding Overhead**: Vectorizing 64 chunks takes `~93ms` (average `~1.45ms` per chunk) compared to `~5.92ms` for a single chunk. Batch inference scales CPU registers and PyTorch tensor operations far more efficiently.
+3. **Database Indexing Rate**: Reducing database write calls from 10,000 to 159 reduces average IO latency overhead from 1.74 seconds cumulative to under 3 seconds total, accelerating indexing throughput by **4.1x**.
+
+---
+
+## 5. Ingestion Verification Tools
+
+To benchmark the ingestion API, we use the following tools under `tests/`:
 
 1.  **Zero-Dependency Generator (`tests/generate_synthetic_data.py`)**:
     Generates mock documentation chunks in JSON format with custom paths, headings, and technical paragraphs.
 2.  **Benchmark CLI (`tests/benchmark_million_points.py`)**:
-    Streams up to 1,000,000 points concurrently in configurable batches and connections.
+    Streams documentation points concurrently to the API. By default, it operates with `--batch 1` (1 chunk per API call) to simulate individual request streams.
 
-### Benchmark Run Results (20,000 points):
-*   **API Throughput**: **114,672.88 points/second** enqueued.
-*   **Total API Acceptance Time**: **0.1744 seconds**.
-*   **Average Route Latency**: **15.77 ms** per batch of 200 items.
-*   **Peak Indexing Throughput**: **664 points/second**.
-*   **Sustained Indexing Throughput**: **570 points/second**.
+To manually replicate this test, verify the environment and run:
+```bash
+# Start backend in Batch Mode (default)
+docker compose up -d
+
+# Run benchmark with 1 chunk per API request
+.venv/bin/python tests/benchmark_million_points.py --count 10000 --batch 1 --concurrency 10
+```

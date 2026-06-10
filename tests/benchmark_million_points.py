@@ -118,7 +118,7 @@ async def run_benchmark(target_points: int, batch_size: int, concurrency: int):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Benchmark ingestion of up to 1M points.")
     parser.add_argument("--count", "-c", type=int, default=100000, help="Number of points to ingest")
-    parser.add_argument("--batch", "-b", type=int, default=500, help="Batch size per request")
+    parser.add_argument("--batch", "-b", type=int, default=1, help="Batch size per request")
     parser.add_argument("--concurrency", type=int, default=15, help="Number of concurrent connections")
     args = parser.parse_args()
     
