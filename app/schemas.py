@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Annotated, Literal
 from pydantic import BaseModel, Field
 
 # Define the search mode choices as a literal type
@@ -9,16 +9,53 @@ SearchMode = Literal[
     "hybrid_rerank",
 ]
 
+# Reusable Type Aliases for common validations, descriptions, and examples
+NonEmptyStr = Annotated[str, Field(min_length=1)]
+
+DocPageId = Annotated[
+    str,
+    Field(
+        description="The relative file path or identifier of the documentation page.",
+        examples=["tutorial/cors"]
+    )
+]
+
+DocHeading = Annotated[
+    str,
+    Field(
+        description="The header/title of the specific documentation section.",
+        examples=["CORS (Cross-Origin Resource Sharing)"]
+    )
+]
+
+DocUrl = Annotated[
+    str,
+    Field(
+        description="The official FastAPI documentation URL pointing directly to the section.",
+        examples=["https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing"]
+    )
+]
+
+LatencySec = Annotated[
+    float,
+    Field(
+        ge=0,
+        description="Execution latency duration measured in seconds."
+    )
+]
+
 class ChatRequest(BaseModel):
     """
     Schema for incoming chat queries sent to the FastAPI RAG service.
     """
-    message: str = Field(
-        ...,
-        description="The user's query or prompt regarding FastAPI features, documentation, or implementation.",
-        min_length=1,
-        examples=["How do I implement CORS in FastAPI?"]
-    )
+    message: Annotated[
+        str,
+        Field(
+            description="The user's query or prompt regarding FastAPI features, documentation, or implementation.",
+            min_length=1,
+            examples=["How do I implement CORS in FastAPI?"]
+        )
+    ]
     mode: SearchMode = Field(
         default="hybrid_rerank",
         description="The Qdrant retrieval strategy: 'dense' (dense embeddings only), 'sparse' (BM25 only), 'hybrid' (dense and sparse RRF fusion), or 'hybrid_rerank' (hybrid fusion followed by ColBERT late-interaction reranking).",
@@ -34,21 +71,9 @@ class RetrievedDocMetadata(BaseModel):
     """
     Metadata representation of a retrieved FastAPI documentation section.
     """
-    page_id: str = Field(
-        ...,
-        description="The relative file path or identifier of the documentation page.",
-        examples=["tutorial/cors"]
-    )
-    heading: str = Field(
-        ...,
-        description="The header/title of the specific documentation section.",
-        examples=["CORS (Cross-Origin Resource Sharing)"]
-    )
-    url: str = Field(
-        ...,
-        description="The official FastAPI documentation URL pointing directly to the section.",
-        examples=["https://fastapi.tiangolo.com/tutorial/cors/#cors-cross-origin-resource-sharing"]
-    )
+    page_id: DocPageId
+    heading: DocHeading
+    url: DocUrl
 
 class TokenUsage(BaseModel):
     """
@@ -62,10 +87,10 @@ class ChatResponseMetadata(BaseModel):
     """
     Metadata about the RAG pipeline execution, including model configuration and latencies.
     """
-    active_tier: str = Field(..., description="The configuration tier used (e.g. 'minilm' or 'granite').")
-    search_mode: str = Field(..., description="The vector search mode executed.")
-    retrieval_latency_sec: float = Field(..., description="Time taken to search Qdrant and reconstruct context in seconds.")
-    generation_latency_sec: float = Field(..., description="Time taken by the LLM API to generate response in seconds.")
+    active_tier: Annotated[str, Field(description="The configuration tier used (e.g. 'minilm' or 'granite').")]
+    search_mode: Annotated[str, Field(description="The vector search mode executed.")]
+    retrieval_latency_sec: Annotated[LatencySec, Field(description="Time taken to search Qdrant and reconstruct context in seconds.")]
+    generation_latency_sec: Annotated[LatencySec, Field(description="Time taken by the LLM API to generate response in seconds.")]
     token_usage: TokenUsage = Field(default_factory=lambda: TokenUsage(), description="Token consumption metrics for the generation.")
 
 class ChatResponse(BaseModel):
@@ -93,38 +118,50 @@ class HealthResponse(BaseModel):
     """
     Diagnostic schema indicating the service status, configuration tier, and vector database connection state.
     """
-    status: str = Field(
-        ...,
-        description="The overall health status of the API. Returns 'healthy', 'degraded', or 'unhealthy'.",
-        examples=["healthy"]
-    )
-    active_tier: str = Field(
-        ...,
-        description="The active model configuration tier currently loaded (e.g. 'minilm' or 'granite').",
-        examples=["granite"]
-    )
-    collection_name: str = Field(
-        ...,
-        description="The specific Qdrant collection name targeted by the current settings.",
-        examples=["fastapi_doc_rag_granite"]
-    )
-    llm_model: str = Field(
-        ...,
-        description="The active LLM model currently configured in the service.",
-        examples=["mistral-small-2506"]
-    )
-    qdrant_connected: bool = Field(
-        ...,
-        description="Boolean indicating whether connection to the Qdrant instance is successful.",
-        examples=[True]
-    )
+    status: Annotated[
+        str,
+        Field(
+            description="The overall health status of the API. Returns 'healthy', 'degraded', or 'unhealthy'.",
+            examples=["healthy"]
+        )
+    ]
+    active_tier: Annotated[
+        str,
+        Field(
+            description="The active model configuration tier currently loaded (e.g. 'minilm' or 'granite').",
+            examples=["granite"]
+        )
+    ]
+    collection_name: Annotated[
+        str,
+        Field(
+            description="The specific Qdrant collection name targeted by the current settings.",
+            examples=["fastapi_doc_rag_granite"]
+        )
+    ]
+    llm_model: Annotated[
+        str,
+        Field(
+            description="The active LLM model currently configured in the service.",
+            examples=["mistral-small-2506"]
+        )
+    ]
+    qdrant_connected: Annotated[
+        bool,
+        Field(
+            description="Boolean indicating whether connection to the Qdrant instance is successful.",
+            examples=[True]
+        )
+    ]
 
 class ErrorResponse(BaseModel):
     """
     Standard schema for error details returned by the API during exception handling.
     """
-    detail: str = Field(
-        ...,
-        description="Descriptive details about the failure or validation error.",
-        examples=["Qdrant retrieval error: Connection refused"]
-    )
+    detail: Annotated[
+        str,
+        Field(
+            description="Descriptive details about the failure or validation error.",
+            examples=["Qdrant retrieval error: Connection refused"]
+        )
+    ]
