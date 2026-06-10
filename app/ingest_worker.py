@@ -137,10 +137,12 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     qdrant_latency = time.perf_counter() - start_qdrant
     
     # Log detailed timing statistics for performance isolation in the exact user-specified format
+    from datetime import datetime
+    timestamp = datetime.utcnow().isoformat()
     model_ms = embed_latency * 1000
     io_ms = qdrant_latency * 1000
-    print(f"Model  : {model_ms:.0f}ms")
-    print(f"io task: {io_ms:.0f}ms")
+    print(f"[{timestamp}] Model  : {model_ms:.0f}ms")
+    print(f"[{timestamp}] io task: {io_ms:.0f}ms")
 
 async def ingest_worker_loop(
     queue: asyncio.Queue,

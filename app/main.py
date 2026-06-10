@@ -331,9 +331,11 @@ async def ingest_endpoint(
                 detail="Ingestion queue is full. Please try again later."
             )
 
+    from datetime import datetime
+    timestamp = datetime.utcnow().isoformat()
     request_latency_ms = (time.perf_counter() - start_time) * 1000
     print(
-        f"[API Ingest] Accepted batch of {len(request.items)} items | "
+        f"[{timestamp}] [API Ingest] Accepted batch of {len(request.items)} items | "
         f"Queue Size: {queue.qsize()} | "
         f"Enqueuing Latency: {request_latency_ms:.3f}ms"
     )
