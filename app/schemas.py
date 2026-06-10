@@ -54,9 +54,9 @@ class TokenUsage(BaseModel):
     """
     Pydantic model representing token consumption for the LLM request.
     """
-    prompt_tokens: int | None = Field(None, description="Number of tokens in the input prompt.")
-    completion_tokens: int | None = Field(None, description="Number of tokens in the generated response.")
-    total_tokens: int | None = Field(None, description="Total number of tokens processed.")
+    prompt_tokens: int | None = Field(default=None, description="Number of tokens in the input prompt.")
+    completion_tokens: int | None = Field(default=None, description="Number of tokens in the generated response.")
+    total_tokens: int | None = Field(default=None, description="Total number of tokens processed.")
 
 class ChatResponseMetadata(BaseModel):
     """
