@@ -66,7 +66,7 @@ class ChatResponseMetadata(BaseModel):
     search_mode: str = Field(..., description="The vector search mode executed.")
     retrieval_latency_sec: float = Field(..., description="Time taken to search Qdrant and reconstruct context in seconds.")
     generation_latency_sec: float = Field(..., description="Time taken by the LLM API to generate response in seconds.")
-    token_usage: TokenUsage = Field(default_factory=TokenUsage, description="Token consumption metrics for the generation.")
+    token_usage: TokenUsage = Field(default_factory=lambda: TokenUsage(), description="Token consumption metrics for the generation.")
 
 class ChatResponse(BaseModel):
     """
