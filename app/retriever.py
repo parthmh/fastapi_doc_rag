@@ -42,10 +42,12 @@ class Retriever:
 
         self.sparse_model = sparse_model or SparseTextEmbedding(
             model_name=self.settings.sparse_model_name,
+            threads=1,
         )
 
         self.colbert_model = colbert_model or LateInteractionTextEmbedding(
             model_name=self.settings.colbert_model_name,
+            threads=1,
         )
 
     def encode_dense_query(self, query: str) -> list[float]:
