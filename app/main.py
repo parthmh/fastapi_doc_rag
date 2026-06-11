@@ -68,6 +68,26 @@ async def lifespan(app: FastAPI):
         )
     )
 
+    # Initialize memory buffer for logging and start background flusher
+    app.state.log_buffer = []
+    async def log_flusher():
+        while True:
+            try:
+                await asyncio.sleep(0.5)
+            except asyncio.CancelledError:
+                break
+            buffer = app.state.log_buffer
+            if buffer:
+                app.state.log_buffer = []
+                try:
+                    os.makedirs("processed", exist_ok=True)
+                    with open("processed/concurrency_proof.log", "a", encoding="utf-8") as f:
+                        f.writelines(buffer)
+                except Exception:
+                    pass
+
+    app.state.log_flusher_task = asyncio.create_task(log_flusher())
+
     yield
 
     # Graceful shutdown: wait for the queue to drain
@@ -80,6 +100,24 @@ async def lifespan(app: FastAPI):
             await app.state.ingest_worker_task
         except asyncio.CancelledError:
             pass
+    
+    # Cancel log flusher and run a final write of any remaining buffered logs
+    if hasattr(app.state, "log_flusher_task"):
+        app.state.log_flusher_task.cancel()
+        try:
+            await app.state.log_flusher_task
+        except asyncio.CancelledError:
+            pass
+            
+    buffer = getattr(app.state, "log_buffer", [])
+    if buffer:
+        try:
+            os.makedirs("processed", exist_ok=True)
+            with open("processed/concurrency_proof.log", "a", encoding="utf-8") as f:
+                f.writelines(buffer)
+        except Exception:
+            pass
+            
     print("Ingest worker task stopped.")
 
 app = FastAPI(
@@ -334,11 +372,12 @@ async def ingest_endpoint(
     from datetime import datetime
     timestamp = datetime.utcnow().isoformat()
     request_latency_ms = (time.perf_counter() - start_time) * 1000
-    print(
-        f"[{timestamp}] [API Ingest] Accepted batch of {len(request.items)} items | "
-        f"Queue Size: {queue.qsize()} | "
-        f"Enqueuing Latency: {request_latency_ms:.3f}ms"
-    )
+    if hasattr(fastapi_request.app.state, "log_buffer"):
+        fastapi_request.app.state.log_buffer.append(
+            f"[{timestamp}] [API Ingest] Accepted batch of {len(request.items)} items | "
+            f"Queue Size: {queue.qsize()} | "
+            f"Enqueuing Latency: {request_latency_ms:.3f}ms\n"
+        )
 
     return IngestResponse(
         status="accepted",

@@ -33,6 +33,8 @@ def get_minilm_model() -> SentenceTransformer:
     global _minilm_model
     if _minilm_model is None:
         print("Loading MiniLM model ('sentence-transformers/multi-qa-MiniLM-L6-cos-v1') on CPU for ingestion worker...")
+        import torch
+        torch.set_num_threads(1)
         _minilm_model = SentenceTransformer(
             "sentence-transformers/multi-qa-MiniLM-L6-cos-v1",
             device="cpu"
@@ -136,13 +138,10 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     
     qdrant_latency = time.perf_counter() - start_qdrant
     
-    # Log detailed timing statistics for performance isolation in the exact user-specified format
-    from datetime import datetime
-    timestamp = datetime.utcnow().isoformat()
     model_ms = embed_latency * 1000
     io_ms = qdrant_latency * 1000
-    print(f"[{timestamp}] Model  : {model_ms:.0f}ms")
-    print(f"[{timestamp}] io task: {io_ms:.0f}ms")
+    print(f"Model : {model_ms:.0f} ms")
+    print(f"io: {io_ms:.0f} ms")
 
 async def ingest_worker_loop(
     queue: asyncio.Queue,
