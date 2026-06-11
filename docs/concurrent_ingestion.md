@@ -134,8 +134,116 @@ To align thread pools with the allocated CPU cores and avoid core over-allocatio
 
 During the peak load generation phase (6,000 users, 2,000 spawn rate), we observed model ingestion latency
 spiking from its **30 ms** idle baseline up to **100 – 300 ms**. The spikes vanish the moment Locust stops
-sending traffic, confirming the cause is resource contention rather than model degradation. This section
 documents the three interlocking mechanisms responsible.
+
+#### Single Process Ingestion Dataflow Diagram
+
+The diagram below details the thread boundaries, database queues, and the execution paths of the Uvicorn Event Loop and PyTorch threads inside a single container process:
+
+```mermaid
+graph TD
+    subgraph WorkerProcess["Uvicorn Worker Process (Single OS Process, cpuset: 4-7)"]
+        direction TB
+        GIL["Global Interpreter Lock (GIL)"]
+        
+        subgraph MainThread["Thread A: Uvicorn Event Loop (Async)"]
+            Http[Incoming Ingest Request] --> Json["JSON Parsing & Pydantic Validation<br>(Requires GIL)"]
+            Json --> Enqueue["Enqueue to In-Memory Queue<br>(Requires GIL)"]
+        end
+        
+        subgraph IngestThread["Thread B: AnyIO Thread Pool (Sync)"]
+            Dequeue["Dequeue from Queue<br>(Requires GIL)"] --> Torch[PyTorch Forward Pass]
+            
+            subgraph CppLib["C++ Engine / BLAS Library (OMP_NUM_THREADS = 1)"]
+                Gemm["GEMM Matrix Multiplication<br>(GIL RELEASED!)"]
+            end
+            
+            Torch -->|Calls C++ via FFI| Gemm
+            Gemm -->|Returns vectors| Pack["Construct PointStruct & Payload<br>(RE-ACQUIRES GIL)"]
+        end
+        
+        Json -.->|Acquires & Holds| GIL
+        Enqueue -.->|Acquires & Holds| GIL
+        Dequeue -.->|Acquires & Holds| GIL
+        Pack -.->|Acquires & Holds| GIL
+        
+        Gemm -.->|Releases| GIL
+    end
+    
+    Pack -->|gRPC/HTTP API call| Qdrant["Qdrant DB (Separate Process, cpuset: 0-3)"]
+```
+
+```
++-----------------------------------------------------------------------------------------+
+|                       UVICORN WORKER PROCESS (Single OS Process)                        |
+|                                                                                         |
+|   +---------------------------------------+     +-----------------------------------+   |
+|   |    Thread A: Uvicorn Event Loop       |     |     Thread B: AnyIO Thread Pool   |   |
+|   +---------------------------------------+     +-----------------------------------+   |
+|                       |                                           |                     |
+|                       | [1] receives HTTP                         | [4] consumes        |
+|                       v                                           v                     |
+|             [JSON / Pydantic Parsing]                      [Dequeue Item]               |
+|                       |                                           |                     |
+|                       | (Requires GIL)                            | (Requires GIL)      |
+|                       v                                           v                     |
+|             [asyncio.Queue.put()]                          [PyTorch Model Call]         |
+|                       |                                           |                     |
+|                       +-------------+               +-------------+                     |
+|                                     |               |                                   |
+|                                     v               v                                   |
+|                              ===============================                            |
+|                              | GLOBAL INTERPRETER LOCK     |                            |
+|                              | (Only 1 thread runs Python) |                            |
+|                              ===============================                            |
+|                                             |                                           |
+|                                             | (GIL Released!)                           |
+|                                             v                                           |
+|                              +-----------------------------+                            |
+|                              |      PyTorch C++ Engine     |                            |
+|                              |   (BLAS Matrix Multiplies)  |                            |
+|                              +-----------------------------+                            |
+|                                             |                                           |
+|                                             | (Re-acquires GIL)                         |
+|                                             v                                           |
+|                                    [Map Qdrant Payload]                                 |
+|                                             |                                           |
+|                                             v                                           |
++---------------------------------------------|-------------------------------------------+
+                                              |
+                                              | [5] HTTPS / gRPC
+                                              v
+```
+
+#### Detailed Ingestion Process Execution Steps:
+
+1. **HTTP Ingestion Request Receipt (Thread A)**:
+   * A client sends a batch of markdown document chunks via `POST /api/v1/ingest`.
+   * The Uvicorn Event Loop running on the main ASGI thread (Thread A) intercept the requests.
+   * To parse the JSON payload and execute Pydantic validation schemas, Thread A acquires the Global Interpreter Lock (GIL).
+
+2. **In-Memory Enqueuing & Client Response (Thread A)**:
+   * Thread A writes the validated `IngestItem` instances into `app.state.ingest_queue` (a local Python `asyncio.Queue` residing in RAM).
+   * Once items are enqueued, Thread A constructs and returns an HTTP `202 Accepted` response with a unique tracking UUID to the client. This completes the client-facing call, keeping response latency fast.
+
+3. **Background Worker Consumption (Thread B)**:
+   * Operating concurrently, the background ingestion daemon `ingest_worker_loop` is awakened when items enter the queue.
+   * To prevent blocking the main HTTP event loop, the worker offloads the processing task by calling `anyio.to_thread.run_sync()`. This shifts execution to a worker thread from the AnyIO pool (Thread B).
+   * Thread B acquires the GIL to read the `IngestItem` objects from memory and parse their string text contents.
+
+4. **GIL Release & C++ Execution (PyTorch Math Engine)**:
+   * Thread B calls PyTorch (`embed_dense_texts`) to calculate vector embeddings.
+   * As soon as PyTorch starts the computational pass, it calls down to compiled C++ libraries (such as OpenBLAS, Intel MKL, or ONNX Runtime) using foreign-function interfaces (FFIs).
+   * The C++ engine executes the Transformer layers (Attention GEMM matrix operations) on the CPU. Because this code runs directly on raw CPU registers without touching Python objects, **it releases the Python GIL**.
+   * While the GIL is released, Thread A (Uvicorn event loop) can execute Python code to process new incoming HTTP requests on Cores 4-5.
+
+5. **GIL Re-acquisition & Metadata Mapping (Thread B)**:
+   * After the C++ engine finishes computing the vector representation, control returns to Python.
+   * Thread B **must re-acquire the GIL** to construct the Qdrant `PointStruct` instances and format the metadata payloads (including page IDs, URLs, and token counts).
+   * Under heavy client traffic, Thread A holds the GIL for long periods to parse incoming web payloads. This forces Thread B to wait at the GIL boundary to process its outputs, causing the actual ingestion time-to-index latency to spike.
+
+6. **Database Write (Thread B)**:
+   * Once Thread B gets the GIL, it formats the request and makes an asynchronous gRPC/HTTP call to the Qdrant service running in its own separate container process (pinned to Cores 0-3).
 
 ---
 
