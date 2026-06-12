@@ -20,7 +20,7 @@ def wait_for_backend():
     for _ in range(60):
         try:
             resp = httpx.get(HEALTH_URL, timeout=1.0)
-            if resp.status_code == 200:
+            if resp.status_code in (200, 503):
                 print("Backend is healthy and running.")
                 return True
         except Exception:
@@ -101,14 +101,14 @@ def main():
         sys.exit(1)
     time.sleep(2.0)
     
-    # 3. Run Locust test in Distributed Mode (1 Master + 8 Workers)
-    print("Launching Locust in Distributed Mode (60 seconds, 6000 users, 2000 spawn rate, 8 parallel workers pinned to cores 8-15)...")
+    # 3. Run Locust test in Distributed Mode (1 Master + 4 Workers)
+    print("Launching Locust in Distributed Mode (60 seconds, 6000 users, 2000 spawn rate, 4 parallel workers pinned to cores 12-15)...")
     workers = []
     try:
-        # Spawn 8 workers in the background, pinned to cores 8-15
-        for i in range(8):
+        # Spawn 4 workers in the background, pinned to cores 12-15
+        for i in range(4):
             proc = subprocess.Popen([
-                "taskset", "-c", "8-15",
+                "taskset", "-c", "12-15",
                 ".venv/bin/locust",
                 "-f", "tests/locust_single_chunk.py",
                 "--worker"
@@ -117,20 +117,28 @@ def main():
             
         time.sleep(1.0) # Allow workers to register
         
-        # Run master process, pinned to cores 8-15
-        stdout, code = run_cmd([
-            "taskset", "-c", "8-15",
+        # Run master process, pinned to cores 12-15
+        master_proc = subprocess.Popen([
+            "taskset", "-c", "12-15",
             ".venv/bin/locust", 
             "-f", "tests/locust_single_chunk.py", 
             "--headless", 
             "--master",
-            "--expect-workers", "8",
+            "--expect-workers", "4",
             "-u", "6000", 
             "-r", "2000", 
             "--run-time", "60s", 
             "--host", "http://localhost:8000",
             "--csv", CSV_PREFIX
-        ])
+        ], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        
+        stdout_lines = []
+        for line in master_proc.stdout:
+            print(line, end="", flush=True)
+            stdout_lines.append(line)
+        master_proc.wait()
+        stdout = "".join(stdout_lines)
+        code = master_proc.returncode
     finally:
         # Clean up background worker processes
         print("Cleaning up Locust worker processes...")

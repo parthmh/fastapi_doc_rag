@@ -51,22 +51,65 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"Warning: Failed to ensure ingest collection on boot: {e}")
 
-    # Warm up MiniLM model synchronously on the main thread to prevent thread deadlocks
-    try:
-        from app.ingest_worker import get_minilm_model
-        get_minilm_model()
-    except Exception as e:
-        print(f"Warning: Failed to pre-load MiniLM model: {e}")
+    # Set up local asyncio queue and start worker process using asyncio subprocess
+    import sys
+    import orjson
 
-    # Set up background queue and start worker task
-    app.state.ingest_queue = asyncio.Queue(maxsize=1200000)
-    app.state.ingest_worker_task = asyncio.create_task(
-        ingest_worker_loop(
-            app.state.ingest_queue, 
-            _retriever, 
-            batch_size=settings.ingest_batch_size
-        )
+    # Pin the current Uvicorn worker process to Cores 4, 5, 6, and 7
+    try:
+        os.sched_setaffinity(0, {4, 5, 6, 7})
+        print(f"Uvicorn worker process pinned to cores {os.sched_getaffinity(0)}", flush=True)
+    except Exception as e:
+        print(f"Warning: Failed to pin Uvicorn worker process: {e}", flush=True)
+
+    app.state.local_queue = asyncio.Queue(maxsize=1200000)
+    
+    # Spawn child worker process on Cores 8 to 11 using taskset
+    app.state.ingest_worker_process = await asyncio.create_subprocess_exec(
+        "taskset",
+        "-c",
+        "8-11",
+        sys.executable,
+        "-u",
+        "-m",
+        "app.ingest_worker",
+        stdin=asyncio.subprocess.PIPE,
+        stdout=None,
+        stderr=None,
     )
+
+    # Background IPC writer task to write enqueued items to the worker's stdin
+    async def ipc_writer_loop():
+        writer = app.state.ingest_worker_process.stdin
+        while True:
+            try:
+                # Block waiting for the first item
+                item = await app.state.local_queue.get()
+                batch = [item]
+                
+                # Drain queue up to 1000 items without yielding
+                while len(batch) < 1000:
+                    try:
+                        batch.append(app.state.local_queue.get_nowait())
+                    except asyncio.QueueEmpty:
+                        break
+                
+                # Serialize batch using orjson and write to stdin
+                payload = b"".join(orjson.dumps(x) + b"\n" for x in batch)
+                writer.write(payload)
+                await writer.drain()
+                
+                for _ in range(len(batch)):
+                    app.state.local_queue.task_done()
+                    
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                print(f"Error in ipc_writer_loop: {e}")
+                await asyncio.sleep(0.1)
+
+    app.state.ipc_writer_task = asyncio.create_task(ipc_writer_loop())
+
 
     # Initialize memory buffer for logging and start background flusher
     app.state.log_buffer = []
@@ -90,16 +133,38 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    # Graceful shutdown: wait for the queue to drain
-    print("Shutting down ingest worker task...")
-    if hasattr(app.state, "ingest_queue"):
-        await app.state.ingest_queue.join()
-    if hasattr(app.state, "ingest_worker_task"):
-        app.state.ingest_worker_task.cancel()
+    # Graceful shutdown: signal worker process to exit and join
+    print("Shutting down ingest worker process...")
+    if hasattr(app.state, "ipc_writer_task"):
+        app.state.ipc_writer_task.cancel()
         try:
-            await app.state.ingest_worker_task
+            await app.state.ipc_writer_task
         except asyncio.CancelledError:
             pass
+
+    if hasattr(app.state, "ingest_worker_process") and app.state.ingest_worker_process.stdin:
+        try:
+            # Send shutdown sentinel to worker process
+            app.state.ingest_worker_process.stdin.write(orjson.dumps(None) + b"\n")
+            await app.state.ingest_worker_process.stdin.drain()
+            app.state.ingest_worker_process.stdin.close()
+            await app.state.ingest_worker_process.stdin.wait_closed()
+        except Exception as e:
+            print(f"Error closing worker process stdin: {e}")
+
+    if hasattr(app.state, "ingest_worker_process"):
+        try:
+            # Wait for process to exit
+            await asyncio.wait_for(app.state.ingest_worker_process.wait(), timeout=5.0)
+        except asyncio.TimeoutError:
+            print("Worker process did not exit in time, killing...")
+            try:
+                app.state.ingest_worker_process.kill()
+                await app.state.ingest_worker_process.wait()
+            except Exception as e:
+                print(f"Error killing worker process: {e}")
+        except Exception as e:
+            print(f"Error waiting for worker process: {e}")
     
     # Cancel log flusher and run a final write of any remaining buffered logs
     if hasattr(app.state, "log_flusher_task"):
@@ -351,10 +416,10 @@ async def ingest_endpoint(
     """
     start_time = time.perf_counter()
     task_id = str(uuid.uuid4())
-    queue: asyncio.Queue = fastapi_request.app.state.ingest_queue
+    queue = fastapi_request.app.state.local_queue
 
     # Check if there is enough space in the queue
-    if queue.full() or (queue.qsize() + len(request.items) > queue.maxsize):
+    if queue.qsize() + len(request.items) > 1200000:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="Ingestion queue is full. Please try again later."
@@ -362,7 +427,7 @@ async def ingest_endpoint(
 
     for item in request.items:
         try:
-            queue.put_nowait(item)
+            queue.put_nowait(item.dict())
         except asyncio.QueueFull:
             raise HTTPException(
                 status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -372,10 +437,16 @@ async def ingest_endpoint(
     from datetime import datetime
     timestamp = datetime.utcnow().isoformat()
     request_latency_ms = (time.perf_counter() - start_time) * 1000
+    
+    try:
+        current_qsize = queue.qsize()
+    except Exception:
+        current_qsize = -1
+
     if hasattr(fastapi_request.app.state, "log_buffer"):
         fastapi_request.app.state.log_buffer.append(
             f"[{timestamp}] [API Ingest] Accepted batch of {len(request.items)} items | "
-            f"Queue Size: {queue.qsize()} | "
+            f"Queue Size: {current_qsize} | "
             f"Enqueuing Latency: {request_latency_ms:.3f}ms\n"
         )
 

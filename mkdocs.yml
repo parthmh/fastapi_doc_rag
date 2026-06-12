@@ -40,3 +40,4 @@ nav:
   - RAG Pipeline Dataflow: dataflow.md
   - Load Testing & Deployment: deployment.md
   - Concurrent Ingestion Design: concurrent_ingestion.md
+  - Multiprocessing Pipeline Details: multiprocessing_pipeline.md

@@ -5,7 +5,7 @@ import uuid
 import time
 from typing import Any
 from anyio.to_thread import run_sync
-from qdrant_client import models
+from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
 from app.config import settings
@@ -66,7 +66,7 @@ def ensure_ingest_collection_initialized(retriever: Retriever) -> None:
             field_schema=models.PayloadSchemaType.KEYWORD,
         )
 
-def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
+def process_ingest_batch(batch: list[IngestItem], client: QdrantClient) -> None:
     """
     Synchronous function that encodes a batch of chunks using MiniLM and upserts them to Qdrant.
     Measures latency for embedding vs. request upserts.
@@ -130,7 +130,7 @@ def process_ingest_batch(batch: list[IngestItem], retriever: Retriever) -> None:
     # --- Phase 3: Qdrant Batch Upsert ---
     start_qdrant = time.perf_counter()
     
-    retriever.client.upsert(
+    client.upsert(
         collection_name=collection_name,
         points=points,
         wait=False,
@@ -169,7 +169,7 @@ async def ingest_worker_loop(
                     break
 
             try:
-                await run_sync(process_ingest_batch, batch, retriever)
+                await run_sync(process_ingest_batch, batch, retriever.client)
             except Exception as e:
                 print(f"Error processing async ingestion batch: {e}")
             finally:
@@ -182,3 +182,154 @@ async def ingest_worker_loop(
         except Exception as e:
             print(f"Unhandled exception in ingest worker: {e}")
             await asyncio.sleep(1.0)
+
+
+def mp_ingest_worker_loop(queue, batch_size: int = 64) -> None:
+    """
+    Worker process target function running in a separate OS process.
+    Consumes from the multiprocessing.Queue, batches items, and embeds/upserts them.
+    """
+    print("Multiprocessing Ingestion Worker started.")
+    
+    # Imports inside the process to avoid sharing CUDA/PyTorch contexts or locking parent state
+    import torch
+    from qdrant_client import QdrantClient
+    from app.retriever import Retriever
+    from app.config import settings
+    from app.schemas import IngestItem
+    import queue as py_queue
+    import sys
+
+    # Enforce PyTorch to use 1 thread to avoid core scheduling conflicts
+    torch.set_num_threads(1)
+    
+    # Initialize retriever client inside child process
+    client = QdrantClient(url=settings.qdrant_url)
+    retriever = Retriever(client=client)
+    
+    print("Multiprocessing Ingestion Worker initialized.")
+    
+    while True:
+        try:
+            # 1. Block waiting for the first item
+            item_raw = queue.get()
+            if item_raw is None:
+                print("Received shutdown sentinel. Exiting multiprocessing worker.")
+                break
+                
+            batch_raw = [item_raw]
+            
+            # 2. Drain up to batch_size items without blocking
+            while len(batch_raw) < batch_size:
+                try:
+                    next_item = queue.get_nowait()
+                    if next_item is None:
+                        # Re-enqueue sentinel so we process the current batch, then exit on next loop
+                        queue.put(None)
+                        break
+                    batch_raw.append(next_item)
+                except py_queue.Empty:
+                    break
+                    
+            # Convert dictionaries back to IngestItem schemas
+            batch = [IngestItem(**item) for item in batch_raw]
+            
+            # 3. Process the batch
+            try:
+                process_ingest_batch(batch, retriever.client)
+            except Exception as e:
+                print(f"Error in multiprocessing worker batch processing: {e}", file=sys.stderr)
+                
+        except KeyboardInterrupt:
+            break
+        except Exception as e:
+            print(f"Error in multiprocessing worker loop: {e}", file=sys.stderr)
+
+
+def run_subprocess_worker() -> None:
+    """
+    Subprocess worker entry point reading from stdin using raw os.read.
+    """
+    import sys
+    import os
+    import select
+    import orjson
+    import torch
+    from qdrant_client import QdrantClient
+    from app.retriever import Retriever
+    from app.config import settings
+    from app.schemas import IngestItem
+
+    # Enforce PyTorch to use 1 thread to avoid core scheduling conflicts
+    torch.set_num_threads(1)
+    
+    # Initialize raw Qdrant client inside child process (no Retriever/unused models loaded)
+    client = QdrantClient(url=settings.qdrant_url)
+    
+    print("Subprocess Ingestion Worker initialized.", flush=True)
+    
+    batch_size = settings.ingest_batch_size
+    batch_raw = []
+    buffer = b""
+    
+    while True:
+        try:
+            # 1. If batch is empty, block until we read something
+            if not batch_raw:
+                chunk = os.read(0, 65536)
+                if not chunk:
+                    # EOF reached
+                    break
+                buffer += chunk
+            else:
+                # If batch is not empty, check if we can read more without blocking
+                r, _, _ = select.select([0], [], [], 0)
+                if r:
+                    chunk = os.read(0, 65536)
+                    if not chunk:
+                        # EOF
+                        if batch_raw:
+                            batch = [IngestItem(**item) for item in batch_raw]
+                            process_ingest_batch(batch, client)
+                        break
+                    buffer += chunk
+                else:
+                    # No more data immediately available, process the current batch
+                    batch = [IngestItem(**item) for item in batch_raw]
+                    process_ingest_batch(batch, client)
+                    batch_raw = []
+                    continue
+
+            # Process complete lines from buffer
+            has_sentinel = False
+            while b"\n" in buffer:
+                line, buffer = buffer.split(b"\n", 1)
+                if not line:
+                    continue
+                item_raw = orjson.loads(line)
+                if item_raw is None:
+                    has_sentinel = True
+                    break
+                batch_raw.append(item_raw)
+                if len(batch_raw) >= batch_size:
+                    batch = [IngestItem(**item) for item in batch_raw]
+                    process_ingest_batch(batch, client)
+                    batch_raw = []
+
+            if has_sentinel:
+                if batch_raw:
+                    batch = [IngestItem(**item) for item in batch_raw]
+                    process_ingest_batch(batch, client)
+                print("Received shutdown sentinel. Exiting worker.", flush=True)
+                break
+                
+        except KeyboardInterrupt:
+            break
+        except Exception as e:
+            print(f"Error in subprocess worker loop: {e}", file=sys.stderr, flush=True)
+
+
+if __name__ == "__main__":
+    run_subprocess_worker()
+
+

@@ -114,8 +114,9 @@ To test the concurrent ingestion pipeline under extreme load, we executed a dist
 ### CPU Pinning Configuration
 To ensure resource isolation and prevent system-wide context-switch thrashing, we pinned services to dedicated logical CPU cores:
 *   **Qdrant Database**: Pinned to Cores `0-3` (`cpuset: "0-3"`).
-*   **FastAPI Backend (Uvicorn)**: Pinned to Cores `4-7` (`cpuset: "4-7"`).
-*   **Locust Client**: Pinned to Cores `8-15` (`taskset -c 8-15`).
+*   **FastAPI Backend (Uvicorn)**: Pinned to Cores `4-7` (`os.sched_setaffinity` to cores `4-7`).
+*   **PyTorch Embedding Workers**: Pinned to Cores `8-11` (`taskset -c 8-11`).
+*   **Locust Client**: Pinned to Cores `12-15` (`taskset -c 12-15`).
 
 ### Thread Count Optimizations
 To align thread pools with the allocated CPU cores and avoid core over-allocation:
@@ -372,39 +373,54 @@ t=35ms  PyTorch forward pass completes (30ms BLAS + 5ms scheduling overhead = 35
 
 ---
 
-### 8.5 The Decoupled Database Queue Solution (SQLite/Redis)
+### 8.5 Decoupled Subprocess Pipeline via Pipe IPC & Core Isolation (Implemented)
 
-To completely eliminate these spikes, the background worker must be moved into a **separate OS process**
-with its **own GIL** and **dedicated CPU cores**, communicating via a persistent queue:
+To completely eliminate both GIL lockups and CPU core starvation under heavy load, we moved the background worker to separate OS processes, implemented raw standard input pipes for IPC, and isolated CPU cores using `taskset` and `sched_setaffinity`:
 
+```mermaid
+graph TD
+    subgraph ParentProcess["Uvicorn parent process (pinned to Cores 4-7)"]
+        EventLoop["Thread A: Async Event Loop"]
+        LocalQueue[("local_queue (asyncio.Queue)")]
+        IpcWriter["Background Task: ipc_writer_loop"]
+
+        EventLoop -->|1. put_nowait| LocalQueue
+        LocalQueue -->|2. get & batch| IpcWriter
+    end
+
+    subgraph ChildProcess["Worker subprocess (pinned to Cores 8-11)"]
+        Buffer["Byte Buffer (os.read)"]
+        Deserializer["orjson.loads"]
+        Batch["Batch builder"]
+        PyTorch["PyTorch (MiniLM CPU)"]
+
+        IpcWriter -->|3. write to stdin pipe| Buffer
+        Buffer -->|4. Split & deserialize| Deserializer
+        Deserializer -->|5. Drain up to batch_size| Batch
+        Batch -->|6. Generate Embeddings| PyTorch
+    end
+
+    PyTorch -->|7. HTTP batch upsert| Qdrant[("Qdrant DB (pinned to Cores 0-3)")]
 ```
-rag_backend container  (cpuset: 4-5)      ingest_worker container  (cpuset: 6-7)
-│                                         │
-├── uvicorn worker-1 [own GIL]            ├── worker process [own GIL]
-├── uvicorn worker-2 [own GIL]            └── PyTorch MiniLM (OMP=1)
-│   POST /api/v1/ingest                             ↓
-│   → SQLite INSERT <0.1ms          ←──── SQLite SELECT (poll every 10ms)
-│   → return 202                               ↓
-│                                         Qdrant upsert
-└── (no background task, no contention)
-```
 
-**Why this eliminates spikes**:
-*   The FastAPI process has **zero background CPU work**. Its GIL is never contested.
-*   The ingest worker process has **zero network work**. Its GIL is never stolen by HTTP parsing.
-*   Each process runs on dedicated physical cores. There is no OS-level preemption between the two workloads.
+#### Why This Eliminates Spikes:
+*   **Zero GIL Contention:** The event loop process and the embedding worker process have completely independent Python interpreters (separate GILs). Uvicorn's main thread is never blocked waiting for PyTorch.
+*   **Zero Background Threads in Uvicorn:** By using an `asyncio.Queue` and non-blocking stream writers, Uvicorn requires zero background threads. All I/O multiplexing runs natively on the main event loop thread.
+*   **Fast C-Based Serialization:** Payloads are serialized using `orjson.dumps()`, which releases the GIL during serialization.
+*   **CPU Core Isolation:** 
+    *   The 4 Uvicorn parent processes pin themselves to Cores `4-7` using `os.sched_setaffinity`.
+    *   The 4 PyTorch child processes are spawned using `taskset -c 8-11`.
+    *   This physical separation prevents PyTorch's heavy matrix multiplication from starving Uvicorn's CPU-bound JSON parsing and Pydantic validation layers.
 
-### 8.6 Latency Comparison: Does the Database Queue Increase Latency?
+### 8.6 Latency Comparison: Old Thread Queue vs. Decoupled Core-Isolated IPC
 
-| Metric | In-Process Queue (current) | Decoupled SQLite Queue |
+| Metric | In-Process Thread Queue (Old) | Decoupled Core-Isolated Subprocess Pipe (New) |
 | :--- | :--- | :--- |
-| **API response time (P50)** | 320 ms | **< 2 ms** |
+| **API response time (P50)** | 320 ms | **< 1 ms** |
 | **API response time (P99)** | 1,200 – 8,800 ms | **< 5 ms** |
 | **Model latency at peak load** | 100 – 300 ms | **30 ms (flat)** |
-| **SQLite write overhead** | — | +0.05 ms |
-| **SQLite read overhead** | — | +0.1 ms |
-| **Net end-to-end time-to-index** | ~150 ms (contested) | **~30.2 ms** |
-| **Latency saving per point** | — | **~120 ms saved** |
+| **Error Rate (failures/s)** | **5.96% (20,073 failures)** | **0.00% (0 failures)** |
+| **Throughput (requests/sec)** | ~3,874 req/s | **5,300+ req/s** |
+| **GIL lockups** | Yes | **None** |
+| **CPU Starvation on Event Loop** | Yes (shared cores) | **None (isolated cores)** |
 
-The database queue adds `<0.2 ms` of overhead while eliminating `~120 ms` of contention-induced inflation.
-Both client-facing API latency and background embedding latency are **strictly reduced**.

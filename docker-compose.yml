@@ -12,7 +12,7 @@ services:
   backend:
     build: .
     container_name: rag_backend
-    cpuset: "4-7"
+    cpuset: "4-11"
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--workers", "4"]
     ports:
       - "8000:8000"
