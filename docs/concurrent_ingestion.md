@@ -424,3 +424,15 @@ graph TD
 | **GIL lockups** | Yes | **None** |
 | **CPU Starvation on Event Loop** | Yes (shared cores) | **None (isolated cores)** |
 
+---
+
+### 8.7 Model Size & Microarchitectural Latency (MiniLM vs. FashionCLIP)
+
+While the decoupled core-isolated IPC architecture keeps the API response latency flat and completely eliminates GIL contention, there is a fundamental microarchitectural difference in how different model sizes react to extreme load:
+
+*   **MiniLM (Text Embeddings - ~90MB):** Because the model is small, its weights are highly cache-resident and fit within the L3 cache. Model latency remains flat at **~30ms** even during peak bombardment because the CPU doesn't need to fetch weights from DRAM.
+*   **FashionCLIP (Image Embeddings - ~600MB–1.5GB):** The model footprint exceeds L3 cache sizes. The CPU experiences a **~60% L3 cache miss rate**, forcing it to stream weights from DRAM for every inference. Under heavy Uvicorn/Locust traffic, DDR bus bandwidth becomes saturated, stalling the CPU instruction pipeline (reducing IPC by 2.90%) and spiking latency from **~110ms** to **~170ms - 185ms**.
+
+For details, hardware performance logs (`perf stat`), and the memory-bus contention diagram, refer to the [FashionCLIP Image Ingestion Pipeline Documentation](fashion_clip_ingestion.md#6-microarchitectural-latency-spikes-l3-cache-vs-dram-contention).
+
+

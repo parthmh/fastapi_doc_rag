@@ -38,23 +38,31 @@ def get_fashion_clip_model() -> tuple[CLIPModel, CLIPProcessor]:
 
 def ensure_image_collection_initialized(client: QdrantClient) -> None:
     collection_name = settings.image_collection_name
-    if client.collection_exists(collection_name):
-        return
+    try:
+        if client.collection_exists(collection_name):
+            return
 
-    print(f"Creating image collection '{collection_name}'...", flush=True)
-    client.create_collection(
-        collection_name=collection_name,
-        vectors_config=models.VectorParams(
-            size=512,  # FashionCLIP returns 512-dimensional embeddings
-            distance=models.Distance.COSINE,
+        print(f"Creating image collection '{collection_name}'...", flush=True)
+        client.create_collection(
+            collection_name=collection_name,
+            vectors_config=models.VectorParams(
+                size=512,  # FashionCLIP returns 512-dimensional embeddings
+                distance=models.Distance.COSINE,
+            )
         )
-    )
-    # create payload index on product_id
-    client.create_payload_index(
-        collection_name=collection_name,
-        field_name="product_id",
-        field_schema=models.PayloadSchemaType.KEYWORD,
-    )
+        # create payload index on product_id
+        client.create_payload_index(
+            collection_name=collection_name,
+            field_name="product_id",
+            field_schema=models.PayloadSchemaType.KEYWORD,
+        )
+    except Exception as e:
+        # Double check if the collection actually exists now (created by another concurrent worker)
+        if client.collection_exists(collection_name):
+            print(f"Collection '{collection_name}' was initialized by another concurrent process.", flush=True)
+        else:
+            print(f"Error initializing collection '{collection_name}': {e}", flush=True)
+            raise
 
 def download_image(url: str) -> Image.Image:
     headers = {
@@ -155,7 +163,7 @@ def process_image_batch(batch: list[IngestImageItem], client: QdrantClient) -> N
     
     print(
         f"Batch processed: {len(valid_images)} succeeded, {len(batch) - len(valid_images)} failed | "
-        f"Download: {download_latency:.4f}s | Embed: {embed_latency:.4f}s | Upsert: {upsert_latency:.4f}s",
+        f"Download: {download_latency * 1000:.1f}ms | Embed: {embed_latency * 1000:.1f}ms | Upsert: {upsert_latency * 1000:.1f}ms",
         flush=True
     )
 
