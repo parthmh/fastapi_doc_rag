@@ -23,7 +23,7 @@ from app.schemas import (
     IngestRequest,
     IngestResponse,
 )
-from app.ingest_worker import ensure_ingest_collection_initialized, ingest_worker_loop
+from ingestion.ingest_worker import ensure_ingest_collection_initialized, ingest_worker_loop
 
 tags_metadata = [
     {
@@ -72,7 +72,7 @@ async def lifespan(app: FastAPI):
         sys.executable,
         "-u",
         "-m",
-        "app.ingest_worker",
+        "ingestion.ingest_worker",
         stdin=asyncio.subprocess.PIPE,
         stdout=None,
         stderr=None,

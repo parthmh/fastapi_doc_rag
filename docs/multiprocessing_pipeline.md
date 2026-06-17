@@ -62,7 +62,7 @@ Here is the implementation in [app/main.py](file:///home/ad.rapidops.com/parth.p
         sys.executable,
         "-u",
         "-m",
-        "app.ingest_worker",
+        "ingestion.ingest_worker",
         stdin=asyncio.subprocess.PIPE,
         stdout=None,
         stderr=None,
@@ -120,7 +120,7 @@ Standard Python text streams (like `sys.stdin.readline`) use internal buffering 
 
 To bypass this buffering, the subprocess worker uses a raw file descriptor read (`os.read(0, 65536)`) combined with `select.select` to poll the stdin stream in a non-blocking manner. It parses complete lines delimited by `\n`, deserializes them, and feeds them into PyTorch.
 
-Here is the implementation in [app/ingest_worker.py](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/app/ingest_worker.py#L275-L330):
+Here is the implementation in [ingest_worker.py](file:///home/ad.rapidops.com/parth.patel/learn/projects/fastapi_doc_rag/ingestion/ingest_worker.py#L275-L330):
 
 ```python
     batch_size = settings.ingest_batch_size
