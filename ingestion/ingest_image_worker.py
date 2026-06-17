@@ -65,6 +65,28 @@ def ensure_image_collection_initialized(client: QdrantClient) -> None:
             raise
 
 def download_image(url: str) -> Image.Image:
+    import base64
+
+    # Remove any fragment (like #locust_idx=...) used to keep URL string unique
+    clean_url = url
+    if "#" in clean_url:
+        clean_url, _ = clean_url.split("#", 1)
+
+    # Detect if it's base64 data URI or raw base64 string
+    is_base64 = False
+    if clean_url.startswith("data:image/") or ";base64," in clean_url or not (clean_url.startswith("http://") or clean_url.startswith("https://")):
+        is_base64 = True
+
+    if is_base64:
+        if ";base64," in clean_url:
+            _, base64_data = clean_url.split(";base64,", 1)
+        elif "," in clean_url:
+            _, base64_data = clean_url.split(",", 1)
+        else:
+            base64_data = clean_url
+        img_bytes = base64.b64decode(base64_data)
+        return Image.open(BytesIO(img_bytes)).convert("RGB")
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
     }
@@ -167,6 +189,30 @@ def process_image_batch(batch: list[IngestImageItem], client: QdrantClient) -> N
         flush=True
     )
 
+def warmup_model() -> None:
+    """
+    Eagerly load FashionCLIP and run one dummy forward pass.
+
+    Without this, the first real inference call incurs:
+      1. ~4-5 s of from_pretrained() disk I/O + weight deserialization
+      2. PyTorch internal JIT / memory allocator initialisation
+
+    Both costs land inside the embed timer window, causing the observed
+    ~4938 ms first-batch spike. Running warmup at subprocess startup
+    moves these costs out of the hot path entirely.
+    """
+    t0 = time.perf_counter()
+    model, processor = get_fashion_clip_model()
+    # Create a minimal 1x1 white image to drive a real forward pass
+    dummy_image = Image.new("RGB", (224, 224), color=(255, 255, 255))
+    processor_any: Any = processor
+    inputs = processor_any(images=[dummy_image], return_tensors="pt")
+    with torch.no_grad():
+        _ = model.get_image_features(**inputs)
+    elapsed = (time.perf_counter() - t0) * 1000
+    print(f"FashionCLIP warmup complete in {elapsed:.0f}ms. Ready to process.", flush=True)
+
+
 def run_subprocess_worker() -> None:
     # Initialize Qdrant Client in child process
     client = QdrantClient(url=settings.qdrant_url)
@@ -175,7 +221,10 @@ def run_subprocess_worker() -> None:
     ensure_image_collection_initialized(client)
     
     print("Subprocess Image Ingestion Worker initialized.", flush=True)
-    
+
+    # Eagerly load model + run warmup forward pass to eliminate first-inference spike
+    warmup_model()
+
     batch_size = settings.ingest_batch_size
     batch_raw = []
     buffer = b""

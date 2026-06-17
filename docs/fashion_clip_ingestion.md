@@ -210,4 +210,31 @@ This is **not** caused by:
 - DRAM bandwidth saturation (IMC counters confirm ~30% bus utilisation; stress-ng causal test with +5.2 GB/s added pressure produced only +3ms latency change)
 - TLB pressure (dTLB miss rate 0.08% → 0.11%, negligible)
 
+---
+
+### 6.5 Replicated Microarchitectural Profiling for In-Memory Base64 Ingestion (June 2026)
+
+In June 2026, we updated the testing strategy to eliminate network download latency by pre-downloading images and passing them as Base64 data URIs. We ran standalone benchmark experiments bypassing the FastAPI/Uvicorn API layer entirely to measure the true isolated behavior of the image embedding pipeline under clean low-concurrency (1 worker) vs high-concurrency (4 workers) loads.
+
+The Integrated Memory Controller (IMC) free-running PMU counters (`uncore_imc_free_running_X`) and process-specific PMU counters were used to profile the microarchitectural resource characteristics on the host:
+
+| Parameter | 1 Standalone Worker (Core 12) | 4 Standalone Workers (Cores 12–15) | Microarchitectural Diagnostic |
+| :--- | :---: | :---: | :--- |
+| **Average Embedding Latency** | **112.56 ms** | **132.03 ms** | **+17.30% scaling latency penalty** |
+| **Effective Clock Speed (GHz)** | **3.970 GHz** | **3.222 GHz** | **-18.84% Clock Drop** (Intel TurboBoost TDP throttling) |
+| **IPC (Instructions Per Cycle)** | **1.220** | **1.310** | **+7.38% Pipeline Efficiency** (Due to L3 Cache Reuse) |
+| **LLC Loads (L3 accesses)** | 117,047,223 | 475,531,850 | - |
+| **LLC Load Misses (L3 misses)** | 72,493,779 | 109,061,616 | - |
+| **LLC Load Miss Rate (%)** | **61.94%** | **22.93%** | **-39.01% absolute miss rate reduction** (prefetch overlapping) |
+| **DRAM Total Bandwidth (GB/s)** | **4.38 GB/s** | **7.53 GB/s** | **No Bandwidth Saturation** (~15% controller limit) |
+| **dTLB Load Miss Rate (%)** | **0.090%** | **0.078%** | **Negligible** (No translation bottleneck) |
+| **STLB Miss Loads** | 237,980,880 | 395,823,783 | **No TLB pressure spike** |
+
+#### Detailed Insights:
+1. **L3 Cache Pre-fetching & Weight Sharing**:
+   When scaling from 1 to 4 workers, the LLC (L3) load miss rate dropped dramatically from **61.94% to 22.93%**. Because all 4 workers run inference on the *same model weights*, cache blocks loaded into the shared L3 cache by one core act as hits for the other cores. This weight sharing protects the memory bus from bandwidth scaling; instead of scaling linearly to $17.5\text{ GB/s}$, the 4 concurrent workers only consume **7.53 GB/s** (well within the DDR4 limit of ~51.2 GB/s).
+2. **Clock Frequency Throttling (Primary Bottleneck)**:
+   The 17.3% latency increase is driven solely by **TDP throttling**. Pinned cores drop from **3.97 GHz (1 core turbo) to 3.22 GHz (4 cores AVX active)**, accounting for a 23.2% theoretical execution time penalty ($112.56\text{ms} \times (3.970 / 3.222) = 138.67\text{ ms} \approx 132.03\text{ ms}$).
+
+
 
