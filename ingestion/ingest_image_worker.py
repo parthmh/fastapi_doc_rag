@@ -26,12 +26,14 @@ _fashion_clip_processor: CLIPProcessor | None = None
 
 def get_fashion_clip_model() -> tuple[CLIPModel, CLIPProcessor]:
     global _fashion_clip_model, _fashion_clip_processor
-    if _fashion_clip_model is None:
+    if _fashion_clip_model is None or _fashion_clip_processor is None:
         print("Loading FashionCLIP model ('patrickjohncyh/fashion-clip') on CPU...", flush=True)
         # Enforce PyTorch to use 1 thread to avoid core scheduling conflicts
         torch.set_num_threads(1)
         _fashion_clip_model = CLIPModel.from_pretrained("patrickjohncyh/fashion-clip")
         _fashion_clip_processor = CLIPProcessor.from_pretrained("patrickjohncyh/fashion-clip")
+    assert _fashion_clip_model is not None
+    assert _fashion_clip_processor is not None
     return _fashion_clip_model, _fashion_clip_processor
 
 def ensure_image_collection_initialized(client: QdrantClient) -> None:
@@ -63,7 +65,7 @@ def download_image(url: str) -> Image.Image:
     return Image.open(BytesIO(resp.content)).convert("RGB")
 
 def download_images_concurrently(urls: list[str]) -> list[Image.Image | None]:
-    results = [None] * len(urls)
+    results: list[Image.Image | None] = [None] * len(urls)
     # Use ThreadPoolExecutor to handle concurrent network I/O
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_index = {
@@ -106,12 +108,13 @@ def process_image_batch(batch: list[IngestImageItem], client: QdrantClient) -> N
     start_embed = time.perf_counter()
     model, processor = get_fashion_clip_model()
     
-    # Process images to tensors
-    inputs = processor(images=valid_images, return_tensors="pt")
+    # Process images to tensors (use Any to satisfy Pylance dynamic call check)
+    processor_any: Any = processor
+    inputs = processor_any(images=valid_images, return_tensors="pt")
     
     # Run CPU inference
     with torch.no_grad():
-        image_features = model.get_image_features(**inputs)
+        image_features: Any = model.get_image_features(**inputs)
         # Handle cases where return_dict is True and returns a BaseModelOutputWithPooling object
         if not isinstance(image_features, torch.Tensor):
             image_features = image_features.pooler_output

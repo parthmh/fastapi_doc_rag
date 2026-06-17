@@ -95,19 +95,22 @@ async def lifespan(app: FastAPI):
         stderr=None,
     )
 
-    # Background IPC writer task to write enqueued items to the worker's stdin
-    async def ipc_writer_loop():
-        writer = app.state.ingest_worker_process.stdin
+    # General-purpose background IPC writer task to write enqueued items to the worker's stdin
+    async def run_ipc_writer_loop(queue: asyncio.Queue, process, name: str):
+        writer = process.stdin
+        if not writer:
+            print(f"Warning: stdin not available for {name} subprocess.")
+            return
         while True:
             try:
                 # Block waiting for the first item
-                item = await app.state.local_queue.get()
+                item = await queue.get()
                 batch = [item]
                 
                 # Drain queue up to 1000 items without yielding
                 while len(batch) < 1000:
                     try:
-                        batch.append(app.state.local_queue.get_nowait())
+                        batch.append(queue.get_nowait())
                     except asyncio.QueueEmpty:
                         break
                 
@@ -117,46 +120,20 @@ async def lifespan(app: FastAPI):
                 await writer.drain()
                 
                 for _ in range(len(batch)):
-                    app.state.local_queue.task_done()
+                    queue.task_done()
                     
             except asyncio.CancelledError:
                 break
             except Exception as e:
-                print(f"Error in ipc_writer_loop: {e}")
+                print(f"Error in {name} IPC writer loop: {e}")
                 await asyncio.sleep(0.1)
 
-    # Background IPC writer task to write enqueued image items to the image worker's stdin
-    async def image_ipc_writer_loop():
-        writer = app.state.image_worker_process.stdin
-        while True:
-            try:
-                # Block waiting for the first item
-                item = await app.state.image_queue.get()
-                batch = [item]
-                
-                # Drain queue up to 1000 items without yielding
-                while len(batch) < 1000:
-                    try:
-                        batch.append(app.state.image_queue.get_nowait())
-                    except asyncio.QueueEmpty:
-                        break
-                
-                # Serialize batch using orjson and write to stdin
-                payload = b"".join(orjson.dumps(x) + b"\n" for x in batch)
-                writer.write(payload)
-                await writer.drain()
-                
-                for _ in range(len(batch)):
-                    app.state.image_queue.task_done()
-                    
-            except asyncio.CancelledError:
-                break
-            except Exception as e:
-                print(f"Error in image_ipc_writer_loop: {e}")
-                await asyncio.sleep(0.1)
-
-    app.state.ipc_writer_task = asyncio.create_task(ipc_writer_loop())
-    app.state.image_ipc_writer_task = asyncio.create_task(image_ipc_writer_loop())
+    app.state.ipc_writer_task = asyncio.create_task(
+        run_ipc_writer_loop(app.state.local_queue, app.state.ingest_worker_process, "text_worker")
+    )
+    app.state.image_ipc_writer_task = asyncio.create_task(
+        run_ipc_writer_loop(app.state.image_queue, app.state.image_worker_process, "image_worker")
+    )
 
 
     # Initialize memory buffer for logging and start background flusher
