@@ -426,13 +426,18 @@ graph TD
 
 ---
 
-### 8.7 Model Size & Microarchitectural Latency (MiniLM vs. FashionCLIP)
+### 8.7 Model Size & Microarchitectural Latency Under Load (MiniLM vs. FashionCLIP)
 
-While the decoupled core-isolated IPC architecture keeps the API response latency flat and completely eliminates GIL contention, there is a fundamental microarchitectural difference in how different model sizes react to extreme load:
+While the decoupled core-isolated IPC architecture keeps the API response latency flat and completely eliminates GIL contention, there is a fundamental difference in how model size interacts with CPU power management under extreme load:
 
-*   **MiniLM (Text Embeddings - ~90MB):** Because the model is small, its weights are highly cache-resident and fit within the L3 cache. Model latency remains flat at **~30ms** even during peak bombardment because the CPU doesn't need to fetch weights from DRAM.
-*   **FashionCLIP (Image Embeddings - ~600MB–1.5GB):** The model footprint exceeds L3 cache sizes. The CPU experiences a **~60% L3 cache miss rate**, forcing it to stream weights from DRAM for every inference. Under heavy Uvicorn/Locust traffic, DDR bus bandwidth becomes saturated, stalling the CPU instruction pipeline (reducing IPC by 2.90%) and spiking latency from **~110ms** to **~170ms - 185ms**.
+*   **MiniLM (Text Embeddings — ~90MB):** Inference takes ~30ms at any load level. Even when the CPU clock is throttled under multi-core load, 30ms remains comfortably within budget and the degradation is imperceptible.
+*   **FashionCLIP (Image Embeddings — ~600MB–1.5GB):** Inference takes **~110ms at single/few-core turbo** (4.035 GHz). When 12+ cores are simultaneously active (Uvicorn + Locust + FashionCLIP workers), the i7-11800H's Intel TurboBoost is throttled to the all-core ceiling (~2.662 GHz, −34%). This causes latency to rise to **~170ms** under peak bombardment.
 
-For details, hardware performance logs (`perf stat`), and the memory-bus contention diagram, refer to the [FashionCLIP Image Ingestion Pipeline Documentation](fashion_clip_ingestion.md#6-microarchitectural-latency-spikes-l3-cache-vs-dram-contention).
+The root cause is **Intel TurboBoost all-core TDP throttling**, confirmed by hardware counters. It is *not* DRAM bandwidth saturation, L3 cache miss rate, TLB pressure, or GIL — all of which were tested and eliminated. The latency model is exact:
+
+> `110ms × (4.035 GHz ÷ 2.662 GHz) = 167ms ≈ observed 170ms`
+
+For the full hypothesis elimination log, hardware counter evidence tables, and frequency measurements, refer to the [FashionCLIP Image Ingestion Pipeline Documentation — Section 6](fashion_clip_ingestion.md#6-microarchitectural-latency-spikes-root-cause-investigation-june-2026).
+
 
 

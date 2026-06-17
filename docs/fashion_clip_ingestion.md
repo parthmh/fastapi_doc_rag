@@ -124,76 +124,90 @@ To test the image ingestion pipeline under extreme load, we simulated concurrent
 
 ---
 
-## 6. Microarchitectural Latency Spikes: L3 Cache vs. DRAM Contention
+## 6. Microarchitectural Latency Spikes: Root Cause Investigation (June 2026)
 
-While the decoupled multiprocessing architecture completely eliminated GIL contention, we observed that during peak 6,000-user Locust bombardment, worker embedding latency rose from **~110ms** to **~170ms - 185ms**. 
+While the decoupled multiprocessing architecture completely eliminated GIL contention, we observed that during peak 6,000-user Locust bombardment, worker embedding latency rose from **~110ms** to **~170ms**.
 
-To diagnose this, we ran concrete hardware performance profiling using a privileged container mounting the host's native `perf` binary to attach performance counters directly to the `ingest_image_worker` processes.
+To diagnose this, we conducted a systematic hardware counter investigation using a privileged Docker container mounting the host's native `perf` binary, progressing through five hypotheses until the root cause was confirmed.
 
-### Hardware Performance Counter Comparison
+---
 
-We profiled the workers during two distinct phases (15 seconds each):
-1. **Active Bombardment Phase** (Locust actively bombarding Uvicorn on adjacent cores)
-2. **Quiet Queue Drain Phase** (Locust stopped; workers drain the remaining queue in isolation)
+### 6.1 Hypothesis Elimination Log
 
-| Metric | Active Bombardment Phase (High Contention) | Quiet Queue Drain Phase (No Contention) | Relative Impact / Delta |
+| # | Hypothesis | Test Method | Result | Key Evidence |
+| :-- | :--------- | :---------- | :----- | :----------- |
+| 1 | **GIL contention** | `py-spy dump` on worker PIDs during bombardment | ❌ Disproved | Workers are subprocesses; GIL is per-interpreter and fully isolated |
+| 2 | **L3 cache miss rate** | `perf stat -e LLC-loads,LLC-load-misses` on worker PIDs at LOW vs HIGH load | ❌ Disproved | Miss rate: **352M → 354M** (flat, +0.5%). L3 miss count barely changes |
+| 3 | **DRAM bandwidth saturation** | Intel IMC free-running counters (`uncore_imc_free_running_0/data_read/`) at LOW vs HIGH load; `stress-ng` causal test (+5.2 GB/s synthetic DDR pressure) | ❌ Disproved | stress-ng added **+5.2 GB/s** to DRAM bus → embed latency increased only **+3ms** (negligible). Peak system bandwidth was **~17.5 GB/s** vs DDR4 theoretical **~59 GB/s** (30% utilisation — nowhere near saturation) |
+| 4 | **TLB pressure** | `perf stat -e dTLB-load-misses,iTLB-load-misses,mem_inst_retired.stlb_miss_loads` on worker PIDs | ❌ Disproved | dTLB miss rate: **0.08% → 0.11%** (negligible). STLB misses actually *decreased* under high load |
+| 5 | **Intel TurboBoost multi-core TDP throttling** | `perf stat -e cycles,task-clock` (effective GHz = cycles ÷ task-clock) + `/sys/cpufreq/scaling_cur_freq` polling at LOW vs HIGH load | ✅ **Confirmed** | Effective clock: **4.035 GHz** (low load) → **2.662 GHz** (high load). Latency model: `110ms × (4.035 / 2.662) = 167ms ≈ observed 170ms` |
+
+---
+
+### 6.2 Hardware Evidence: Full Counter Table
+
+All measurements captured via `perf stat` attached to the `ingest_image_worker` subprocess PIDs over 20-second windows.
+
+| Counter | LOW load | HIGH load (6000-user bombardment) | Δ |
 | :--- | :--- | :--- | :--- |
-| **LLC Loads (L3 Cache Accesses)** | 72,491,456 | 63,991,725 | +13.28% cache accesses under load |
-| **LLC Load Misses (L3 Cache Misses)** | 45,477,981 | 38,403,235 | +18.42% absolute L3 misses |
-| **LLC Miss Rate** | **62.74%** | **60.01%** | **+2.73% rate increase** |
-| **Instructions Retired** | 34,455,274,910 | 29,947,855,142 | - |
-| **CPU Clock Cycles** | 27,811,309,568 | 23,469,033,015 | - |
-| **IPC (Instructions Per Cycle)** | **1.239** | **1.276** | **-2.90% CPU pipeline efficiency** |
-| **Avg Embedding Latency** | **~170ms - 185ms** | **~100ms - 115ms** | **~60% latency penalty (~60ms)** |
+| **Effective Clock Frequency** | **4.035 GHz** | **2.662 GHz** | **−1.37 GHz (−34%)** |
+| IPC (instructions per cycle) | 1.22 | 1.20 | −0.02 (negligible) |
+| CPUs utilized | 0.492 | 0.666 | +35% |
+| dTLB-loads | 15,899,617,283 | 13,981,290,463 | — |
+| dTLB-load-miss rate | 0.08% | 0.11% | +0.03% |
+| STLB miss loads | 230,450,834 | 204,513,687 | −12% |
+| L3 cache-misses | 352,230,762 | 354,069,886 | +0.5% |
+| **Avg embed latency** | **~110ms** | **~170ms** | **+55%** |
 
-### Contention Architecture Diagram
+---
 
-The diagram below details how cache misses from massive models like FashionCLIP interact with other processes (Uvicorn and Locust) at the hardware level, saturating the DDR memory bus:
+### 6.3 Root Cause: Intel TurboBoost All-Core TDP Throttling
+
+The i7-11800H CPU is governed by the `powersave` frequency governor and Intel's TurboBoost power management.
+
+**At low load:** Only the FashionCLIP worker cores (12-15) are active. The CPU grants full **single-core turbo** frequency (**4.0+ GHz**) because the thermal and TDP budget is available.
+
+**At high load (full bombardment):** Uvicorn (cores 4-7) + Locust (cores 8-11) + FashionCLIP (cores 12-15) = **12+ cores simultaneously active**. Total power draw exceeds the processor's sustained TDP (PL1: 45W). The CPU is forced to drop all active cores to the **all-core turbo ceiling (~2.6 GHz)**, a −34% clock frequency reduction.
+
+This directly explains the observed latency:
+
+> `110ms × (4.035 GHz ÷ 2.662 GHz) = 110ms × 1.516 = **167ms ≈ observed 170ms**`
+
+The arithmetic matches within measurement noise. The IPC stays flat (1.22 → 1.20) because the *computation* itself is not becoming less efficient — there are simply fewer clock cycles per second available.
+
+**Why MiniLM is unaffected:** MiniLM inference takes only ~30ms. Even at the throttled 2.6 GHz, the throughput remains well within the response budget. The latency is short enough that the frequency reduction is imperceptible.
 
 ```mermaid
-graph TD
-    subgraph CPU_Cores ["CPU Cores"]
-        Uvicorn[Uvicorn Process<br>Cores 4-7]
-        Locust[Locust Client<br>Cores 8-11]
-        PyTorch[PyTorch Image Worker<br>Cores 12-15]
+graph LR
+    subgraph LowLoad ["Low Load — Single/Few Cores Active"]
+        W1["FashionCLIP Workers\nCores 12-15\n4.035 GHz (TurboBoost)"]
+        L1["Embed latency: ~110ms"]
     end
 
-    subgraph L3_Cache ["CPU Shared L3 Cache (typically 16MB - 32MB)"]
-        MiniLM["MiniLM weights (90MB)<br>Fits in L3 / Cache-Resident"]
-        FashionCLIP_Miss["FashionCLIP weights (600MB - 1.5GB)<br>L3 Cache Miss (60.01% - 62.74%)"]
+    subgraph HighLoad ["High Load — 12+ Cores Active Simultaneously"]
+        W2["FashionCLIP Workers\nCores 12-15"]
+        U2["Uvicorn\nCores 4-7"]
+        Lk2["Locust\nCores 8-11"]
+        TDP["i7-11800H TDP Budget Exceeded\n→ All-core throttle: 2.662 GHz (−34%)"]
+        L2["Embed latency: ~170ms"]
     end
 
-    subgraph DRAM ["System Memory (DRAM)"]
-        DRAM_Weights["FashionCLIP Model Weights<br>~1.5 GB"]
-        DRAM_IO["Socket Buffers / JSON Strings / Web Context"]
-    end
+    W1 --> L1
+    W2 & U2 & Lk2 --> TDP --> L2
 
-    subgraph Memory_Controller ["Memory Controller & Dual-Channel DDR Bus"]
-        Bus["Shared DDR Memory Bus<br>(Saturated under bombardment)"]
-    end
-
-    PyTorch -->|1. Request weights| L3_Cache
-    L3_Cache -->|"2. L3 Miss (62.74%)"| Memory_Controller
-    Uvicorn -->|DRAM access| Memory_Controller
-    Locust -->|DRAM access| Memory_Controller
-    
-    Memory_Controller -->|"3. Fetch weights (stalled & queued)"| DRAM
-    DRAM -->|4. Return weights| Memory_Controller
-    Memory_Controller -->|"5. Forward to CPU (delayed)"| PyTorch
-
-    style FashionCLIP_Miss fill:#f9f,stroke:#333,stroke-width:2px
-    style Bus fill:#ff9,stroke:#f00,stroke-width:2px
+    style TDP fill:#f96,stroke:#c00,stroke-width:2px
+    style L2 fill:#fdd,stroke:#c00
+    style L1 fill:#dfd,stroke:#090
 ```
 
-### Deep Architectural Analysis
+### 6.4 Conclusion
 
-1. **Why Text Models (MiniLM) Do Not Spike**:
-   Our text embedding model, MiniLM, has only ~22 million parameters (90MB). The active weights and activations fit comfortably inside the CPU's shared L3 cache. Once loaded, the execution runs almost entirely out of L3 cache SRAM, bypassing the DRAM memory controller and remaining immune to background activity.
-2. **Why Image Models (FashionCLIP) Spike**:
-   FashionCLIP (ViT-B/32) is a massive visual transformer (~150M parameters, ~600MB-1.5GB footprint). Because it misses L3 cache 60% of the time, the CPU must stream gigabytes of weights from system DRAM for *every single forward pass*.
-3. **Memory Bus Congestion**:
-   During peak load, Uvicorn and Locust saturate the dual-channel DDR memory bus with concurrent memory operations (socket processing, HTTP framing, serialization). This forces the memory controller to queue PyTorch's cache miss reads, causing CPU execution units to stall. This is proven by the **2.90% drop in IPC (from 1.276 to 1.239)**.
-4. **Conclusion**:
-   The ~60ms latency degradation is not caused by warmup issues or GIL contention, but is a native microarchitectural DRAM bandwidth bottleneck.
+The ~60ms latency degradation under peak load is caused by **Intel TurboBoost all-core TDP throttling**. When 12+ cores are simultaneously active (Uvicorn + Locust + FashionCLIP workers), the CPU's sustained power envelope forces a 34% clock frequency reduction on all active cores. Because FashionCLIP inference is CPU compute-bound and takes ~110ms at full turbo, a 34% slowdown produces the ~167ms observed latency.
+
+This is **not** caused by:
+- GIL contention (subprocess isolation eliminates it)
+- L3 cache miss rate increases (flat across load conditions)
+- DRAM bandwidth saturation (IMC counters confirm ~30% bus utilisation; stress-ng causal test with +5.2 GB/s added pressure produced only +3ms latency change)
+- TLB pressure (dTLB miss rate 0.08% → 0.11%, negligible)
 
 
