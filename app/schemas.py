@@ -1,4 +1,4 @@
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Any
 from pydantic import BaseModel, Field
 
 # Define the search mode choices as a literal type
@@ -195,4 +195,30 @@ class IngestResponse(BaseModel):
     status: str = Field(default="accepted", description="Status of the ingestion request.")
     task_id: str = Field(..., description="The unique request tracking identifier.")
     queued_count: int = Field(..., description="Number of items added to the async queue.")
+
+
+class IngestImageItem(BaseModel):
+    """
+    Represents a single image metadata payload to be ingested.
+    """
+    image_url: str = Field(..., description="The HTTP URL of the image to download and embed.")
+    product_id: str = Field(..., description="The product ID associated with the image.")
+    caption: str | None = Field(default=None, description="Optional caption describing the image.")
+    metadata: dict[str, Any] | None = Field(default=None, description="Optional metadata dictionary.")
+
+
+class IngestImageRequest(BaseModel):
+    """
+    Request body wrapper containing multiple image items for concurrent ingestion.
+    """
+    items: list[IngestImageItem] = Field(..., description="List of image items to ingest.")
+
+
+class IngestImageResponse(BaseModel):
+    """
+    Response schema returning image ingestion task acceptance status.
+    """
+    status: str = Field(default="accepted", description="Status of the image ingestion request.")
+    task_id: str = Field(..., description="The unique request tracking identifier.")
+    queued_count: int = Field(..., description="Number of items added to the image queue.")
 

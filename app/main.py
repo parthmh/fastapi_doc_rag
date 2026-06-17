@@ -22,6 +22,8 @@ from app.schemas import (
     ErrorResponse,
     IngestRequest,
     IngestResponse,
+    IngestImageRequest,
+    IngestImageResponse,
 )
 from ingestion.ingest_worker import ensure_ingest_collection_initialized, ingest_worker_loop
 
@@ -63,6 +65,7 @@ async def lifespan(app: FastAPI):
         print(f"Warning: Failed to pin Uvicorn worker process: {e}", flush=True)
 
     app.state.local_queue = asyncio.Queue(maxsize=1200000)
+    app.state.image_queue = asyncio.Queue(maxsize=1200000)
     
     # Spawn child worker process on Cores 8 to 11 using taskset
     app.state.ingest_worker_process = await asyncio.create_subprocess_exec(
@@ -73,6 +76,20 @@ async def lifespan(app: FastAPI):
         "-u",
         "-m",
         "ingestion.ingest_worker",
+        stdin=asyncio.subprocess.PIPE,
+        stdout=None,
+        stderr=None,
+    )
+
+    # Spawn child image worker process on Cores 12 to 15 using taskset
+    app.state.image_worker_process = await asyncio.create_subprocess_exec(
+        "taskset",
+        "-c",
+        "12-15",
+        sys.executable,
+        "-u",
+        "-m",
+        "ingestion.ingest_image_worker",
         stdin=asyncio.subprocess.PIPE,
         stdout=None,
         stderr=None,
@@ -108,7 +125,38 @@ async def lifespan(app: FastAPI):
                 print(f"Error in ipc_writer_loop: {e}")
                 await asyncio.sleep(0.1)
 
+    # Background IPC writer task to write enqueued image items to the image worker's stdin
+    async def image_ipc_writer_loop():
+        writer = app.state.image_worker_process.stdin
+        while True:
+            try:
+                # Block waiting for the first item
+                item = await app.state.image_queue.get()
+                batch = [item]
+                
+                # Drain queue up to 1000 items without yielding
+                while len(batch) < 1000:
+                    try:
+                        batch.append(app.state.image_queue.get_nowait())
+                    except asyncio.QueueEmpty:
+                        break
+                
+                # Serialize batch using orjson and write to stdin
+                payload = b"".join(orjson.dumps(x) + b"\n" for x in batch)
+                writer.write(payload)
+                await writer.drain()
+                
+                for _ in range(len(batch)):
+                    app.state.image_queue.task_done()
+                    
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                print(f"Error in image_ipc_writer_loop: {e}")
+                await asyncio.sleep(0.1)
+
     app.state.ipc_writer_task = asyncio.create_task(ipc_writer_loop())
+    app.state.image_ipc_writer_task = asyncio.create_task(image_ipc_writer_loop())
 
 
     # Initialize memory buffer for logging and start background flusher
@@ -133,8 +181,8 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    # Graceful shutdown: signal worker process to exit and join
-    print("Shutting down ingest worker process...")
+    # Graceful shutdown: signal worker processes to exit and join
+    print("Shutting down ingest and image worker processes...")
     if hasattr(app.state, "ipc_writer_task"):
         app.state.ipc_writer_task.cancel()
         try:
@@ -142,6 +190,14 @@ async def lifespan(app: FastAPI):
         except asyncio.CancelledError:
             pass
 
+    if hasattr(app.state, "image_ipc_writer_task"):
+        app.state.image_ipc_writer_task.cancel()
+        try:
+            await app.state.image_ipc_writer_task
+        except asyncio.CancelledError:
+            pass
+
+    # Terminate text worker
     if hasattr(app.state, "ingest_worker_process") and app.state.ingest_worker_process.stdin:
         try:
             # Send shutdown sentinel to worker process
@@ -165,6 +221,31 @@ async def lifespan(app: FastAPI):
                 print(f"Error killing worker process: {e}")
         except Exception as e:
             print(f"Error waiting for worker process: {e}")
+
+    # Terminate image worker
+    if hasattr(app.state, "image_worker_process") and app.state.image_worker_process.stdin:
+        try:
+            # Send shutdown sentinel to image worker process
+            app.state.image_worker_process.stdin.write(orjson.dumps(None) + b"\n")
+            await app.state.image_worker_process.stdin.drain()
+            app.state.image_worker_process.stdin.close()
+            await app.state.image_worker_process.stdin.wait_closed()
+        except Exception as e:
+            print(f"Error closing image worker process stdin: {e}")
+
+    if hasattr(app.state, "image_worker_process"):
+        try:
+            # Wait for process to exit
+            await asyncio.wait_for(app.state.image_worker_process.wait(), timeout=5.0)
+        except asyncio.TimeoutError:
+            print("Image worker process did not exit in time, killing...")
+            try:
+                app.state.image_worker_process.kill()
+                await app.state.image_worker_process.wait()
+            except Exception as e:
+                print(f"Error killing image worker process: {e}")
+        except Exception as e:
+            print(f"Error waiting for image worker process: {e}")
     
     # Cancel log flusher and run a final write of any remaining buffered logs
     if hasattr(app.state, "log_flusher_task"):
@@ -451,6 +532,77 @@ async def ingest_endpoint(
         )
 
     return IngestResponse(
+        status="accepted",
+        task_id=task_id,
+        queued_count=len(request.items)
+    )
+
+
+@app.post(
+    "/api/v1/ingest/image",
+    response_model=IngestImageResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+    responses={
+        status.HTTP_422_UNPROCESSABLE_CONTENT: {
+            "model": ErrorResponse,
+            "description": "Validation Error in request items"
+        },
+        status.HTTP_503_SERVICE_UNAVAILABLE: {
+            "model": ErrorResponse,
+            "description": "Queue full or worker unhealthy"
+        }
+    },
+    summary="Asynchronously ingest image URLs",
+    description="Enqueue a list of image items for async downloading and FashionCLIP embedding. Returns status 202 Accepted immediately.",
+    tags=["Ingestion"]
+)
+async def ingest_image_endpoint(
+    request: IngestImageRequest,
+    fastapi_request: Request
+) -> IngestImageResponse:
+    """
+    Asynchronously queues image items for download, FashionCLIP embedding, and Qdrant upserts.
+    """
+    start_time = time.perf_counter()
+    task_id = str(uuid.uuid4())
+    queue = fastapi_request.app.state.image_queue
+
+    # Check if there is enough space in the queue
+    if queue.qsize() + len(request.items) > 1200000:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Image ingestion queue is full. Please try again later."
+        )
+
+    for item in request.items:
+        try:
+            # We serialize image_url to string for safety in JSON serialization
+            item_dict = item.dict()
+            item_dict["image_url"] = str(item_dict["image_url"])
+            queue.put_nowait(item_dict)
+        except asyncio.QueueFull:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Image ingestion queue is full. Please try again later."
+            )
+
+    from datetime import datetime
+    timestamp = datetime.utcnow().isoformat()
+    request_latency_ms = (time.perf_counter() - start_time) * 1000
+    
+    try:
+        current_qsize = queue.qsize()
+    except Exception:
+        current_qsize = -1
+
+    if hasattr(fastapi_request.app.state, "log_buffer"):
+        fastapi_request.app.state.log_buffer.append(
+            f"[{timestamp}] [API Image Ingest] Accepted batch of {len(request.items)} items | "
+            f"Queue Size: {current_qsize} | "
+            f"Enqueuing Latency: {request_latency_ms:.3f}ms\n"
+        )
+
+    return IngestImageResponse(
         status="accepted",
         task_id=task_id,
         queued_count=len(request.items)

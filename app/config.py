@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://localhost:6333"
     base_collection_name: str = "fastapi_doc_rag"
     base_ingest_collection_name: str = "fastapi_doc_ingest"
+    base_image_collection_name: str = "fashion_images"
+    image_model_name: str = "patrickjohncyh/fashion-clip"
+    image_model_tier: str = "fashion_clip"
     mock_ingest_embeddings: bool = False
     ingest_batch_size: int = 64
     
@@ -36,6 +39,10 @@ class Settings(BaseSettings):
     @property
     def ingest_collection_name(self) -> str:
         return f"{self.base_ingest_collection_name}_minilm"
+
+    @property
+    def image_collection_name(self) -> str:
+        return f"{self.base_image_collection_name}_{self.image_model_tier}"
     
     @property
     def dense_model_name(self) -> str:
