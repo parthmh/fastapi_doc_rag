@@ -82,3 +82,35 @@ To prevent resource starvation and CPU scheduling contention, we allocate distin
 *   **FastAPI / Uvicorn parent processes**: Cores `4-7` (4 Cores)
 *   **Text Ingestion Worker subprocess**: Cores `8-11` (4 Cores)
 *   **Image Ingestion Worker subprocess**: Cores `12-15` (4 Cores)
+
+---
+
+## 5. Load Testing & Benchmark Results (June 2026)
+
+To test the image ingestion pipeline under load, we simulated concurrent users streaming image payloads to the endpoint.
+
+### Test Setup:
+*   **Locust Pinning**: Pinned the Locust process to Cores `8-11` (the text ingestion worker cores, which were idle during this test).
+*   **Locust Command**:
+    ```bash
+    taskset -c 8-11 uv run locust -f tests/locust_image_ingest.py --headless -u 10 -r 2 --run-time 15s --host http://localhost:8000
+    ```
+*   **Configuration**:
+    *   Concurrency: 10 users ramping up at 2 users/sec.
+    *   Payload Size: Batches of 5-20 random image items per request.
+    *   Ingestion Batch Size: `1` (1-by-1 ingestion on worker, to protect memory and run sequentially).
+
+### Benchmark Metrics:
+| Performance Metric | Result |
+| :--- | :--- |
+| **Total Requests Completed** | 430 |
+| **Failures** | 0 (0.00%) |
+| **Average Response Time** | 1 ms |
+| **Median Response Time** | 2 ms |
+| **Max Response Time** | 13 ms |
+| **API Throughput** | 28.95 requests/second |
+| **Data Integrity (Qdrant Points)** | Successfully indexed into `fashion_images_fashion_clip` |
+
+### Key Findings:
+1. **Decoupled API Performance**: The average response time of **1ms** confirms that Uvicorn accepts and enqueues request payloads instantly, shielding the client from heavy neural network feature extraction and image network downloads.
+2. **Background Processing Rate**: With `INGEST_BATCH_SIZE=1`, the worker sequentially processes each image. Individual image processing takes `~0.6s to 1.5s` for image downloads and `~100ms` for PyTorch CPU forward-pass embedding generation. Points are steadily upserted to Qdrant in the background at a rate of ~1 point/sec, avoiding system overload.
