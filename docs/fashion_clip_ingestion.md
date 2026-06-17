@@ -152,13 +152,13 @@ The diagram below details how cache misses from massive models like FashionCLIP 
 
 ```mermaid
 graph TD
-    subgraph CPU Cores
+    subgraph CPU_Cores ["CPU Cores"]
         Uvicorn[Uvicorn Process<br>Cores 4-7]
         Locust[Locust Client<br>Cores 8-11]
         PyTorch[PyTorch Image Worker<br>Cores 12-15]
     end
 
-    subgraph L3 Cache ["CPU Shared L3 Cache (typically 16MB - 32MB)"]
+    subgraph L3_Cache ["CPU Shared L3 Cache (typically 16MB - 32MB)"]
         MiniLM["MiniLM weights (90MB)<br>Fits in L3 / Cache-Resident"]
         FashionCLIP_Miss["FashionCLIP weights (600MB - 1.5GB)<br>L3 Cache Miss (60.01% - 62.74%)"]
     end
@@ -168,18 +168,18 @@ graph TD
         DRAM_IO["Socket Buffers / JSON Strings / Web Context"]
     end
 
-    subgraph Memory Controller ["Memory Controller & Dual-Channel DDR Bus"]
+    subgraph Memory_Controller ["Memory Controller & Dual-Channel DDR Bus"]
         Bus["Shared DDR Memory Bus<br>(Saturated under bombardment)"]
     end
 
-    PyTorch -->|1. Request weights| L3 Cache
-    L3 Cache -->|2. L3 Miss (62.74%)| Memory Controller
-    Uvicorn -->|DRAM access| Memory Controller
-    Locust -->|DRAM access| Memory Controller
+    PyTorch -->|1. Request weights| L3_Cache
+    L3_Cache -->|"2. L3 Miss (62.74%)"| Memory_Controller
+    Uvicorn -->|DRAM access| Memory_Controller
+    Locust -->|DRAM access| Memory_Controller
     
-    Memory Controller -->|3. Fetch weights (stalled & queued)| DRAM
-    DRAM -->|4. Return weights| Memory Controller
-    Memory Controller -->|5. Forward to CPU (delayed)| PyTorch
+    Memory_Controller -->|"3. Fetch weights (stalled & queued)"| DRAM
+    DRAM -->|4. Return weights| Memory_Controller
+    Memory_Controller -->|"5. Forward to CPU (delayed)"| PyTorch
 
     style FashionCLIP_Miss fill:#f9f,stroke:#333,stroke-width:2px
     style Bus fill:#ff9,stroke:#f00,stroke-width:2px
