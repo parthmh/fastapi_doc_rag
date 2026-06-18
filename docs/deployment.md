@@ -111,6 +111,7 @@ services:
   qdrant:
     image: qdrant/qdrant:latest
     container_name: qdrant_db
+    cpuset: "0-3"
     ports:
       - "6333:6333"
     volumes:
@@ -120,6 +121,10 @@ services:
   backend:
     build: .
     container_name: rag_backend
+    cap_add:
+      - SYS_PTRACE
+    cpuset: "4-15"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--workers", "4"]
     ports:
       - "8000:8000"
     environment:
@@ -130,9 +135,18 @@ services:
       - LLM_BASE_URL=https://api.mistral.ai/v1
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - INGEST_BATCH_SIZE=1
+      - PYTHONUNBUFFERED=1
+      - OMP_NUM_THREADS=1
+      - MKL_NUM_THREADS=1
+      - OPENBLAS_NUM_THREADS=1
+      - VECLIB_MAXIMUM_THREADS=1
+      - NUMEXPR_NUM_THREADS=1
+      - ORT_DISABLE_THREAD_AFFINITY=1
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
       - /tmp/fastembed_cache:/tmp/fastembed_cache
+      - ./processed:/app/processed
     depends_on:
       - qdrant
     restart: unless-stopped

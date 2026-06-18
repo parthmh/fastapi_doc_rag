@@ -9,6 +9,7 @@ This application implements a configuration-driven RAG pipeline capable of retri
 ## Key Capabilities
 
 *   **Configuration-Driven Ingestion:** Seamlessly switch between light-embedding (MiniLM) and heavy-embedding (Granite) pipelines.
+*   **Multimodal Image Ingestion:** A dedicated asynchronous ingestion endpoint (`POST /api/v1/ingest/image`) powered by **FashionCLIP** (`patrickjohncyh/fashion-clip`), utilizing isolated background worker processes, PIL-based in-memory Base64 decoding, and CPU core pinning.
 *   **Hybrid Vector Search:** Combines dense vector distance metrics with BM25 sparse keyword queries, resolved using Reciprocal Rank Fusion (RRF).
 *   **Dynamic Code Injection:** Automatically resolves and injects filesystem code block placeholders (`{* filepath *}`) during retrieval.
 *   **Resilient synthesis:** Integrated OpenAI-compatible client wrapper that handles rate-limiting (`429`) and transient server failures (`5xx`) using exponential backoff and jitter.

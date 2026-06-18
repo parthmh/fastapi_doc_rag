@@ -60,3 +60,43 @@ To handle rate limits and transient gateway errors from free-tier providers (suc
 *   **Monitored Status Codes:** Retries on `429 Too Many Requests` and standard `500`-`504` server errors.
 *   **Header Inspection:** Dynamically waits for the length specified in the standard `Retry-After` header if sent by the provider.
 *   **Backoff & Jitter:** If the header is absent, waits using exponential backoff with random jitter (`base_delay * 2^attempt + random(0, 0.5)` seconds) for up to 5 attempts before raising a gateway timeout.
+
+---
+
+## 4. Multimodal Image Ingestion Dataflow
+
+When processing visual payloads via `POST /api/v1/ingest/image`, the API enqueues items instantly to return a `202 Accepted` status. A background worker subprocess (pinned to cores 12-15) asynchronously downloads or decodes the image, runs the FashionCLIP CPU forward pass, and indexes the points.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as Client/Loader
+    participant API as FastAPI Backend
+    participant Queue as Image Queue (RAM)
+    participant Worker as Image Subprocess (Cores 12-15)
+    participant DB as Qdrant DB (Cores 0-3)
+
+    Client->>API: POST /api/v1/ingest/image (URLs or Base64 data)
+    API->>Queue: Push items
+    API-->>Client: HTTP 202 Accepted (UUID task_id)
+    
+    Note over Worker: Background draining loop
+    Queue->>Worker: Pipe IPC data stream (\n-separated JSON)
+    
+    alt is Base64 Data URI
+        Worker->>Worker: Decode directly in memory
+    else is Remote HTTPS URL
+        Worker->>Worker: Concurrent HTTP download (ThreadPoolExecutor)
+    end
+    
+    Worker->>Worker: PyTorch CLIP forward pass (Cores 12-15)
+    Worker->>DB: Bulk Upsert points to fashion_images_fashion_clip (wait=false)
+```
+
+1.  **Enqueuing Payload:** The backend receives requests at `/api/v1/ingest/image` containing either raw HTTP URLs or inline Base64 data URIs. Payload schemas are validated, and the objects are pushed into the memory queue.
+2.  **Immediate Acknowledgment:** The client receives a fast 202 Accepted response with a UUID `task_id` (average HTTP response latency < 5ms).
+3.  **IPC Serialization:** A background task (`run_ipc_writer_loop`) drains the queue, converts items to JSON strings separated by `\n` using `orjson`, and writes the raw bytes to the stdin pipe of the `ingest_image_worker` subprocess.
+4.  **Local Memory Decoding / Concurrent Downloads:** The worker subprocess reads from stdin. Remote HTTP images are fetched in parallel threads using `ThreadPoolExecutor` to handle download IO latency. Base64 strings are decoded directly in memory to bypass network overhead entirely.
+5.  **Multimodal Vectorization:** Decoded PIL Images are normalized and processed into tensors. A forward pass via FashionCLIP (`get_image_features`) running on cores 12-15 generates 512-dimensional dense embeddings.
+6.  **Qdrant Database Upsert:** The computed vectors and product/caption metadata are mapped to Qdrant `PointStruct` instances and upserted in batches to the `fashion_images_fashion_clip` collection.
+
