@@ -1,6 +1,6 @@
 # FastAPI RAG Service
 
-A configuration-driven Retrieval-Augmented Generation (RAG) service designed to parse, chunk, index, and query FastAPI's official documentation. It features hybrid search (BM25 + Dense) with Reciprocal Rank Fusion (RRF), late-interaction reranking (ColBERT), dynamic code block resolution, and a beautiful dark-mode web playground.
+A configuration-driven Retrieval-Augmented Generation (RAG) service designed to parse, chunk, index, and query FastAPI's official documentation. It features hybrid search (BM25 + Dense) with Reciprocal Rank Fusion (RRF), late-interaction reranking (ColBERT), dynamic code block resolution, and a multimodal image ingestion pipeline powered by **FashionCLIP**, all backed by a beautiful dark-mode web playground.
 
 ---
 
@@ -24,6 +24,7 @@ LLM_BASE_URL=https://api.mistral.ai/v1     # Base URL (Default: https://api.mist
 OPENAI_API_KEY=your_key                   # API key (for Mistral/OpenAI provider)
 GEMINI_API_KEY=your_key                   # API key (for Gemini provider)
 QDRANT_URL=http://localhost:6333           # Qdrant DB connection
+INGEST_BATCH_SIZE=1                       # Image worker batch size (1 = per-item, 16+ = batched)
 ```
 
 ### 3. Initialize/Ingest Database
@@ -121,10 +122,75 @@ docker compose exec backend python -m ingestion.ingest --workers 12 --tier grani
 
 ---
 
+## Image Ingestion Endpoint
+
+The service exposes a **dedicated multimodal image ingestion API** at `POST /api/v1/ingest/image`. The endpoint is fully decoupled from the text ingestion pipeline and processes images using **FashionCLIP** (`patrickjohncyh/fashion-clip`) to generate 512-dimensional visual embeddings stored in Qdrant.
+
+### How It Works
+
+1.  The endpoint immediately validates the payload, enqueues items into an in-memory async queue, and returns `HTTP 202 Accepted` (non-blocking, median response < 5ms).
+2.  Background subprocess workers (pinned to CPU Cores 12–15) drain the queue, process images, and upsert embeddings into Qdrant.
+
+### Supported Payload Modes
+
+#### A. Remote URL Mode
+Passes a public HTTPS image URL. The background worker fetches the image over the network using concurrent `ThreadPoolExecutor` downloads.
+```json
+{
+  "items": [
+    {
+      "image_url": "https://example.com/product/shirt_blue.jpg",
+      "product_id": "prod_12345",
+      "caption": "Blue crewneck shirt",
+      "metadata": { "color": "blue", "category": "tops" }
+    }
+  ]
+}
+```
+
+#### B. Base64 In-Memory Mode
+Passes the image as a Base64 data URI (`data:image/jpeg;base64,...`). The worker decodes the image directly in memory — **no network download required**. This eliminates download latency and is the preferred mode for high-throughput ingestion.
+```json
+{
+  "items": [
+    {
+      "image_url": "data:image/jpeg;base64,/9j/4AAQSkZJRg...",
+      "product_id": "prod_67890",
+      "caption": "Red sneaker",
+      "metadata": { "color": "red", "category": "footwear" }
+    }
+  ]
+}
+```
+
+> **Tip**: Append a unique fragment like `#id=<uuid>` to the Base64 string to ensure each request generates a distinct Qdrant point ID, even if the underlying image bytes are identical.
+
+### Response
+```json
+{
+  "status": "accepted",
+  "task_id": "f5127814-c104-4df2-811c-22345091a182",
+  "queued_count": 1
+}
+```
+
+### CPU Core Pinning
+| Component | Cores | Role |
+| :--- | :---: | :--- |
+| Qdrant DB | 0-3 | Vector storage & retrieval |
+| Uvicorn (FastAPI) | 4-7 | HTTP routing & API tier |
+| Text Ingestion Workers | 8-11 | MiniLM / Granite embeddings |
+| Image Ingestion Workers | 12-15 | FashionCLIP embeddings |
+
+For a detailed microarchitectural analysis of the pipeline (L3 cache hit rates, DRAM bandwidth, TDP throttling experiments), see the **[FashionCLIP Image Ingestion](http://localhost:8001/fashion_clip_ingestion/)** documentation page.
+
+---
+
 ## Tech Stack & Architecture
 
 *   **FastAPI Backend**: Organized type-safe endpoint schemas, OpenAPI details, and health-checks.
 *   **Qdrant Vector Database**: Houses dense vector fields, BM25 sparse indexes, and payload metadata.
 *   **Chonkie & Sentence-Transformers**: Handles dynamic text splitting and fast CPU embedding.
+*   **FashionCLIP (ViT-B/32)**: Generates 512-dimensional visual embeddings for image search via `POST /api/v1/ingest/image`. Runs as a pinned subprocess worker on dedicated CPU cores with a concurrent downloader and warm-up forward pass.
 *   **ColBERT Cross-Encoder**: Reranks documents using fine-grained token late-interaction.
 *   **Locust Load Testing**: Simulates concurrent users querying `/chat` to test pipeline backoff resilience.
